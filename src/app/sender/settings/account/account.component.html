@@ -1,4 +1,4 @@
-<div class="base-page-container" *ngIf="!pagePopup" [@.disabled]="removeAnimation == true" [class.fadeIn]="doFadeInAnimation" [class.fadeOut]="doFadeOutAnimation">
+<!--<div class="base-page-container" *ngIf="!pagePopup" [@.disabled]="removeAnimation == true" [class.fadeIn]="doFadeInAnimation" [class.fadeOut]="doFadeOutAnimation">
   <div *ngIf="!close" class="header" @fadeAnimation [style]="'padding-top:' + paddingTop + 'rem'">
     <a ontouchstart (click)="closePage()">
       <img src="../../../../assets/icons/chevron-left.svg" alt="arrow-right">
@@ -68,4 +68,21 @@
     <app-logout *ngIf="modalLogout"></app-logout>
     <app-profile-picture (closeValue)="closeModalChoice($event)" [image]="photo" *ngIf="modalEditProfilePicture"></app-profile-picture>
   </div>
-</div>
+</div>-->
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Page Two</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <h1>Page Two</h1>
+  <div>
+    <ion-nav-link router-direction="forward" [component]="componentSettings">
+      <ion-button>Go to Page Three</ion-button>
+    </ion-nav-link>
+  </div>
+</ion-content>

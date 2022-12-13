@@ -11,6 +11,7 @@ import { catchError, of } from 'rxjs';
 import { GetUserService } from 'src/app/common/services/get-user.service';
 import { Camera, CameraResultType, Photo } from '@capacitor/camera';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
+import { SettingsComponent } from '../settings.component';
 
 @Component({
   selector: 'app-account',
@@ -19,6 +20,8 @@ import { Haptics, ImpactStyle } from '@capacitor/haptics';
   animations: [fadeAnimation, slideRightAnimation, slideUpAnimation]
 })
 export class AccountComponent implements OnInit {
+  public componentSettings = SettingsComponent;
+
   @Output() closeValue = new EventEmitter<boolean>();
   public paddingTop: number;
   public paddingBottom: number;

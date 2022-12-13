@@ -4,13 +4,16 @@ import { Preferences } from '@capacitor/preferences';
 import { SafeArea } from 'capacitor-plugin-safe-area';
 import { User } from 'src/app/common/models/user.model';
 import { GetUserService } from 'src/app/common/services/get-user.service';
+import { AccountComponent } from '../account/account.component';
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-home-settings',
   templateUrl: './home-settings.component.html',
   styleUrls: ['../../sender.component.scss'],
 })
 export class HomeSettingsComponent implements OnInit {
+  public componentAccount = AccountComponent;
+
   public marginTop: Number;
   public paddingBottom: number;
   public pagePopup: Boolean;

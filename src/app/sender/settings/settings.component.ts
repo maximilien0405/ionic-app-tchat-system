@@ -15,7 +15,7 @@ import { HomeSettingsComponent } from './home-settings/home-settings.component';
   animations: [fadeAnimation, slideUpAnimation, slideRightAnimation]
 })
 export class SettingsComponent implements OnInit {
-  public component: HomeSettingsComponent;
+  public component = HomeSettingsComponent;
 
   public ngOnInit(): void {}
 }

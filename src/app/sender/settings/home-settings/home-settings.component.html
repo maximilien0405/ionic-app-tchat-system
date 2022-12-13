@@ -1,4 +1,4 @@
-<div>
+<!--<div>
     <div class="settings-header" [style]="'margin-top:' + marginTop + 'rem'">
       <img [src]="user.profilePictureUrl">
       <p class="paragraph">{{ user.fullName }}</p>
@@ -29,7 +29,7 @@
         {{'SENDER.SETTINGS.box_recivers' | translate}}
         <img src="../../assets/icons/arrow-right.svg" alt="arrow-right">
       </div>
-    </div>-->
+    </div>--
 
     <p class="label margin-top">{{'SENDER.SETTINGS.title_appearence' | translate}}</p>
     <div class="list-container">
@@ -54,7 +54,7 @@
         <img src="../../assets/icons/question.svg" alt="arrow-right">
       </div>
     </div>
-  </div>
+</div>-->
 
   <!--<div *ngIf="showPageAccount || showPageAbout || showPageHelp" class="popup-page-container">
   <app-account *ngIf="showPageAccount" (closeValue)="close($event)"></app-account>
@@ -69,3 +69,15 @@
     <app-select-language (closeValue)="closeModalChoice($event)" (currentLang)="setNewLang($event)" *ngIf="modalLanguage"></app-select-language>
   </div>
 </div>-->
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Page One</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <h1>Page One</h1>
+  <ion-nav-link router-direction="forward" [component]="componentAccount">
+    <ion-button>Go to Page Two</ion-button>
+  </ion-nav-link>
+</ion-content>
