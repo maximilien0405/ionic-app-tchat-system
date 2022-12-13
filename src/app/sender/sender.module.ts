@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { SenderRoutingModule } from './sender-routing.module';
 import { HomeComponent } from './home/home.component';
+import { HomeSettingsComponent } from './settings/home-settings/home-settings.component';
 import { SettingsComponent } from './settings/settings.component';
 import { FeedComponent } from './feed/feed.component';
 import { RemindersComponent } from './reminders/reminders.component';
@@ -21,11 +21,12 @@ import { EditMailComponent } from './settings/edit-mail/edit-mail.component';
 import { HelpComponent } from './settings/help/help.component';
 import { ProfilePictureComponent } from './modals/profile-picture/profile-picture.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ChoiceHomeComponent } from './modals/choice-home/choice-home.component';
+import { IonicModule } from '@ionic/angular';
 
 @NgModule({
   declarations: [
     HomeComponent,
+    HomeSettingsComponent,
     SettingsComponent,
     FeedComponent,
     RemindersComponent,
@@ -48,7 +49,8 @@ import { ChoiceHomeComponent } from './modals/choice-home/choice-home.component'
     SenderRoutingModule,
     TranslateModule,
     HttpClientModule,
-    ImageCropperModule
+    ImageCropperModule,
+    IonicModule.forRoot({})
   ]
 })
 export class SenderModule { }

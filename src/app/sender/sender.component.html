@@ -1,14 +1,14 @@
 <div class="sender-container">
   <div class="global-content-container">
     <router-outlet></router-outlet>
-
-    <div *ngIf="modalHome" class="global-modal-container">
+  
+    <!--<div *ngIf="modalHome" class="global-modal-container">
       <div @fadeAnimation class="background-gray" (click)="closeModalChoice(true)" [class.fadeOut]="doFadeOutAnimation">
       </div>
       <div @slideUpAnimation class="modal-container" [style]="'bottom:' + paddingBottom + '!important'" [class.fadeOut]="doFadeOutAnimation">
         <app-choice-home (closeValue)="closeModalChoice($event)" *ngIf="modalHome"></app-choice-home>
       </div>
-    </div>
+    </div>-->
   </div>
   <div class="navbar-container">
     <div class="icons-container" [style]="'margin-bottom:' + marginBottom + 'rem !important'">
@@ -34,5 +34,3 @@
     </div>
   </div>
 </div>
-
-
