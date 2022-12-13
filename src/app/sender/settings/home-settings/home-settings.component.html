@@ -1,22 +1,4 @@
-<!--<div>
-    <div class="settings-header" [style]="'margin-top:' + marginTop + 'rem'">
-      <img [src]="user.profilePictureUrl">
-      <p class="paragraph">{{ user.fullName }}</p>
-      <p class="subtitle">{{ user.email }}</p>
-    </div>
-
-    <div class="select-box" (click)="showPage('account')" ontouchstart>
-      {{'SENDER.SETTINGS.box_account' | translate}}
-      <img src="../../assets/icons/arrow-right.svg" alt="arrow-right">
-    </div>
-
-    <p class="label margin-top">{{'SENDER.SETTINGS.title_subscription' | translate}}</p>
-    <div class="select-box" (click)="showPage('subscription')" ontouchstart>
-      {{'SENDER.SETTINGS.box_overview' | translate}}
-      <img src="../../assets/icons/arrow-right.svg" alt="arrow-right">
-    </div>
-
-    <!--<div class="list-container">
+<!--<div class="list-container">
       <div class="select-box" ontouchstart>
         {{'SENDER.SETTINGS.box_overview' | translate}}
         <img src="../../assets/icons/arrow-right.svg" alt="arrow-right">
@@ -29,34 +11,9 @@
         {{'SENDER.SETTINGS.box_recivers' | translate}}
         <img src="../../assets/icons/arrow-right.svg" alt="arrow-right">
       </div>
-    </div>--
+    </div>-->
 
-    <p class="label margin-top">{{'SENDER.SETTINGS.title_appearence' | translate}}</p>
-    <div class="list-container">
-      <div class="select-box" (click)="openModal('theme')" ontouchstart>
-        {{'SENDER.SETTINGS.box_theme' | translate}}
-        <p>{{'SENDER.MODALS.SELECT_THEME.theme_' + currentTheme | translate}}</p>
-      </div>
-      <div class="select-box" (click)="openModal('language')" ontouchstart>
-        {{'SENDER.SETTINGS.box_lang' | translate}}
-        <p>{{'SENDER.MODALS.SELECT_LANGUAGE.lang_' + currentLang | translate}}</p>
-      </div>
-    </div>
-
-    <p class="label margin-top">{{'SENDER.SETTINGS.title_other' | translate}}</p>
-    <div class="list-container">
-      <div class="select-box" (click)="showPage('about')" ontouchstart>
-        {{'SENDER.SETTINGS.box_about' | translate}}
-        <img src="../../assets/icons/home.svg" alt="arrow-right">
-      </div>
-      <div class="select-box" (click)="showPage('help')" ontouchstart>
-        {{'SENDER.SETTINGS.box_help' | translate}}
-        <img src="../../assets/icons/question.svg" alt="arrow-right">
-      </div>
-    </div>
-</div>-->
-
-  <!--<div *ngIf="showPageAccount || showPageAbout || showPageHelp" class="popup-page-container">
+<!--<div *ngIf="showPageAccount || showPageAbout || showPageHelp" class="popup-page-container">
   <app-account *ngIf="showPageAccount" (closeValue)="close($event)"></app-account>
   <app-about *ngIf="showPageAbout" (closeValue)="close($event)"></app-about>
   <app-help *ngIf="showPageHelp" (closeValue)="close($event)"></app-help>
@@ -70,14 +27,47 @@
   </div>
 </div>-->
 
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Page One</ion-title>
-  </ion-toolbar>
-</ion-header>
 <ion-content class="ion-padding">
-  <h1>Page One</h1>
+  <div class="settings-header">
+    <img [src]="user.profilePictureUrl">
+    <p class="paragraph">{{ user.fullName }}</p>
+    <p class="subtitle">{{ user.email }}</p>
+  </div>
+
   <ion-nav-link router-direction="forward" [component]="componentAccount">
-    <ion-button>Go to Page Two</ion-button>
+    <div class="select-box" ontouchstart>
+      {{'SENDER.SETTINGS.box_account' | translate}}
+      <img src="../../assets/icons/arrow-right.svg" alt="arrow-right">
+    </div>
   </ion-nav-link>
+
+  <p class="label margin-top">{{'SENDER.SETTINGS.title_subscription' | translate}}</p>
+  <div class="select-box" ontouchstart>
+    {{'SENDER.SETTINGS.box_overview' | translate}}
+    <img src="../../assets/icons/arrow-right.svg" alt="arrow-right">
+  </div>
+
+  <p class="label margin-top">{{'SENDER.SETTINGS.title_appearence' | translate}}</p>
+  <div class="list-container">
+    <div class="select-box" ontouchstart> <!-- Open modal -->
+      {{'SENDER.SETTINGS.box_theme' | translate}}
+      <p>{{'SENDER.MODALS.SELECT_THEME.theme_' + currentTheme | translate}}</p>
+    </div>
+    <div class="select-box" ontouchstart> <!-- open modal -->
+      {{'SENDER.SETTINGS.box_lang' | translate}}
+      <p>{{'SENDER.MODALS.SELECT_LANGUAGE.lang_' + currentLang | translate}}</p>
+    </div>
+  </div>
+
+  <p class="label margin-top">{{'SENDER.SETTINGS.title_other' | translate}}</p>
+  <div class="list-container">
+    <div class="select-box" (click)="showPage('about')" ontouchstart>
+      {{'SENDER.SETTINGS.box_about' | translate}}
+      <img src="../../assets/icons/home.svg" alt="arrow-right">
+    </div>
+    <div class="select-box" (click)="showPage('help')" ontouchstart>
+      {{'SENDER.SETTINGS.box_help' | translate}}
+      <img src="../../assets/icons/question.svg" alt="arrow-right">
+    </div>
+  </div>
 </ion-content>

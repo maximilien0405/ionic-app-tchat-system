@@ -12,6 +12,9 @@ import { GetUserService } from 'src/app/common/services/get-user.service';
 import { Camera, CameraResultType, Photo } from '@capacitor/camera';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
 import { SettingsComponent } from '../settings.component';
+import { EditNameComponent } from '../edit-name/edit-name.component';
+import { EditMailComponent } from '../edit-mail/edit-mail.component';
+import { EditPwdComponent } from '../edit-pwd/edit-pwd.component';
 
 @Component({
   selector: 'app-account',
@@ -21,6 +24,9 @@ import { SettingsComponent } from '../settings.component';
 })
 export class AccountComponent implements OnInit {
   public componentSettings = SettingsComponent;
+  public componentEditName = EditNameComponent;
+  public componentEditEmail = EditMailComponent;
+  public componentEditPwd = EditPwdComponent;
 
   @Output() closeValue = new EventEmitter<boolean>();
   public paddingTop: number;

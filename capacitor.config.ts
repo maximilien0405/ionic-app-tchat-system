@@ -4,7 +4,7 @@ import { KeyboardResize } from '@capacitor/keyboard';
 const config: CapacitorConfig = {
   appId: 'app.seniorcontact',
   appName: 'SeniorContact',
-  webDir: 'dist/ionic-app-ui',
+  webDir: 'www',
   bundledWebRuntime: false,
   plugins: {
     CapacitorHttp: {
