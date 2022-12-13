@@ -1,0 +1,311 @@
+/* ---------------------------------------------------
+  GLOBAL CONTAINERS
+----------------------------------------------------- */
+
+.global-content-container {
+  height: 100%;
+  overflow: hidden;
+  position:relative;
+}
+
+.sender-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar-container {
+  z-index: 1000;
+  width: 100%;
+  background-color: var(--background-gray);
+  border-top: 0.0938rem solid var(--border-gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 0.5rem;
+
+  .icons-container {
+    display: flex;
+    max-width: 85%;
+    gap: 0.9375rem;
+    margin: 0 auto;
+
+    div {
+      padding: 1rem 1.25rem 0rem 1.25rem;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+
+      &:active {
+        transform: scale(0.76);
+        -webkit-transform: scale(0.76);
+        -moz-transform: scale(0.76);
+      }
+    }
+
+    img {
+      height: 1.875rem;
+      filter: var(--icon-black);
+    }
+  }
+
+  .icon-solid {
+    filter: none !important;
+  }
+}
+
+.global-modal-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+}
+
+.background-gray {
+  background-color: var(--background-modal);
+  margin-bottom: -1.625rem;
+  height: 100%;
+  width: 100%;
+}
+
+.modal-container {
+  z-index: 2000;
+  width: 100%;
+  border-radius: var(--radius-base) var(--radius-base) 0rem 0rem;
+  border-top: 0.0938rem solid var(--border-gray);
+  background-color: var(--background-white);
+  padding: 1.875rem 1.4375rem 1.875rem 1.4375rem;
+}
+
+.base-page-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.upload-pdp-container {
+  img {
+    max-height: 100px;
+  }
+}
+
+.image-pdp {
+  max-height: 600px;
+}
+
+/* ---------------------------------------------------
+  RESUABLE CONTAINERS
+----------------------------------------------------- */
+
+.popup-page-container {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.home-header {
+  margin-bottom: 1.25rem;
+}
+
+.choice-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9375rem;
+}
+
+.header {
+  width: 100%;
+  background-color: var(--background-gray);
+  text-align: center;
+  color: var(--black);
+  font-weight: 500;
+  font-size: 1.0625rem;
+  border-bottom: 0.0938rem solid var(--border-gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 0.9375rem;
+  position: relative;
+
+  a {
+    position: absolute;
+    left: 1.25rem;
+    bottom: 0rem;
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+    font-size: 1rem;
+    padding: 0.9375rem 2.5rem 0.9375rem 0rem;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    gap: 0.3125rem;
+
+    img {
+      height: 1.125rem;
+      filter: var(--icon-black);
+    }
+
+    &:active {
+      font-weight: 500;
+      transform: scale(0.96);
+      -webkit-transform: scale(0.96);
+      -moz-transform: scale(0.96);
+    }
+  }
+}
+
+.content-container {
+  padding: 1.5625rem 1.4375rem 1.5625rem 1.4375rem;
+  overflow: scroll;
+  height: 100%;
+  position: relative;
+  background-color: var(--background-gray);
+}
+
+.home-menu-item {
+  border-radius: var(--radius-full);
+  background-color: var(--orange);
+  width: 50px;
+  height: 50px;
+  padding: 0px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.margin-top {
+  margin-top: 1.875rem;
+}
+
+.small-margin-top {
+  margin-top: 0.9375rem;
+}
+
+.margin-bottom {
+  margin-bottom: 1.875rem;
+}
+
+/* ---------------------------------------------------
+  ACCOUNT PAGE
+----------------------------------------------------- */
+
+.profile-picture-container {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5625rem;
+  align-items: center;
+
+  img {
+    height: 5.625rem;
+    width: 5.625rem;
+    border-radius: var(--radius-base);
+    cursor: pointer;
+  }
+}
+
+/* ---------------------------------------------------
+  SETTINGS PAGE
+----------------------------------------------------- */
+
+.settings-header {
+  display: flex;
+  flex-direction: column;
+
+  img {
+    height: 5.625rem;
+    width: 5.625rem;
+    border-radius: var(--radius-base);
+  }
+
+  .paragraph {
+    margin-top: 0.9375rem;
+    font-size: 1.1875rem;
+    margin-bottom: 0.125rem;
+    font-weight: 500;
+    color: var(--black);
+  }
+
+  .subtitle {
+    margin-bottom: 1.875rem;
+    font-size: 0.9375rem !important;
+  }
+}
+
+/* ---------------------------------------------------
+  PROFILE PICTURE
+----------------------------------------------------- */
+
+image-cropper {
+  --cropper-outline-color: #00000071;
+  --cropper-overlay-color: #2d2d2d;
+
+  max-height: 500px;
+  padding: 0px !important;
+}
+
+image-cropper .ngx-ic-source-image {
+  border-radius: var(--radius-small);
+}
+
+.ngx-ic-overlay {
+  height: 100% !important;
+  width: 100% !important;
+}
+
+/* ---------------------------------------------------
+  BOX REMINDER
+----------------------------------------------------- */
+
+.box {
+  width: 100%;
+  border: 0.0938rem solid var(--border-gray);
+  border-radius: var(--radius-small);
+  padding: 1.25rem;
+  font-size: 0.9375rem;
+  font-weight: 400;
+  color: var(--light-black);
+  box-shadow: var(--shadow-small);
+  background-color: var(--white);
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:active {
+    transform: scale(0.96);
+    -webkit-transform: scale(0.96);
+    -moz-transform: scale(0.96);
+    border: 0.0938rem solid var(--border-gray-hover);
+  }
+}
+
+.all-boxs-reminders {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 100%;
+  overflow: scroll;
+}
+
+.box-reminder {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start !important;
+
+  .separator {
+    margin: 15px 0px 15px 0px !important;
+  }
+
+  .box-details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    color: var(--gray) !important;
+  }
+}

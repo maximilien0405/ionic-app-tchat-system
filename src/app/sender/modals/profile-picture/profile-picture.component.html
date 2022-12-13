@@ -1,0 +1,7 @@
+<p class="label">{{'SENDER.SETTINGS.PROFILE_PICTURE.header' | translate}}</p>
+
+<image-cropper #cropper [imageBase64]="imageUrl" [cropperMinWidth]="150" [cropperMinHeight]="150"
+  [maintainAspectRatio]="true" [aspectRatio]="1 / 1" format="png" [hideResizeSquares]="isMobile"
+  [autoCrop]="false" (imageCropped)="imageCropped($event)"></image-cropper>
+
+<button ontouchstart class="btn btn-orange small-margin-top" (click)="cropImage()">Continue</button>

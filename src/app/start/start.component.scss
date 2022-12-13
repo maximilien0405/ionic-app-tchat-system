@@ -1,0 +1,16 @@
+.title {
+  margin-top: 0.625rem;
+  margin-bottom: 0.625rem;
+}
+
+.content-container {
+  display: flex;
+  padding: 1.125rem;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 100%;
+}
+
+img {
+  border-radius: var(--radius-base);
+}

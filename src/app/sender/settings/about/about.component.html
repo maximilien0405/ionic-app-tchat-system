@@ -1,0 +1,47 @@
+<div class="base-page-container">
+  <div @fadeAnimation *ngIf="!close" class="header" [style]="'padding-top:' + paddingTop + 'rem'">
+    <a ontouchstart (click)="closePage()">
+      <img src="../../../../assets/icons/chevron-left.svg" alt="arrow-right">
+      {{'SENDER.SETTINGS.back_page' | translate}}
+    </a>
+
+    {{'SENDER.SETTINGS.ABOUT.header' | translate}}
+  </div>
+
+  <div *ngIf="!close" @slideRightAnimation class="content-container">
+    <p class="paragraph">{{'SENDER.SETTINGS.ABOUT.paragraph' | translate}}</p>
+    <!--<p class="label margin-top">{{'SENDER.SETTINGS.ABOUT.title_contact' | translate}}</p>
+    <div class="list-container">
+      <div class="select-box" ontouchstart>
+        Forum
+        <img src="../../assets/icons/external.svg" alt="forum">
+      </div>
+      <div class="select-box" ontouchstart>
+        Email
+        <img src="../../assets/icons/mail.svg" alt="email">
+      </div>
+      <div class="select-box" ontouchstart>
+        Twitter
+        <img src="../../assets/icons/external.svg" alt="twitter">
+      </div>
+    </div>-->
+
+    <p class="label margin-top">{{'SENDER.SETTINGS.ABOUT.title_docs' | translate}}</p>
+    <div class="list-container">
+      <div class="select-box" ontouchstart>
+        {{'SENDER.SETTINGS.ABOUT.box_privacy' | translate}}
+        <img src="../../assets/icons/external.svg" alt="privacy-policy">
+      </div>
+      <div class="select-box" ontouchstart>
+        {{'SENDER.SETTINGS.ABOUT.box_terms' | translate}}
+        <img src="../../assets/icons/external.svg" alt="tos">
+      </div>
+    </div>
+
+    <p class="label margin-top">{{'SENDER.SETTINGS.ABOUT.title_changelog' | translate}}</p>
+    <div class="select-box" ontouchstart>
+      Beta - v0.1
+      <img src="../../assets/icons/external.svg" alt="tos">
+    </div>
+  </div>
+</div>

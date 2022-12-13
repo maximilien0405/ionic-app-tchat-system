@@ -1,0 +1,19 @@
+<div class="base-page-container">
+  <div @fadeAnimation *ngIf="!close" class="header" [style]="'padding-top:' + paddingTop + 'rem'">
+    <a ontouchstart (click)="closePage()">
+      <img src="../../../../assets/icons/chevron-left.svg" alt="arrow-right">
+      {{'SENDER.SETTINGS.back_page' | translate}}
+    </a>
+
+    {{'SENDER.SETTINGS.EDIT_PWD.header' | translate}}
+  </div>
+
+
+  <div *ngIf="!close" @slideRightAnimation class="content-container justify-space-between">
+    <div>
+      <p class="paragraph">{{'SENDER.SETTINGS.EDIT_PWD.paragraph' | translate}}</p>
+    </div>
+
+    <button class="btn btn-orange">Continue</button>
+  </div>
+</div>

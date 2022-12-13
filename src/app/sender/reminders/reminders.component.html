@@ -1,0 +1,23 @@
+<div class="base-page-container" @fadeAnimation>
+  <div @fadeAnimation class="header" [style]="'padding-top:' + paddingTop + 'rem'">Reminders</div>
+
+  <div @fadeAnimation class="content-container">
+    <div class="all-boxs-reminders">
+      <div class="box box-reminder" ontouchstart>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+        <div class="separator"></div>
+        <div class="box-details">
+          <p>Grandma 1</p>
+          <p>Every Monday, at 7:40 PM</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="absolute-bottom">
+      <button class="btn btn-white btn-icon" ontouchstart>
+        Create
+        <img src="../../assets/icons/arrow-right.svg" alt="arrow-right">
+      </button>
+    </div>
+  </div>
+</div>

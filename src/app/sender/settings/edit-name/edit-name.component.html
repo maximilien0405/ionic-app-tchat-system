@@ -1,0 +1,31 @@
+<div class="base-page-container">
+  <div @fadeAnimation *ngIf="!close" class="header" [style]="'padding-top:' + paddingTop + 'rem'">
+    <a ontouchstart (click)="closePage()">
+      <img src="../../../../assets/icons/chevron-left.svg" alt="arrow-right">
+      {{'SENDER.SETTINGS.back_page' | translate}}
+    </a>
+
+    {{'SENDER.SETTINGS.EDIT_NAME.header' | translate}}
+  </div>
+
+
+  <div *ngIf="!close" @slideRightAnimation class="content-container justify-space-between">
+    <form [formGroup]="form">
+      <p class="label">{{'SENDER.SETTINGS.EDIT_NAME.label_name' | translate}}</p>
+      <input type="text" class="input" [placeholder]="'SENDER.SETTINGS.EDIT_NAME.placeholder_name' | translate" formControlName="name" maxlength="32" autofocus>
+      <p class="paragraph box-warning margin-top">{{'SENDER.SETTINGS.EDIT_NAME.paragraph' | translate}}</p>
+
+      <button class="btn btn-orange margin-top" (click)="submitForm()" [disabled]="form.get('name')?.errors">
+        <span *ngIf="!spinnerDisplay">{{'SENDER.SETTINGS.btn_update' | translate}}</span>
+
+        <div *ngIf="spinnerDisplay" class="spinner">
+          <div class="bounce1"></div>
+          <div class="bounce2"></div>
+          <div class="bounce3"></div>
+        </div>
+      </button>
+    </form>
+
+
+  </div>
+</div>

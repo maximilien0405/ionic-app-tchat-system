@@ -1,0 +1,38 @@
+<div class="sender-container">
+  <div class="global-content-container">
+    <router-outlet></router-outlet>
+
+    <div *ngIf="modalHome" class="global-modal-container">
+      <div @fadeAnimation class="background-gray" (click)="closeModalChoice(true)" [class.fadeOut]="doFadeOutAnimation">
+      </div>
+      <div @slideUpAnimation class="modal-container" [style]="'bottom:' + paddingBottom + '!important'" [class.fadeOut]="doFadeOutAnimation">
+        <app-choice-home (closeValue)="closeModalChoice($event)" *ngIf="modalHome"></app-choice-home>
+      </div>
+    </div>
+  </div>
+  <div class="navbar-container">
+    <div class="icons-container" [style]="'margin-bottom:' + marginBottom + 'rem !important'">
+      <!--<div (click)="openModal('home')" class="home-menu-item">
+        <img src="../../assets/icons/menu.svg" alt="" ontouchstart>
+      </div>-->
+      <div routerLink="home">
+        <img *ngIf="route != 'home'" src="../../assets/icons/home-outline.svg" alt="" ontouchstart>
+        <img *ngIf="route == 'home'" src="../../assets/icons/home-solid.svg" class="icon-solid" alt="" ontouchstart>
+      </div>
+      <div routerLink="feed">
+        <img *ngIf="route != 'feed'" src="../../assets/icons/inbox-outline.svg" alt="" ontouchstart>
+        <img *ngIf="route == 'feed'" src="../../assets/icons/inbox-solid.svg" class="icon-solid" alt="" ontouchstart>
+      </div>
+      <div routerLink="reminders">
+        <img *ngIf="route != 'reminders'" src="../../assets/icons/clock-outline.svg" alt="" ontouchstart>
+        <img *ngIf="route == 'reminders'" src="../../assets/icons/clock-solid.svg" class="icon-solid" alt="" ontouchstart>
+      </div>
+      <div routerLink="settings">
+        <img *ngIf="route != 'settings'" src="../../assets/icons/cog-outline.svg" alt="" ontouchstart>
+        <img *ngIf="route == 'settings'" src="../../assets/icons/cog-solid.svg" class="icon-solid" alt="" ontouchstart>
+      </div>
+    </div>
+  </div>
+</div>
+
+

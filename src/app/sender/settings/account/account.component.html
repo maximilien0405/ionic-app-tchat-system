@@ -1,0 +1,71 @@
+<div class="base-page-container" *ngIf="!pagePopup" [@.disabled]="removeAnimation == true" [class.fadeIn]="doFadeInAnimation" [class.fadeOut]="doFadeOutAnimation">
+  <div *ngIf="!close" class="header" @fadeAnimation [style]="'padding-top:' + paddingTop + 'rem'">
+    <a ontouchstart (click)="closePage()">
+      <img src="../../../../assets/icons/chevron-left.svg" alt="arrow-right">
+      {{'SENDER.SETTINGS.back_page' | translate}}
+    </a>
+
+    {{'SENDER.SETTINGS.ACCOUNT.header' | translate}}
+  </div>
+
+  <div *ngIf="!close" @slideRightAnimation class="content-container">
+    <p class="label">{{'SENDER.SETTINGS.ACCOUNT.label_profile_picture' | translate}}</p>
+    <div class="profile-picture-container">
+      <img (click)="openImageSelector()" [src]="user.profilePictureUrl" [class.form-error]="imageError">
+      <button (click)="openImageSelector()" class="btn btn-medium btn-white">{{'SENDER.SETTINGS.ACCOUNT.btn_add' | translate}}</button>
+    </div>
+    <p *ngIf="imageError" class="text-error">{{'SENDER.SETTINGS.ACCOUNT.error_image' | translate}}<p>
+
+    <p class="label margin-top">{{'SENDER.SETTINGS.ACCOUNT.label_name' | translate}}</p>
+    <div class="input-icon">
+      <input type="text" [value]="user.fullName" class="input" readonly>
+      <div class="icon-right" (click)="showPage('edit-name')" ontouchstart>
+        <img src="../../../../assets/icons/edit.svg" alt="edit">
+      </div>
+    </div>
+
+    <p class="label margin-top">{{'SENDER.SETTINGS.ACCOUNT.label_email' | translate}}</p>
+    <div class="input-icon">
+      <input type="text" [value]="user.email" class="input" readonly>
+      <div class="icon-right" (click)="showPage('edit-mail')" ontouchstart>
+        <img src="../../../../assets/icons/edit.svg" alt="edit">
+      </div>
+    </div>
+
+    <p class="label margin-top">{{'SENDER.SETTINGS.ACCOUNT.label_password' | translate}}</p>
+    <div class="input-icon">
+      <input type="password" value="abcdefghi" class="input" readonly>
+      <div class="icon-right" (click)="showPage('edit-pwd')" ontouchstart>
+        <img src="../../../../assets/icons/edit.svg" alt="edit">
+      </div>
+    </div>
+
+    <div class="separator"></div>
+
+    <div class="list-container">
+      <div class="select-box" ontouchstart (click)="openModal('logout')">
+        {{'SENDER.SETTINGS.ACCOUNT.box_logout' | translate}}
+        <img src="../../assets/icons/leave.svg" alt="logout">
+      </div>
+      <div class="select-box" ontouchstart (click)="openModal('delete-account')">
+        {{'SENDER.SETTINGS.ACCOUNT.box_delete' | translate}}
+        <img src="../../assets/icons/trash.svg" alt="delete-account">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="showPageEditMail || showPageEditName || showPageEditPwd" class="popup-page-container">
+  <app-edit-mail *ngIf="showPageEditMail" (closeValue)="closeSubPage($event)"></app-edit-mail>
+  <app-edit-name *ngIf="showPageEditName" (closeValue)="closeSubPage($event)"></app-edit-name>
+  <app-edit-pwd *ngIf="showPageEditPwd" (closeValue)="closeSubPage($event)"></app-edit-pwd>
+</div>
+
+<div *ngIf="modalDeleteAccount || modalLogout || modalEditProfilePicture" class="global-modal-container">
+  <div @fadeAnimation class="background-gray" (click)="closeModalChoice(true)" [class.fadeOut]="doFadeOutAnimation2"></div>
+  <div @slideUpAnimation class="modal-container" [class.fadeOut]="doFadeOutAnimation2" [style]="'bottom:' + paddingBottom + '!important'">
+    <app-delete-account *ngIf="modalDeleteAccount"></app-delete-account>
+    <app-logout *ngIf="modalLogout"></app-logout>
+    <app-profile-picture (closeValue)="closeModalChoice($event)" [image]="photo" *ngIf="modalEditProfilePicture"></app-profile-picture>
+  </div>
+</div>

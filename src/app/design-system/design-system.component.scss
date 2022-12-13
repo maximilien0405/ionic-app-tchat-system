@@ -1,0 +1,42 @@
+@media (max-width: 38.125rem) {
+  .container {
+    padding: 1.375rem !important;
+  }
+}
+
+/* ---------------------------------------------------
+  CONTENT
+----------------------------------------------------- */
+
+.container {
+  margin: 0 auto;
+  padding: 1.875rem;
+}
+
+.separator {
+  margin-top: 0.625rem;
+  margin-bottom: 0.625rem;
+}
+
+.separator-3 {
+  margin-top: 0.4375rem;
+  margin-bottom: 0.4375rem;
+}
+
+.separator-2 {
+  width: 100%;
+  height: 0.125rem;
+  background-color: #d8dde5;
+  margin: 3.125rem 0rem 3.125rem 0rem;
+  border-radius: 0.625rem;
+}
+
+.separator-4 {
+  margin: 1.5625rem;
+}
+
+.all-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}

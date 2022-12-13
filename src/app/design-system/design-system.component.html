@@ -1,0 +1,197 @@
+<div class="container">
+
+  <!---- INPUTS ------------------------------------------------------>
+
+  <p class="label">Email</p>
+  <input type="text" placeholder="Your email" class="input">
+
+  <div class="separator-4"></div>
+
+  <p class="label">Password</p>
+  <div class="input-icon">
+    <input type="password" placeholder="Your password" class="input">
+    <div class="icon-right">
+      <img src="../../assets/icons/eye.svg" alt="">
+    </div>
+  </div>
+
+  <div class="separator-4"></div>
+
+  <p class="label">Name</p>
+  <div class="input-icon">
+    <input type="text" placeholder="Your name" value="Maximilien" class="input" readonly>
+    <div class="icon-right" ontouchstart>
+      <img src="../../assets/icons/cog.svg" alt="cog">
+    </div>
+  </div>
+
+  <div class="separator-4"></div>
+
+  <!-- A voir comment intégrer avec capacitor-->
+  <!--<p class="label">Date of birth</p>
+    <input type="date" class="input" value="05/04/2001">-->
+
+  <div class="separator-2"></div>
+
+  <!---- BUTTONS ----------------------------------------------------->
+
+  <button class="btn btn-orange" ontouchstart>Continue</button>
+
+  <div class="separator-4"></div>
+
+  <button class="btn btn-light" ontouchstart>Continue</button>
+
+  <div class="separator-4"></div>
+
+  <button class="btn btn-white" ontouchstart>Continue</button>
+
+  <div class="separator-4"></div>
+
+  <div class="all-content">
+    <div style="display: flex; gap: 1.25rem">
+      <button class="btn btn-orange btn-small" ontouchstart>
+        <img src="../../assets/icons/tchat.svg" alt="arrow-right">
+      </button>
+      <button class="btn btn-light btn-small" ontouchstart>
+        <img src="../../assets/icons/rotate.svg" alt="arrow-right">
+      </button>
+      <button class="btn btn-white btn-small" ontouchstart>
+        <img src="../../assets/icons/download.svg" alt="arrow-right">
+      </button>
+    </div>
+
+    <button class="btn btn-white btn-icon" ontouchstart>
+      Next
+      <img src="../../assets/icons/arrow-right.svg" alt="arrow-right">
+    </button>
+  </div>
+
+  <div class="separator-4"></div>
+
+  <div class="all-content">
+    <button class="btn btn-orange btn-icon" ontouchstart>
+      Next
+      <img src="../../assets/icons/arrow-right.svg" alt="arrow-right">
+    </button>
+    <button class="btn btn-light btn-icon" ontouchstart>
+      Next
+      <img src="../../assets/icons/arrow-right.svg" alt="arrow-right">
+    </button>
+  </div>
+
+  <div class="separator-2"></div>
+
+  <!---- SELECTS ----------------------------------------------------->
+
+  <p class="label">Country</p>
+  <div class="select-box" ontouchstart>
+    Switzerland
+    <img src="../../assets/icons/arrow-right.svg" alt="arrow-right">
+  </div>
+
+  <div class="separator-4"></div>
+
+  <!---- LIST -------------------------------------------------------->
+
+  <div class="list-container">
+    <div class="select-box" ontouchstart>
+      List item 1
+      <img src="../../assets/icons/arrow-right.svg" alt="arrow-right">
+    </div>
+    <div class="select-box icon-box">
+      List item 2
+      <div ontouchstart>
+        <img src="../../assets/icons/cog.svg" alt="cog">
+      </div>
+    </div>
+    <div class="select-box" ontouchstart>
+      List item 4
+      <img src="../../assets/icons/arrow-right.svg" alt="arrow-right">
+    </div>
+    <div class="select-box" ontouchstart>
+      List item 5
+      <img src="../../assets/icons/arrow-right.svg" alt="arrow-right">
+    </div>
+  </div>
+
+  <div class="separator-2"></div>
+
+  <!---- TAB BOX -------------------------------------------------->
+
+  <div class="tab-container">
+    <button class="option-box" ontouchstart>One</button>
+    <button class="option-box" ontouchstart>Two</button>
+    <button class="option-box option-selected" ontouchstart>Two</button>
+    <button class="option-box" ontouchstart>Three</button>
+  </div>
+
+  <div class="separator-4"></div>
+
+  <!---- OPTION BOX -------------------------------------------------->
+
+  <div class="all-content">
+    <button class="option-box option-selected" ontouchstart>
+      Option 1
+      <img src="../../assets/icons/leave.svg" class="icon-right" alt="icon-option">
+    </button>
+    <button class="option-box" ontouchstart>
+      <img src="../../assets/icons/leave.svg" class="icon-left" alt="icon-option">
+      Option 2
+    </button>
+  </div>
+
+  <div class="separator-2"></div>
+
+  <!---- CHOICE BOX -------------------------------------------------->
+
+  <div class="choice-box" ontouchstart>
+    <div class="round">
+      <img src="../../assets/icons/video.svg" alt="icon">
+    </div>
+    <div>
+      <p class="box-title">Start a video call</p>
+      <p class="box-subtitle">Lorem ipsum dolor sit amet</p>
+    </div>
+  </div>
+
+  <div class="separator-4"></div>
+
+  <div class="choice-box" ontouchstart>
+    <img class="round" src="../../assets/icons/pdp.png">
+    <div>
+      <p class="box-title">Michelle</p>
+    </div>
+  </div>
+
+  <div class="separator-4"></div>
+
+  <div class="choice-box" ontouchstart>
+    <div class="round">
+      <img src="../../assets/icons/leave.svg" alt="icon">
+    </div>
+    <div class="choice-content">
+      <div>
+        <p class="box-title">Send right now</p>
+        <p class="box-subtitle">Lorem ipsum dolor sit amet</p>
+      </div>
+      <div class="choice-round"></div>
+    </div>
+  </div>
+
+  <div class="separator-4"></div>
+
+  <div class="choice-box choice-box-selected" ontouchstart>
+    <div class="round">
+      <img src="../../assets/icons/rotate.svg" alt="icon">
+    </div>
+    <div class="choice-content">
+      <div>
+        <p class="box-title">In a specific time</p>
+        <p class="box-subtitle">Lorem ipsum dolor sit amet</p>
+      </div>
+      <div class="choice-round">
+        <div></div>
+      </div>
+    </div>
+  </div>
+</div>

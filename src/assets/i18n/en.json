@@ -1,0 +1,110 @@
+{
+  "SENDER": {
+    "HOME": {
+      "header": "Home",
+      "choice_message": "Send a message",
+      "choice_picture": "Send a picture",
+      "choice_voice_message": "Send a voice message",
+      "choice_video": "Start a call",
+      "choice_video_call": "Start a video call"
+    },
+    "REMINDERS": {
+      "header": "Reminders"
+    },
+    "SETTINGS": {
+      "header": "Settings",
+      "box_account": "Account",
+      "title_subscription": "Subscription",
+      "box_overview": "Overview",
+      "box_senders": "Senders",
+      "box_recivers": "Recivers",
+      "title_appearence": "Appearence",
+      "box_theme": "Theme",
+      "box_lang": "Language",
+      "title_other": "Other",
+      "box_about": "About us",
+      "box_help": "Get help",
+      "back_page": "Back",
+      "btn_update": "Update",
+      "ACCOUNT": {
+        "header": "Account",
+        "label_profile_picture": "Profile picture",
+        "btn_add": "Edit",
+        "error_image": "The image size is too big.",
+        "label_name": "Full name",
+        "label_email": "Email",
+        "label_password": "Password",
+        "box_delete": "Delete account",
+        "box_logout": "Log Out"
+      },
+      "ABOUT": {
+        "header": "About SeniorContact",
+        "paragraph": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Hic, quas nemo? Cumque impedit eius rerum dolorum cum iusto, debitis vel vero quaerat optio fugiat animi porro praesentium doloremque eveniet dignissimos aliquam quisquam saepe labore quia nesciunt, harum libero! Deserunt est animi nobis repellendus ullam ad voluptatibus magni, et porro provident. Ipsum recusandae quidem explicabo ea minus dolorum temporibus obcaecati velit?",
+        "title_docs": "Legal documents",
+        "title_changelog": "Changelog",
+        "box_privacy": "Privacy Policy",
+        "box_terms": "Terms Of Service"
+      },
+      "HELP": {
+        "header": "Get help",
+        "paragraph": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Hic, quas nemo? Cumque impedit eius rerum dolorum cum iusto.",
+        "title_contact": "Other links",
+        "title_forum": "Join our forum",
+        "question_1": "Question 1",
+        "answer_1": "Answer 1",
+        "question_2": "Question 2",
+        "answer_2": "Answer 2",
+        "question_3": "Question 3",
+        "answer_3": "Answer 3",
+        "question_4": "Question 4",
+        "answer_4": "Answer 4"
+      },
+      "EDIT_NAME": {
+        "header": "Change your name",
+        "label_newname": "New full name",
+        "label_name": "Full name",
+        "placeholder_name": "Your full name",
+        "paragraph": "Once changed, your name will also be modified in the sender application."
+      },
+      "EDIT_MAIL": {
+        "header": "Change your email",
+        "paragraph": "Enter your new email below. "
+      },
+      "EDIT_PWD": {
+        "header": "Change your password"
+      },
+      "PROFILE_PICTURE": {
+        "header": "Crop your picture"
+      }
+    },
+    "MODALS": {
+      "SELECT_LANGUAGE": {
+        "title": "Select a language",
+        "lang_fr": "French",
+        "lang_de": "German",
+        "lang_it": "Italian",
+        "lang_en": "English",
+        "lang_es": "Spanish",
+        "lang_pt": "Portuguese"
+      },
+      "SELECT_THEME": {
+        "title": "Select a theme",
+        "theme_light": "Light",
+        "theme_dark": "Dark",
+        "theme_auto": "Auto"
+      },
+      "LOGOUT": {
+        "title": "Are you sure you want to log out ?",
+        "paragraph": "You will be redirected to the home page and will need to log in again to access the app.",
+        "button": "Log out"
+      },
+      "DELETE_ACCOUNT": {
+        "title": "Are you sure you want to delete your account ?",
+        "paragraph_1_1": "All of your data will be deleted immediatly and you will be redirected to the home page.",
+        "paragraph_1_2": "",
+        "paragraph_2": "Your active subscription will be canceled of your data will be deleted immediatly and you will be redirected to the home page.",
+        "button": "Delete"
+      }
+    }
+  }
+}
