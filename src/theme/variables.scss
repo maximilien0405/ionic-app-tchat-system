@@ -2,8 +2,11 @@
 // http://ionicframework.com/docs/theming/
 
 /** Ionic CSS Variables **/
-:root {
+body {
+  --ion-background-color:var(--background-white);
+  --ion-toolbar-background: var(--background-gray)
 }
+
 
 body.dark-theme {
   /*
@@ -45,9 +48,11 @@ ion-header {
 
 ion-toolbar {
   --color: var(--black);
-  --border-width: 1.5px;
+  --border-width: 0.0938rem;
   --border-style: solid;
   --border-color: var(--border-gray);
+  --padding-end: 0.9375rem;
+  --padding-start: 0.9375rem;
 }
 
 .title-default {
@@ -56,6 +61,12 @@ ion-toolbar {
   font-size: 1.0625rem;
 }
 
-#background-content {
-  background-color: red;
+ion-back-button {
+  --color: var(--black);
+  --icon-font-size: 18px;
+  --icon-margin-end: 2px;
+
+  font-weight: 400;
+  font-size: 1rem;
+  text-transform: capitalize !important;
 }

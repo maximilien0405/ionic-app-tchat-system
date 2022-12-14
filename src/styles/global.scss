@@ -78,13 +78,6 @@ app-root {
   animation: fadeOut .2s;
 }
 
-.justify-space-between {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-}
-
 .box-warning {
   background-color: var(--background-orange);
   border: 0.0938rem solid var(--border-orange);
