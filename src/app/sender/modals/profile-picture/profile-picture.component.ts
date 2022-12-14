@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Photo } from '@capacitor/camera';
 import { Capacitor } from '@capacitor/core';
+import { ModalController } from '@ionic/angular';
 import { SafeArea } from 'capacitor-plugin-safe-area';
 import { ImageCropperComponent, ImageCroppedEvent } from 'ngx-image-cropper';
 import { fadeAnimation, slideRightAnimation } from 'src/app/common/animations';
@@ -17,11 +18,13 @@ export class ProfilePictureComponent implements OnInit {
   public paddingTop: number;
   @Input() image: Photo;
   public imageUrl: any;
-  @Output() closeValue = new EventEmitter<boolean>();
   @ViewChild('cropper') cropper: ImageCropperComponent;
   isMobile = Capacitor.getPlatform() !== 'web';
 
-  constructor(private getUserService: GetUserService, private userService: UserService) {
+  constructor(private getUserService: GetUserService,
+    private userService: UserService,
+    private modalController: ModalController)
+  {
     SafeArea.getSafeAreaInsets().then(({ insets }) => {
       this.paddingTop = 0.0625 * (insets.top + 5);
     });
@@ -36,7 +39,7 @@ export class ProfilePictureComponent implements OnInit {
     fetch(event.base64 || '').then(res => res.blob()).then(res => {
       this.userService.setNewProfilePicture(res)
         .then((res) => {
-          this.closeValue.emit(true);
+          this.modalController.dismiss();
           this.getUserService.getToken();
         });
     })

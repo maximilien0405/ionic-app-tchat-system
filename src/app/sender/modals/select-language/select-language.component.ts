@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Preferences } from '@capacitor/preferences';
+import { ModalController } from '@ionic/angular';
 import { TranslateService } from "@ngx-translate/core";
 
 @Component({
@@ -9,10 +10,8 @@ import { TranslateService } from "@ngx-translate/core";
 })
 export class SelectLanguageComponent implements OnInit {
   public lang: string | any;
-  @Output() closeValue = new EventEmitter<boolean>();
-  @Output() currentLang = new EventEmitter<string>();
 
-  constructor(private translate: TranslateService) {}
+  constructor(private translate: TranslateService, private modalController: ModalController) {}
 
   ngOnInit(): void {
     // Get if there is a theme or not
@@ -34,11 +33,10 @@ export class SelectLanguageComponent implements OnInit {
     this.lang = option;
     this.translate.use(option);
     this.translate.setDefaultLang(option);
-    this.currentLang.emit(option)
 
     // Close popup
     setTimeout(() => {
-      this.closeValue.emit(true);
+      this.modalController.dismiss(option);
     }, 200);
   }
 }

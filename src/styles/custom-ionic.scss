@@ -117,7 +117,8 @@ ion-modal.auto-height {
     display: block;
     contain: content;
     border-radius: var(--radius-base);
-    
+    padding: 1rem;
+
     .inner-content {
         max-height: 80vh;
         overflow: auto;

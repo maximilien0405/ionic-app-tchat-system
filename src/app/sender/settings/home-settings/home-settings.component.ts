@@ -1,8 +1,12 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
 import { Preferences } from '@capacitor/preferences';
+import { IonModal, ModalController } from '@ionic/angular';
+import { SafeArea } from 'capacitor-plugin-safe-area';
 import { User } from 'src/app/common/models/user.model';
 import { GetUserService } from 'src/app/common/services/get-user.service';
+import { SelectThemeComponent } from '../../modals/select-theme/select-theme.component';
+import { SelectLanguageComponent } from '../../modals/select-language/select-language.component';
 import { AboutComponent } from '../about/about.component';
 import { AccountComponent } from '../account/account.component';
 import { HelpComponent } from '../help/help.component';
@@ -18,12 +22,14 @@ export class HomeSettingsComponent implements OnInit {
   public componentHelp = HelpComponent;
   public currentTheme: string | any;
   public currentLang: string | any;
-  public doFadeOutAnimation: boolean;
   public user: User;
+  public marginTop: number;
 
-  @Output() closeValue = new EventEmitter<boolean>();
-
-  constructor(private getUserService: GetUserService) {}
+  constructor(private getUserService: GetUserService, private modalController: ModalController) {
+    SafeArea.getSafeAreaInsets().then(({ insets }) => {
+      this.marginTop = 0.0625 * insets.top;
+    });
+  }
 
   ngOnInit(): void {
     // Get current theme
@@ -59,5 +65,36 @@ export class HomeSettingsComponent implements OnInit {
 
   public setNewLang(event: string): void {
     this.currentLang = event;
+  }
+
+  // Open modals and get back data
+  public async openModal(type: string) {
+    const modalTheme = await this.modalController.create({
+      component: SelectThemeComponent,
+      cssClass: 'auto-height'
+    });
+
+    const modalLang = await this.modalController.create({
+      component: SelectLanguageComponent,
+      cssClass: 'auto-height'
+    });
+
+    modalLang.onDidDismiss().then((data) => {
+      if (data['data']) {
+        this.currentLang = data['data'];
+      }
+    });
+
+    modalTheme.onDidDismiss().then((data) => {
+      if (data['data']) {
+        this.currentTheme = data['data'];
+      }
+    });
+
+    if (type == 'theme') {
+      modalTheme.present();
+    } else if (type == 'lang') {
+      modalLang.present()
+    }
   }
 }

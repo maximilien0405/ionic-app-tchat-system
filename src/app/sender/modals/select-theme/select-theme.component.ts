@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Preferences } from '@capacitor/preferences';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-select-theme',
@@ -8,8 +9,8 @@ import { Preferences } from '@capacitor/preferences';
 })
 export class SelectThemeComponent implements OnInit {
   public theme: string | any;
-  @Output() closeValue = new EventEmitter<boolean>();
-  @Output() currentTheme = new EventEmitter<string>();
+
+  constructor(private modalController: ModalController) {}
 
   public ngOnInit(): void {
     // Get if there is a theme or not
@@ -44,11 +45,10 @@ export class SelectThemeComponent implements OnInit {
     }; setTheme();
 
     this.theme = option;
-    this.currentTheme.emit(option)
 
     // Close popup
     setTimeout(() => {
-      this.closeValue.emit(true);
+      this.modalController.dismiss(option)
     }, 200);
   }
 }

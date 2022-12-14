@@ -10,6 +10,10 @@ import { SettingsComponent } from '../settings.component';
 import { EditNameComponent } from '../edit-name/edit-name.component';
 import { EditMailComponent } from '../edit-mail/edit-mail.component';
 import { EditPwdComponent } from '../edit-pwd/edit-pwd.component';
+import { ModalController } from '@ionic/angular';
+import { LogoutComponent } from '../../modals/logout/logout.component';
+import { DeleteAccountComponent } from '../../modals/delete-account/delete-account.component';
+import { ProfilePictureComponent } from '../../modals/profile-picture/profile-picture.component';
 
 @Component({
   selector: 'app-account',
@@ -21,9 +25,6 @@ export class AccountComponent implements OnInit {
   public componentEditName = EditNameComponent;
   public componentEditEmail = EditMailComponent;
   public componentEditPwd = EditPwdComponent;
-
-  @Output() closeValue = new EventEmitter<boolean>();
-  public close: boolean;
   public user: User;
   public token: string;
   public form: UntypedFormGroup | any;
@@ -31,16 +32,12 @@ export class AccountComponent implements OnInit {
   public imageError: boolean;
   public imageSubmitted: boolean;
   public userId: string;
-  public modalDeleteAccount: boolean;
-  public modalLogout: boolean;
-  public modalEditProfilePicture: boolean;
-  public removeAnimation: boolean;
-  public doFadeOutAnimation: boolean;
-  public doFadeOutAnimation2: boolean;
-  public doFadeInAnimation: boolean;
   public photo: Photo;
 
-  constructor(private formBuilder: UntypedFormBuilder, private getUserService: GetUserService) {}
+  constructor(private formBuilder: UntypedFormBuilder,
+    private getUserService: GetUserService,
+    private modalController: ModalController)
+  { }
 
   public ngOnInit(): void {
     // Get token from localstorage
@@ -64,32 +61,6 @@ export class AccountComponent implements OnInit {
   // Return form controls
   get f() { return this.form.controls; }
 
-  public openModal(name: string) {
-    Haptics.impact({ style: ImpactStyle.Light });
-
-    if (name == 'delete-account') {
-      this.modalDeleteAccount = true;
-    } else if (name == 'logout') {
-      this.modalLogout = true;
-    } else if(name == 'edit-pdp') {
-      this.modalEditProfilePicture = true;
-    }
-  }
-
-  public closeModalChoice(event: boolean): void {
-    if (event) {
-      this.doFadeOutAnimation2 = true;
-      setTimeout(() => {
-        this.modalLogout = false;
-        this.modalDeleteAccount = false;
-        this.modalEditProfilePicture = false;
-      }, 200);
-      setTimeout(() => {
-        this.doFadeOutAnimation2 = false;
-      }, 200);
-    }
-  }
-
   public openImageSelector(): void {
     const getPhoto = async () => {
       const image = await Camera.getPhoto({
@@ -102,5 +73,31 @@ export class AccountComponent implements OnInit {
 
       this.openModal('edit-pdp');
     }; getPhoto();
+  }
+
+  // Open modals
+  public async openModal(type: string) {
+    const modalLogout = await this.modalController.create({
+      component: LogoutComponent,
+      cssClass: 'auto-height'
+    });
+
+    const modalDeleteAccount = await this.modalController.create({
+      component: DeleteAccountComponent,
+      cssClass: 'auto-height'
+    });
+
+    const modalProfilePicture = await this.modalController.create({
+      component: ProfilePictureComponent,
+      cssClass: 'auto-height'
+    });
+
+    if (type == 'logout') {
+      modalLogout.present();
+    } else if (type == 'delete-account') {
+      modalDeleteAccount.present()
+    } else if (type == 'edit-pdp') {
+      modalProfilePicture.present()
+    }
   }
 }
