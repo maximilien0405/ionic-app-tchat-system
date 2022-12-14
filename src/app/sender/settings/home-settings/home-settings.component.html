@@ -1,11 +1,3 @@
-<!--<div *ngIf="modalTheme || modalLanguage" class="global-modal-container">
-  <div @fadeAnimation class="background-gray" (click)="closeModalChoice(true)" [class.fadeOut]="doFadeOutAnimation"></div>
-  <div @slideUpAnimation class="modal-container" [style]="'bottom:' + paddingBottom + '!important'" [class.fadeOut]="doFadeOutAnimation">
-    <app-select-theme (closeValue)="closeModalChoice($event)" (currentTheme)="setNewTheme($event)" *ngIf="modalTheme"></app-select-theme>
-    <app-select-language (closeValue)="closeModalChoice($event)" (currentLang)="setNewLang($event)" *ngIf="modalLanguage"></app-select-language>
-  </div>
-</div>-->
-
 <ion-content class="ion-padding">
   <div class="settings-header">
     <img [src]="user.profilePictureUrl">
@@ -43,11 +35,11 @@
 
   <p class="label margin-top">{{'SENDER.SETTINGS.title_appearence' | translate}}</p>
   <div class="list-container">
-    <div class="select-box select-start" ontouchstart> <!-- Open modal -->
+    <div class="select-box select-start" id="open-modal-theme" ontouchstart>
       {{'SENDER.SETTINGS.box_theme' | translate}}
       <p>{{'SENDER.MODALS.SELECT_THEME.theme_' + currentTheme | translate}}</p>
     </div>
-    <div class="select-box select-end" ontouchstart> <!-- open modal -->
+    <div class="select-box select-end" id="open-modal-lang" ontouchstart>
       {{'SENDER.SETTINGS.box_lang' | translate}}
       <p>{{'SENDER.MODALS.SELECT_LANGUAGE.lang_' + currentLang | translate}}</p>
     </div>
@@ -68,4 +60,20 @@
       </div>
     </ion-nav-link>
   </div>
+
+  <ion-modal #modal trigger="open-modal-theme" class="auto-height">      
+    <ng-template>
+      <div class="inner-content ion-padding">
+        <app-select-theme (currentTheme)="setNewTheme($event)"></app-select-theme>
+      </div>
+    </ng-template>
+  </ion-modal>
+
+  <ion-modal #modal trigger="open-modal-lang" class="auto-height">      
+    <ng-template>
+      <div class="inner-content ion-padding">
+        <app-select-language (currentLang)="setNewLang($event)"></app-select-language>
+      </div>
+    </ng-template>
+  </ion-modal>
 </ion-content>

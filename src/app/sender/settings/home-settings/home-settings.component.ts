@@ -16,11 +16,6 @@ export class HomeSettingsComponent implements OnInit {
   public componentAccount = AccountComponent;
   public componentAbout = AboutComponent;
   public componentHelp = HelpComponent;
-
-  public pagePopup: Boolean;
-  public displayModal: boolean;
-  public modalTheme: boolean;
-  public modalLanguage: boolean;
   public currentTheme: string | any;
   public currentLang: string | any;
   public doFadeOutAnimation: boolean;
@@ -56,29 +51,6 @@ export class HomeSettingsComponent implements OnInit {
         this.getUserService.getToken(); // A retirer après avoir mis en place le login
       }
     }; getUser()
-  }
-
-  public openModal(name: string) {
-    Haptics.impact({ style: ImpactStyle.Light });
-
-    if (name == 'theme') {
-      this.modalTheme = true;
-    } else if (name == 'language') {
-      this.modalLanguage = true;
-    }
-  }
-
-  public closeModalChoice(event: boolean): void {
-    if (event) {
-      this.doFadeOutAnimation = true;
-      setTimeout(() => {
-        this.modalTheme = false;
-        this.modalLanguage = false;
-      }, 200);
-      setTimeout(() => {
-        this.doFadeOutAnimation = false;
-      }, 200);
-    }
   }
 
   public setNewTheme(event: string): void {

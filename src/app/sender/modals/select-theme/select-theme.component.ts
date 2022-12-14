@@ -42,12 +42,13 @@ export class SelectThemeComponent implements OnInit {
         value: option,
       });
     }; setTheme();
-    this.theme == option;
+
+    this.theme = option;
+    this.currentTheme.emit(option)
 
     // Close popup
     setTimeout(() => {
       this.closeValue.emit(true);
-      this.currentTheme.emit(option)
     }, 200);
   }
 }

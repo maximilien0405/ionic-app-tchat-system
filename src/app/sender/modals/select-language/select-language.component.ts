@@ -30,14 +30,15 @@ export class SelectLanguageComponent implements OnInit {
         value: option,
       });
     }; setTheme();
-    this.lang == option;
+
+    this.lang = option;
     this.translate.use(option);
     this.translate.setDefaultLang(option);
+    this.currentLang.emit(option)
 
     // Close popup
     setTimeout(() => {
       this.closeValue.emit(true);
-      this.currentLang.emit(option)
     }, 200);
   }
 }

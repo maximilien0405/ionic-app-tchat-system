@@ -107,3 +107,24 @@ ion-back-button {
   font-size: 1rem;
   text-transform: capitalize !important;
 }
+
+ion-modal.auto-height {
+  align-items: flex-end;
+  --height: auto;
+
+  .ion-page {
+    position: relative;
+    display: block;
+    contain: content;
+    border-radius: var(--radius-base);
+    
+    .inner-content {
+        max-height: 80vh;
+        overflow: auto;
+    }
+  }
+
+  &::part(content) {
+    border-radius: var(--radius-base) var(--radius-base) 0px 0px;
+  }
+}
