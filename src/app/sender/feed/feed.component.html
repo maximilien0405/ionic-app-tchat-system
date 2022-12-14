@@ -1,7 +1,11 @@
-<div class="base-page-container" @fadeAnimation>
-  <div @fadeAnimation class="header" [style]="'padding-top:' + paddingTop + 'rem'">Feed</div>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [text]="'SENDER.SETTINGS.back_page' | translate"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'SENDER.FEED.header' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-  <div @fadeAnimation class="content-container">
-
-  </div>
-</div>
+<ion-content class="ion-padding">
+</ion-content>

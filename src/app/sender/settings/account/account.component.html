@@ -49,23 +49,18 @@
   <div class="separator"></div>
 
   <div class="list-container">
-    <div class="select-box" ontouchstart> <!-- Open modal -->
+    <div class="select-box select-start" ontouchstart> <!-- Open modal -->
       {{'SENDER.SETTINGS.ACCOUNT.box_logout' | translate}}
       <img src="../../assets/icons/leave.svg" alt="logout">
     </div>
-    <div class="select-box" ontouchstart> <!-- Open modal -->
+    <div class="select-box select-end" ontouchstart> <!-- Open modal -->
       {{'SENDER.SETTINGS.ACCOUNT.box_delete' | translate}}
       <img src="../../assets/icons/trash.svg" alt="delete-account">
     </div>
   </div>
 
-  <!--<div *ngIf="showPageEditMail || showPageEditName || showPageEditPwd" class="popup-page-container">
-    <app-edit-mail *ngIf="showPageEditMail" (closeValue)="closeSubPage($event)"></app-edit-mail>
-    <app-edit-name *ngIf="showPageEditName" (closeValue)="closeSubPage($event)"></app-edit-name>
-    <app-edit-pwd *ngIf="showPageEditPwd" (closeValue)="closeSubPage($event)"></app-edit-pwd>
-  </div>
 
-  <div *ngIf="modalDeleteAccount || modalLogout || modalEditProfilePicture" class="global-modal-container">
+  <!--<div *ngIf="modalDeleteAccount || modalLogout || modalEditProfilePicture" class="global-modal-container">
     <div @fadeAnimation class="background-gray" (click)="closeModalChoice(true)" [class.fadeOut]="doFadeOutAnimation2"></div>
     <div @slideUpAnimation class="modal-container" [class.fadeOut]="doFadeOutAnimation2" [style]="'bottom:' + paddingBottom + '!important'">
       <app-delete-account *ngIf="modalDeleteAccount"></app-delete-account>

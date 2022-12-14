@@ -32,10 +32,9 @@
               }
             ],
             "styles": [
-              "src/theme/variables.scss", 
-              "src/global.scss",
               "./src/styles/charte.scss",
-              "./src/styles/global.scss"
+              "./src/styles/global.scss",
+              "./src/styles/custom-ionic.scss"
             ],
             "scripts": []
           },
@@ -117,10 +116,9 @@
               }
             ],
             "styles": [
-              "src/theme/variables.scss", 
-              "src/global.scss",
               "./src/styles/charte.scss",
-              "./src/styles/global.scss"
+              "./src/styles/global.scss",
+              "./src/styles/custom-ionic.scss"
             ],
           "scripts": []
           },

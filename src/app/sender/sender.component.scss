@@ -81,12 +81,6 @@
   padding: 1.875rem 1.4375rem 1.875rem 1.4375rem;
 }
 
-.base-page-container {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
 .upload-pdp-container {
   img {
     max-height: 100px;
@@ -101,62 +95,10 @@
   RESUABLE CONTAINERS
 ----------------------------------------------------- */
 
-.popup-page-container {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.home-header {
-  margin-bottom: 1.25rem;
-}
-
 .choice-container {
   display: flex;
   flex-direction: column;
   gap: 0.9375rem;
-}
-
-.header {
-  width: 100%;
-  background-color: var(--background-gray);
-  text-align: center;
-  color: var(--black);
-  font-weight: 500;
-  font-size: 1.0625rem;
-  border-bottom: 0.0938rem solid var(--border-gray);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-bottom: 0.9375rem;
-  position: relative;
-
-  a {
-    position: absolute;
-    left: 1.25rem;
-    bottom: 0rem;
-    display: flex;
-    align-items: center;
-    font-weight: 400;
-    font-size: 1rem;
-    padding: 0.9375rem 2.5rem 0.9375rem 0rem;
-    transition: all 0.2s ease-in-out;
-    cursor: pointer;
-    gap: 0.3125rem;
-
-    img {
-      height: 1.125rem;
-      filter: var(--icon-black);
-    }
-
-    &:active {
-      font-weight: 500;
-      transform: scale(0.96);
-      -webkit-transform: scale(0.96);
-      -moz-transform: scale(0.96);
-    }
-  }
 }
 
 .content-container {

@@ -1,58 +1,59 @@
-<div class="base-page-container" @fadeAnimation>
-  <div class="header" [style]="'padding-top:' + marginTop + 'rem'">{{'SENDER.HOME.header' | translate}}</div>
-  <div @fadeAnimation class="content-container">
-    <!--<div class="home-header" [style]="'margin-top:' + marginTop + 'rem'">
-      <p class="small-title">Welcome back!</p>
-      <p class="subtitle">Erat mauris viverra vivamus fermentum urna malesuada</p>
-    </div>-->
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [text]="'SENDER.SETTINGS.back_page' | translate"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'SENDER.HOME.header' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-    <div class="choice-container">
-      <div class="choice-box" ontouchstart>
-        <div class="round">
-          <img src="../assets/icons/message.svg" alt="icon">
-        </div>
-        <div>
-          <p class="box-title">{{'SENDER.HOME.choice_message' | translate}}</p>
-        </div>
+<ion-content class="ion-padding">
+  <div class="choice-container">
+    <div class="choice-box" ontouchstart>
+      <div class="round">
+        <img src="../assets/icons/message.svg" alt="icon">
       </div>
-
-      <div class="choice-box" ontouchstart>
-        <div class="round">
-          <img src="../assets/icons/picture.svg" alt="icon">
-        </div>
-        <div>
-          <p class="box-title">{{'SENDER.HOME.choice_picture' | translate}}</p>
-        </div>
-      </div>
-
-      <div class="choice-box" ontouchstart>
-        <div class="round">
-          <img src="../assets/icons/sound.svg" alt="icon">
-        </div>
-        <div>
-          <p class="box-title">{{'SENDER.HOME.choice_voice_message' | translate}}</p>
-        </div>
-      </div>
-
-      <div class="choice-box" ontouchstart>
-        <div class="round">
-          <img src="../assets/icons/phone.svg" alt="icon">
-        </div>
-        <div>
-          <p class="box-title">{{'SENDER.HOME.choice_video' | translate}}</p>
-        </div>
-      </div>
-
-      <div class="choice-box" ontouchstart>
-        <div class="round">
-          <img src="../assets/icons/video.svg" alt="icon">
-        </div>
-        <div>
-          <p class="box-title">{{'SENDER.HOME.choice_video_call' | translate}}</p>
-        </div>
+      <div>
+        <p class="box-title">{{'SENDER.HOME.choice_message' | translate}}</p>
       </div>
     </div>
 
-    <button ontouchstart class="btn btn-white margin-top" (click)="login()">Login</button>
+    <div class="choice-box" ontouchstart>
+      <div class="round">
+        <img src="../assets/icons/picture.svg" alt="icon">
+      </div>
+      <div>
+        <p class="box-title">{{'SENDER.HOME.choice_picture' | translate}}</p>
+      </div>
+    </div>
+
+    <div class="choice-box" ontouchstart>
+      <div class="round">
+        <img src="../assets/icons/sound.svg" alt="icon">
+      </div>
+      <div>
+        <p class="box-title">{{'SENDER.HOME.choice_voice_message' | translate}}</p>
+      </div>
+    </div>
+
+    <div class="choice-box" ontouchstart>
+      <div class="round">
+        <img src="../assets/icons/phone.svg" alt="icon">
+      </div>
+      <div>
+        <p class="box-title">{{'SENDER.HOME.choice_video' | translate}}</p>
+      </div>
+    </div>
+
+    <div class="choice-box" ontouchstart>
+      <div class="round">
+        <img src="../assets/icons/video.svg" alt="icon">
+      </div>
+      <div>
+        <p class="box-title">{{'SENDER.HOME.choice_video_call' | translate}}</p>
+      </div>
+    </div>
   </div>
-</div>
+
+  <button ontouchstart class="btn btn-white margin-top" (click)="login()">Login</button>
+</ion-content>

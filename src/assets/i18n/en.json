@@ -11,6 +11,9 @@
     "REMINDERS": {
       "header": "Reminders"
     },
+    "FEED": {
+      "header": "Feed"
+    },
     "SETTINGS": {
       "header": "Settings",
       "box_account": "Account",

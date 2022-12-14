@@ -1,23 +1,28 @@
-<div class="base-page-container" @fadeAnimation>
-  <div @fadeAnimation class="header" [style]="'padding-top:' + paddingTop + 'rem'">Reminders</div>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [text]="'SENDER.SETTINGS.back_page' | translate"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'SENDER.REMINDERS.header' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-  <div @fadeAnimation class="content-container">
-    <div class="all-boxs-reminders">
-      <div class="box box-reminder" ontouchstart>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
-        <div class="separator"></div>
-        <div class="box-details">
-          <p>Grandma 1</p>
-          <p>Every Monday, at 7:40 PM</p>
-        </div>
+<ion-content class="ion-padding">
+  <div class="all-boxs-reminders">
+    <div class="box box-reminder" ontouchstart>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+      <div class="separator"></div>
+      <div class="box-details">
+        <p>Grandma 1</p>
+        <p>Every Monday, at 7:40 PM</p>
       </div>
     </div>
-
-    <div class="absolute-bottom">
-      <button class="btn btn-white btn-icon" ontouchstart>
-        Create
-        <img src="../../assets/icons/arrow-right.svg" alt="arrow-right">
-      </button>
-    </div>
   </div>
-</div>
+
+  <div class="absolute-bottom">
+    <button class="btn btn-white btn-icon" ontouchstart>
+      Create
+      <img src="../../assets/icons/arrow-right.svg" alt="arrow-right">
+    </button>
+  </div>
+</ion-content>

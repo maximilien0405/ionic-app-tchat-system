@@ -1,10 +1,11 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
 import { Preferences } from '@capacitor/preferences';
-import { SafeArea } from 'capacitor-plugin-safe-area';
 import { User } from 'src/app/common/models/user.model';
 import { GetUserService } from 'src/app/common/services/get-user.service';
+import { AboutComponent } from '../about/about.component';
 import { AccountComponent } from '../account/account.component';
+import { HelpComponent } from '../help/help.component';
 
 @Component({
   selector: 'app-home-settings',
@@ -13,13 +14,10 @@ import { AccountComponent } from '../account/account.component';
 })
 export class HomeSettingsComponent implements OnInit {
   public componentAccount = AccountComponent;
+  public componentAbout = AboutComponent;
+  public componentHelp = HelpComponent;
 
-  public marginTop: Number;
-  public paddingBottom: number;
   public pagePopup: Boolean;
-  public showPageAccount: boolean;
-  public showPageAbout: boolean;
-  public showPageHelp: boolean;
   public displayModal: boolean;
   public modalTheme: boolean;
   public modalLanguage: boolean;
@@ -30,12 +28,7 @@ export class HomeSettingsComponent implements OnInit {
 
   @Output() closeValue = new EventEmitter<boolean>();
 
-  constructor(private getUserService: GetUserService) {
-    SafeArea.getSafeAreaInsets().then(({ insets }) => {
-      this.marginTop = 0.0625 * ((insets.top + 20) - 25);
-      this.paddingBottom = 0.0625 * (insets.bottom + 62.3);
-    });
-  }
+  constructor(private getUserService: GetUserService) {}
 
   ngOnInit(): void {
     // Get current theme
@@ -63,31 +56,6 @@ export class HomeSettingsComponent implements OnInit {
         this.getUserService.getToken(); // A retirer après avoir mis en place le login
       }
     }; getUser()
-  }
-
-  public showPage(name: string): void {
-    Haptics.impact({ style: ImpactStyle.Light });
-
-    if (name == 'account') {
-      this.showPageAccount = true;
-    } else if (name == 'about') {
-      this.showPageAbout = true;
-    } else if (name == 'help') {
-      this.showPageHelp = true;
-    }
-
-    setTimeout(() => {
-      this.pagePopup = true;
-    }, 200);
-  }
-
-  public close(event: boolean): void {
-    if (event) {
-      this.pagePopup = false;
-      this.showPageAccount = false;
-      this.showPageAbout = false;
-      this.showPageHelp = false;
-    }
   }
 
   public openModal(name: string) {

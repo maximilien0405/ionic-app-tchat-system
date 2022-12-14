@@ -1,19 +1,18 @@
-<div class="base-page-container">
-  <div @fadeAnimation *ngIf="!close" class="header" [style]="'padding-top:' + paddingTop + 'rem'">
-    <a ontouchstart (click)="closePage()">
-      <img src="../../../../assets/icons/chevron-left.svg" alt="arrow-right">
-      {{'SENDER.SETTINGS.back_page' | translate}}
-    </a>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [text]="'SENDER.SETTINGS.back_page' | translate"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'SENDER.SETTINGS.EDIT_MAIL.header' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-    {{'SENDER.SETTINGS.EDIT_MAIL.header' | translate}}
-  </div>
-
-
-  <div *ngIf="!close" @slideRightAnimation class="content-container justify-space-between">
+<ion-content class="ion-padding">
+  <form>
     <div>
       <p class="paragraph">{{'SENDER.SETTINGS.EDIT_MAIL.paragraph' | translate}}</p>
     </div>
 
     <button class="btn btn-orange">Update</button>
-  </div>
-</div>
+  </form>
+</ion-content>

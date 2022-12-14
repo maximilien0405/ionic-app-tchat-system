@@ -1,6 +1,6 @@
 <p class="label-margin-big">{{'SENDER.MODALS.SELECT_LANGUAGE.title' | translate}}</p>
 <div class="list-container select-icon-normal">
-  <div class="select-box" (click)="selectLang('fr')" [class.select-box-selected]="lang == 'fr'" ontouchstart>
+  <div class="select-box select-start" (click)="selectLang('fr')" [class.select-box-selected]="lang == 'fr'" ontouchstart>
     {{'SENDER.MODALS.SELECT_LANGUAGE.lang_fr' | translate}}
     <img src="../../assets/icons/flag-fr.png" alt="arrow-right">
   </div>
@@ -20,7 +20,7 @@
     {{'SENDER.MODALS.SELECT_LANGUAGE.lang_es' | translate}}
     <img src="../../assets/icons/flag-es.png" alt="arrow-right">
   </div>
-  <div class="select-box" (click)="selectLang('pt')" [class.select-box-selected]="lang == 'pt'" ontouchstart>
+  <div class="select-box select-end" (click)="selectLang('pt')" [class.select-box-selected]="lang == 'pt'" ontouchstart>
     {{'SENDER.MODALS.SELECT_LANGUAGE.lang_pt' | translate}}
     <img src="../../assets/icons/flag-po.png" alt="arrow-right">
   </div>

@@ -508,12 +508,12 @@ input:-webkit-autofill:focus {
     }
   }
 
-  .select-box:first-child {
+  .select-start:first-child {
     border-top: 0.0938rem solid var(--border-gray);
     border-radius: var(--radius-base) var(--radius-base) 0rem 0rem;
   }
 
-  .select-box:last-child {
+  .select-end:last-child {
     border-radius: 0rem 0rem var(--radius-base) var(--radius-base);
   }
 

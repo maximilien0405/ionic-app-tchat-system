@@ -1,65 +1,62 @@
-<div class="base-page-container">
-  <div @fadeAnimation *ngIf="!close" class="header" [style]="'padding-top:' + paddingTop + 'rem'">
-    <a ontouchstart (click)="closePage()">
-      <img src="../../../../assets/icons/chevron-left.svg" alt="arrow-right">
-      {{'SENDER.SETTINGS.back_page' | translate}}
-    </a>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [text]="'SENDER.SETTINGS.back_page' | translate"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'SENDER.SETTINGS.HELP.header' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-    {{'SENDER.SETTINGS.HELP.header' | translate}}
+<ion-content class="ion-padding">
+<!--<p class="label margin-top">Quick questions</p>
+  <div class="list-container faq-container">
+    <div class="select-box" ontouchstart (click)="openSelect(1)">
+      <p>{{'SENDER.SETTINGS.HELP.question_1' | translate}}</p>
+      <img [class.icon-rotate]="select1" src="../../assets/icons/chevron-down.svg" alt="down">
+    </div>
+    <div *ngIf="select1" @fadeAnimation class="select-box faq-answer">
+      <p>{{'SENDER.SETTINGS.HELP.answer_1' | translate}}</p>
+    </div>
+    <div class="select-box" ontouchstart (click)="openSelect(2)">
+      <p>{{'SENDER.SETTINGS.HELP.question_2' | translate}}</p>
+      <img [class.icon-rotate]="select2" src="../../assets/icons/chevron-down.svg" alt="down">
+    </div>
+    <div *ngIf="select2" @fadeAnimation class="select-box faq-answer">
+      <p>{{'SENDER.SETTINGS.HELP.answer_2' | translate}}</p>
+    </div>
+    <div class="select-box" ontouchstart (click)="openSelect(3)">
+      <p>{{'SENDER.SETTINGS.HELP.question_3' | translate}}</p>
+      <img [class.icon-rotate]="select3" src="../../assets/icons/chevron-down.svg" alt="down">
+    </div>
+    <div *ngIf="select3" @fadeAnimation class="select-box faq-answer">
+      <p>{{'SENDER.SETTINGS.HELP.answer_3' | translate}}</p>
+    </div>
+    <div class="select-box" ontouchstart (click)="openSelect(4)">
+      <p>{{'SENDER.SETTINGS.HELP.question_4' | translate}}</p>
+      <img [class.icon-rotate]="select4" src="../../assets/icons/chevron-down.svg" alt="down">
+    </div>
+    <div *ngIf="select4" @fadeAnimation class="select-box faq-answer">
+      <p>{{'SENDER.SETTINGS.HELP.answer_4' | translate}}</p>
+    </div>
+  </div>-->
+
+  <p class="label">{{'SENDER.SETTINGS.HELP.title_forum' | translate}}</p>
+  <p class="paragraph">{{'SENDER.SETTINGS.HELP.paragraph' | translate}}</p>
+
+  <div class="select-box margin-top" ontouchstart>
+    Forum
+    <img src="../../assets/icons/external.svg" alt="forum">
   </div>
 
-  <div *ngIf="!close" @slideRightAnimation class="content-container">
-    <!--<p class="label margin-top">Quick questions</p>
-    <div class="list-container faq-container">
-      <div class="select-box" ontouchstart (click)="openSelect(1)">
-        <p>{{'SENDER.SETTINGS.HELP.question_1' | translate}}</p>
-        <img [class.icon-rotate]="select1" src="../../assets/icons/chevron-down.svg" alt="down">
-      </div>
-      <div *ngIf="select1" @fadeAnimation class="select-box faq-answer">
-        <p>{{'SENDER.SETTINGS.HELP.answer_1' | translate}}</p>
-      </div>
-      <div class="select-box" ontouchstart (click)="openSelect(2)">
-        <p>{{'SENDER.SETTINGS.HELP.question_2' | translate}}</p>
-        <img [class.icon-rotate]="select2" src="../../assets/icons/chevron-down.svg" alt="down">
-      </div>
-      <div *ngIf="select2" @fadeAnimation class="select-box faq-answer">
-        <p>{{'SENDER.SETTINGS.HELP.answer_2' | translate}}</p>
-      </div>
-      <div class="select-box" ontouchstart (click)="openSelect(3)">
-        <p>{{'SENDER.SETTINGS.HELP.question_3' | translate}}</p>
-        <img [class.icon-rotate]="select3" src="../../assets/icons/chevron-down.svg" alt="down">
-      </div>
-      <div *ngIf="select3" @fadeAnimation class="select-box faq-answer">
-        <p>{{'SENDER.SETTINGS.HELP.answer_3' | translate}}</p>
-      </div>
-      <div class="select-box" ontouchstart (click)="openSelect(4)">
-        <p>{{'SENDER.SETTINGS.HELP.question_4' | translate}}</p>
-        <img [class.icon-rotate]="select4" src="../../assets/icons/chevron-down.svg" alt="down">
-      </div>
-      <div *ngIf="select4" @fadeAnimation class="select-box faq-answer">
-        <p>{{'SENDER.SETTINGS.HELP.answer_4' | translate}}</p>
-      </div>
-    </div>-->
-
-    <p class="label">{{'SENDER.SETTINGS.HELP.title_forum' | translate}}</p>
-    <p class="paragraph">{{'SENDER.SETTINGS.HELP.paragraph' | translate}}</p>
-
-    <div class="select-box margin-top" ontouchstart>
-      Forum
-      <img src="../../assets/icons/external.svg" alt="forum">
+  <p class="label margin-top">{{'SENDER.SETTINGS.HELP.title_contact' | translate}}</p>
+  <div class="list-container">
+    <div class="select-box select-start" ontouchstart>
+      Email
+      <img src="../../assets/icons/mail.svg" alt="email">
     </div>
-
-
-    <p class="label margin-top">{{'SENDER.SETTINGS.HELP.title_contact' | translate}}</p>
-    <div class="list-container">
-      <div class="select-box" ontouchstart>
-        Email
-        <img src="../../assets/icons/mail.svg" alt="email">
-      </div>
-      <div class="select-box" ontouchstart>
-        Twitter
-        <img src="../../assets/icons/external.svg" alt="twitter">
-      </div>
+    <div class="select-box select-end" ontouchstart>
+      Twitter
+      <img src="../../assets/icons/external.svg" alt="twitter">
     </div>
   </div>
-</div>
+</ion-content>
