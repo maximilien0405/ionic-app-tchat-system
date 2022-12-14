@@ -43,7 +43,11 @@ body.dark-theme {
 }
 
 ion-header {
-  border: none;
+  box-shadow: none !important;
+}
+
+.header-md::after {
+  background: none;
 }
 
 ion-toolbar {
@@ -61,11 +65,26 @@ ion-toolbar {
   font-size: 1.0625rem;
 }
 
+.md .title-default {
+  text-align: center !important;
+}
+
+.md ion-back-button {
+  position: absolute;
+  --margin-start: 0rem;
+  --padding-start: 0rem !important;
+  --padding-end: 0rem !important;
+}
+
+.md ion-back-button .button-native {
+  padding: 0px !important;
+}
+
 ion-back-button {
   --color: var(--black);
-  --icon-font-size: 18px;
-  --icon-margin-end: 2px;
-
+  --icon-font-size: 1.125rem;
+  --icon-margin-end: 0.125rem;
+  --ripple-color: transparent;
   font-weight: 400;
   font-size: 1rem;
   text-transform: capitalize !important;
