@@ -27,21 +27,12 @@
 
   .icons-container {
     display: flex;
-    max-width: 85%;
+    width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
     gap: 0.9375rem;
     margin: 0 auto;
-
-    div {
-      padding: 1rem 1.25rem 0rem 1.25rem;
-      cursor: pointer;
-      transition: all 0.2s ease-in-out;
-
-      &:active {
-        transform: scale(0.76);
-        -webkit-transform: scale(0.76);
-        -moz-transform: scale(0.76);
-      }
-    }
+    justify-content: space-evenly;
 
     img {
       height: 1.875rem;
@@ -53,6 +44,22 @@
     filter: none !important;
   }
 }
+
+ion-tab-button {
+    padding: 1rem 1.25rem 0rem 1.25rem !important;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    --padding-start: 0px !important;
+    --padding-end: 0px !important;
+  
+    &:active {
+      transform: scale(0.76);
+      -webkit-transform: scale(0.76);
+      -moz-transform: scale(0.76);
+    }
+  }
+
+
 
 .upload-pdp-container {
   img {
