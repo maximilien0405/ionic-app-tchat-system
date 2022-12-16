@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
@@ -13,7 +14,7 @@ export class EditNameComponent implements OnInit {
   public spinnerDisplay: boolean;
   @Output() closeValue = new EventEmitter<boolean>();
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder, private location: Location) {}
 
   ngOnInit(): void {
     // Create form
@@ -33,6 +34,7 @@ export class EditNameComponent implements OnInit {
 
     setTimeout(() => {
       this.spinnerDisplay = false;
+      this.location.back();
       // Go to previous page !!!!
     }, 1400);
   }

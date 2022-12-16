@@ -12,13 +12,8 @@ import { SelectLanguageComponent } from './modals/select-language/select-languag
 import { TranslateModule } from '@ngx-translate/core'
 import { HttpClientModule } from '@angular/common/http';
 import { LogoutComponent } from './modals/logout/logout.component';
-import { AboutComponent } from './settings/about/about.component';
 import { DeleteAccountComponent } from './modals/delete-account/delete-account.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
-import { EditPwdComponent } from './settings/edit-pwd/edit-pwd.component';
-import { EditNameComponent } from './settings/edit-name/edit-name.component';
-import { EditMailComponent } from './settings/edit-mail/edit-mail.component';
-import { HelpComponent } from './settings/help/help.component';
 import { ProfilePictureComponent } from './modals/profile-picture/profile-picture.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
@@ -26,20 +21,13 @@ import { IonicModule } from '@ionic/angular';
 @NgModule({
   declarations: [
     HomeComponent,
-    HomeSettingsComponent,
     SettingsComponent,
     FeedComponent,
     RemindersComponent,
-    AccountComponent,
     SelectThemeComponent,
     SelectLanguageComponent,
     LogoutComponent,
-    AboutComponent,
     DeleteAccountComponent,
-    EditPwdComponent,
-    EditNameComponent,
-    EditMailComponent,
-    HelpComponent,
     ProfilePictureComponent,
   ],
   imports: [

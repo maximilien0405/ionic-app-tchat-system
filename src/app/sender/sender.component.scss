@@ -51,15 +51,13 @@ ion-tab-button {
     transition: all 0.2s ease-in-out;
     --padding-start: 0px !important;
     --padding-end: 0px !important;
-  
+
     &:active {
       transform: scale(0.76);
       -webkit-transform: scale(0.76);
       -moz-transform: scale(0.76);
     }
   }
-
-
 
 .upload-pdp-container {
   img {

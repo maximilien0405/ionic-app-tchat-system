@@ -13,7 +13,7 @@ const routes: Routes = [
       { path: 'home', component: HomeComponent },
       { path: 'feed', component: FeedComponent },
       { path: 'reminders', component: RemindersComponent },
-      { path: 'settings', component: SettingsComponent },
+      { path: 'settings', loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule) },
       { path: '**', redirectTo: 'home', pathMatch: 'full' },
   ]}
 ];
