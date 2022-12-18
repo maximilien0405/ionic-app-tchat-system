@@ -12,7 +12,7 @@ import { SettingsComponent } from './settings.component';
 const routes: Routes = [
   {
     path: '', component: SettingsComponent, children: [
-      { path: '', redirectTo: 'feed', pathMatch: 'full' },
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'about', component: AboutComponent },
       { path: 'account', component: AccountComponent },
       { path: 'edit-mail', component: EditMailComponent },
