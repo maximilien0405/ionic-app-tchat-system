@@ -15,7 +15,11 @@ export class SenderComponent implements OnInit {
     // Get new route when changes
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        this.route = this.router.url.slice(8);
+        if(this.router.url.includes('settings')) {
+          this.route = 'settings';
+        } else {
+          this.route = this.router.url.slice(8);
+        }
       }
     });
 
