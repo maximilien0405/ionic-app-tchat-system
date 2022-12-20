@@ -6,7 +6,6 @@ import { HomeSettingsComponent } from './settings/home-settings/home-settings.co
 import { SettingsComponent } from './settings/settings.component';
 import { FeedComponent } from './feed/feed.component';
 import { RemindersComponent } from './reminders/reminders.component';
-import { AccountComponent } from './settings/account/account.component';
 import { SelectThemeComponent } from './modals/select-theme/select-theme.component';
 import { SelectLanguageComponent } from './modals/select-language/select-language.component';
 import { TranslateModule } from '@ngx-translate/core'
@@ -29,6 +28,7 @@ import { IonicModule } from '@ionic/angular';
     LogoutComponent,
     DeleteAccountComponent,
     ProfilePictureComponent,
+    HomeSettingsComponent
   ],
   imports: [
     FormsModule,

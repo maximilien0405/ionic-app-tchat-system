@@ -7,7 +7,5 @@ import { HomeSettingsComponent } from './home-settings/home-settings.component';
   styleUrls: ['../sender.component.scss'],
 })
 export class SettingsComponent implements OnInit {
-  public component = HomeSettingsComponent;
-
   public ngOnInit(): void {}
 }

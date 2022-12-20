@@ -1,15 +1,9 @@
 import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { Output, EventEmitter } from '@angular/core';
 import { User } from 'src/app/common/models/user.model';
 import { Preferences } from '@capacitor/preferences';
 import { GetUserService } from 'src/app/common/services/get-user.service';
 import { Camera, CameraResultType, Photo } from '@capacitor/camera';
-import { Haptics, ImpactStyle } from '@capacitor/haptics';
-import { SettingsComponent } from '../settings.component';
-import { EditNameComponent } from '../edit-name/edit-name.component';
-import { EditMailComponent } from '../edit-mail/edit-mail.component';
-import { EditPwdComponent } from '../edit-pwd/edit-pwd.component';
 import { ModalController } from '@ionic/angular';
 import { LogoutComponent } from '../../modals/logout/logout.component';
 import { DeleteAccountComponent } from '../../modals/delete-account/delete-account.component';
@@ -21,10 +15,6 @@ import { ProfilePictureComponent } from '../../modals/profile-picture/profile-pi
   styleUrls: ['../../sender.component.scss']
 })
 export class AccountComponent implements OnInit {
-  public componentSettings = SettingsComponent;
-  public componentEditName = EditNameComponent;
-  public componentEditEmail = EditMailComponent;
-  public componentEditPwd = EditPwdComponent;
   public user: User;
   public token: string;
   public form: UntypedFormGroup | any;

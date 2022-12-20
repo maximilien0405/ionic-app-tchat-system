@@ -7,9 +7,6 @@ import { User } from 'src/app/common/models/user.model';
 import { GetUserService } from 'src/app/common/services/get-user.service';
 import { SelectThemeComponent } from '../../modals/select-theme/select-theme.component';
 import { SelectLanguageComponent } from '../../modals/select-language/select-language.component';
-import { AboutComponent } from '../about/about.component';
-import { AccountComponent } from '../account/account.component';
-import { HelpComponent } from '../help/help.component';
 
 @Component({
   selector: 'app-home-settings',
@@ -17,9 +14,6 @@ import { HelpComponent } from '../help/help.component';
   styleUrls: ['../../sender.component.scss'],
 })
 export class HomeSettingsComponent implements OnInit {
-  public componentAccount = AccountComponent;
-  public componentAbout = AboutComponent;
-  public componentHelp = HelpComponent;
   public currentTheme: string | any;
   public currentLang: string | any;
   public user: User;

@@ -10,19 +10,15 @@ import { HomeSettingsComponent } from './home-settings/home-settings.component';
 import { SettingsComponent } from './settings.component';
 
 const routes: Routes = [
-  {
-    path: '', component: SettingsComponent, children: [
-      { path: '', redirectTo: 'home', pathMatch: 'full' },
-      { path: 'about', component: AboutComponent },
-      { path: 'account', component: AccountComponent },
-      { path: 'edit-mail', component: EditMailComponent },
-      { path: 'edit-name', component: EditNameComponent },
-      { path: 'edit-pwd', component: EditPwdComponent },
-      { path: 'help', component: HelpComponent },
-      { path: 'home', component: HomeSettingsComponent },
-      { path: '**', redirectTo: 'home', pathMatch: 'full' },
-    ]
-  }
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'about', component: AboutComponent },
+  { path: 'account', component: AccountComponent },
+  { path: 'edit-mail', component: EditMailComponent },
+  { path: 'edit-name', component: EditNameComponent },
+  { path: 'edit-pwd', component: EditPwdComponent },
+  { path: 'help', component: HelpComponent },
+  { path: 'home', component: HomeSettingsComponent },
+  { path: '**', redirectTo: 'home', pathMatch: 'full' },
 ];
 
 @NgModule({

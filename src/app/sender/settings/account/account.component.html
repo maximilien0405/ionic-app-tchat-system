@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content *ngIf="user" class="ion-padding">
   <p class="label">{{'SENDER.SETTINGS.ACCOUNT.label_profile_picture' | translate}}</p>
   <div class="profile-picture-container">
     <img (click)="openImageSelector()" [src]="user.profilePictureUrl" [class.form-error]="imageError">
@@ -19,31 +19,25 @@
   <p class="label margin-top">{{'SENDER.SETTINGS.ACCOUNT.label_name' | translate}}</p>
   <div class="input-icon">
     <input type="text" [value]="user.fullName" class="input" readonly>
-    <ion-nav-link router-direction="forward" [component]="componentEditName">
-      <div class="icon-right" ontouchstart>
-        <img src="../../../../assets/icons/edit.svg" alt="edit">
-      </div>
-    </ion-nav-link>
+    <div class="icon-right" [routerLink]="['/sender/settings/edit-name']" router-direction="forward" ontouchstart>
+      <img src="../../../../assets/icons/edit.svg" alt="edit">
+    </div>
   </div>
 
   <p class="label margin-top">{{'SENDER.SETTINGS.ACCOUNT.label_email' | translate}}</p>
   <div class="input-icon">
     <input type="text" [value]="user.email" class="input" readonly>
-    <ion-nav-link router-direction="forward" [component]="componentEditEmail">
-      <div class="icon-right" ontouchstart>
-        <img src="../../../../assets/icons/edit.svg" alt="edit">
-      </div>
-    </ion-nav-link>
+    <div class="icon-right" [routerLink]="['/sender/settings/edit-mail']" router-direction="forward" ontouchstart>
+      <img src="../../../../assets/icons/edit.svg" alt="edit">
+    </div>
   </div>
 
   <p class="label margin-top">{{'SENDER.SETTINGS.ACCOUNT.label_password' | translate}}</p>
   <div class="input-icon">
     <input type="password" value="abcdefghi" class="input" readonly>
-    <ion-nav-link router-direction="forward" [component]="componentEditPwd">
-      <div class="icon-right" ontouchstart>
-        <img src="../../../../assets/icons/edit.svg" alt="edit">
-      </div>
-    </ion-nav-link>
+    <div class="icon-right" [routerLink]="['/sender/settings/edit-pwd']" router-direction="forward" ontouchstart>
+      <img src="../../../../assets/icons/edit.svg" alt="edit">
+    </div>
   </div>
 
   <div class="separator"></div>
