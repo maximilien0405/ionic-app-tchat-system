@@ -28,5 +28,8 @@ export class SenderComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    // Redirect to home
+    this.router.navigateByUrl('sender/home');
+  }
 }

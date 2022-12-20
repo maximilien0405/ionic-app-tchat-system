@@ -6,8 +6,6 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['../../sender.component.scss'],
 })
 export class ChoiceHomeComponent implements OnInit {
-  @Output() closeValue = new EventEmitter<boolean>();
-
   constructor() { }
 
   ngOnInit(): void {

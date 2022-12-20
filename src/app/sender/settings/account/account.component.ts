@@ -48,6 +48,18 @@ export class AccountComponent implements OnInit {
     })
   }
 
+  // Called when page view is loaded
+  public ionViewDidEnter() {
+    const getUser = async () => {
+      const { value } = await Preferences.get({ key: 'user' });
+      if(value) {
+        this.user = JSON.parse(value || '')
+      } else {
+        this.getUserService.getToken(); // A retirer après avoir mis en place le login
+      }
+    }; getUser()
+  }
+
   // Return form controls
   get f() { return this.form.controls; }
 

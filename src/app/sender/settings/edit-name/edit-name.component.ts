@@ -1,7 +1,7 @@
-import { Location } from '@angular/common';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-edit-name',
@@ -12,9 +12,8 @@ export class EditNameComponent implements OnInit {
   public close: boolean;
   public form: FormGroup;
   public spinnerDisplay: boolean;
-  @Output() closeValue = new EventEmitter<boolean>();
 
-  constructor(private formBuilder: FormBuilder, private location: Location) {}
+  constructor(private formBuilder: FormBuilder, private navCtrl: NavController) {}
 
   ngOnInit(): void {
     // Create form
@@ -34,8 +33,7 @@ export class EditNameComponent implements OnInit {
 
     setTimeout(() => {
       this.spinnerDisplay = false;
-      this.location.back();
-      // Go to previous page !!!!
+      this.navCtrl.back();
     }, 1400);
   }
 }

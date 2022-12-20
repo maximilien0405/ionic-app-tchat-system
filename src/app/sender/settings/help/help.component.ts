@@ -11,7 +11,6 @@ export class HelpComponent implements OnInit {
   public select2: boolean;
   public select3: boolean;
   public select4: boolean;
-  @Output() closeValue = new EventEmitter<boolean>();
 
   constructor() {}
 

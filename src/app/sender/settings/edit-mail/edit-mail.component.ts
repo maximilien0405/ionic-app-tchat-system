@@ -7,7 +7,6 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class EditMailComponent implements OnInit {
   public close: boolean;
-  @Output() closeValue = new EventEmitter<boolean>();
 
   constructor() {}
 
