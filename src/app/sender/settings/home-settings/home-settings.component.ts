@@ -1,7 +1,6 @@
-import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
-import { Haptics, ImpactStyle } from '@capacitor/haptics';
+import { Component, OnInit } from '@angular/core';
 import { Preferences } from '@capacitor/preferences';
-import { IonModal, ModalController } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
 import { SafeArea } from 'capacitor-plugin-safe-area';
 import { User } from 'src/app/common/models/user.model';
 import { GetUserService } from 'src/app/common/services/get-user.service';

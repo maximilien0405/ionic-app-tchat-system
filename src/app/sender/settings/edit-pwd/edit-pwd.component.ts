@@ -1,5 +1,4 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { fadeAnimation, slideRightAnimation, slideUpAnimation } from 'src/app/common/animations';
 
 @Component({
   selector: 'app-edit-pwd',

@@ -1,5 +1,5 @@
-  <ion-tabs>
-    <div class="navbar-container">
+<ion-tabs>
+  <div class="navbar-container">
       <div class="icons-container" [style]="'margin-bottom:' + marginBottom + 'rem !important'">
         <ion-tab-button tab="home">
           <img *ngIf="route != 'home'" src="../../assets/icons/home-outline.svg" alt="" ontouchstart>
@@ -13,7 +13,7 @@
           <img *ngIf="route != 'reminders'" src="../../assets/icons/clock-outline.svg" alt="" ontouchstart>
           <img *ngIf="route == 'reminders'" src="../../assets/icons/clock-solid.svg" class="icon-solid" alt="" ontouchstart>
         </ion-tab-button>
-        <ion-tab-button tab="settings">
+        <ion-tab-button tab="settings/home">
           <img *ngIf="route != 'settings'" src="../../assets/icons/cog-outline.svg" alt="" ontouchstart>
           <img *ngIf="route == 'settings'" src="../../assets/icons/cog-solid.svg" class="icon-solid" alt="" ontouchstart>
         </ion-tab-button>

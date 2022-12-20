@@ -4,7 +4,6 @@ import { FeedComponent } from './feed/feed.component';
 import { HomeComponent } from './home/home.component';
 import { RemindersComponent } from './reminders/reminders.component';
 import { SenderComponent } from './sender.component';
-import { SettingsComponent } from './settings/settings.component';
 
 const routes: Routes = [
   {

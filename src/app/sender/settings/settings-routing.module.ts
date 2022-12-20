@@ -7,7 +7,6 @@ import { EditNameComponent } from './edit-name/edit-name.component';
 import { EditPwdComponent } from './edit-pwd/edit-pwd.component';
 import { HelpComponent } from './help/help.component';
 import { HomeSettingsComponent } from './home-settings/home-settings.component';
-import { SettingsComponent } from './settings.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },

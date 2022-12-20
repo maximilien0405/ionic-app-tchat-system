@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HomeSettingsComponent } from './home-settings/home-settings.component';
 
 @Component({
   selector: 'app-settings',
