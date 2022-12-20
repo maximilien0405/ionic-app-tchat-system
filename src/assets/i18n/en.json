@@ -20,8 +20,6 @@
     "SETTINGS": {
       "header": "Settings",
       "box_account": "Account",
-      "title_subscription": "Subscription",
-      "box_overview": "Overview",
       "box_senders": "Senders",
       "box_recivers": "Recivers",
       "title_appearence": "Appearence",

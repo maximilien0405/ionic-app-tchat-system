@@ -15,6 +15,13 @@
   flex-direction: column;
 }
 
+@media (max-width: 400px) {
+  ion-tab-button {
+    padding: 1rem 0.5rem 0rem 0.5rem !important;
+
+  }
+}
+
 .navbar-container {
   z-index: 1000;
   width: 100%;
@@ -46,7 +53,7 @@
 }
 
 ion-tab-button {
-  padding: 1rem 1.25rem 0rem 1.25rem !important;
+  padding: 1rem 1.25rem 0rem 1.25rem;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   --padding-start: 0px !important;
@@ -60,18 +67,19 @@ ion-tab-button {
 }
 
 .home-icon {
-  padding: 8px 12px;
+  padding: 0.5rem 0.75rem;
   border-radius: var(--radius-base);
   background-color: var(--background-orange);
-  border: 1px solid var(--border-orange);
+  border: 0.0938rem solid var(--border-orange);
   display: flex;
   align-items: center;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
-
+  margin: 0rem 0.625rem 0rem 0.625rem;
+  
   img {
-    height: 25px !important;
-    filter: var(--icon-orange) !important;
+    height: 1.5625rem !important;
+    filter: var(--icon-black) !important;
   }
 
   &:active {
@@ -83,12 +91,12 @@ ion-tab-button {
 
 .upload-pdp-container {
   img {
-    max-height: 100px;
+    max-height: 6.25rem;
   }
 }
 
 .image-pdp {
-  max-height: 600px;
+  max-height: 37.5rem;
 }
 
 /* ---------------------------------------------------
@@ -107,17 +115,6 @@ ion-tab-button {
   height: 100%;
   position: relative;
   background-color: var(--background-white) !important;
-}
-
-.home-menu-item {
-  border-radius: var(--radius-full);
-  background-color: var(--orange);
-  width: 50px;
-  height: 50px;
-  padding: 0px !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .margin-top {
