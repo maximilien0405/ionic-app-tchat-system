@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Preferences } from '@capacitor/preferences';
-import { StatusBar, Style } from '@capacitor/status-bar';
 import { Device } from '@capacitor/device';
 import { TranslateService } from "@ngx-translate/core";
+import { StatusBar } from '@awesome-cordova-plugins/status-bar/ngx';
 
 @Component({
   selector: 'app-root',
@@ -11,18 +11,10 @@ import { TranslateService } from "@ngx-translate/core";
 export class AppComponent {
   public theme: string | any;
 
-  constructor(private translate: TranslateService) {}
+  constructor(private translate: TranslateService, private statusBar: StatusBar) {}
 
   public ngOnInit(): void {
     window.screen.orientation.lock('portrait');
-
-    // Display content under transparent status bar (Android only)
-    StatusBar.setOverlaysWebView({ overlay: true });
-
-    // Set status bar text dark
-    const setStatusBarStyleDark = async () => {
-      await StatusBar.setStyle({ style: Style.Dark });
-    }; setStatusBarStyleDark();
 
     // Check if phone is in dark theme
     const checkTheme = async () => {
@@ -38,15 +30,31 @@ export class AppComponent {
         }; setTheme();
         if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
           document.body.classList.add('dark-theme');
+          // Set status bar to white
+          this.statusBar.backgroundColorByHexString('#ffffff');
+        } else {
+          // Set status bar to black
+          this.statusBar.backgroundColorByHexString('#000000');
         }
       }
       else {
         if (this.theme == 'dark') {
           document.body.classList.add('dark-theme');
+          // Set status bar to white
+          this.statusBar.backgroundColorByHexString('#ffffff');
+        }
+        else if (this.theme == 'light') {
+          // Set status bar to black
+          this.statusBar.backgroundColorByHexString('#000000');
         }
         else if (this.theme == 'auto') {
           if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
             document.body.classList.add('dark-theme');
+            // Set status bar to white
+            this.statusBar.backgroundColorByHexString('#ffffff');
+          } else {
+            // Set status bar to black
+            this.statusBar.backgroundColorByHexString('#000000');
           }
         }
       }
