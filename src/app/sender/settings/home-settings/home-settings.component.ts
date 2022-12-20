@@ -6,6 +6,8 @@ import { User } from 'src/app/common/models/user.model';
 import { GetUserService } from 'src/app/common/services/get-user.service';
 import { SelectThemeComponent } from '../../modals/select-theme/select-theme.component';
 import { SelectLanguageComponent } from '../../modals/select-language/select-language.component';
+import { DeleteAccountComponent } from '../../modals/delete-account/delete-account.component';
+import { LogoutComponent } from '../../modals/logout/logout.component';
 
 @Component({
   selector: 'app-home-settings',
@@ -72,6 +74,16 @@ export class HomeSettingsComponent implements OnInit {
       cssClass: 'auto-height'
     });
 
+    const modalLogout = await this.modalController.create({
+      component: LogoutComponent,
+      cssClass: 'auto-height'
+    });
+
+    const modalDeleteAccount = await this.modalController.create({
+      component: DeleteAccountComponent,
+      cssClass: 'auto-height'
+    });
+
     modalLang.onDidDismiss().then((data) => {
       if (data['data']) {
         this.currentLang = data['data'];
@@ -88,6 +100,10 @@ export class HomeSettingsComponent implements OnInit {
       modalTheme.present();
     } else if (type == 'lang') {
       modalLang.present()
+    } else if (type == 'logout') {
+      modalLogout.present();
+    } else if (type == 'delete-account') {
+      modalDeleteAccount.present()
     }
   }
 }
