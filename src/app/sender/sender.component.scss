@@ -28,8 +28,8 @@
   .icons-container {
     display: flex;
     width: 100%;
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: 1rem;
+    padding-right: 1rem;
     gap: 0.9375rem;
     margin: 0 auto;
     justify-content: space-evenly;
@@ -38,26 +38,48 @@
       height: 1.875rem;
       filter: var(--icon-black);
     }
-  }
 
-  .icon-solid {
-    filter: none !important;
+    .icon-solid {
+      filter: var(--icon-orange) !important;
+    }
   }
 }
 
 ion-tab-button {
-    padding: 1rem 1.25rem 0rem 1.25rem !important;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-    --padding-start: 0px !important;
-    --padding-end: 0px !important;
+  padding: 1rem 1.25rem 0rem 1.25rem !important;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  --padding-start: 0px !important;
+  --padding-end: 0px !important;
 
-    &:active {
-      transform: scale(0.76);
-      -webkit-transform: scale(0.76);
-      -moz-transform: scale(0.76);
-    }
+  &:active {
+    transform: scale(0.86);
+    -webkit-transform: scale(0.86);
+    -moz-transform: scale(0.86);
   }
+}
+
+.home-icon {
+  padding: 8px 12px;
+  border-radius: var(--radius-base);
+  background-color: var(--background-orange);
+  border: 1px solid var(--border-orange);
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  img {
+    height: 25px !important;
+    filter: var(--icon-orange) !important;
+  }
+
+  &:active {
+    transform: scale(0.86);
+    -webkit-transform: scale(0.86);
+    -moz-transform: scale(0.86);
+  }
+}
 
 .upload-pdp-container {
   img {

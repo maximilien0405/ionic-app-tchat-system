@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { SafeArea } from 'capacitor-plugin-safe-area';
+import { ChoiceHomeComponent } from './modals/choice-home/choice-home.component';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-sender',
@@ -11,7 +13,7 @@ export class SenderComponent implements OnInit {
   public route: String;
   public marginBottom: number;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private modalController: ModalController) {
     // Get new route when changes
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
@@ -28,8 +30,20 @@ export class SenderComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     // Redirect to home
-    this.router.navigateByUrl('sender/home');
+    this.router.navigateByUrl('sender/feed');
+  }
+
+  // Open modals and get back data
+  public async openModal(type: string) {
+    const modalHome = await this.modalController.create({
+      component: ChoiceHomeComponent,
+      cssClass: 'auto-height'
+    });
+
+    if (type == 'home') {
+      modalHome.present();
+    }
   }
 }

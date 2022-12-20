@@ -16,6 +16,7 @@ import { ImageCropperModule } from 'ngx-image-cropper';
 import { ProfilePictureComponent } from './modals/profile-picture/profile-picture.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
+import { SubscriptionComponent } from './subscription/subscription.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { IonicModule } from '@ionic/angular';
     SettingsComponent,
     FeedComponent,
     RemindersComponent,
+    SubscriptionComponent,
     SelectThemeComponent,
     SelectLanguageComponent,
     LogoutComponent,

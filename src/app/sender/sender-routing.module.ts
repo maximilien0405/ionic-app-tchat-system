@@ -4,12 +4,14 @@ import { FeedComponent } from './feed/feed.component';
 import { HomeComponent } from './home/home.component';
 import { RemindersComponent } from './reminders/reminders.component';
 import { SenderComponent } from './sender.component';
+import { SubscriptionComponent } from './subscription/subscription.component';
 
 const routes: Routes = [
   {
     path: '', component: SenderComponent, children: [
       { path: '', redirectTo: 'feed', pathMatch: 'full' },
-      { path: 'home', component: HomeComponent },
+      //{ path: 'home', component: HomeComponent },
+      { path: 'subscription', component: SubscriptionComponent },
       { path: 'feed', component: FeedComponent },
       { path: 'reminders', component: RemindersComponent },
       { path: 'settings', loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule) },
