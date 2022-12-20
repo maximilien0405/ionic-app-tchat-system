@@ -66,11 +66,21 @@ ion-header {
 
 ion-toolbar {
   --color: var(--black);
-  --border-width: 0.0938rem;
-  --border-style: solid;
-  --border-color: var(--border-gray);
   --padding-end: 0.9375rem;
   --padding-start: 0.9375rem;
+}
+
+.header-ios ion-toolbar:last-of-type {
+  border-bottom: 1.5px !important;
+  border: 0px !important;
+  --border-color: var(--border-gray);
+}
+
+.header-md ion-toolbar {
+  border-bottom: 1.5px !important;
+  border: 0px !important;
+  --border-color: var(--border-gray);
+  --border-width: 1.5px;
 }
 
 .title-default {
