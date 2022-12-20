@@ -11,7 +11,7 @@
   <p class="label">{{'SENDER.SETTINGS.ACCOUNT.label_profile_picture' | translate}}</p>
   <div class="profile-picture-container">
     <img (click)="openImageSelector()" [src]="user.profilePictureUrl" [class.form-error]="imageError">
-    <button (click)="openImageSelector()" class="btn btn-medium btn-white">{{'SENDER.SETTINGS.ACCOUNT.btn_add' |
+    <button (click)="openImageSelector()" class="btn btn-medium btn-white">{{'SENDER.SETTINGS.ACCOUNT.btn_change' |
       translate}}</button>
   </div>
   <p *ngIf="imageError" class="text-error">{{'SENDER.SETTINGS.ACCOUNT.error_image' | translate}}<p>

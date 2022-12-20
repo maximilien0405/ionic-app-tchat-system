@@ -31,9 +31,9 @@
       "back_page": "Back",
       "btn_update": "Update",
       "ACCOUNT": {
-        "header": "Account",
+        "header": "Edit profile",
         "label_profile_picture": "Profile picture",
-        "btn_add": "Edit",
+        "btn_change": "Change",
         "error_image": "The image size is too big.",
         "label_name": "Full name",
         "label_email": "Email",

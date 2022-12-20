@@ -23,7 +23,6 @@
 }
 
 .navbar-container {
-  z-index: 1000;
   width: 100%;
   background-color: var(--background-gray);
   border-top: 0.0938rem solid var(--border-gray);
@@ -35,8 +34,8 @@
   .icons-container {
     display: flex;
     width: 100%;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
     gap: 0.9375rem;
     margin: 0 auto;
     justify-content: space-evenly;
@@ -76,7 +75,7 @@ ion-tab-button {
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   margin: 0rem 0.625rem 0rem 0.625rem;
-  
+
   img {
     height: 1.5625rem !important;
     filter: var(--icon-black) !important;
@@ -84,6 +83,7 @@ ion-tab-button {
 
   &:active {
     transform: scale(0.86);
+    background-color: var(--background-orange-hover);
     -webkit-transform: scale(0.86);
     -moz-transform: scale(0.86);
   }
@@ -187,7 +187,6 @@ ion-tab-button {
     right: 16px;
     padding-left: 20px;
     padding-right: 20px;
-    width: fit-content;
   }
 }
 

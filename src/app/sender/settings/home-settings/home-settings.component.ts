@@ -18,13 +18,10 @@ export class HomeSettingsComponent implements OnInit {
   public currentTheme: string | any;
   public currentLang: string | any;
   public user: User;
-  public marginTop: number;
 
-  constructor(private getUserService: GetUserService, private modalController: ModalController) {
-    SafeArea.getSafeAreaInsets().then(({ insets }) => {
-      this.marginTop = 0.0625 * insets.top;
-    });
-  }
+  constructor(private getUserService: GetUserService,
+    private modalController: ModalController)
+  { }
 
   ngOnInit(): void {
     // Get current theme

@@ -7,12 +7,12 @@
   </ion-toolbar>
 </ion-header>
 <ion-content class="ion-padding">
-  <div *ngIf="user" class="settings-header" [style]="'margin-top:' + marginTop + 'rem !important'">
+  <div *ngIf="user" class="settings-header">
     <img [src]="user.profilePictureUrl">
     <p class="paragraph">{{ user.fullName }}</p>
     <p class="subtitle">{{ user.email }}</p>
 
-    <button class="btn btn-white btn-icon" [routerLink]="['/sender/settings/account']" router-direction="forward" ontouchstart>
+    <button class="btn btn-medium btn-white" [routerLink]="['/sender/settings/account']" router-direction="forward" ontouchstart>
       Edit
     </button>
   </div>
@@ -29,7 +29,7 @@
     </div>
   </div>
 
-  <p class="label margin-top">User</p>
+  <p class="label margin-top">Account</p>
   <div class="list-container">
     <div class="select-box select-start" (click)="openModal('logout')" ontouchstart>
       {{'SENDER.SETTINGS.ACCOUNT.box_logout' | translate}}
