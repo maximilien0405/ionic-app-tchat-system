@@ -140,7 +140,7 @@ ion-modal.auto-height {
   }
 }
 
-ion-content::part(scroll) {
+ion-content {
   touch-action: none !important;
 }
 
