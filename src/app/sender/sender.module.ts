@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SenderRoutingModule } from './sender-routing.module';
-import { HomeComponent } from './home/home.component';
 import { HomeSettingsComponent } from './settings/home-settings/home-settings.component';
 import { SettingsComponent } from './settings/settings.component';
 import { FeedComponent } from './feed/feed.component';
@@ -20,7 +19,6 @@ import { SubscriptionComponent } from './subscription/subscription.component';
 
 @NgModule({
   declarations: [
-    HomeComponent,
     SettingsComponent,
     FeedComponent,
     RemindersComponent,
