@@ -12,7 +12,6 @@ import { UserService } from 'src/app/common/services/user.service';
   styleUrls: ['../../sender.component.scss']
 })
 export class EditNameComponent implements OnInit {
-  public close: boolean;
   public form: FormGroup;
   public spinnerDisplay: boolean;
 
@@ -22,10 +21,10 @@ export class EditNameComponent implements OnInit {
     private getUserService: GetUserService) 
   {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     // Create form
     this.form = this.formBuilder.group({
-      name: ['', [Validators.minLength(3), Validators.maxLength(32), Validators.required]],
+      name: ['', [Validators.minLength(3), Validators.maxLength(48), Validators.required]],
     })
   }
 
@@ -37,7 +36,11 @@ export class EditNameComponent implements OnInit {
     Haptics.impact({ style: ImpactStyle.Medium });
     this.spinnerDisplay = true;
 
-    this.userService.setFullname(this.form.value.name).then((res) => {
+    this.userService.setFullname(this.form.value.name)
+    .catch(err => {
+      this.spinnerDisplay = false;
+    })
+    .then((res) => {
       if (res.error) {
         this.spinnerDisplay = false;
       } else {

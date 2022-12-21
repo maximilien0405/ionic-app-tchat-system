@@ -63,7 +63,6 @@ export class AccountComponent implements OnInit {
         
         const getUser = async () => {
           const { value } = await Preferences.get({ key: 'user' });
-          console.log(value)
           if(value) {
             this.user = JSON.parse(value || '')
           }

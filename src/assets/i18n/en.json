@@ -30,6 +30,7 @@
       "box_help": "Get help",
       "back_page": "Back",
       "btn_update": "Update",
+      "btn_continue": "Continue",
       "box_delete": "Delete account",
       "box_logout": "Log Out",
 
@@ -69,14 +70,17 @@
       },
       "EDIT_NAME": {
         "header": "Change your name",
-        "label_newname": "New full name",
         "label_name": "Full name",
         "placeholder_name": "Your full name",
         "paragraph": "Once changed, your name will also be modified in the sender application."
       },
       "EDIT_MAIL": {
         "header": "Change your email",
-        "paragraph": "Enter your new email below. "
+        "paragraph": "Once changed, a code will be sent to your new email adress to continue.",
+        "label_email": "Email",
+        "placeholder_email": "Your new email",
+        "label_code": "Code",
+        "placeholder_code": "6 digits code"
       },
       "EDIT_PWD": {
         "header": "Change your password"

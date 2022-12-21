@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Preferences } from '@capacitor/preferences';
 import { ModalController } from '@ionic/angular';
-import { SafeArea } from 'capacitor-plugin-safe-area';
 import { User } from 'src/app/common/models/user.model';
 import { GetUserService } from 'src/app/common/services/get-user.service';
 import { SelectThemeComponent } from '../../modals/select-theme/select-theme.component';
@@ -19,9 +18,7 @@ export class HomeSettingsComponent implements OnInit {
   public currentLang: string | any;
   public user: User;
 
-  constructor(private getUserService: GetUserService,
-    private modalController: ModalController)
-  { }
+  constructor(private modalController: ModalController){ }
 
   ngOnInit(): void {
     // Get current theme
@@ -39,14 +36,14 @@ export class HomeSettingsComponent implements OnInit {
         this.currentLang = value;
       }
     }; checkLang()
+  }
 
-    // Get token from localstorage
+  // Get user when page change or init
+  public ionViewDidEnter() {
     const getUser = async () => {
       const { value } = await Preferences.get({ key: 'user' });
       if(value) {
         this.user = JSON.parse(value || '')
-      } else {
-        this.getUserService.setUser();
       }
     }; getUser()
   }

@@ -66,4 +66,34 @@ export class UserService {
     const response = await CapacitorHttp.patch(options);
     return response.data;
   }
+
+  // Ask code change email
+  public async askCodeChangeEmail(newEmail: string) {
+    const options = {
+      url: `${this.API_URL}/user/ask-code-change-email`,
+      headers: {
+        'Authorization': `Bearer ${this.token}`,
+        'Content-Type': 'application/json'
+      },
+      data: { newEmail }
+    };
+
+    const response = await CapacitorHttp.post(options);
+    return response.data;
+  }
+
+  // Change email
+  public async changeEmail(newEmail: string, code: number) {
+    const options = {
+      url: `${this.API_URL}/user/change-email`,
+      headers: {
+        'Authorization': `Bearer ${this.token}`,
+        'Content-Type': 'application/json'
+      },
+      data: { newEmail, code }
+    };
+
+    const response = await CapacitorHttp.post(options);
+    return response.data;
+  }
 }

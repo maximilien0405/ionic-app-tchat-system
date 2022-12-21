@@ -8,11 +8,34 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <form>
-    <div>
-      <p class="paragraph">{{'SENDER.SETTINGS.EDIT_MAIL.paragraph' | translate}}</p>
-    </div>
+  <form *ngIf="step == 1" [formGroup]="form1">
+    <p class="label">{{'SENDER.SETTINGS.EDIT_MAIL.label_email' | translate}}</p>
+    <input type="text" class="input" [placeholder]="'SENDER.SETTINGS.EDIT_MAIL.placeholder_email' | translate" formControlName="mail" maxlength="32" autofocus>
 
-    <button class="btn btn-orange">Update</button>
+    <!--<p class="paragraph box-warning margin-top">{{'SENDER.SETTINGS.EDIT_MAIL.paragraph' | translate}}</p>-->
+
+    <button class="btn btn-orange margin-top" (click)="submitForm1()" [disabled]="form1.get('mail')?.errors">
+      <span *ngIf="!spinnerDisplay">{{'SENDER.SETTINGS.btn_continue' | translate}}</span>
+
+      <div *ngIf="spinnerDisplay" class="spinner">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+      </div>
+    </button>
+  </form>
+  <form *ngIf="step == 2" [formGroup]="form2">
+    <p class="label">{{'SENDER.SETTINGS.EDIT_MAIL.label_code' | translate}}</p>
+    <input type="number" inputmode="numeric" class="input" [placeholder]="'SENDER.SETTINGS.EDIT_MAIL.placeholder_code' | translate" formControlName="code" maxlength="5" autofocus>
+    
+    <button class="btn btn-orange margin-top" (click)="submitForm2()" [disabled]="form2.get('code')?.errors">
+      <span *ngIf="!spinnerDisplay">{{'SENDER.SETTINGS.btn_update' | translate}}</span>
+
+      <div *ngIf="spinnerDisplay" class="spinner">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+      </div>
+    </button>
   </form>
 </ion-content>
