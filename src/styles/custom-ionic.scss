@@ -147,3 +147,26 @@ ion-content {
 ion-tab-button {
   --ripple-color: transparent;
 }
+
+ion-toast {
+  --background: none;
+  --box-shadow:none;
+
+  &::part(container) {
+      background-color: var(--background-green);
+      color: var(--light-black);
+      border-radius: var(--radius-base);
+      border: 0.0938rem solid var(--border-green);
+      bottom: 0px !important;
+      font-size: 0.9375rem;
+      line-height: 1.25rem;
+  }
+}
+
+ion-toast::part(button) {
+  font-size: 1.25rem;
+  filter: var(--icon-black);
+  height: auto;
+  width: auto;
+  padding-right: 0px !important;
+}

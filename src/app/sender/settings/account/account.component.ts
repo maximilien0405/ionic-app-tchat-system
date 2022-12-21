@@ -4,10 +4,10 @@ import { User } from 'src/app/common/models/user.model';
 import { Preferences } from '@capacitor/preferences';
 import { GetUserService } from 'src/app/common/services/get-user.service';
 import { Camera, CameraResultType, Photo } from '@capacitor/camera';
-import { ModalController } from '@ionic/angular';
-import { LogoutComponent } from '../../modals/logout/logout.component';
-import { DeleteAccountComponent } from '../../modals/delete-account/delete-account.component';
+import { ModalController, ToastController } from '@ionic/angular';
 import { ProfilePictureComponent } from '../../modals/profile-picture/profile-picture.component';
+import { SafeArea } from 'capacitor-plugin-safe-area';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-account',
@@ -23,10 +23,13 @@ export class AccountComponent implements OnInit {
   public imageSubmitted: boolean;
   public userId: string;
   public photo: Photo;
+  public toastBottom: number; 
 
   constructor(private formBuilder: UntypedFormBuilder,
     private getUserService: GetUserService,
-    private modalController: ModalController)
+    private modalController: ModalController,
+    private toastController: ToastController,
+    private translateService: TranslateService)
   { }
 
   public ngOnInit(): void {
@@ -46,6 +49,12 @@ export class AccountComponent implements OnInit {
       full_name: [],
       email: []
     })
+
+    SafeArea.getSafeAreaInsets().then(({ insets }) => {
+      this.toastBottom = 0.0625 * (insets.bottom + 48.25 - 9 + 16);
+    });
+
+    this.displayToast('name')
   }
 
   // Called when page view is loaded
@@ -79,27 +88,49 @@ export class AccountComponent implements OnInit {
 
   // Open modals
   public async openModal(type: string) {
-    const modalLogout = await this.modalController.create({
-      component: LogoutComponent,
-      cssClass: 'auto-height'
-    });
-
-    const modalDeleteAccount = await this.modalController.create({
-      component: DeleteAccountComponent,
-      cssClass: 'auto-height'
-    });
-
     const modalProfilePicture = await this.modalController.create({
       component: ProfilePictureComponent,
       cssClass: 'auto-height'
     });
 
-    if (type == 'logout') {
-      modalLogout.present();
-    } else if (type == 'delete-account') {
-      modalDeleteAccount.present()
-    } else if (type == 'edit-pdp') {
+    if (type == 'edit-pdp') {
       modalProfilePicture.present()
     }
+  }
+
+  // Display a toast with custom message
+  public async displayToast(type: string) {
+    let message = '';
+
+    switch (type) {
+      case 'name':
+        message = this.translateService.instant('SENDER.SETTINGS.ACCOUNT.toast_name')
+        break;
+      case 'mail': 
+        message = this.translateService.instant('SENDER.SETTINGS.ACCOUNT.toast_mail')
+        break;
+      case 'pwd':
+        message = this.translateService.instant('SENDER.SETTINGS.ACCOUNT.toast_pwd')
+        break;
+    }
+
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 3000,
+      position: 'bottom',
+      cssClass: 'tabs-bottom',
+      mode: 'ios',
+      buttons: [
+        {
+          side: 'start',
+          icon: 'checkmark-circle-outline',
+          handler: () => {},
+        },
+      ],
+    });
+
+    toast.setAttribute('style', 'transform: translateY(-' + this.toastBottom + 'rem) !important;')
+
+    await toast.present();
   }
 }

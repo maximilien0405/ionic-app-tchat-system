@@ -19,7 +19,7 @@
     },
     "SETTINGS": {
       "header": "Settings",
-      "box_account": "Account",
+      "label_account": "Account",
       "box_senders": "Senders",
       "box_recivers": "Recivers",
       "title_appearence": "Appearence",
@@ -30,6 +30,9 @@
       "box_help": "Get help",
       "back_page": "Back",
       "btn_update": "Update",
+      "box_delete": "Delete account",
+      "box_logout": "Log Out",
+
       "ACCOUNT": {
         "header": "Edit profile",
         "label_profile_picture": "Profile picture",
@@ -38,8 +41,9 @@
         "label_name": "Full name",
         "label_email": "Email",
         "label_password": "Password",
-        "box_delete": "Delete account",
-        "box_logout": "Log Out"
+        "toast_name": "Your name has been sucessfully changed.",
+        "toast_mail": "Your email has been sucessfully changed.",
+        "toast_pwd": "Your password has been sucessfully changed."
       },
       "ABOUT": {
         "header": "About us",
