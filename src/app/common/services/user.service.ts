@@ -63,7 +63,7 @@ export class UserService {
       data: { fullName }
     };
 
-    const response = await CapacitorHttp.post(options);
+    const response = await CapacitorHttp.patch(options);
     return response.data;
   }
 }

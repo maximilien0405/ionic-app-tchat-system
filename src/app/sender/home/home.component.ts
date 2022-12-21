@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
               value: res.token,
             });
 
-            this.getUserService.getToken();
+            this.getUserService.setUser();
           }; setToken();
         }
     });

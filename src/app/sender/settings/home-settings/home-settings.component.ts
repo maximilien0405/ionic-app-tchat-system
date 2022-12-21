@@ -46,7 +46,7 @@ export class HomeSettingsComponent implements OnInit {
       if(value) {
         this.user = JSON.parse(value || '')
       } else {
-        this.getUserService.getToken(); // A retirer après avoir mis en place le login
+        this.getUserService.setUser();
       }
     }; getUser()
   }

@@ -38,8 +38,6 @@ export class AccountComponent implements OnInit {
       const { value } = await Preferences.get({ key: 'user' });
       if(value) {
         this.user = JSON.parse(value || '')
-      } else {
-        this.getUserService.getToken(); // A retirer après avoir mis en place le login
       }
     }; getUser()
 
@@ -53,20 +51,27 @@ export class AccountComponent implements OnInit {
     SafeArea.getSafeAreaInsets().then(({ insets }) => {
       this.toastBottom = 0.0625 * (insets.bottom + 48.25 - 9 + 16);
     });
-
-    this.displayToast('name')
   }
 
-  // Called when page view is loaded
+  // Check if name/mail/pwd modified and display toast
   public ionViewDidEnter() {
-    const getUser = async () => {
-      const { value } = await Preferences.get({ key: 'user' });
-      if(value) {
-        this.user = JSON.parse(value || '')
-      } else {
-        this.getUserService.getToken(); // A retirer après avoir mis en place le login
+    const checkNameMailPwd = async () => {
+      const { value } = await Preferences.get({ key: 'change-value' });
+
+      if (value) {
+        this.displayToast(value || '');
+        
+        const getUser = async () => {
+          const { value } = await Preferences.get({ key: 'user' });
+          console.log(value)
+          if(value) {
+            this.user = JSON.parse(value || '')
+          }
+        }; getUser()
+
+        await Preferences.remove({ key: 'change-value' })
       }
-    }; getUser()
+    }; checkNameMailPwd()
   }
 
   // Return form controls

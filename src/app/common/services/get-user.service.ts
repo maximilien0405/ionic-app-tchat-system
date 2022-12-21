@@ -15,7 +15,7 @@ export class GetUserService {
   constructor(private userService: UserService) { }
 
   // Get token from localstorage
-  public getToken = async () => {
+  public setUser = async () => {
     const { value } = await Preferences.get({ key: 'token' });
     if (value) {
       // Decode the token to get the id

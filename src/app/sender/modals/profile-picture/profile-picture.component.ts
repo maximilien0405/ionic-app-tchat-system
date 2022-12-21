@@ -40,7 +40,7 @@ export class ProfilePictureComponent implements OnInit {
       this.userService.setNewProfilePicture(res)
         .then((res) => {
           this.modalController.dismiss();
-          this.getUserService.getToken();
+          this.getUserService.setUser();
         });
     })
   }

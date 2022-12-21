@@ -53,7 +53,7 @@ export class SenderComponent implements OnInit {
               value: res.token,
             });
 
-            this.getUserService.getToken();
+            this.getUserService.setUser();
           }; setToken();
         }
       });
