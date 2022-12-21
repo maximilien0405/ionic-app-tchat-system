@@ -9,12 +9,13 @@
 
 <ion-content class="ion-padding">
   <form *ngIf="step == 1" [formGroup]="form1">
+    <p class="paragraph">{{'SENDER.SETTINGS.EDIT_MAIL.paragraph1' | translate}}</p>
+    <div class="small-separator"></div>
+
     <p class="label">{{'SENDER.SETTINGS.EDIT_MAIL.label_email' | translate}}</p>
     <input type="text" class="input" [placeholder]="'SENDER.SETTINGS.EDIT_MAIL.placeholder_email' | translate" formControlName="mail" maxlength="32" autofocus>
 
-    <!--<p class="paragraph box-warning margin-top">{{'SENDER.SETTINGS.EDIT_MAIL.paragraph' | translate}}</p>-->
-
-    <button class="btn btn-orange margin-top" (click)="submitForm1()" [disabled]="form1.get('mail')?.errors">
+    <button class="btn btn-orange small-margin-top" (click)="submitForm1()" [disabled]="form1.get('mail')?.errors">
       <span *ngIf="!spinnerDisplay">{{'SENDER.SETTINGS.btn_continue' | translate}}</span>
 
       <div *ngIf="spinnerDisplay" class="spinner">
@@ -24,11 +25,18 @@
       </div>
     </button>
   </form>
-  <form *ngIf="step == 2" [formGroup]="form2">
+
+  <form @slideRightAnimation *ngIf="step == 2" [formGroup]="form2">
+    <p class="paragraph">{{'SENDER.SETTINGS.EDIT_MAIL.paragraph2' | translate}}</p>
+    <div class="small-separator"></div>
+
     <p class="label">{{'SENDER.SETTINGS.EDIT_MAIL.label_code' | translate}}</p>
-    <input type="number" inputmode="numeric" class="input" [placeholder]="'SENDER.SETTINGS.EDIT_MAIL.placeholder_code' | translate" formControlName="code" maxlength="5" autofocus>
     
-    <button class="btn btn-orange margin-top" (click)="submitForm2()" [disabled]="form2.get('code')?.errors">
+    <input (keypress)="numberOnly($event)" (keydown.space)="$event.preventDefault();" [class.form-error]="(submittedForm && form2.get('code')?.errors) || errorCode"
+    inputmode="numeric" formControlName="code" class="input" type="text" [placeholder]="'SENDER.SETTINGS.EDIT_MAIL.placeholder_code' | translate" maxlength="5">
+    <p *ngIf="errorCode" class="text-error">{{'SENDER.SETTINGS.EDIT_MAIL.code_invalid' | translate}}</p>
+
+    <button class="btn btn-orange small-margin-top" (click)="submitForm2()" [disabled]="form2.get('code')?.errors">
       <span *ngIf="!spinnerDisplay">{{'SENDER.SETTINGS.btn_update' | translate}}</span>
 
       <div *ngIf="spinnerDisplay" class="spinner">
