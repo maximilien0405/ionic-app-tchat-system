@@ -11,7 +11,7 @@ const config: CapacitorConfig = {
       enabled: true,
     },
     Keyboard: {
-      resize: KeyboardResize.None,
+      resize: KeyboardResize.Body,
     },
   },
 };
