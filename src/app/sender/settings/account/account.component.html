@@ -39,4 +39,11 @@
       <img src="../../../../assets/icons/edit.svg" alt="edit">
     </div>
   </div>
+
+  <div @slideUpAnimation *ngIf="displayToast" class="absolute-bottom ion-padding">
+    <div class="toast">
+      <img src="../../../../assets/icons/checkmark.svg" alt="">
+      <p>{{ toastMessage }}</p>
+    </div>
+  </div>
 </ion-content>

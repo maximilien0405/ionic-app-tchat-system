@@ -52,9 +52,9 @@ export const slideUpAnimation = trigger('slideUpAnimation', [
   transition(
     ':leave',
     [
-      style({ transform: 'translateY(100%)' }),
+      style({ transform: 'translateY(0%)' }),
       animate('0.2s ease-out',
-        style({ transform: 'translateY(0%)' }))
+        style({ transform: 'translateY(100%)' }))
     ]
   )
 ]

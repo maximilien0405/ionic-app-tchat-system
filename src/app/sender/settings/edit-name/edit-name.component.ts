@@ -15,10 +15,10 @@ export class EditNameComponent implements OnInit {
   public form: FormGroup;
   public spinnerDisplay: boolean;
 
-  constructor(private formBuilder: FormBuilder, 
-    private navCtrl: NavController, 
+  constructor(private formBuilder: FormBuilder,
+    private navCtrl: NavController,
     private userService: UserService,
-    private getUserService: GetUserService) 
+    private getUserService: GetUserService)
   {}
 
   public ngOnInit(): void {

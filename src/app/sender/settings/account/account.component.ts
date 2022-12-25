@@ -8,11 +8,13 @@ import { ModalController, ToastController } from '@ionic/angular';
 import { ProfilePictureComponent } from '../../modals/profile-picture/profile-picture.component';
 import { SafeArea } from 'capacitor-plugin-safe-area';
 import { TranslateService } from '@ngx-translate/core';
+import { slideUpAnimation } from 'src/app/common/animations';
 
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
-  styleUrls: ['../../sender.component.scss']
+  styleUrls: ['../../sender.component.scss'],
+  animations: [slideUpAnimation]
 })
 export class AccountComponent implements OnInit {
   public user: User;
@@ -23,7 +25,8 @@ export class AccountComponent implements OnInit {
   public imageSubmitted: boolean;
   public userId: string;
   public photo: Photo;
-  public toastBottom: number; 
+  public displayToast: boolean;
+  public toastMessage: string;
 
   constructor(private formBuilder: UntypedFormBuilder,
     private getUserService: GetUserService,
@@ -47,10 +50,6 @@ export class AccountComponent implements OnInit {
       full_name: [],
       email: []
     })
-
-    SafeArea.getSafeAreaInsets().then(({ insets }) => {
-      this.toastBottom = 0.0625 * (insets.bottom + 48.25 - 9 + 16);
-    });
   }
 
   // Check if name/mail/pwd modified and display toast
@@ -59,8 +58,8 @@ export class AccountComponent implements OnInit {
       const { value } = await Preferences.get({ key: 'change-value' });
 
       if (value) {
-        this.displayToast(value || '');
-        
+        this.showToast(value || '');
+
         const getUser = async () => {
           const { value } = await Preferences.get({ key: 'user' });
           if(value) {
@@ -103,38 +102,23 @@ export class AccountComponent implements OnInit {
   }
 
   // Display a toast with custom message
-  public async displayToast(type: string) {
-    let message = '';
+  public async showToast(type: string) {
+    this.displayToast = true;
 
     switch (type) {
       case 'name':
-        message = this.translateService.instant('SENDER.SETTINGS.ACCOUNT.toast_name')
+        this.toastMessage = this.translateService.instant('SENDER.SETTINGS.ACCOUNT.toast_name')
         break;
-      case 'mail': 
-        message = this.translateService.instant('SENDER.SETTINGS.ACCOUNT.toast_mail')
+      case 'mail':
+        this.toastMessage = this.translateService.instant('SENDER.SETTINGS.ACCOUNT.toast_mail')
         break;
       case 'pwd':
-        message = this.translateService.instant('SENDER.SETTINGS.ACCOUNT.toast_pwd')
+        this.toastMessage = this.translateService.instant('SENDER.SETTINGS.ACCOUNT.toast_pwd')
         break;
     }
 
-    const toast = await this.toastController.create({
-      message: message,
-      duration: 3000,
-      position: 'bottom',
-      cssClass: 'tabs-bottom',
-      mode: 'ios',
-      buttons: [
-        {
-          side: 'start',
-          icon: 'checkmark-circle-outline',
-          handler: () => {},
-        },
-      ],
-    });
-
-    toast.setAttribute('style', 'transform: translateY(-' + this.toastBottom + 'rem) !important;')
-
-    await toast.present();
+    setTimeout(() => {
+      this.displayToast = false;
+    }, 3000);
   }
 }

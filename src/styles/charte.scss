@@ -731,3 +731,28 @@ input:-webkit-autofill:focus {
     border-color: var(--border-orange) !important;
   }
 }
+
+
+/* ---------------------------------------------------
+  TOAST
+----------------------------------------------------- */
+
+.toast {
+  background-color: var(--background-green);
+  color: var(--light-black);
+  border-radius: var(--radius-base);
+  border: 0.0938rem solid var(--border-green);
+  bottom: 0px !important;
+  font-size: 0.9375rem;
+  line-height: 1.25rem;
+  display: flex;
+  gap: 0.75rem;
+  padding: 1rem;
+  align-items: center;
+
+  img {
+    filter: var(--icon-green);
+    height: 1.5625rem;
+  }
+}
+
