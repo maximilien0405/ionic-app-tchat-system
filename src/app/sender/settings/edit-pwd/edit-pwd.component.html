@@ -8,11 +8,43 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <form>
-    <div>
-      <p class="paragraph">{{'SENDER.SETTINGS.EDIT_PWD.paragraph' | translate}}</p>
-    </div>
+  <form *ngIf="step == 1" [formGroup]="form1">
+    <p class="paragraph">{{'SENDER.SETTINGS.EDIT_PWD.paragraph1' | translate}}</p>
 
-    <button class="btn btn-orange">Update</button>
+    <p class="label small-margin-top">{{'SENDER.SETTINGS.EDIT_PWD.label_password' | translate}}</p>
+    <input type="text" class="input" [placeholder]="'SENDER.SETTINGS.EDIT_PWD.placeholder_password' | translate"
+      formControlName="mail" maxlength="32" autofocus>
+
+    <button class="btn btn-orange small-margin-top" (click)="submitForm1()" [disabled]="form1.get('mail')?.errors">
+      <span *ngIf="!spinnerDisplay">{{'SENDER.SETTINGS.btn_continue' | translate}}</span>
+
+      <div *ngIf="spinnerDisplay" class="spinner">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+      </div>
+    </button>
+  </form>
+
+  <form @slideRightAnimation *ngIf="step == 2" [formGroup]="form2">
+    <p class="paragraph">{{'SENDER.SETTINGS.EDIT_PWD.paragraph2' | translate}}</p>
+
+    <p class="label small-margin-top">{{'SENDER.SETTINGS.EDIT_PWD.label_code' | translate}}</p>
+
+    <input (keypress)="numberOnly($event)" (keydown.space)="$event.preventDefault();"
+      [class.form-error]="(submittedForm && form2.get('code')?.errors) || errorCode" inputmode="numeric"
+      formControlName="code" class="input" type="text"
+      [placeholder]="'SENDER.SETTINGS.EDIT_PWD.placeholder_code' | translate" maxlength="5">
+    <p *ngIf="errorCode" class="text-error">{{'SENDER.SETTINGS.EDIT_PWD.code_invalid' | translate}}</p>
+
+    <button class="btn btn-orange small-margin-top" (click)="submitForm2()" [disabled]="form2.get('code')?.errors">
+      <span *ngIf="!spinnerDisplay">{{'SENDER.SETTINGS.btn_update' | translate}}</span>
+
+      <div *ngIf="spinnerDisplay" class="spinner">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+      </div>
+    </button>
   </form>
 </ion-content>
