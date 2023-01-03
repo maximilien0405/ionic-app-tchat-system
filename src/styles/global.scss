@@ -41,6 +41,10 @@ h1, h2, h3, h4, h5, p, span, label, img {
   margin: 0rem;
 }
 
+a {
+  text-decoration: none !important;
+}
+
 app-root {
   height: 100%;
 }
