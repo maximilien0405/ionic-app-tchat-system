@@ -71,16 +71,13 @@ ion-toolbar {
 }
 
 .header-ios ion-toolbar:last-of-type {
-  border-bottom: 1.5px !important;
-  border: 0px !important;
   --border-color: var(--border-gray);
+  --border-width: 0rem 0rem 0.0938rem 0rem;
 }
 
 .header-md ion-toolbar {
-  border-bottom: 1.5px !important;
-  border: 0px !important;
   --border-color: var(--border-gray);
-  --border-width: 1.5px;
+  --border-width: 0rem 0rem 0.0938rem 0rem;
 }
 
 .title-default {
