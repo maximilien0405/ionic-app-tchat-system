@@ -49,9 +49,7 @@ export class SenderComponent implements OnInit {
     // Login the user (temporarely)
     this.authService.login('maximilien.zimmermann@ik.me', 'Maximilien007')
       .then((res) => {
-        if (res.error) {
-          //Return error
-        } else {
+        if (res.status == 200) {
           const setToken = async () => {
             await Preferences.set({
               key: 'token',
@@ -71,7 +69,7 @@ export class SenderComponent implements OnInit {
   }
 
   public ngAfterViewInit() {
-    
+
   }
 
   // Open modals and get back data

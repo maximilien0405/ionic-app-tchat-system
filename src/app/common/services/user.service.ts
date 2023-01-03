@@ -4,6 +4,7 @@ import { Preferences } from '@capacitor/preferences';
 import { CapacitorHttp } from '@capacitor/core';
 import { Photo } from '@capacitor/camera';
 import axios, { isCancel, AxiosError } from 'axios';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -63,7 +64,7 @@ export class UserService {
       data: { fullName }
     };
 
-    const response = await CapacitorHttp.patch(options).catch(err => console.log(err));
+    const response = await CapacitorHttp.patch(options).catch(err => { return of(err) });
     return response;
   }
 

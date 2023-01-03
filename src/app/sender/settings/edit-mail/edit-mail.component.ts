@@ -23,10 +23,10 @@ export class EditMailComponent implements OnInit {
   public term = new Subject<string>();
   public submittedForm: boolean;
 
-  constructor(private formBuilder: FormBuilder, 
-    private navCtrl: NavController, 
+  constructor(private formBuilder: FormBuilder,
+    private navCtrl: NavController,
     private userService: UserService,
-    private getUserService: GetUserService) 
+    private getUserService: GetUserService)
   {}
 
   public ngOnInit(): void {
@@ -77,8 +77,8 @@ export class EditMailComponent implements OnInit {
     this.spinnerDisplay = true;
 
     this.userService.askCodeChangeEmail(this.form1.value.mail)
-    .then((res) => {
-      if (res) {
+    .then((res: any) => {
+      if (res.status == 200) {
         setTimeout(() => {
           this.spinnerDisplay = false;
           this.step = 2;
@@ -96,8 +96,8 @@ export class EditMailComponent implements OnInit {
     this.spinnerDisplay = true;
 
     this.userService.changeEmail(this.form1.value.mail, this.form2.value.code)
-    .then((res) => {
-      if (res) {
+    .then((res: any) => {
+      if (res.status == 200) {
         const changeMail = async () => {
           await Preferences.set({
             key: 'change-value',
@@ -107,7 +107,7 @@ export class EditMailComponent implements OnInit {
 
         // Get updated user
         this.getUserService.setUser();
-        
+
         setTimeout(() => {
           this.spinnerDisplay = false;
           this.navCtrl.back();

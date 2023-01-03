@@ -76,8 +76,8 @@ export class EditPwdComponent implements OnInit {
     this.spinnerDisplay = true;
 
     this.userService.askCodeChangeEmail(this.form1.value.mail)
-    .then((res) => {
-      if (res) {
+    .then((res: any) => {
+      if (res.status == 200) {
         setTimeout(() => {
           this.spinnerDisplay = false;
           this.step = 2;
@@ -95,8 +95,8 @@ export class EditPwdComponent implements OnInit {
     this.spinnerDisplay = true;
 
     this.userService.changeEmail(this.form1.value.mail, this.form2.value.code)
-    .then((res) => {
-      if (res) {
+    .then((res: any) => {
+      if (res.status == 200) {
         setTimeout(() => {
           this.spinnerDisplay = false;
           this.navCtrl.back();

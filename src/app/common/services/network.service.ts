@@ -36,7 +36,7 @@ export class NetworkService {
     // Check if there is network or api error
     const getNetworkStatus = async () => {
       const status = await Network.getStatus();
-    
+
       if(status.connected) {
         this.networkError = false;
       } else {
@@ -46,8 +46,8 @@ export class NetworkService {
     }; getNetworkStatus()
 
     // Ping the API to get a response
-    await this.ping().then((res) => {
-      if (res == undefined) {
+    await this.ping().then((res: any) => {
+      if (res.status != 200) {
         this.APIError = true;
         this.error = true;
       }

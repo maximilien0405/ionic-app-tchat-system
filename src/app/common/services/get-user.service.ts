@@ -23,9 +23,7 @@ export class GetUserService {
 
       this.userService.findOne(decodedToken.id)
         .then((res) => {
-          if (res.error) {
-            //Return error
-          } else {
+          if (res.status == 200) {
             const setUser = async () => {
               await Preferences.set({
                 key: 'user',
@@ -36,5 +34,4 @@ export class GetUserService {
         });
     }
   };
-
 }

@@ -38,18 +38,18 @@ export class EditNameComponent implements OnInit {
     this.spinnerDisplay = true;
 
     this.userService.setFullname(this.form.value.name)
-    .then((res) => {
-      if(res) {
+    .then((res: any) => {
+      if(res.status == 200) {
         const changeName = async () => {
           await Preferences.set({
             key: 'change-value',
             value: 'name',
           });
         }; changeName();
-  
+
         // Get updated user
         this.getUserService.setUser();
-  
+
         setTimeout(() => {
           this.spinnerDisplay = false;
           this.navCtrl.back();
