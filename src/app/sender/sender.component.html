@@ -23,3 +23,7 @@
       </div>
   </div>
 </ion-tabs>
+
+<div @slideUpAnimation *ngIf="networkOrApiError" class="overlay-box"></div>
+
+<h1 @slideUpAnimation *ngIf="networkOrApiError">Network error</h1>

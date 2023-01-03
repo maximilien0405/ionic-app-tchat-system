@@ -60,6 +60,9 @@ body {
   --background-green: #48ff0018;
   --border-green: #83b171;
 
+  --background-red: #ffd7d4;
+  --border-red: #e45b4c;
+
   --border-orange: #ea915ecb;
   --border-gray: #e8eaee;
   --border-gray-hover: #cdcdcd;
@@ -77,7 +80,8 @@ body {
   --icon-black: invert(35%) sepia(0%) saturate(0%) hue-rotate(258deg) brightness(96%) contrast(96%);
   --icon-white: invert(100%) sepia(1%) saturate(1754%) hue-rotate(171deg) brightness(85%) contrast(91%);
   --icon-orange: invert(71%) sepia(49%) saturate(6846%) hue-rotate(345deg) brightness(103%) contrast(98%);
-  --icon-green: invert(61%) sepia(27%) saturate(487%) hue-rotate(58deg) brightness(100%) contrast(92%);;
+  --icon-green: invert(61%) sepia(27%) saturate(487%) hue-rotate(58deg) brightness(100%) contrast(92%);
+  --icon-red: invert(34%) sepia(94%) saturate(1575%) hue-rotate(339deg) brightness(111%) contrast(79%);
 }
 
 body.dark-theme {
@@ -93,6 +97,8 @@ body.dark-theme {
   --background-white: #171717;
   --background-gray: #1c1c1c;
 
+  --background-red: #311a18;
+
   --background-green: #48ff0007;
   --border-green: #58774c;
 
@@ -101,7 +107,7 @@ body.dark-theme {
 
   --icon-black: invert(100%) sepia(1%) saturate(1754%) hue-rotate(171deg) brightness(85%) contrast(91%);
   --icon-white: invert(35%) sepia(0%) saturate(0%) hue-rotate(258deg) brightness(96%) contrast(96%);
-  --icon-green: invert(43%) sepia(14%) saturate(1047%) hue-rotate(59deg) brightness(93%) contrast(83%);;
+  --icon-green: invert(43%) sepia(14%) saturate(1047%) hue-rotate(59deg) brightness(93%) contrast(83%);
 }
 
 /* ---------------------------------------------------
@@ -749,15 +755,32 @@ input:-webkit-autofill:focus {
   border: 0.0938rem solid var(--border-green);
   bottom: 0px !important;
   font-size: 0.9375rem;
-  line-height: 1.25rem;
   display: flex;
-  gap: 0.75rem;
   padding: 1rem;
   align-items: center;
+  padding: 0.9rem;
+  gap: 0.9rem;
+  border-radius: var(--radius-base) var(--radius-base) 0px 0px;
 
   img {
-    filter: var(--icon-green);
     height: 1.5625rem;
   }
 }
 
+.toast-success {
+  border: 0.0938rem solid var(--border-green);
+  background-color: var(--background-green);
+
+  img {
+    filter: var(--icon-green);
+  }
+}
+
+.toast-error {
+  border: 0.0938rem solid var(--border-red);
+  background-color: var(--background-red);
+
+  img {
+    filter: var(--icon-red);
+  }
+}

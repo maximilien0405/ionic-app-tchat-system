@@ -261,3 +261,16 @@ image-cropper .ngx-ic-source-image {
     color: var(--gray) !important;
   }
 }
+
+
+/* ---------------------------------------------------
+  OTHER
+----------------------------------------------------- */
+
+.overlay-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}

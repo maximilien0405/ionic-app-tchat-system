@@ -64,4 +64,18 @@
         <p>Every Monday, at 7:40 PM</p>
       </div>
     </div>
+
+  <div @slideUpAnimation *ngIf="networkError" class="absolute-bottom">
+    <div class="toast toast-error">
+      <img src="../../../../assets/icons/warning.svg" alt="">
+      <p> You are not connected to internet. Please enable WifFi or your local network.</p>
+    </div>
+  </div>
+
+  <div @slideUpAnimation *ngIf="APIError" class="absolute-bottom">
+    <div class="toast toast-error">
+      <img src="../../../../assets/icons/warning.svg" alt="">
+      <p>Our API seems to be down. Please wait a moment and refresh.</p>
+    </div>
+  </div>
 </ion-content>
