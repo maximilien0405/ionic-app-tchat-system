@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
 import { Preferences } from '@capacitor/preferences';
 import { NavController } from '@ionic/angular';
-import { Subject } from 'rxjs';
+import { of, Subject } from 'rxjs';
 import { slideRightAnimation } from 'src/app/common/animations';
 import { GetUserService } from 'src/app/common/services/get-user.service';
 import { UserService } from 'src/app/common/services/user.service';
@@ -77,17 +77,14 @@ export class EditMailComponent implements OnInit {
     this.spinnerDisplay = true;
 
     this.userService.askCodeChangeEmail(this.form1.value.mail)
-    .catch(err => {
-      this.spinnerDisplay = false;
-    })
     .then((res) => {
-      if (res.error) {
-        this.spinnerDisplay = false;
-      } else {
+      if (res) {
         setTimeout(() => {
           this.spinnerDisplay = false;
           this.step = 2;
         }, 1400);
+      } else {
+        this.spinnerDisplay = false;
       }
     });
   }
@@ -99,14 +96,8 @@ export class EditMailComponent implements OnInit {
     this.spinnerDisplay = true;
 
     this.userService.changeEmail(this.form1.value.mail, this.form2.value.code)
-    .catch(err => {
-      this.spinnerDisplay = false;
-    })
     .then((res) => {
-      if (res.error) {
-        this.errorCode = true;
-        this.spinnerDisplay = false;
-      } else {
+      if (res) {
         const changeMail = async () => {
           await Preferences.set({
             key: 'change-value',
@@ -121,6 +112,9 @@ export class EditMailComponent implements OnInit {
           this.spinnerDisplay = false;
           this.navCtrl.back();
         }, 1400);
+      } else {
+        this.errorCode = true;
+        this.spinnerDisplay = false;
       }
     });
   }

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
 import { Preferences } from '@capacitor/preferences';
 import { NavController } from '@ionic/angular';
+import { of } from 'rxjs';
 import { GetUserService } from 'src/app/common/services/get-user.service';
 import { UserService } from 'src/app/common/services/user.service';
 
@@ -37,27 +38,24 @@ export class EditNameComponent implements OnInit {
     this.spinnerDisplay = true;
 
     this.userService.setFullname(this.form.value.name)
-    .catch(err => {
-      this.spinnerDisplay = false;
-    })
     .then((res) => {
-      if (res.error) {
-        this.spinnerDisplay = false;
-      } else {
+      if(res) {
         const changeName = async () => {
           await Preferences.set({
             key: 'change-value',
             value: 'name',
           });
         }; changeName();
-
+  
         // Get updated user
         this.getUserService.setUser();
-
+  
         setTimeout(() => {
           this.spinnerDisplay = false;
           this.navCtrl.back();
         }, 1400);
+      } else {
+        this.spinnerDisplay = false;
       }
     });
   }

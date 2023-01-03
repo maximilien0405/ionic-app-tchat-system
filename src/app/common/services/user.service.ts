@@ -63,8 +63,8 @@ export class UserService {
       data: { fullName }
     };
 
-    const response = await CapacitorHttp.patch(options);
-    return response.data;
+    const response = await CapacitorHttp.patch(options).catch(err => console.log(err));
+    return response;
   }
 
   // Ask code change email
@@ -78,8 +78,8 @@ export class UserService {
       data: { newEmail }
     };
 
-    const response = await CapacitorHttp.post(options);
-    return response.data;
+    const response = await CapacitorHttp.post(options).catch(err => console.log(err));
+    return response;
   }
 
   // Change email
@@ -93,7 +93,7 @@ export class UserService {
       data: { newEmail, code }
     };
 
-    const response = await CapacitorHttp.post(options);
-    return response.data;
+    const response = await CapacitorHttp.post(options).catch(err => console.log(err));
+    return response;
   }
 }
