@@ -640,9 +640,13 @@ input:-webkit-autofill:focus {
 
 .tab-container {
   display: flex;
+  width: 100%;
+  overflow: scroll;
 
   .option-box {
     border-radius: 0rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 
   .option-box:first-child {
