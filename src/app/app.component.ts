@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Preferences } from '@capacitor/preferences';
 import { Device } from '@capacitor/device';
 import { TranslateService } from "@ngx-translate/core";
-import { StatusBar } from '@awesome-cordova-plugins/status-bar/ngx';
+import { StatusBar, Style } from '@capacitor/status-bar';
 
 @Component({
   selector: 'app-root',
@@ -11,11 +11,9 @@ import { StatusBar } from '@awesome-cordova-plugins/status-bar/ngx';
 export class AppComponent {
   public theme: string | any;
 
-  constructor(private translate: TranslateService, private statusBar: StatusBar) {}
+  constructor(private translate: TranslateService) {}
 
   public ngOnInit(): void {
-    window.screen.orientation.lock('portrait');
-
     // Check if phone is in dark theme
     const checkTheme = async () => {
       const { value } = await Preferences.get({ key: 'theme' });
@@ -31,30 +29,30 @@ export class AppComponent {
         if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
           document.body.classList.add('dark-theme');
           // Set status bar to white
-          this.statusBar.backgroundColorByHexString('#ffffff');
+          StatusBar.setStyle({ style: Style.Dark });
         } else {
           // Set status bar to black
-          this.statusBar.backgroundColorByHexString('#000000');
+          StatusBar.setStyle({ style: Style.Light });
         }
       }
       else {
         if (this.theme == 'dark') {
           document.body.classList.add('dark-theme');
           // Set status bar to white
-          this.statusBar.backgroundColorByHexString('#ffffff');
+          StatusBar.setStyle({ style: Style.Dark });
         }
         else if (this.theme == 'light') {
           // Set status bar to black
-          this.statusBar.backgroundColorByHexString('#000000');
+          StatusBar.setStyle({ style: Style.Light });
         }
         else if (this.theme == 'auto') {
           if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
             document.body.classList.add('dark-theme');
             // Set status bar to white
-            this.statusBar.backgroundColorByHexString('#ffffff');
+            StatusBar.setStyle({ style: Style.Dark });
           } else {
             // Set status bar to black
-            this.statusBar.backgroundColorByHexString('#000000');
+            StatusBar.setStyle({ style: Style.Light });
           }
         }
       }
@@ -68,12 +66,12 @@ export class AppComponent {
       const { value } = await Preferences.get({ key: 'lang' });
       if (value) {
         this.translate.setDefaultLang(value);
-      } 
+      }
       else {
         // If not in localstorage, get language from device
         const getLanguageCode = async () => {
           const lang = await Device.getLanguageCode();
-  
+
           if (this.translate.langs.includes(lang.value)) {
           } else {
             lang.value = 'en';

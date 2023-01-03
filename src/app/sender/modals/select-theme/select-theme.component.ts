@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Preferences } from '@capacitor/preferences';
+import { StatusBar, Style } from '@capacitor/status-bar';
 import { ModalController } from '@ionic/angular';
 
 @Component({
@@ -24,15 +25,23 @@ export class SelectThemeComponent implements OnInit {
   public selectTheme(option: string): void {
     if (option == 'light') {
       document.body.classList.remove('dark-theme');
+      // Set status bar to black
+      StatusBar.setStyle({ style: Style.Light });
     }
     else if (option == 'dark') {
       document.body.classList.add('dark-theme');
+      // Set status bar to white
+      StatusBar.setStyle({ style: Style.Dark });
     }
     else {
       if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
         document.body.classList.add('dark-theme');
+        // Set status bar to black
+        StatusBar.setStyle({ style: Style.Dark });
       } else {
         document.body.classList.remove('dark-theme');
+        // Set status bar to white
+        StatusBar.setStyle({ style: Style.Light });
       }
     }
 
@@ -48,7 +57,7 @@ export class SelectThemeComponent implements OnInit {
 
     // Close popup
     setTimeout(() => {
-      this.modalController.dismiss(option)
+      this.modalController.dismiss(option);
     }, 200);
   }
 }
