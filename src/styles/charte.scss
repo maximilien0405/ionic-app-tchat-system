@@ -86,13 +86,10 @@ body {
 
 body.dark-theme {
   --black: #f9fbfd;
-  --light-black: #ced0d1;
+  --light-black: #c1c1c1;
   --white: #1c1c1c;
-  --orange: #fd7324;
-  --orange-hover: #e6671d;
-  --gray: #9d9d9d;
-  --dark-gray: #9e9e9e;
   --red: #e74c3c;
+  --gray: #949494;
 
   --background-white: #171717;
   --background-gray: #1c1c1c;
@@ -105,7 +102,7 @@ body.dark-theme {
   --border-gray: #262626;
   --border-gray-hover: #696969aa;
 
-  --icon-black: invert(100%) sepia(1%) saturate(1754%) hue-rotate(171deg) brightness(85%) contrast(91%);
+  --icon-black: invert(98%) sepia(0%) saturate(25%) hue-rotate(188deg) brightness(82%) contrast(84%);;
   --icon-white: invert(35%) sepia(0%) saturate(0%) hue-rotate(258deg) brightness(96%) contrast(96%);
   --icon-green: invert(43%) sepia(14%) saturate(1047%) hue-rotate(59deg) brightness(93%) contrast(83%);
 }
