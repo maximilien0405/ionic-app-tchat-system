@@ -12,7 +12,9 @@
       "header": "Reminders"
     },
     "FEED": {
-      "header": "Feed"
+      "header": "Feed",
+      "toast_network": "You are not connected to internet. To use the app, connect to a WiFi or mobile network.",
+      "toast_api": "Our servers seems to be down. Please wait a moment, our team is working on fixing the problem(s)."
     },
     "SUBSCRIPTION": {
       "header": "Subscription"

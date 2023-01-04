@@ -181,10 +181,10 @@ ion-tab-button {
 
   button {
     position: absolute;
-    top: 16px;
-    right: 16px;
-    padding-left: 20px;
-    padding-right: 20px;
+    top: 1rem;
+    right: 1rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
   }
 }
 
@@ -196,7 +196,7 @@ image-cropper {
   --cropper-outline-color: #00000071;
   --cropper-overlay-color: #2d2d2d;
 
-  max-height: 500px;
+  max-height: 31.25rem;
   padding: 0px !important;
 }
 
@@ -239,9 +239,10 @@ image-cropper .ngx-ic-source-image {
 .all-boxs-reminders {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 1rem;
   height: 100%;
   overflow: scroll;
+  padding-bottom: 50px;
 }
 
 .box-reminder {
@@ -250,7 +251,7 @@ image-cropper .ngx-ic-source-image {
   align-items: flex-start !important;
 
   .separator {
-    margin: 15px 0px 15px 0px !important;
+    margin: 0.9375rem 0rem 0.9375rem 0rem !important;
   }
 
   .box-details {
@@ -259,6 +260,17 @@ image-cropper .ngx-ic-source-image {
     justify-content: space-between;
     width: 100%;
     color: var(--gray) !important;
+
+    div {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+    }
+
+    img {
+      height: 1.125rem;
+      filter: var(--icon-black);
+    }
   }
 }
 

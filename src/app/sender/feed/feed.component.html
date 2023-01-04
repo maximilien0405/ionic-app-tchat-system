@@ -16,64 +16,64 @@
 
   <p class="label margin-top">Reminders</p>
 
-    <div class="box box-reminder" ontouchstart>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
-      <div class="separator"></div>
-      <div class="box-details">
-        <p>Grandma 1</p>
-        <p>Every Monday, at 7:40 PM</p>
-      </div>
+  <div class="box box-reminder" ontouchstart>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+    <div class="separator"></div>
+    <div class="box-details">
+      <p>Grandma 1</p>
+      <p>Every Monday, at 7:40 PM</p>
     </div>
+  </div>
 
   <p class="label margin-top">Programmed posts</p>
 
-    <div class="box box-reminder" ontouchstart>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
-      <div class="separator"></div>
-      <div class="box-details">
-        <p>Grandma 1</p>
-        <p>Every Monday, at 7:40 PM</p>
-      </div>
+  <div class="box box-reminder" ontouchstart>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+    <div class="separator"></div>
+    <div class="box-details">
+      <p>Grandma 1</p>
+      <p>Every Monday, at 7:40 PM</p>
     </div>
+  </div>
 
   <p class="label margin-top">Already posted</p>
 
-    <div class="box box-reminder" ontouchstart>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
-      <div class="separator"></div>
-      <div class="box-details">
-        <p>Grandma 1</p>
-        <p>Every Monday, at 7:40 PM</p>
-      </div>
+  <div class="box box-reminder" ontouchstart>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+    <div class="separator"></div>
+    <div class="box-details">
+      <p>Grandma 1</p>
+      <p>Every Monday, at 7:40 PM</p>
     </div>
-    <div class="box box-reminder small-margin-top" ontouchstart>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
-      <div class="separator"></div>
-      <div class="box-details">
-        <p>Grandma 1</p>
-        <p>Every Monday, at 7:40 PM</p>
-      </div>
+  </div>
+  <div class="box box-reminder small-margin-top" ontouchstart>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+    <div class="separator"></div>
+    <div class="box-details">
+      <p>Grandma 1</p>
+      <p>Every Monday, at 7:40 PM</p>
     </div>
-    <div class="box box-reminder small-margin-top" ontouchstart>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
-      <div class="separator"></div>
-      <div class="box-details">
-        <p>Grandma 1</p>
-        <p>Every Monday, at 7:40 PM</p>
-      </div>
+  </div>
+  <div class="box box-reminder small-margin-top" ontouchstart>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+    <div class="separator"></div>
+    <div class="box-details">
+      <p>Grandma 1</p>
+      <p>Every Monday, at 7:40 PM</p>
     </div>
+  </div>
 
   <div @slideUpAnimation *ngIf="networkError" class="absolute-bottom">
     <div class="toast toast-error">
       <img src="../../../../assets/icons/network.svg" alt="">
-      <p> You are not connected to internet. Please enable WifFi or your local network.</p>
+      <p>{{'SENDER.FEED.toast_network' | translate}}</p>
     </div>
   </div>
 
   <div @slideUpAnimation *ngIf="APIError" class="absolute-bottom">
     <div class="toast toast-error">
       <img src="../../../../assets/icons/warning.svg" alt="">
-      <p>Our API seems to be down. Please wait a moment and refresh.</p>
+      <p>{{'SENDER.FEED.toast_api' | translate}}</p>
     </div>
   </div>
 </ion-content>

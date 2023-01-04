@@ -15,9 +15,11 @@ export class FeedComponent implements OnInit {
   constructor(private networkService: NetworkService) {
     // Check the API status changes
     this.networkService.subjectApiOrNetworkError.subscribe(res => {
-      console.log(res)
-      this.APIError = res.apiError;
-      this.networkError = res.networkError;
+      setTimeout(() => {
+        console.log(res)
+        this.APIError = res.apiError;
+        this.networkError = res.networkError;
+      }, 500);
     })
   }
 
