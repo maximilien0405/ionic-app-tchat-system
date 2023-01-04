@@ -56,9 +56,10 @@
       },
       "HELP": {
         "header": "Get help",
-        "paragraph": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Hic, quas nemo? Cumque impedit eius rerum dolorum cum iusto.",
-        "title_contact": "Other links",
         "title_forum": "Join our forum",
+        "paragraph": "A question or a bug ? Join our forum and exchange directly with the team and the community.",
+        "button_text": "See more",
+        "title_contact": "Other contact methods",
         "question_1": "Question 1",
         "answer_1": "Answer 1",
         "question_2": "Question 2",

@@ -3,6 +3,7 @@ import { Preferences } from '@capacitor/preferences';
 import { Device } from '@capacitor/device';
 import { TranslateService } from "@ngx-translate/core";
 import { StatusBar, Style } from '@capacitor/status-bar';
+import { isPlatform } from '@ionic/angular';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +19,7 @@ export class AppComponent {
     const checkTheme = async () => {
       const { value } = await Preferences.get({ key: 'theme' });
       this.theme = value;
+      let statusBarStyle: any;
 
       if (!value) {
         const setTheme = async () => {
@@ -29,32 +31,36 @@ export class AppComponent {
         if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
           document.body.classList.add('dark-theme');
           // Set status bar to white
-          StatusBar.setStyle({ style: Style.Dark });
+          statusBarStyle = Style.Dark;
         } else {
           // Set status bar to black
-          StatusBar.setStyle({ style: Style.Light });
+          statusBarStyle = Style.Light;
         }
       }
       else {
         if (this.theme == 'dark') {
           document.body.classList.add('dark-theme');
           // Set status bar to white
-          StatusBar.setStyle({ style: Style.Dark });
+          statusBarStyle = Style.Dark;
         }
         else if (this.theme == 'light') {
           // Set status bar to black
-          StatusBar.setStyle({ style: Style.Light });
+          statusBarStyle = Style.Light;
         }
         else if (this.theme == 'auto') {
           if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
             document.body.classList.add('dark-theme');
             // Set status bar to white
-            StatusBar.setStyle({ style: Style.Dark });
+            statusBarStyle = Style.Dark;
           } else {
             // Set status bar to black
-            StatusBar.setStyle({ style: Style.Light });
+            statusBarStyle = Style.Light;
           }
         }
+      }
+
+      if(isPlatform('mobile')) {
+        StatusBar.setStyle({ style: statusBarStyle });
       }
     }; checkTheme();
 

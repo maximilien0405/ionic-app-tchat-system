@@ -40,7 +40,7 @@ export class SenderComponent implements OnInit {
     });
 
     SafeArea.getSafeAreaInsets().then(({ insets }) => {
-      this.marginBottom = 0.0625 * insets.bottom;
+      this.marginBottom = 0.0625 * (insets.bottom || 15);
     });
 
     // Check the network status
