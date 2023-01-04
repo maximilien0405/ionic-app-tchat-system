@@ -12,13 +12,17 @@ export class FeedComponent implements OnInit {
   public networkError = false;
   public APIError = false;
 
-  constructor(private networkService: NetworkService) {}
+  constructor(private networkService: NetworkService) {
+    // Check the API status changes
+    this.networkService.subjectApiError.subscribe(res =>{
+      this.APIError = res;
+    })
 
-  ngOnInit(): void {
-    // Check the network status
-    this.networkService.checkNetwork().then((res) => {
-      this.networkError = res.network;
-      this.APIError = res.api;
-    });
+    // Check the Network status changes
+    this.networkService.subjectNetworkError.subscribe(res =>{
+      this.networkError = res;
+    })
   }
+
+  ngOnInit(): void {}
 }

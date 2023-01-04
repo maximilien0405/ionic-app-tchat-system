@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Preferences } from '@capacitor/preferences';
 import { UserService } from './user.service';
@@ -15,45 +15,23 @@ export class NetworkService {
   private readonly API_URL = environment.apiUrl;
   public networkError = false;
   public APIError = false;
-  public error = false;
+  private hasApiError = new BehaviorSubject<any>({});
+  subjectApiError = this.hasApiError.asObservable();
+  private hasNetworkError = new BehaviorSubject<any>({});
+  subjectNetworkError = this.hasNetworkError.asObservable();
 
   constructor() { }
 
-  // Check if network is okay or not
-  public async checkNetwork() {
-    // Listen to network changes
-    Network.addListener('networkStatusChange', status => {
-      console.log('Network status changed', status);
-
-      if(status.connected) {
-        this.networkError = false;
-      } else {
-        this.networkError = true;
-        this.error = true;
-      }
-    });
-
-    // Check if there is network or api error
-    const getNetworkStatus = async () => {
-      const status = await Network.getStatus();
-
-      if(status.connected) {
-        this.networkError = false;
-      } else {
-        this.networkError = true;
-        this.error = true;
-      }
-    }; getNetworkStatus()
-
-    // Ping the API to get a response
+  // Check if API is okay or not
+  public async checkAPIStatus() {
     await this.ping().then((res: any) => {
       if (res.status != 200) {
         this.APIError = true;
-        this.error = true;
       }
     });
 
-    return { network: this.networkError, api: this.APIError, error: this.error }
+    this.hasApiError.next(this.APIError);
+    return this.APIError;
   }
 
   // Ping the server
@@ -65,5 +43,25 @@ export class NetworkService {
 
     const response = await CapacitorHttp.get(options).catch(err => console.log(err));
     return response;
+  }
+
+  // Check if network is okay or not
+  public async checkNetworkStatus() {
+    const status = await Network.getStatus();
+    if(!status.connected) {
+      this.hasNetworkError.next(!status.connected);
+      console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+      this.networkError = true;
+    }
+
+    // Listen to network changes
+    Network.addListener('networkStatusChange', status => {
+      if(!status.connected) {
+        this.hasNetworkError.next(!status.connected);
+        this.networkError = true;
+      }
+    });
+
+    return this.networkError;
   }
 }

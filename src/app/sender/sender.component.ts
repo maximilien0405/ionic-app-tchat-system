@@ -9,17 +9,19 @@ import { GetUserService } from '../common/services/get-user.service';
 import { NetworkService } from '../common/services/network.service';
 import { Preferences } from '@capacitor/preferences';
 import { slideUpAnimation } from '../common/animations';
+import { interval } from 'rxjs';
+import { takeWhile } from 'rxjs/operators';
 
 @Component({
   selector: 'app-sender',
   templateUrl: './sender.component.html',
   styleUrls: ['./sender.component.scss'],
-  animations: [slideUpAnimation]
 })
 export class SenderComponent implements OnInit {
   public route: String;
   public marginBottom: number;
-  public networkOrApiError: boolean;
+  public apiError: boolean;
+  public networkError: boolean;
 
   constructor(private router: Router,
     private modalController: ModalController,
@@ -40,6 +42,19 @@ export class SenderComponent implements OnInit {
     SafeArea.getSafeAreaInsets().then(({ insets }) => {
       this.marginBottom = 0.0625 * insets.bottom;
     });
+
+    // Check the network status
+    this.networkService.checkNetworkStatus().then((res) => {
+      this.networkError = res;
+      console.log("Network error: " + res)
+    });
+
+    // Check the API status
+    this.networkService.checkAPIStatus().then((res) => {
+      this.apiError = res;
+      console.log("API error: " + res)
+    });
+
   }
 
   public ngOnInit(): void {
@@ -48,28 +63,18 @@ export class SenderComponent implements OnInit {
 
     // Login the user (temporarely)
     this.authService.login('maximilien.zimmermann@ik.me', 'Maximilien007')
-      .then((res) => {
-        if (res.status == 200) {
-          const setToken = async () => {
-            await Preferences.set({
-              key: 'token',
-              value: res.token,
-            });
+    .then((res) => {
+      if (res.status == 200) {
+        const setToken = async () => {
+          await Preferences.set({
+            key: 'token',
+            value: res.token,
+          });
 
-            this.getUserService.setUser();
-          }; setToken();
-        }
-      });
-
-    // Check the network status
-    this.networkService.checkNetwork().then((res) => {
-      console.log(res)
-      this.networkOrApiError = res.error;
+          this.getUserService.setUser();
+        }; setToken();
+      }
     });
-  }
-
-  public ngAfterViewInit() {
-
   }
 
   // Open modals and get back data
