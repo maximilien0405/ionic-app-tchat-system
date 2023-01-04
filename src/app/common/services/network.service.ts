@@ -13,25 +13,40 @@ import { Network } from '@capacitor/network';
 })
 export class NetworkService {
   private readonly API_URL = environment.apiUrl;
-  public networkError = false;
-  public APIError = false;
-  private hasApiError = new BehaviorSubject<any>({});
-  subjectApiError = this.hasApiError.asObservable();
-  private hasNetworkError = new BehaviorSubject<any>({});
-  subjectNetworkError = this.hasNetworkError.asObservable();
+  private hasApiOrNetworkError = new BehaviorSubject<any>({});
+  subjectApiOrNetworkError = this.hasApiOrNetworkError.asObservable();
 
   constructor() { }
 
-  // Check if API is okay or not
-  public async checkAPIStatus() {
-    await this.ping().then((res: any) => {
-      if (res.status != 200) {
-        this.APIError = true;
+  // Check if API and network status
+  public async checkAPIAndNetworkStatus() {
+    let APIError = false;
+    let networkError = false;
+    const status = await Network.getStatus();
+
+    // Check if api has an error
+    await this.ping().catch(err => {
+      APIError = true;
+    })
+
+    if(status.connected == false) {
+      networkError = true;
+    } else {
+    }
+
+    // Update the value and send to feed component
+    this.hasApiOrNetworkError.next({ apiError: APIError, networkError: networkError });
+
+    Network.addListener('networkStatusChange', status => {
+      if(!status.connected) {
+        this.hasApiOrNetworkError.next({ apiError: false, networkError: true });
+      } else {
+        this.hasApiOrNetworkError.next({ apiError: false, networkError: false });
       }
     });
-
-    this.hasApiError.next(this.APIError);
-    return this.APIError;
+    
+    console.log("Api error", APIError)
+    console.log("Network Error", networkError)
   }
 
   // Ping the server
@@ -41,27 +56,7 @@ export class NetworkService {
       headers: { 'Content-Type': 'application/json' },
     };
 
-    const response = await CapacitorHttp.get(options).catch(err => console.log(err));
+    const response = await CapacitorHttp.get(options);
     return response;
-  }
-
-  // Check if network is okay or not
-  public async checkNetworkStatus() {
-    const status = await Network.getStatus();
-    if(!status.connected) {
-      this.hasNetworkError.next(!status.connected);
-      console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
-      this.networkError = true;
-    }
-
-    // Listen to network changes
-    Network.addListener('networkStatusChange', status => {
-      if(!status.connected) {
-        this.hasNetworkError.next(!status.connected);
-        this.networkError = true;
-      }
-    });
-
-    return this.networkError;
   }
 }

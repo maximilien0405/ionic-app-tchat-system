@@ -44,17 +44,14 @@ export class SenderComponent implements OnInit {
     });
 
     // Check the network status
-    this.networkService.checkNetworkStatus().then((res) => {
-      this.networkError = res;
-      console.log("Network error: " + res)
-    });
+    this.networkService.checkAPIAndNetworkStatus();
 
-    // Check the API status
-    this.networkService.checkAPIStatus().then((res) => {
-      this.apiError = res;
-      console.log("API error: " + res)
-    });
-
+    // Check the API status changes
+    this.networkService.subjectApiOrNetworkError.subscribe(res => {
+      console.log(res)
+      this.apiError = res.apiError;
+      this.networkError = res.networkError;
+    })
   }
 
   public ngOnInit(): void {
