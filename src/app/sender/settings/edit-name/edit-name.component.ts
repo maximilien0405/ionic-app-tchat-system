@@ -2,7 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
 import { Preferences } from '@capacitor/preferences';
-import { NavController } from '@ionic/angular';
+import { isPlatform, NavController } from '@ionic/angular';
 import { of } from 'rxjs';
 import { GetUserService } from 'src/app/common/services/get-user.service';
 import { UserService } from 'src/app/common/services/user.service';
@@ -39,7 +39,7 @@ export class EditNameComponent implements OnInit {
 
     this.userService.setFullname(this.form.value.name)
     .then((res: any) => {
-      if(res.status == 200) {
+      if ((isPlatform('mobile') && res.status == 200) || !isPlatform('mobile')) {
         const changeName = async () => {
           await Preferences.set({
             key: 'change-value',

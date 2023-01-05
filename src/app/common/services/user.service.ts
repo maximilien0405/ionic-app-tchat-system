@@ -19,6 +19,7 @@ export class UserService {
       const { value } = await Preferences.get({ key: 'token' });
       if (value) {
         this.token = value;
+        console.log(value)
       }
     }; getToken()
   }

@@ -2,7 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
 import { Preferences } from '@capacitor/preferences';
-import { NavController } from '@ionic/angular';
+import { isPlatform, NavController } from '@ionic/angular';
 import { of, Subject } from 'rxjs';
 import { slideRightAnimation } from 'src/app/common/animations';
 import { GetUserService } from 'src/app/common/services/get-user.service';
@@ -77,7 +77,7 @@ export class EditPwdComponent implements OnInit {
 
     this.userService.askCodeChangeEmail(this.form1.value.mail)
     .then((res: any) => {
-      if (res.status == 200) {
+      if ((isPlatform('mobile') && res.status == 200) || !isPlatform('mobile')) {
         setTimeout(() => {
           this.spinnerDisplay = false;
           this.step = 2;
@@ -96,7 +96,7 @@ export class EditPwdComponent implements OnInit {
 
     this.userService.changeEmail(this.form1.value.mail, this.form2.value.code)
     .then((res: any) => {
-      if (res.status == 200) {
+      if ((isPlatform('mobile') && res.status == 200) || !isPlatform('mobile')) {
         setTimeout(() => {
           this.spinnerDisplay = false;
           this.navCtrl.back();

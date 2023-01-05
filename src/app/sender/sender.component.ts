@@ -57,21 +57,6 @@ export class SenderComponent implements OnInit {
   public ngOnInit(): void {
     // Redirect to home
     this.router.navigateByUrl('sender/feed');
-
-    // Login the user (temporarely)
-    this.authService.login('maximilien.zimmermann@ik.me', 'Maximilien007')
-    .then((res) => {
-      if (res.status == 200) {
-        const setToken = async () => {
-          await Preferences.set({
-            key: 'token',
-            value: res.token,
-          });
-
-          this.getUserService.setUser();
-        }; setToken();
-      }
-    });
   }
 
   // Open modals and get back data

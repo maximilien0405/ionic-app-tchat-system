@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { Preferences } from '@capacitor/preferences';
 import { UserService } from './user.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { isPlatform } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,7 @@ export class GetUserService {
 
       this.userService.findOne(decodedToken.id)
         .then((res) => {
-          if (res.status == 200) {
+          if ((isPlatform('mobile') && res.status == 200) || !isPlatform('mobile')) {
             const setUser = async () => {
               await Preferences.set({
                 key: 'user',
