@@ -341,7 +341,7 @@ input:-webkit-autofill:focus {
 ----------------------------------------------------- */
 
 .btn {
-  height: var(--height-base);
+  min-height: var(--height-base);
   width: 100%;
   border-radius: var(--radius-full);
   cursor: pointer;
@@ -643,7 +643,6 @@ input:-webkit-autofill:focus {
 .tab-container {
   display: flex;
   width: 100%;
-  overflow: scroll;
 
   .option-box {
     border-radius: 0rem;
