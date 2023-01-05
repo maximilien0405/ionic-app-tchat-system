@@ -75,17 +75,17 @@ export class EditPwdComponent implements OnInit {
     Haptics.impact({ style: ImpactStyle.Medium });
     this.spinnerDisplay = true;
 
-    this.userService.askCodeChangeEmail(this.form1.value.mail)
-    .then((res: any) => {
-      if ((isPlatform('mobile') && res.status == 200) || !isPlatform('mobile')) {
-        setTimeout(() => {
-          this.spinnerDisplay = false;
-          this.step = 2;
-        }, 1400);
-      } else {
-        this.spinnerDisplay = false;
-      }
-    });
+    // this.userService.askCodeChangeEmail(this.form1.value.mail)
+    // .then((res: any) => {
+    //   if ((isPlatform('mobile') && res.status == 200) || !isPlatform('mobile')) {
+    //     setTimeout(() => {
+    //       this.spinnerDisplay = false;
+    //       this.step = 2;
+    //     }, 1400);
+    //   } else {
+    //     this.spinnerDisplay = false;
+    //   }
+    // });
   }
 
   // Validate the code and change password
@@ -94,17 +94,17 @@ export class EditPwdComponent implements OnInit {
     Haptics.impact({ style: ImpactStyle.Medium });
     this.spinnerDisplay = true;
 
-    this.userService.changeEmail(this.form1.value.mail, this.form2.value.code)
-    .then((res: any) => {
-      if ((isPlatform('mobile') && res.status == 200) || !isPlatform('mobile')) {
-        setTimeout(() => {
-          this.spinnerDisplay = false;
-          this.navCtrl.back();
-        }, 1400);
-      } else {
-        this.errorCode = true;
-        this.spinnerDisplay = false;
-      }
-    });
+    // this.userService.changeEmail(this.form1.value.mail, this.form2.value.code)
+    // .then((res: any) => {
+    //   if ((isPlatform('mobile') && res.status == 200) || !isPlatform('mobile')) {
+    //     setTimeout(() => {
+    //       this.spinnerDisplay = false;
+    //       this.navCtrl.back();
+    //     }, 1400);
+    //   } else {
+    //     this.errorCode = true;
+    //     this.spinnerDisplay = false;
+    //   }
+    // });
   }
 }

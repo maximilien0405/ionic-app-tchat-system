@@ -35,7 +35,6 @@
       "btn_continue": "Continue",
       "box_delete": "Delete account",
       "box_logout": "Log Out",
-
       "ACCOUNT": {
         "header": "Edit profile",
         "label_profile_picture": "Profile picture",
@@ -73,15 +72,15 @@
       },
       "EDIT_NAME": {
         "header": "Change your name",
-        "label_name": "Full name",
-        "placeholder_name": "Your full name",
-        "paragraph": "Once changed, your name will also be modified in the sender application."
+        "label_name": "New name",
+        "placeholder_name": "Your new name",
+        "paragraph": "Once changed, your new name will be edited in your elder and subscription members applications."
       },
       "EDIT_MAIL": {
         "header": "Change your email",
         "paragraph1": "Enter a your new email below to start the process.",
-        "paragraph2": "We sent you a 5 digits code in your new email. Enter it below.",
-        "label_email": "Email",
+        "paragraph2": "To verify your new email, please enter below the 5 digits code we just sent you.",
+        "label_email": "New email",
         "placeholder_email": "Your new email",
         "label_code": "Code",
         "placeholder_code": "5 digits code",

@@ -14,8 +14,9 @@
     <p class="label small-margin-top">{{'SENDER.SETTINGS.EDIT_MAIL.label_email' | translate}}</p>
     <input type="text" class="input" [placeholder]="'SENDER.SETTINGS.EDIT_MAIL.placeholder_email' | translate" formControlName="mail" maxlength="32" autofocus>
 
-    <button class="btn btn-orange small-margin-top" (click)="submitForm1()" [disabled]="form1.get('mail')?.errors">
+    <button class="btn btn-orange btn-icon small-margin-top" (click)="submitForm1()" [disabled]="form1.get('mail')?.errors">
       <span *ngIf="!spinnerDisplay">{{'SENDER.SETTINGS.btn_continue' | translate}}</span>
+      <img *ngIf="!spinnerDisplay" src="../../assets/icons/arrow-right.svg" alt="arrow-right">
 
       <div *ngIf="spinnerDisplay" class="spinner">
         <div class="bounce1"></div>
@@ -34,8 +35,9 @@
     inputmode="numeric" formControlName="code" class="input" type="text" [placeholder]="'SENDER.SETTINGS.EDIT_MAIL.placeholder_code' | translate" maxlength="5">
     <p *ngIf="errorCode" class="text-error">{{'SENDER.SETTINGS.EDIT_MAIL.code_invalid' | translate}}</p>
 
-    <button class="btn btn-orange small-margin-top" (click)="submitForm2()" [disabled]="form2.get('code')?.errors">
+    <button class="btn btn-orange btn-icon small-margin-top" (click)="submitForm2()" [disabled]="form2.get('code')?.errors">
       <span *ngIf="!spinnerDisplay">{{'SENDER.SETTINGS.btn_update' | translate}}</span>
+      <img *ngIf="!spinnerDisplay" src="../../assets/icons/download.svg" alt="update">
 
       <div *ngIf="spinnerDisplay" class="spinner">
         <div class="bounce1"></div>

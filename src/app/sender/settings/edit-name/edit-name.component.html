@@ -9,13 +9,14 @@
 
 <ion-content class="ion-padding">
   <form [formGroup]="form">
-    <p class="paragraph">{{'SENDER.SETTINGS.EDIT_NAME.paragraph' | translate}}</p>
-
-    <p class="label small-margin-top">New name</p>
+    <p class="label">{{'SENDER.SETTINGS.EDIT_NAME.label_name' | translate}}</p>
     <input type="text" class="input" [placeholder]="'SENDER.SETTINGS.EDIT_NAME.placeholder_name' | translate" formControlName="name" maxlength="48" autofocus>
 
-    <button class="btn btn-orange small-margin-top" (click)="submitForm()" [disabled]="form.get('name')?.errors">
+    <p class="paragraph box-warning small-margin-top">{{'SENDER.SETTINGS.EDIT_NAME.paragraph' | translate}}</p>
+
+    <button class="btn btn-orange btn-icon small-margin-top" (click)="submitForm()" [disabled]="form.get('name')?.errors">
       <span *ngIf="!spinnerDisplay">{{'SENDER.SETTINGS.btn_update' | translate}}</span>
+      <img *ngIf="!spinnerDisplay" src="../../assets/icons/download.svg" alt="update">
 
       <div *ngIf="spinnerDisplay" class="spinner">
         <div class="bounce1"></div>

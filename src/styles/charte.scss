@@ -78,7 +78,7 @@ body {
   --height-big: 3.75rem;
 
   --icon-black: invert(35%) sepia(0%) saturate(0%) hue-rotate(258deg) brightness(96%) contrast(96%);
-  --icon-white: invert(100%) sepia(1%) saturate(1754%) hue-rotate(171deg) brightness(85%) contrast(91%);
+  --icon-white: invert(99%) sepia(1%) saturate(2%) hue-rotate(15deg) brightness(106%) contrast(100%);
   --icon-orange: invert(71%) sepia(49%) saturate(6846%) hue-rotate(345deg) brightness(103%) contrast(98%);
   --icon-green: invert(61%) sepia(27%) saturate(487%) hue-rotate(58deg) brightness(100%) contrast(92%);
   --icon-red: invert(34%) sepia(94%) saturate(1575%) hue-rotate(339deg) brightness(111%) contrast(79%);
@@ -375,7 +375,7 @@ input:-webkit-autofill:focus {
   color: white;
 
   img {
-    filter: var(--icon-white);
+    filter: var(--icon-white) !important;
   }
 
   &:active {

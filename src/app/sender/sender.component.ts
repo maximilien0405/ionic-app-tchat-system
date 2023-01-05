@@ -4,13 +4,7 @@ import { SafeArea } from 'capacitor-plugin-safe-area';
 import { ChoiceHomeComponent } from './modals/choice-home/choice-home.component';
 import { ModalController } from '@ionic/angular';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
-import { AuthService } from '../common/services/auth.service';
-import { GetUserService } from '../common/services/get-user.service';
 import { NetworkService } from '../common/services/network.service';
-import { Preferences } from '@capacitor/preferences';
-import { slideUpAnimation } from '../common/animations';
-import { interval } from 'rxjs';
-import { takeWhile } from 'rxjs/operators';
 
 @Component({
   selector: 'app-sender',
@@ -25,8 +19,6 @@ export class SenderComponent implements OnInit {
 
   constructor(private router: Router,
     private modalController: ModalController,
-    private authService: AuthService,
-    private getUserService: GetUserService,
     private networkService: NetworkService) {
     // Get new route when changes
     this.router.events.subscribe((event) => {

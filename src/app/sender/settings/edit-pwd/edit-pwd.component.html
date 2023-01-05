@@ -13,9 +13,9 @@
 
     <p class="label small-margin-top">{{'SENDER.SETTINGS.EDIT_PWD.label_password' | translate}}</p>
     <input type="text" class="input" [placeholder]="'SENDER.SETTINGS.EDIT_PWD.placeholder_password' | translate"
-      formControlName="mail" maxlength="32" autofocus>
+      formControlName="newPassword" maxlength="32" autofocus>
 
-    <button class="btn btn-orange small-margin-top" (click)="submitForm1()" [disabled]="form1.get('mail')?.errors">
+    <button class="btn btn-orange small-margin-top" (click)="submitForm1()" [disabled]="form1.get('newPassword')?.errors">
       <span *ngIf="!spinnerDisplay">{{'SENDER.SETTINGS.btn_continue' | translate}}</span>
 
       <div *ngIf="spinnerDisplay" class="spinner">
