@@ -79,7 +79,7 @@ body {
 
   --icon-black: invert(35%) sepia(0%) saturate(0%) hue-rotate(258deg) brightness(96%) contrast(96%);
   --icon-white: invert(99%) sepia(1%) saturate(2%) hue-rotate(15deg) brightness(106%) contrast(100%);
-  --icon-orange: invert(71%) sepia(49%) saturate(6846%) hue-rotate(345deg) brightness(103%) contrast(98%);
+  --icon-orange: brightness(0) saturate(100%) invert(84%) sepia(34%) saturate(4296%) hue-rotate(319deg) brightness(99%) contrast(85%);;
   --icon-green: invert(61%) sepia(27%) saturate(487%) hue-rotate(58deg) brightness(100%) contrast(92%);
   --icon-red: invert(34%) sepia(94%) saturate(1575%) hue-rotate(339deg) brightness(111%) contrast(79%);
 }
@@ -103,7 +103,6 @@ body.dark-theme {
   --border-gray-hover: #696969aa;
 
   --icon-black: invert(98%) sepia(0%) saturate(25%) hue-rotate(188deg) brightness(82%) contrast(84%);;
-  --icon-white: invert(35%) sepia(0%) saturate(0%) hue-rotate(258deg) brightness(96%) contrast(96%);
   --icon-green: invert(43%) sepia(14%) saturate(1047%) hue-rotate(59deg) brightness(93%) contrast(83%);
 }
 
