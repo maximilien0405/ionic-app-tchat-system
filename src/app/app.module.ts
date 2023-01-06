@@ -26,7 +26,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     DesignSystemComponent,
     SenderComponent,
     ChoiceHomeComponent,
-    CreateReminderComponent,
+    CreateReminderComponent
   ],
   imports: [
     IonicModule.forRoot(),

@@ -17,6 +17,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { SubscriptionComponent } from './subscription/subscription.component';
 import { CreateReminderComponent } from './modals/create-reminder/create-reminder.component';
+import { AutoFocusDirective } from '../common/directives/auto-focus.directive';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { CreateReminderComponent } from './modals/create-reminder/create-reminde
     LogoutComponent,
     DeleteAccountComponent,
     ProfilePictureComponent,
-    HomeSettingsComponent
+    HomeSettingsComponent,
   ],
   imports: [
     FormsModule,

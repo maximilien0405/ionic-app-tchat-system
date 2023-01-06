@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
 import { ImageCropperModule } from 'ngx-image-cropper';
+import { AutoFocusDirective } from 'src/app/common/directives/auto-focus.directive';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { ImageCropperModule } from 'ngx-image-cropper';
     EditNameComponent,
     EditPwdComponent,
     HelpComponent,
+    AutoFocusDirective
   ],
   imports: [
     CommonModule,

@@ -10,7 +10,7 @@
 <ion-content class="ion-padding">
   <form [formGroup]="form">
     <p class="label">{{'SENDER.SETTINGS.EDIT_NAME.label_name' | translate}}</p>
-    <input type="text" class="input" [placeholder]="'SENDER.SETTINGS.EDIT_NAME.placeholder_name' | translate" formControlName="name" maxlength="48" autofocus>
+    <input type="text" class="input" [placeholder]="'SENDER.SETTINGS.EDIT_NAME.placeholder_name' | translate" formControlName="name" maxlength="48" appAutoFocusDirective>
 
     <p class="paragraph box-warning small-margin-top">{{'SENDER.SETTINGS.EDIT_NAME.paragraph' | translate}}</p>
 
