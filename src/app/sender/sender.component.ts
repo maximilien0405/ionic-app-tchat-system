@@ -59,7 +59,8 @@ export class SenderComponent implements OnInit {
       component: ChoiceHomeComponent,
       breakpoints: [0, 1],
       initialBreakpoint: 1,
-      cssClass: 'auto-height'
+      cssClass: 'auto-height',
+      id: 'modal-home'
     });
 
     if (type == 'home') {

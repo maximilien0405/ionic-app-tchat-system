@@ -16,6 +16,7 @@ import { ProfilePictureComponent } from './modals/profile-picture/profile-pictur
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { SubscriptionComponent } from './subscription/subscription.component';
+import { CreateReminderComponent } from './modals/create-reminder/create-reminder.component';
 
 @NgModule({
   declarations: [
