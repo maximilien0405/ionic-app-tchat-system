@@ -137,6 +137,17 @@ ion-modal.auto-height {
   }
 }
 
+ion-modal {
+  .ion-page {
+    border-radius: var(--radius-base);
+    padding: 1.3rem 1rem var(--ion-safe-area-bottom) 1rem;
+  }
+
+  &::part(content) {
+    border-radius: var(--radius-base) var(--radius-base) 0px 0px;
+  }
+}
+
 ion-content {
   touch-action: none !important;
 }
