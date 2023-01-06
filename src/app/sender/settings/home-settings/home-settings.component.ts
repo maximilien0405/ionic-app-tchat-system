@@ -60,21 +60,29 @@ export class HomeSettingsComponent implements OnInit {
   public async openModal(type: string) {
     const modalTheme = await this.modalController.create({
       component: SelectThemeComponent,
+      breakpoints: [0, 1],
+      initialBreakpoint: 1,
       cssClass: 'auto-height'
     });
 
     const modalLang = await this.modalController.create({
       component: SelectLanguageComponent,
+      breakpoints: [0, 1],
+      initialBreakpoint: 1,
       cssClass: 'auto-height'
     });
 
     const modalLogout = await this.modalController.create({
       component: LogoutComponent,
+      breakpoints: [0, 1],
+      initialBreakpoint: 1,
       cssClass: 'auto-height'
     });
 
     const modalDeleteAccount = await this.modalController.create({
       component: DeleteAccountComponent,
+      breakpoints: [0, 1],
+      initialBreakpoint: 1,
       cssClass: 'auto-height'
     });
 

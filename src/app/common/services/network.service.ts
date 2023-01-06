@@ -60,7 +60,7 @@ export class NetworkService {
   // Ping the server
   public async ping() {
     const options = {
-      url: `${this.API_URL}/`,
+      url: `${this.API_URL}`,
       headers: { 'Content-Type': 'application/json' },
     };
 

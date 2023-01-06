@@ -255,6 +255,11 @@ image-cropper .ngx-ic-source-image {
   display: flex;
   flex-direction: column;
   align-items: flex-start !important;
+  padding-bottom: 1rem !important;
+
+  p {
+    margin-bottom: 1rem;
+  }
 
   .separator {
     margin: 0.9375rem 0rem 0.9375rem 0rem !important;
@@ -271,11 +276,16 @@ image-cropper .ngx-ic-source-image {
       display: flex;
       align-items: center;
       gap: 0.625rem;
+
+      img {
+        height: 1.125rem;
+        filter: var(--icon-black);
+      }
     }
 
     img {
-      height: 1.125rem;
-      filter: var(--icon-black);
+      height: 1.2rem;
+      filter: var(--icon-orange);
     }
   }
 }
@@ -290,4 +300,10 @@ image-cropper .ngx-ic-source-image {
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+.home-options-container {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
 }

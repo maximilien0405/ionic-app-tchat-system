@@ -57,6 +57,8 @@ export class SenderComponent implements OnInit {
 
     const modalHome = await this.modalController.create({
       component: ChoiceHomeComponent,
+      breakpoints: [0, 1],
+      initialBreakpoint: 1,
       cssClass: 'auto-height'
     });
 

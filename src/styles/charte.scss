@@ -433,9 +433,9 @@ input:-webkit-autofill:focus {
   }
 }
 
-.btn-medium {
+body .btn-medium {
   width: max-content !important;
-  height: 2.8125rem;
+  height: 2.8125rem !important;
   padding: 0rem 1.125rem;
   border-radius: 0.75rem !important;
   font-size: 0.875rem;
