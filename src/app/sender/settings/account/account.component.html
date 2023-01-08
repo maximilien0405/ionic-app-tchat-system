@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content *ngIf="user" class="ion-padding">
+<ion-content *ngIf="user" class="ion-padding" forceOverscroll="false">
   <p class="label">{{'SENDER.SETTINGS.ACCOUNT.label_profile_picture' | translate}}</p>
   <div class="profile-picture-container">
     <img (click)="openImageSelector()" [src]="user.profilePictureUrl" [class.form-error]="imageError">

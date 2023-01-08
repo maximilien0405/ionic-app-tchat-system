@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content class="ion-padding" forceOverscroll="false">
   <form [formGroup]="form">
     <p class="label">{{'SENDER.SETTINGS.EDIT_NAME.label_name' | translate}}</p>
     <input type="text" class="input" [placeholder]="'SENDER.SETTINGS.EDIT_NAME.placeholder_name' | translate" formControlName="name" maxlength="48" appAutoFocusDirective>

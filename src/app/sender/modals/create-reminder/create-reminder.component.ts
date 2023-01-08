@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-create-reminder',
@@ -6,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['../../sender.component.scss'],
 })
 export class CreateReminderComponent implements OnInit {
+  name: string;
 
-  constructor() { }
+  public ngOnInit(){}
 
-  ngOnInit() {}
+  constructor(private modalController: ModalController) { }
 
+  cancel() {
+    return this.modalController.dismiss(null, 'cancel');
+  }
+
+  confirm() {
+    return this.modalController.dismiss(this.name, 'confirm');
+  }
 }

@@ -22,8 +22,6 @@ export class ChoiceHomeComponent implements OnInit {
 
     const modalReminder = await this.modalController.create({
       component: CreateReminderComponent,
-      breakpoints: [0, 0.85],
-      initialBreakpoint: 0.85,
     });
 
     if (name == 'reminder') {

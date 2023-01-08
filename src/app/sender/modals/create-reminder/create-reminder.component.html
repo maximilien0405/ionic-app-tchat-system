@@ -1,5 +1,15 @@
-<p class="label">Name</p>
-
-<textarea type="text" class="input" placeholder="Name of the reminder"></textarea>te
-
-<button class="btn btn-orange">Create</button>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="medium" (click)="cancel()">Cancel</ion-button>
+    </ion-buttons>
+    <ion-title>New reminder</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="confirm()">Create</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding" forceOverscroll="false">
+  <p class="label">Name</p>
+  <textarea type="text" class="input" placeholder="Name of the reminder"></textarea>te
+</ion-content>

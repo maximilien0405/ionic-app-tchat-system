@@ -336,6 +336,11 @@ input:-webkit-autofill:focus {
   }
 }
 
+textarea {
+  line-height: var(--height-base !important);
+  resize: none !important;
+}
+
 /* ---------------------------------------------------
   BUTTONS
 ----------------------------------------------------- */

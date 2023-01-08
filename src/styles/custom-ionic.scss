@@ -115,6 +115,14 @@ ion-back-button {
   text-transform: capitalize !important;
 }
 
+ion-button {
+  font-size: 1rem !important;
+  font-family: "Poppins";
+  font-weight: 500;
+  --color: var(--black);
+  --ripple-color: transparent;
+}
+
 ion-modal.auto-height {
   align-items: flex-end;
   --height: auto;
@@ -137,21 +145,14 @@ ion-modal.auto-height {
   }
 }
 
-ion-modal {
-  .ion-page {
-    border-radius: var(--radius-base);
-    padding: 1.3rem 1rem var(--ion-safe-area-bottom) 1rem;
-  }
-
-  &::part(content) {
-    border-radius: var(--radius-base) var(--radius-base) 0px 0px;
-  }
-}
-
 ion-content {
   touch-action: none !important;
 }
 
 ion-tab-button {
   --ripple-color: transparent;
+}
+
+.ion-page {
+  justify-content: unset !important;
 }
