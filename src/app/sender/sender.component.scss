@@ -18,6 +18,7 @@
 @media (max-width: 400px) {
   ion-tab-button {
     padding: 0.4rem 0.7rem 0rem 0.7rem !important;
+    width: 3rem !important;
   }
 
   .icons-container img {
@@ -59,7 +60,7 @@ ion-label {
 
 ion-tab-button {
   padding: 0.7rem 1em 0rem 1rem;
-  width: 3rem;
+  width: 3.4rem;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   --padding-start: 0px !important;
