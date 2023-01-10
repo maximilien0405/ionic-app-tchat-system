@@ -5,11 +5,13 @@ import { ChoiceHomeComponent } from './modals/choice-home/choice-home.component'
 import { ModalController } from '@ionic/angular';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
 import { NetworkService } from '../common/services/network.service';
+import { fadeAnimation } from '../common/animations';
 
 @Component({
   selector: 'app-sender',
   templateUrl: './sender.component.html',
   styleUrls: ['./sender.component.scss'],
+  animations: [fadeAnimation]
 })
 export class SenderComponent implements OnInit {
   public route: String;
@@ -23,6 +25,7 @@ export class SenderComponent implements OnInit {
     // Get new route when changes
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
+        console.log(this.router.url.slice(8))
         if(this.router.url.includes('settings')) {
           this.route = 'settings';
         } else {

@@ -17,7 +17,11 @@
 
 @media (max-width: 400px) {
   ion-tab-button {
-    padding: 1rem 0.7rem 0rem 0.7rem !important;
+    padding: 0.4rem 0.7rem 0rem 0.7rem !important;
+  }
+
+  .icons-container img {
+    height: 1.675rem !important;
   }
 }
 
@@ -32,35 +36,45 @@
 
   .icons-container {
     display: flex;
-    max-width: 95%;
+    gap: 1.125rem;
     margin: 0 auto;
-    gap: 0.9375rem;
-    margin: 0 auto;
-    justify-content: space-evenly;
+    justify-content: space-between;
 
     img {
       height: 1.875rem;
       filter: var(--icon-black);
     }
-
-    .icon-solid {
-      filter: var(--icon-orange) !important;
-    }
+    // .icon-solid {
+    //   filter: var(--icon-orange) !important;
+    // }
   }
 }
 
+ion-label {
+  color: var(--black);
+  font-size: 10px;
+  position: fixed;
+  margin-top: 2.875rem;
+}
+
 ion-tab-button {
-  padding: 1rem 1em 0rem 1rem;
+  padding: 0.7rem 1em 0rem 1rem;
+  width: 3rem;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   --padding-start: 0px !important;
   --padding-end: 0px !important;
 
-  &:active {
-    transform: scale(0.86);
-    -webkit-transform: scale(0.86);
-    -moz-transform: scale(0.86);
+  div {
+    max-height: fit-content;
+    max-width: fit-content;
   }
+
+  // &:active {
+  //   transform: scale(0.96);
+  //   -webkit-transform: scale(0.96);
+  //   -moz-transform: scale(0.96);
+  // }
 }
 
 .home-icon {
@@ -72,7 +86,10 @@ ion-tab-button {
   align-items: center;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
-  margin: 0rem 0.8125rem 0rem 0.8125rem;
+  margin: 0rem 0.625rem 0rem 0.625rem;
+  height: 2.9375rem;
+  margin-top: -20px;
+  z-index: 100;
 
   img {
     height: 1.5625rem !important;
