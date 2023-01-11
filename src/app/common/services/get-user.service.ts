@@ -1,11 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { environment } from 'src/environments/environment';
 import { Preferences } from '@capacitor/preferences';
 import { UserService } from './user.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { isPlatform } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
@@ -22,17 +18,15 @@ export class GetUserService {
       // Decode the token to get the id
       const decodedToken = this.helper.decodeToken(value);
 
-      this.userService.findOne(decodedToken.id)
-        .then((res) => {
-          if ((isPlatform('mobile') && res.status == 200) || !isPlatform('mobile')) {
-            const setUser = async () => {
-              await Preferences.set({
-                key: 'user',
-                value: JSON.stringify(res),
-              });
-            }; setUser();
-          }
-        });
+      this.userService.findOne(decodedToken.id).catch((err) => { console.log(err) })
+      .then((res: any) => {
+        const setUser = async () => {
+          await Preferences.set({
+            key: 'user',
+            value: JSON.stringify(res.data),
+          });
+        }; setUser();
+      });
     }
   };
 }

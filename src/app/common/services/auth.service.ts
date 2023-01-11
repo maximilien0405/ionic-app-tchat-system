@@ -28,7 +28,6 @@ export class AuthService {
       headers: { 'Content-Type': 'application/json' },
     };
 
-    const response = await CapacitorHttp.post(options);
-    return response.data;
+    return await CapacitorHttp.post(options);
   }
 }

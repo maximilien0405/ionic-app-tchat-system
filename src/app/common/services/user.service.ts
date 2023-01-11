@@ -31,8 +31,7 @@ export class UserService {
       headers: { 'Content-Type': 'application/json' },
     };
 
-    const response = await CapacitorHttp.get(options);
-    return response.data;
+    return await CapacitorHttp.get(options);
   }
 
   // Set new profile picture
@@ -48,10 +47,7 @@ export class UserService {
       }
     };
 
-    const response = await axios.post(url, data, config)
-      .then(res => console.log(res))
-      .catch(err => console.log(err));
-    return response;
+    return await axios.post(url, data, config);
   }
 
   // Set full name
@@ -65,8 +61,7 @@ export class UserService {
       data: { fullName }
     };
 
-    const response = await CapacitorHttp.patch(options).catch(err => { return of(err) });
-    return response;
+    return await CapacitorHttp.patch(options);
   }
 
   // Ask code change email
@@ -80,8 +75,7 @@ export class UserService {
       data: { newEmail }
     };
 
-    const response = await CapacitorHttp.post(options).catch(err => console.log(err));
-    return response;
+    return await CapacitorHttp.post(options);
   }
 
   // Change email
@@ -95,7 +89,6 @@ export class UserService {
       data: { newEmail, code }
     };
 
-    const response = await CapacitorHttp.post(options).catch(err => console.log(err));
-    return response;
+    return await CapacitorHttp.post(options);
   }
 }

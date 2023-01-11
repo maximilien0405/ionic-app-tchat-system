@@ -24,7 +24,6 @@ export class FeedComponent implements OnInit {
     // Check the API status changes
     this.networkService.subjectApiOrNetworkError.subscribe(res => {
       setTimeout(() => {
-        console.log(res)
         this.APIError = res.apiError;
         this.networkError = res.networkError;
       }, 500);
@@ -34,19 +33,17 @@ export class FeedComponent implements OnInit {
   ngOnInit(): void {}
 
   public login() {
-      // Login the user (temporarely)
-      this.authService.login('maximilien.zimmermann@ik.me', 'Maximilien007')
-      .then((res) => {
-        if ((isPlatform('mobile') && res.status == 200) || !isPlatform('mobile')) {
-          const setToken = async () => {
-            await Preferences.set({
-              key: 'token',
-              value: res.token,
-            });
+    // Login the user (temporarely)
+    this.authService.login('maximilien.zimmermann@ik.me', 'Maximilien007')
+    .then((res: any) => {
+      const setToken = async () => {
+        await Preferences.set({
+          key: 'token',
+          value: res.data.token,
+        });
 
-            this.getUserService.setUser();
-          }; setToken();
-        }
-      });
+        this.getUserService.setUser();
+      }; setToken();
+    });
   }
 }

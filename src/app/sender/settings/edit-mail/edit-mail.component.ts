@@ -76,16 +76,12 @@ export class EditMailComponent implements OnInit {
     Haptics.impact({ style: ImpactStyle.Medium });
     this.spinnerDisplay = true;
 
-    this.userService.askCodeChangeEmail(this.form1.value.mail)
+    this.userService.askCodeChangeEmail(this.form1.value.mail).catch((err) => { this.spinnerDisplay = false })
     .then((res: any) => {
-      if ((isPlatform('mobile') && res.status == 200) || !isPlatform('mobile')) {
-        setTimeout(() => {
-          this.spinnerDisplay = false;
-          this.step = 2;
-        }, 1400);
-      } else {
+      setTimeout(() => {
         this.spinnerDisplay = false;
-      }
+        this.step = 2;
+      }, 1400);
     });
   }
 
@@ -95,27 +91,22 @@ export class EditMailComponent implements OnInit {
     Haptics.impact({ style: ImpactStyle.Medium });
     this.spinnerDisplay = true;
 
-    this.userService.changeEmail(this.form1.value.mail, this.form2.value.code)
+    this.userService.changeEmail(this.form1.value.mail, this.form2.value.code).catch((err) => { this.errorCode = true; this.spinnerDisplay = false; })
     .then((res: any) => {
-      if ((isPlatform('mobile') && res.status == 200) || !isPlatform('mobile')) {
-        const changeMail = async () => {
-          await Preferences.set({
-            key: 'change-value',
-            value: 'mail',
-          });
-        }; changeMail();
+      const changeMail = async () => {
+        await Preferences.set({
+          key: 'change-value',
+          value: 'mail',
+        });
+      }; changeMail();
 
-        // Get updated user
-        this.getUserService.setUser();
+      // Get updated user
+      this.getUserService.setUser();
 
-        setTimeout(() => {
-          this.spinnerDisplay = false;
-          this.navCtrl.back();
-        }, 1400);
-      } else {
-        this.errorCode = true;
+      setTimeout(() => {
         this.spinnerDisplay = false;
-      }
+        this.navCtrl.back();
+      }, 1400);
     });
   }
 }

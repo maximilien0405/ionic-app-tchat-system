@@ -37,26 +37,22 @@ export class EditNameComponent implements OnInit {
     Haptics.impact({ style: ImpactStyle.Medium });
     this.spinnerDisplay = true;
 
-    this.userService.setFullname(this.form.value.name)
+    this.userService.setFullname(this.form.value.name).catch((err) => { this.spinnerDisplay = false })
     .then((res: any) => {
-      if ((isPlatform('mobile') && res.status == 200) || !isPlatform('mobile')) {
-        const changeName = async () => {
-          await Preferences.set({
-            key: 'change-value',
-            value: 'name',
-          });
-        }; changeName();
+      const changeName = async () => {
+        await Preferences.set({
+          key: 'change-value',
+          value: 'name',
+        });
+      }; changeName();
 
-        // Get updated user
-        this.getUserService.setUser();
+      // Get updated user
+      this.getUserService.setUser();
 
-        setTimeout(() => {
-          this.spinnerDisplay = false;
-          this.navCtrl.back();
-        }, 1400);
-      } else {
+      setTimeout(() => {
         this.spinnerDisplay = false;
-      }
+        this.navCtrl.back();
+      }, 1400);
     });
   }
 }

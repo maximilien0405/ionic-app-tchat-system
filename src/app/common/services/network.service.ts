@@ -3,7 +3,6 @@ import { BehaviorSubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { CapacitorHttp } from '@capacitor/core';
 import { Network } from '@capacitor/network';
-import { isPlatform } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
@@ -22,30 +21,19 @@ export class NetworkService {
     const status = await Network.getStatus();
 
     // Check if api has an error
-    if (!isPlatform('mobile')) {
-      await this.ping().catch(err => {
-        APIError = true;
-      })
-      console.log("asdansdasiosdnio")
-    } else if (isPlatform('mobile')) {
-      await this.ping().then(res => {
-        if (res.status != 200) {
-          APIError = true;
-        }
-      })
-    }
+    await this.ping().catch(err => { APIError = true })
 
     if(status.connected == false) {
       networkError = true;
     }
 
-    console.log(status)
-
     // Update the value and send to feed component
     this.hasApiOrNetworkError.next({ apiError: APIError, networkError: networkError });
 
     Network.addListener('networkStatusChange', status => {
-      console.log(status)
+
+      console.log("Status change", status)
+
       if(!status.connected) {
         this.hasApiOrNetworkError.next({ apiError: false, networkError: true });
       } else {
@@ -64,7 +52,6 @@ export class NetworkService {
       headers: { 'Content-Type': 'application/json' },
     };
 
-    const response = await CapacitorHttp.get(options);
-    return response;
+    return await CapacitorHttp.get(options);
   }
 }
