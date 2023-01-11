@@ -9,6 +9,8 @@ import { Network } from '@capacitor/network';
 })
 export class NetworkService {
   private readonly API_URL = environment.apiUrl;
+  private APIError = false;
+  private networkError = false;
   private hasApiOrNetworkError = new BehaviorSubject<any>({});
   subjectApiOrNetworkError = this.hasApiOrNetworkError.asObservable();
 
@@ -16,23 +18,25 @@ export class NetworkService {
 
   // Check if API and network status
   public async checkAPIAndNetworkStatus() {
-    let APIError = false;
-    let networkError = false;
     const status = await Network.getStatus();
 
     // Check if api has an error
-    await this.ping().then((res: any) => {
+    await this.ping()
+    .catch((err) => {
+      this.APIError = true;
+    })
+    .then((res: any) => {
       if(res.status != 200) {
-        APIError = true;
+        this.APIError = true;
       }
     })
 
     if(status.connected == false) {
-      networkError = true;
+      this.networkError = true;
     }
 
     // Update the value and send to feed component
-    this.hasApiOrNetworkError.next({ apiError: APIError, networkError: networkError });
+    this.hasApiOrNetworkError.next({ apiError: this.APIError, networkError: this.networkError });
 
     Network.addListener('networkStatusChange', status => {
 
@@ -45,8 +49,8 @@ export class NetworkService {
       }
     });
 
-    console.log("Api error", APIError)
-    console.log("Network Error", networkError)
+    console.log("Api error", this.APIError)
+    console.log("Network Error", this.networkError)
   }
 
   // Ping the server
@@ -56,6 +60,6 @@ export class NetworkService {
       headers: { 'Content-Type': 'application/json' },
     };
 
-    return await CapacitorHttp.get(options);
+    return await CapacitorHttp.get(options).catch(err => this.APIError = true);
   }
 }

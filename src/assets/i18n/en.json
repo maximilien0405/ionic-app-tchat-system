@@ -88,7 +88,16 @@
         "code_invalid": "The code is not valid anymore."
       },
       "EDIT_PWD": {
-        "header": "Change your password"
+        "header": "Change your password",
+        "paragraph1": "To set a new password, enter below your current and new password.",
+        "paragraph2": "To validate your new password, please enter below the 5 digits code we just sent you by email.",
+        "label_current_password": "Current password",
+        "placeholder_current_password": "Your current password",
+        "label_new_password": "New password",
+        "placeholder_new_password": "Your new password",
+        "label_code": "Code",
+        "placeholder_code": "5 digits code",
+        "code_invalid": "The code is not valid anymore."
       },
       "PROFILE_PICTURE": {
         "header": "Crop your picture"

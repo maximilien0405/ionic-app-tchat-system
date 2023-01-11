@@ -72,6 +72,7 @@ export class EditPwdComponent implements OnInit {
 
   // Ask for a code
   public submitForm1(): void {
+    this.submittedForm = true;
     Haptics.impact({ style: ImpactStyle.Medium });
     this.spinnerDisplay = true;
 
