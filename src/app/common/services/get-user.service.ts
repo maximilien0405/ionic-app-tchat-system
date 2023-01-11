@@ -18,14 +18,16 @@ export class GetUserService {
       // Decode the token to get the id
       const decodedToken = this.helper.decodeToken(value);
 
-      this.userService.findOne(decodedToken.id).catch((err) => { console.log(err) })
+      this.userService.findOne(decodedToken.id)
       .then((res: any) => {
-        const setUser = async () => {
-          await Preferences.set({
-            key: 'user',
-            value: JSON.stringify(res.data),
-          });
-        }; setUser();
+        if(res.status == 200) {
+          const setUser = async () => {
+            await Preferences.set({
+              key: 'user',
+              value: JSON.stringify(res.data),
+            });
+          }; setUser();
+        }
       });
     }
   };

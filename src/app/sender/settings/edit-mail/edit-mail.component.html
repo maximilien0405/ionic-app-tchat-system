@@ -12,7 +12,8 @@
     <p class="paragraph">{{'SENDER.SETTINGS.EDIT_MAIL.paragraph1' | translate}}</p>
 
     <p class="label small-margin-top">{{'SENDER.SETTINGS.EDIT_MAIL.label_email' | translate}}</p>
-    <input type="text" class="input" [placeholder]="'SENDER.SETTINGS.EDIT_MAIL.placeholder_email' | translate" formControlName="mail" maxlength="32" appAutoFocusDirective>
+    <input type="text" class="input" [class.form-error]="(submittedForm && form2.get('mail')?.errors) || errorCode" [placeholder]="'SENDER.SETTINGS.EDIT_MAIL.placeholder_email' | translate" formControlName="mail" maxlength="32" appAutoFocusDirective>
+    <p *ngIf="errorCode" class="text-error">{{'SENDER.SETTINGS.EDIT_MAIL.mail_invalid' | translate}}</p>
 
     <button class="btn btn-orange btn-icon small-margin-top" (click)="submitForm1()" [disabled]="form1.get('mail')?.errors">
       <span *ngIf="!spinnerDisplay">{{'SENDER.SETTINGS.btn_continue' | translate}}</span>

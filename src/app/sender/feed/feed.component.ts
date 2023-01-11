@@ -36,14 +36,16 @@ export class FeedComponent implements OnInit {
     // Login the user (temporarely)
     this.authService.login('maximilien.zimmermann@ik.me', 'Maximilien007')
     .then((res: any) => {
-      const setToken = async () => {
-        await Preferences.set({
-          key: 'token',
-          value: res.data.token,
-        });
-
-        this.getUserService.setUser();
-      }; setToken();
+      if(res.status == 201) {
+        const setToken = async () => {
+          await Preferences.set({
+            key: 'token',
+            value: res.data.token,
+          });
+  
+          this.getUserService.setUser();
+        }; setToken();
+      }
     });
   }
 }

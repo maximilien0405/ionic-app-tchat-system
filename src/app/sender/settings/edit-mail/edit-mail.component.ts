@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
 import { Preferences } from '@capacitor/preferences';
-import { isPlatform, NavController } from '@ionic/angular';
-import { of, Subject } from 'rxjs';
+import { NavController } from '@ionic/angular';
+import { Subject } from 'rxjs';
 import { slideRightAnimation } from 'src/app/common/animations';
 import { GetUserService } from 'src/app/common/services/get-user.service';
 import { UserService } from 'src/app/common/services/user.service';
@@ -73,15 +73,24 @@ export class EditMailComponent implements OnInit {
 
   // Ask for a code
   public submitForm1(): void {
+    this.submittedForm = true;
     Haptics.impact({ style: ImpactStyle.Medium });
     this.spinnerDisplay = true;
 
-    this.userService.askCodeChangeEmail(this.form1.value.mail).catch((err) => { this.spinnerDisplay = false })
+    this.userService.askCodeChangeEmail(this.form1.value.mail)
     .then((res: any) => {
-      setTimeout(() => {
-        this.spinnerDisplay = false;
-        this.step = 2;
-      }, 1400);
+      if(res.status != 201) {
+        this.errorCode = true; 
+        this.spinnerDisplay = false; 
+      }
+      else {
+        setTimeout(() => {
+          this.spinnerDisplay = false;
+          this.submittedForm = false;
+          this.step = 2;
+          this.errorCode = false;
+        }, 1400);
+      }
     });
   }
 
@@ -91,22 +100,28 @@ export class EditMailComponent implements OnInit {
     Haptics.impact({ style: ImpactStyle.Medium });
     this.spinnerDisplay = true;
 
-    this.userService.changeEmail(this.form1.value.mail, this.form2.value.code).catch((err) => { this.errorCode = true; this.spinnerDisplay = false; })
+    this.userService.changeEmail(this.form1.value.mail, Number(this.form2.value.code))
     .then((res: any) => {
-      const changeMail = async () => {
-        await Preferences.set({
-          key: 'change-value',
-          value: 'mail',
-        });
-      }; changeMail();
-
-      // Get updated user
-      this.getUserService.setUser();
-
-      setTimeout(() => {
-        this.spinnerDisplay = false;
-        this.navCtrl.back();
-      }, 1400);
+      if(res.status != 201) {
+        this.errorCode = true; 
+        this.spinnerDisplay = false; 
+      } 
+      else {
+        const changeMail = async () => {
+          await Preferences.set({
+            key: 'change-value',
+            value: 'mail',
+          });
+        }; changeMail();
+  
+        // Get updated user
+        this.getUserService.setUser();
+  
+        setTimeout(() => {
+          this.spinnerDisplay = false;
+          this.navCtrl.back();
+        }, 1400);
+      }
     });
   }
 }

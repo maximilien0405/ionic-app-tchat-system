@@ -42,7 +42,6 @@ export class SenderComponent implements OnInit {
 
     // Check the API status changes
     this.networkService.subjectApiOrNetworkError.subscribe(res => {
-      console.log(res)
       this.apiError = res.apiError;
       this.networkError = res.networkError;
     })

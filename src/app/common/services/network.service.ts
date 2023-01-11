@@ -21,7 +21,11 @@ export class NetworkService {
     const status = await Network.getStatus();
 
     // Check if api has an error
-    await this.ping().catch(err => { APIError = true })
+    await this.ping().then((res: any) => {
+      if(res.status != 200) {
+        APIError = true;
+      }
+    })
 
     if(status.connected == false) {
       networkError = true;
