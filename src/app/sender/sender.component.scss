@@ -33,7 +33,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-bottom: 0.625rem;
+  padding-bottom: 0.3125rem;
+  padding-top: 0.625rem;
 
   .icons-container {
     display: flex;
@@ -88,9 +89,6 @@ ion-tab-button {
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   margin: 0rem 0.625rem 0rem 0.625rem;
-  height: 2.9375rem;
-  margin-top: -0.9375rem;
-  z-index: 100;
 
   img {
     height: 1.5625rem !important;
@@ -236,7 +234,7 @@ image-cropper .ngx-ic-source-image {
   flex-direction: column;
   height: 100%;
   overflow: hidden;
-  gap: 16px;
+  gap: 1rem;
 }
 
 .box {
@@ -322,6 +320,6 @@ image-cropper .ngx-ic-source-image {
 
 .home-options-container {
   display: grid;
-  gap: 16px;
+  gap: 1rem;
   grid-template-columns: 1fr;
 }

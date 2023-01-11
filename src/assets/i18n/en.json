@@ -78,10 +78,11 @@
       },
       "EDIT_MAIL": {
         "header": "Change your email",
-        "paragraph1": "Enter a your new email below to start the process.",
+        "paragraph1": "Enter a your new email below to change your email and recieve a validation code.",
         "paragraph2": "To verify your new email, please enter below the 5 digits code we just sent you.",
         "label_email": "New email",
         "placeholder_email": "Your new email",
+        "mail_invalid": "Email already used for another account.",
         "label_code": "Code",
         "placeholder_code": "5 digits code",
         "code_invalid": "The code is not valid anymore."
