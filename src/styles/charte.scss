@@ -344,7 +344,7 @@ textarea {
 ----------------------------------------------------- */
 
 .btn {
-  min-height: var(--height-base);
+  height: var(--height-base);
   width: 100%;
   border-radius: var(--radius-full);
   cursor: pointer;
@@ -436,13 +436,13 @@ textarea {
   }
 }
 
-body .btn-medium {
+.btn-medium {
   width: max-content !important;
-  height: 2.8125rem !important;
-  padding: 0rem 1.125rem;
+  height: fit-content !important;
+  padding: 0.7rem 1.125rem;
+  line-height: unset !important;
   border-radius: 0.75rem !important;
   font-size: 0.875rem;
-  line-height: 2.8125rem;
 }
 
 /* ---------------------------------------------------
