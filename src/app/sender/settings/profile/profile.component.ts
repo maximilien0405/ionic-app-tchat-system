@@ -2,11 +2,9 @@ import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/common/models/user.model';
 import { Preferences } from '@capacitor/preferences';
-import { GetUserService } from 'src/app/common/services/get-user.service';
 import { Camera, CameraResultType, Photo } from '@capacitor/camera';
-import { ModalController, ToastController } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
 import { ProfilePictureComponent } from '../../modals/profile-picture/profile-picture.component';
-import { SafeArea } from 'capacitor-plugin-safe-area';
 import { TranslateService } from '@ngx-translate/core';
 import { slideUpAnimation } from 'src/app/common/animations';
 
@@ -29,9 +27,7 @@ export class ProfileComponent implements OnInit {
   public toastMessage: string;
 
   constructor(private formBuilder: UntypedFormBuilder,
-    private getUserService: GetUserService,
     private modalController: ModalController,
-    private toastController: ToastController,
     private translateService: TranslateService)
   { }
 

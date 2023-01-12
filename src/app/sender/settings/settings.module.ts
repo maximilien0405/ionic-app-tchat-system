@@ -13,12 +13,16 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { AutoFocusDirective } from 'src/app/common/directives/auto-focus.directive';
 import { ProfileComponent } from './profile/profile.component';
+import { SecurityComponent } from './security/security.component';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 
 @NgModule({
   declarations: [
     AboutComponent,
     ProfileComponent,
+    SecurityComponent,
+    NotificationsComponent,
     EditMailComponent,
     EditNameComponent,
     EditPwdComponent,

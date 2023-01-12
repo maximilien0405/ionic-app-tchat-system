@@ -32,29 +32,6 @@
     </div>
   </div>
 
-  <!--<p class="label margin-top">{{'SENDER.SETTINGS.PROFILE.label_password' | translate}}</p>
-  <div class="input-icon">
-    <input type="password" value="abcdefghi" class="input" readonly>
-    <div class="icon-right" [routerLink]="['/sender/settings/edit-pwd']" router-direction="forward" ontouchstart>
-      <img src="../../../../assets/icons/edit.svg" alt="edit">
-    </div>
-  </div>-->
-
-  <div class="separator"></div>
-
-  <p class="label">{{'SENDER.SETTINGS.PROFILE.label_security' | translate}}</p>
-  <div class="list-container">
-    <div class="select-box select-start" [routerLink]="['/sender/settings/edit-pwd']" router-direction="forward" ontouchstart>
-      {{'SENDER.SETTINGS.PROFILE.box_edit_pwd' | translate}}
-      <img src="../../assets/icons/lock.svg" alt="">
-    </div>
-    <div class="select-box select-end" [routerLink]="['/sender/settings/reset-pwd']" router-direction="forward" ontouchstart>
-      {{'SENDER.SETTINGS.PROFILE.box_forgot_pwd' | translate}}
-      <img src="../../assets/icons/small-repeat.svg" alt="logout">
-    </div>
-  </div>
-
-
   <div @slideUpAnimation *ngIf="displayToast" class="absolute-bottom">
     <div class="toast toast-success">
       <img src="../../../../assets/icons/checkmark.svg" alt="">
