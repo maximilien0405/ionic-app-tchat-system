@@ -27,7 +27,7 @@
       "btn_edit": "Edit",
       "HOME_SETTINGS": {
         "label_account": "Account",
-        "box_profile": "Public profile",
+        "box_profile": "Edit profile",
         "box_security": "Security",
         "box_notifications": "Notifications",
         "title_appearence": "Appearence",
@@ -38,7 +38,7 @@
         "box_help": "Get help"
       },
       "PROFILE": {
-        "header": "Public profile",
+        "header": "Edit profile",
         "label_profile_picture": "Profile picture",
         "btn_change": "Change",
         "error_image": "The image size is too big.",
