@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SettingsRoutingModule } from './settings-routing.module';
 import { AboutComponent } from './about/about.component';
-import { AccountComponent } from './account/account.component';
 import { EditMailComponent } from './edit-mail/edit-mail.component';
 import { EditNameComponent } from './edit-name/edit-name.component';
 import { EditPwdComponent } from './edit-pwd/edit-pwd.component';
@@ -13,12 +12,13 @@ import { IonicModule } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { AutoFocusDirective } from 'src/app/common/directives/auto-focus.directive';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
   declarations: [
     AboutComponent,
-    AccountComponent,
+    ProfileComponent,
     EditMailComponent,
     EditNameComponent,
     EditPwdComponent,

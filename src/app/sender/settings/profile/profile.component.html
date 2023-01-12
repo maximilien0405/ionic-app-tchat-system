@@ -3,20 +3,20 @@
     <ion-buttons slot="start">
       <ion-back-button [text]="'SENDER.SETTINGS.back_page' | translate"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{'SENDER.SETTINGS.ACCOUNT.header' | translate}}</ion-title>
+    <ion-title>{{'SENDER.SETTINGS.PROFILE.header' | translate}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content *ngIf="user" class="ion-padding" forceOverscroll="false">
-  <p class="label">{{'SENDER.SETTINGS.ACCOUNT.label_profile_picture' | translate}}</p>
+  <p class="label">{{'SENDER.SETTINGS.PROFILE.label_profile_picture' | translate}}</p>
   <div class="profile-picture-container">
     <img (click)="openImageSelector()" [src]="user.profilePictureUrl" [class.form-error]="imageError">
-    <button (click)="openImageSelector()" class="btn btn-medium btn-white">{{'SENDER.SETTINGS.ACCOUNT.btn_change' |
+    <button (click)="openImageSelector()" class="btn btn-medium btn-white">{{'SENDER.SETTINGS.PROFILE.btn_change' |
       translate}}</button>
   </div>
-  <p *ngIf="imageError" class="text-error">{{'SENDER.SETTINGS.ACCOUNT.error_image' | translate}}<p>
+  <p *ngIf="imageError" class="text-error">{{'SENDER.SETTINGS.PROFILE.error_image' | translate}}<p>
 
-  <p class="label margin-top">{{'SENDER.SETTINGS.ACCOUNT.label_name' | translate}}</p>
+  <p class="label margin-top">{{'SENDER.SETTINGS.PROFILE.label_name' | translate}}</p>
   <div class="input-icon">
     <input type="text" [value]="user.fullName" class="input" readonly>
     <div class="icon-right" [routerLink]="['/sender/settings/edit-name']" router-direction="forward" ontouchstart>
@@ -24,7 +24,7 @@
     </div>
   </div>
 
-  <p class="label margin-top">{{'SENDER.SETTINGS.ACCOUNT.label_email' | translate}}</p>
+  <p class="label margin-top">{{'SENDER.SETTINGS.PROFILE.label_email' | translate}}</p>
   <div class="input-icon">
     <input type="text" [value]="user.email" class="input" readonly>
     <div class="icon-right" [routerLink]="['/sender/settings/edit-mail']" router-direction="forward" ontouchstart>
@@ -32,7 +32,7 @@
     </div>
   </div>
 
-  <!--<p class="label margin-top">{{'SENDER.SETTINGS.ACCOUNT.label_password' | translate}}</p>
+  <!--<p class="label margin-top">{{'SENDER.SETTINGS.PROFILE.label_password' | translate}}</p>
   <div class="input-icon">
     <input type="password" value="abcdefghi" class="input" readonly>
     <div class="icon-right" [routerLink]="['/sender/settings/edit-pwd']" router-direction="forward" ontouchstart>
@@ -42,14 +42,14 @@
 
   <div class="separator"></div>
 
-  <p class="label">{{'SENDER.SETTINGS.ACCOUNT.label_security' | translate}}</p>
+  <p class="label">{{'SENDER.SETTINGS.PROFILE.label_security' | translate}}</p>
   <div class="list-container">
     <div class="select-box select-start" [routerLink]="['/sender/settings/edit-pwd']" router-direction="forward" ontouchstart>
-      {{'SENDER.SETTINGS.ACCOUNT.box_edit_pwd' | translate}}
+      {{'SENDER.SETTINGS.PROFILE.box_edit_pwd' | translate}}
       <img src="../../assets/icons/lock.svg" alt="">
     </div>
     <div class="select-box select-end" [routerLink]="['/sender/settings/reset-pwd']" router-direction="forward" ontouchstart>
-      {{'SENDER.SETTINGS.ACCOUNT.box_forgot_pwd' | translate}}
+      {{'SENDER.SETTINGS.PROFILE.box_forgot_pwd' | translate}}
       <img src="../../assets/icons/small-repeat.svg" alt="logout">
     </div>
   </div>

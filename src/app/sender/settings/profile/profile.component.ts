@@ -11,12 +11,12 @@ import { TranslateService } from '@ngx-translate/core';
 import { slideUpAnimation } from 'src/app/common/animations';
 
 @Component({
-  selector: 'app-account',
-  templateUrl: './account.component.html',
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
   styleUrls: ['../../sender.component.scss'],
   animations: [slideUpAnimation]
 })
-export class AccountComponent implements OnInit {
+export class ProfileComponent implements OnInit {
   public user: User;
   public token: string;
   public form: UntypedFormGroup | any;
@@ -109,13 +109,13 @@ export class AccountComponent implements OnInit {
 
     switch (type) {
       case 'name':
-        this.toastMessage = this.translateService.instant('SENDER.SETTINGS.ACCOUNT.toast_name')
+        this.toastMessage = this.translateService.instant('SENDER.SETTINGS.PROFILE.toast_name')
         break;
       case 'mail':
-        this.toastMessage = this.translateService.instant('SENDER.SETTINGS.ACCOUNT.toast_mail')
+        this.toastMessage = this.translateService.instant('SENDER.SETTINGS.PROFILE.toast_mail')
         break;
       case 'pwd':
-        this.toastMessage = this.translateService.instant('SENDER.SETTINGS.ACCOUNT.toast_pwd')
+        this.toastMessage = this.translateService.instant('SENDER.SETTINGS.PROFILE.toast_pwd')
         break;
     }
 
