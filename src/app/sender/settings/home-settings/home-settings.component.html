@@ -1,35 +1,39 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button [text]="'SENDER.SETTINGS.back_page' | translate"></ion-back-button>
-    </ion-buttons>
-    <ion-title>{{'SENDER.SETTINGS.header' | translate}}</ion-title>
-  </ion-toolbar>
-</ion-header>
 <ion-content class="ion-padding" forceOverscroll="false">
   <div *ngIf="user" class="settings-header">
     <img [src]="user.profilePictureUrl">
     <p class="paragraph">{{ user.fullName }}</p>
     <p class="subtitle">{{ user.email }}</p>
-
-    <button class="btn btn-medium btn-white" [routerLink]="['/sender/settings/account']" router-direction="forward" ontouchstart>
-      {{'SENDER.SETTINGS.btn_edit' | translate}}
-    </button>
   </div>
 
-  <p class="label margin-top">{{'SENDER.SETTINGS.title_appearence' | translate}}</p>
+  <p class="label margin-top">{{'SENDER.SETTINGS.HOME_SETTINGS.label_account' | translate}}</p>
+  <div class="list-container">
+    <div [routerLink]="['/sender/settings/account']" router-direction="forward" class="select-box select-start" ontouchstart>
+      {{'SENDER.SETTINGS.HOME_SETTINGS.box_profile' | translate}}
+      <img src="../../assets/icons/user.svg">
+    </div>
+    <div [routerLink]="['/sender/settings/help']" router-direction="forward" class="select-box" ontouchstart>
+      {{'SENDER.SETTINGS.HOME_SETTINGS.box_security' | translate}}
+      <img src="../../assets/icons/lock.svg">
+    </div>
+    <div [routerLink]="['/sender/settings/help']" router-direction="forward" class="select-box select-end" ontouchstart>
+      {{'SENDER.SETTINGS.HOME_SETTINGS.box_notifications' | translate}}
+      <img src="../../assets/icons/bell.svg">
+    </div>
+  </div>
+
+  <p class="label margin-top">{{'SENDER.SETTINGS.HOME_SETTINGS.title_appearence' | translate}}</p>
   <div class="list-container">
     <div class="select-box select-start" (click)="openModal('theme')" ontouchstart>
-      {{'SENDER.SETTINGS.box_theme' | translate}}
+      {{'SENDER.SETTINGS.HOME_SETTINGS.box_theme' | translate}}
       <p>{{'SENDER.MODALS.SELECT_THEME.theme_' + currentTheme | translate}}</p>
     </div>
     <div class="select-box select-end" (click)="openModal('lang')" ontouchstart>
-      {{'SENDER.SETTINGS.box_lang' | translate}}
+      {{'SENDER.SETTINGS.HOME_SETTINGS.box_lang' | translate}}
       <p>{{'SENDER.MODALS.SELECT_LANGUAGE.lang_' + currentLang | translate}}</p>
     </div>
   </div>
 
-  <p class="label margin-top">{{'SENDER.SETTINGS.label_account' | translate}}</p>
+  <!--<p class="label margin-top"></p>
   <div class="list-container">
     <div class="select-box select-start" (click)="openModal('logout')" ontouchstart>
       {{'SENDER.SETTINGS.box_logout' | translate}}
@@ -39,17 +43,22 @@
       {{'SENDER.SETTINGS.box_delete' | translate}}
       <img src="../../assets/icons/trash.svg" alt="delete-account">
     </div>
-  </div>
+  </div>-->
 
-  <p class="label margin-top">{{'SENDER.SETTINGS.title_other' | translate}}</p>
+  <p class="label margin-top">{{'SENDER.SETTINGS.HOME_SETTINGS.title_other' | translate}}</p>
   <div class="list-container">
     <div [routerLink]="['/sender/settings/about']" router-direction="forward" class="select-box select-start" ontouchstart>
-      {{'SENDER.SETTINGS.box_about' | translate}}
+      {{'SENDER.SETTINGS.HOME_SETTINGS.box_about' | translate}}
         <img src="../../assets/icons/home.svg" alt="arrow-right">
     </div>
     <div [routerLink]="['/sender/settings/help']" router-direction="forward" class="select-box select-end" ontouchstart>
-      {{'SENDER.SETTINGS.box_help' | translate}}
-        <img src="../../assets/icons/question.svg" alt="arrow-right">
+      {{'SENDER.SETTINGS.HOME_SETTINGS.box_help' | translate}}
+        <img src="../../assets/icons/hand.svg" alt="arrow-right">
     </div>
   </div>
+
+  <!--<div class="select-box select-start margin-top" (click)="openModal('logout')" ontouchstart>
+    {{'SENDER.SETTINGS.box_logout' | translate}}
+    <img src="../../assets/icons/leave.svg" alt="logout">
+  </div>-->
 </ion-content>

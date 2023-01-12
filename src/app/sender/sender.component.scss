@@ -172,15 +172,13 @@ ion-tab-button {
 .settings-header {
   display: flex;
   flex-direction: column;
-  align-items: flex-start !important;
+  align-items: center !important;
   position: relative;
   width: 100%;
-  border: 0.0938rem solid var(--border-gray);
-  border-radius: var(--radius-small);
-  padding: 1.25rem;
   color: var(--light-black);
-  box-shadow: var(--shadow-small);
-  background-color: var(--white);
+  word-break: break-all;
+  text-align: center;
+  margin-top: 1rem;
 
   img {
     height: 5.625rem;
