@@ -11,12 +11,24 @@
   <form *ngIf="step == 1" [formGroup]="form1">
     <p class="paragraph">{{'SENDER.SETTINGS.EDIT_PWD.paragraph1' | translate}}</p>
 
-    <p class="label small-margin-top">{{'SENDER.SETTINGS.EDIT_PWD.label_password' | translate}}</p>
+    <p class="label small-margin-top">{{'SENDER.SETTINGS.EDIT_PWD.label_current_password' | translate}}</p>
+    <div class="input-icon very-small-margin-bottom">
+      <input type="{{ passwordShow1 ? 'text' : 'password' }}" class="input" [placeholder]="'SENDER.SETTINGS.EDIT_PWD.placeholder_current_password' | translate"
+      formControlName="currentPassword" (keydown.space)="$event.preventDefault();" appAutoFocusDirective autocomplete>
+      <div (click)="togglePasswordShow1()" class="icon-right">
+        <img *ngIf="passwordShow1" src="../../assets/icons/eye.svg" alt="eye-open-icon">
+        <img *ngIf="!passwordShow1" src="../../assets/icons/eye2.svg" alt="eye-closed-icon">
+      </div>
+    </div>
+    <a class="small-link" href="#">Password forgotten?</a>
+
+    <p class="label small-margin-top">{{'SENDER.SETTINGS.EDIT_PWD.label_new_password' | translate}}</p>
     <div class="input-icon">
-      <input type="password" class="input" [placeholder]="'SENDER.SETTINGS.EDIT_PWD.placeholder_password' | translate"
-      formControlName="newPassword" maxlength="32" appAutoFocusDirective>
-      <div class="icon-right">
-        <img src="../../assets/icons/eye.svg" alt="">
+      <input type="{{ passwordShow2 ? 'text' : 'password' }}" class="input" [placeholder]="'SENDER.SETTINGS.EDIT_PWD.placeholder_new_password' | translate"
+      formControlName="currentPassword" (keydown.space)="$event.preventDefault();" autocomplete>
+      <div (click)="togglePasswordShow2()" class="icon-right">
+        <img *ngIf="passwordShow2" src="../../assets/icons/eye.svg" alt="eye-open-icon">
+        <img *ngIf="!passwordShow2" src="../../assets/icons/eye2.svg" alt="eye-closed-icon">
       </div>
     </div>
 

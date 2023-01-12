@@ -198,6 +198,17 @@ body.dark-theme {
   color: var(--red);
 }
 
+.small-link {
+  text-align: left;
+  margin-top: 0.8rem !important;
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--gray);
+  text-decoration: underline !important;
+}
+
+
 /* ---------------------------------------------------
   INPUTS
 ----------------------------------------------------- */

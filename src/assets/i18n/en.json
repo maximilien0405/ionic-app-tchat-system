@@ -33,6 +33,7 @@
       "back_page": "Back",
       "btn_update": "Update",
       "btn_continue": "Continue",
+      "btn_edit": "Edit",
       "box_delete": "Delete account",
       "box_logout": "Log Out",
       "ACCOUNT": {
@@ -45,7 +46,10 @@
         "label_password": "Password",
         "toast_name": "Your name has been sucessfully changed.",
         "toast_mail": "Your email has been sucessfully changed.",
-        "toast_pwd": "Your password has been sucessfully changed."
+        "toast_pwd": "Your password has been sucessfully changed.",
+        "label_security": "Security",
+        "box_edit_pwd": "Change password",
+        "box_forgot_pwd": "I forgot my password"
       },
       "ABOUT": {
         "header": "About us",

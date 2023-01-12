@@ -22,6 +22,8 @@ export class EditPwdComponent implements OnInit {
   public errorCode: boolean;
   public term = new Subject<string>();
   public submittedForm: boolean;
+  public passwordShow1: boolean;
+  public passwordShow2: boolean;
 
   constructor(private formBuilder: FormBuilder,
     private navCtrl: NavController,
@@ -49,6 +51,14 @@ export class EditPwdComponent implements OnInit {
   // Return form controls
   get f1() { return this.form1.controls; }
   get f2() { return this.form2.controls; }
+
+  // Display eye icon
+  public togglePasswordShow1() {
+    this.passwordShow1 = !this.passwordShow1;
+  }
+  public togglePasswordShow2() {
+    this.passwordShow2 = !this.passwordShow2;
+  }
 
   // On code change execute
   public onCodeChange(code: string): void {
