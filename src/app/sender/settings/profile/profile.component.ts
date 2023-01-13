@@ -25,6 +25,7 @@ export class ProfileComponent implements OnInit {
   public photo: Photo;
   public displayToast: boolean;
   public toastMessage: string;
+  public name: string;
 
   constructor(private formBuilder: UntypedFormBuilder,
     private modalController: ModalController,
@@ -118,5 +119,12 @@ export class ProfileComponent implements OnInit {
     setTimeout(() => {
       this.displayToast = false;
     }, 3000);
+  }
+
+  public cancel() {
+    return this.modalController.dismiss(null, 'cancel');
+  }
+  public confirm() {
+    return this.modalController.dismiss(this.name, 'confirm');
   }
 }

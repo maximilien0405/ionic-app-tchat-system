@@ -1,17 +1,19 @@
 <ion-content class="ion-padding" forceOverscroll="false">
-  <div *ngIf="user" class="settings-header">
+  <div *ngIf="user" class="settings-header" [style]="'margin-top:' + marginTop + 'rem !important'">
     <img [src]="user.profilePictureUrl">
     <p class="paragraph">{{ user.fullName }}</p>
     <p class="subtitle">{{ user.email }}</p>
   </div>
 
+  <div (click)="openModal('profile')" class="select-box margin-top"
+    ontouchstart>
+    {{'SENDER.SETTINGS.HOME_SETTINGS.box_profile' | translate}}
+    <img src="../../assets/icons/pencil.svg">
+  </div>
+
   <p class="label margin-top">{{'SENDER.SETTINGS.HOME_SETTINGS.label_account' | translate}}</p>
   <div class="list-container">
-    <div [routerLink]="['/sender/settings/profile']" router-direction="forward" class="select-box select-start" ontouchstart>
-      {{'SENDER.SETTINGS.HOME_SETTINGS.box_profile' | translate}}
-      <img src="../../assets/icons/user.svg">
-    </div>
-    <div [routerLink]="['/sender/settings/security']" router-direction="forward" class="select-box" ontouchstart>
+    <div [routerLink]="['/sender/settings/security']" router-direction="forward" class="select-box select-start" ontouchstart>
       {{'SENDER.SETTINGS.HOME_SETTINGS.box_security' | translate}}
       <img src="../../assets/icons/lock.svg">
     </div>

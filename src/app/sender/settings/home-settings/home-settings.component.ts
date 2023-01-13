@@ -7,6 +7,8 @@ import { SelectThemeComponent } from '../../modals/select-theme/select-theme.com
 import { SelectLanguageComponent } from '../../modals/select-language/select-language.component';
 import { DeleteAccountComponent } from '../../modals/delete-account/delete-account.component';
 import { LogoutComponent } from '../../modals/logout/logout.component';
+import { SafeArea } from 'capacitor-plugin-safe-area';
+import { ProfileComponent } from '../profile/profile.component';
 
 @Component({
   selector: 'app-home-settings',
@@ -17,8 +19,13 @@ export class HomeSettingsComponent implements OnInit {
   public currentTheme: string | any;
   public currentLang: string | any;
   public user: User;
+  public marginTop: number;
 
-  constructor(private modalController: ModalController){ }
+  constructor(private modalController: ModalController) {
+    SafeArea.getSafeAreaInsets().then(({ insets }) => {
+      this.marginTop = 0.0625 * ((insets.top || 16) + 16);
+    });
+  }
 
   ngOnInit(): void {
     // Get current theme
@@ -86,6 +93,10 @@ export class HomeSettingsComponent implements OnInit {
       cssClass: 'auto-height'
     });
 
+    const modalProfile = await this.modalController.create({
+      component: ProfileComponent,
+    });
+
     modalLang.onDidDismiss().then((data) => {
       if (data['data']) {
         this.currentLang = data['data'];
@@ -105,7 +116,9 @@ export class HomeSettingsComponent implements OnInit {
     } else if (type == 'logout') {
       modalLogout.present();
     } else if (type == 'delete-account') {
-      modalDeleteAccount.present()
+      modalDeleteAccount.present();
+    } else if (type == 'profile') {
+      modalProfile.present();
     }
   }
 }

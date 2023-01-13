@@ -1,14 +1,16 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button [text]="'SENDER.SETTINGS.back_page' | translate"></ion-back-button>
+      <ion-button color="medium" (click)="cancel()">Cancel</ion-button>
     </ion-buttons>
     <ion-title>{{'SENDER.SETTINGS.PROFILE.header' | translate}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="confirm()">Save</ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
 <ion-content *ngIf="user" class="ion-padding" forceOverscroll="false">
-  <p class="label">{{'SENDER.SETTINGS.PROFILE.label_profile_picture' | translate}}</p>
+  <!-- <p class="label">{{'SENDER.SETTINGS.PROFILE.label_profile_picture' | translate}}</p> -->
   <div class="profile-picture-container">
     <img (click)="openImageSelector()" [src]="user.profilePictureUrl" [class.form-error]="imageError">
     <button (click)="openImageSelector()" class="btn btn-medium btn-white">{{'SENDER.SETTINGS.PROFILE.btn_change' |
