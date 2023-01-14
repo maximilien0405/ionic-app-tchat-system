@@ -6,7 +6,8 @@
       "choice_picture": "Send a picture",
       "choice_voice_message": "Send a voice message",
       "choice_video": "Start a call",
-      "choice_video_call": "Start a video call"
+      "choice_video_call": "Start a video call",
+      "choice_create_reminder": "Create a reminder"
     },
     "REMINDERS": {
       "header": "Reminders"
