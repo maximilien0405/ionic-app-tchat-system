@@ -146,6 +146,7 @@ export class EditPwdComponent implements OnInit {
       .then((res: any) => {
         if (res.status != 201) {
           this.errorPwd = true;
+          this.spinnerDisplay = false;
         }
         else {
           this.errorPwd = false;
@@ -153,9 +154,9 @@ export class EditPwdComponent implements OnInit {
           setTimeout(() => {
             this.step = 2;
             this.submittedForm = false;
+            this.spinnerDisplay = false;
           }, 1400);
         }
-        this.spinnerDisplay = false;
       });
   }
 
@@ -169,6 +170,7 @@ export class EditPwdComponent implements OnInit {
       .then((res: any) => {
         if (res.status != 201) {
           this.errorCode = true;
+          this.spinnerDisplay = false;
         }
         else {
           this.errorCode = false;
@@ -188,7 +190,6 @@ export class EditPwdComponent implements OnInit {
             this.navCtrl.back();
           }, 1400);
         }
-        this.spinnerDisplay = false;
       });
   }
 }

@@ -10,16 +10,16 @@
   <p class="label">{{'SENDER.SETTINGS.SECURITY.label_email' | translate}}</p>
   <div class="input-icon">
     <input type="text" [value]="user.email" class="input" readonly>
-    <div class="icon-right" [routerLink]="['/sender/settings/edit-mail']" router-direction="forward" ontouchstart>
-      <img src="../../../../assets/icons/edit.svg" alt="edit">
+    <div class="icon-right icon-right-text" [routerLink]="['/sender/settings/edit-mail']" router-direction="forward" ontouchstart>
+      <p class="paragraph">Edit</p>
     </div>
   </div>
 
   <p class="label small-margin-top">{{'SENDER.SETTINGS.SECURITY.label_password' | translate}}</p>
   <div class="input-icon">
     <input type="password" value="abcdefghi" class="input" readonly>
-    <div class="icon-right" [routerLink]="['/sender/settings/edit-pwd']" router-direction="forward" ontouchstart>
-      <img src="../../../../assets/icons/edit.svg" alt="edit">
+    <div class="icon-right icon-right-text" [routerLink]="['/sender/settings/edit-pwd']" router-direction="forward" ontouchstart>
+      <p class="paragraph">Edit</p>
     </div>
   </div>
 
@@ -29,7 +29,7 @@
   <div class="list-container">
     <div class="select-box select-start" [routerLink]="['/sender/settings/forgot-pwd']" router-direction="forward" ontouchstart>
       {{'SENDER.SETTINGS.SECURITY.box_forgot_pwd' | translate}}
-      <img src="../../assets/icons/small-repeat.svg">
+      <img src="../../assets/icons/question.svg">
     </div>
     <div class="select-box" (click)="openModal('logout')" ontouchstart>
       {{'SENDER.SETTINGS.SECURITY.box_logout' | translate}}

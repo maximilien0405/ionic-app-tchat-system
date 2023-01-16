@@ -54,7 +54,7 @@
         "toast_mail": "Your email has been sucessfully changed.",
         "toast_pwd": "Your password has been sucessfully changed.",
         "label_other": "Other actions",
-        "box_forgot_pwd": "I forgot my password"
+        "box_forgot_pwd": "Password forgotten"
       },
       "NOTIFICATIONS": {
         "header": "Notifications",
