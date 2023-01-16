@@ -2,19 +2,6 @@
   GLOBAL CONTAINERS
 ----------------------------------------------------- */
 
-.global-content-container {
-  height: 100%;
-  overflow: hidden;
-  position:relative;
-}
-
-.sender-container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
 @media (max-width: 400px) {
   ion-tab-button {
     padding: 0.4rem 0.7rem 0rem 0.7rem !important;
@@ -72,11 +59,11 @@ ion-tab-button {
     max-width: fit-content;
   }
 
-  // &:active {
-  //   transform: scale(0.96);
-  //   -webkit-transform: scale(0.96);
-  //   -moz-transform: scale(0.96);
-  // }
+  &:active img {
+    transform: scale(0.94);
+    -webkit-transform: scale(0.94);
+    -moz-transform: scale(0.94);
+  }
 }
 
 .home-icon {
@@ -116,14 +103,6 @@ ion-tab-button {
 /* ---------------------------------------------------
   RESUABLE CONTAINERS
 ----------------------------------------------------- */
-
-.content-container {
-  padding: 1.5625rem 1.4375rem 1.5625rem 1.4375rem;
-  overflow: scroll;
-  height: 100%;
-  position: relative;
-  background-color: var(--background-white) !important;
-}
 
 .margin-top {
   margin-top: 1.875rem;
