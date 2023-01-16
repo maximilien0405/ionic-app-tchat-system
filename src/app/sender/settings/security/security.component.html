@@ -6,36 +6,47 @@
     <ion-title>{{'SENDER.SETTINGS.SECURITY.header' | translate}}</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content class="ion-padding" forceOverscroll="false">
-  <!--<p class="label margin-top">{{'SENDER.SETTINGS.PROFILE.label_email' | translate}}</p>
+<ion-content *ngIf="user" class="ion-padding" forceOverscroll="false">
+  <p class="label">{{'SENDER.SETTINGS.SECURITY.label_email' | translate}}</p>
   <div class="input-icon">
     <input type="text" [value]="user.email" class="input" readonly>
     <div class="icon-right" [routerLink]="['/sender/settings/edit-mail']" router-direction="forward" ontouchstart>
       <img src="../../../../assets/icons/edit.svg" alt="edit">
     </div>
-  </div>-->
+  </div>
 
-  <p class="label margin-top">{{'SENDER.SETTINGS.PROFILE.label_password' | translate}}</p>
-    <div class="input-icon">
-      <input type="password" value="abcdefghi" class="input" readonly>
-      <div class="icon-right" [routerLink]="['/sender/settings/edit-pwd']" router-direction="forward" ontouchstart>
-        <img src="../../../../assets/icons/edit.svg" alt="edit">
-      </div>
+  <p class="label margin-top">{{'SENDER.SETTINGS.SECURITY.label_password' | translate}}</p>
+  <div class="input-icon">
+    <input type="password" value="abcdefghi" class="input" readonly>
+    <div class="icon-right" [routerLink]="['/sender/settings/edit-pwd']" router-direction="forward" ontouchstart>
+      <img src="../../../../assets/icons/edit.svg" alt="edit">
     </div>
+  </div>
 
-    <div class="separator"></div>
+  <div class="separator"></div>
 
-    <p class="label">{{'SENDER.SETTINGS.PROFILE.label_security' | translate}}</p>
-    <div class="list-container">
-      <div class="select-box select-start" [routerLink]="['/sender/settings/edit-pwd']" router-direction="forward" ontouchstart>
-        {{'SENDER.SETTINGS.PROFILE.box_edit_pwd' | translate}}
-        <img src="../../assets/icons/lock.svg" alt="">
-      </div>
-      <div class="select-box select-end" [routerLink]="['/sender/settings/reset-pwd']" router-direction="forward" ontouchstart>
-        {{'SENDER.SETTINGS.PROFILE.box_forgot_pwd' | translate}}
-        <img src="../../assets/icons/small-repeat.svg" alt="logout">
-      </div>
+  <p class="label">{{'SENDER.SETTINGS.SECURITY.label_other' | translate}}</p>
+  <div class="list-container">
+    <div class="select-box select-start" [routerLink]="['/sender/settings/reset-pwd']" router-direction="forward" ontouchstart>
+      {{'SENDER.SETTINGS.SECURITY.box_forgot_pwd' | translate}}
+      <img src="../../assets/icons/small-repeat.svg">
     </div>
+    <div class="select-box" (click)="openModal('logout')" ontouchstart>
+      {{'SENDER.SETTINGS.SECURITY.box_logout' | translate}}
+      <img src="../../assets/icons/leave.svg" alt="logout">
+    </div>
+    <div class="select-box select-end" (click)="openModal('delete-account')" vontouchstart>
+      {{'SENDER.SETTINGS.SECURITY.box_delete' | translate}}
+      <img src="../../assets/icons/trash.svg" alt="delete-account">
+    </div>
+  </div>
+
+  <div @slideUpAnimation *ngIf="displayToast" class="absolute-bottom">
+    <div class="toast toast-success">
+      <img src="../../../../assets/icons/checkmark.svg" alt="">
+      <p>{{ toastMessage }}</p>
+    </div>
+  </div>
 </ion-content>
 
 

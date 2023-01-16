@@ -59,7 +59,7 @@ export class AppComponent {
         }
       }
 
-      if(isPlatform('mobile')) {
+      if(isPlatform('mobile') && !isPlatform('mobileweb')) {
         StatusBar.setStyle({ style: statusBarStyle });
       }
     }; checkTheme();

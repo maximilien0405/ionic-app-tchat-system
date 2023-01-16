@@ -43,18 +43,18 @@
         "label_profile_picture": "Profile picture",
         "btn_change": "Change",
         "error_image": "The image size is too big.",
-        "label_name": "Full name",
-        "label_email": "Email",
-        "label_password": "Password",
-        "toast_name": "Your name has been sucessfully changed.",
-        "toast_mail": "Your email has been sucessfully changed.",
-        "toast_pwd": "Your password has been sucessfully changed.",
-        "label_security": "Security",
-        "box_edit_pwd": "Change password",
-        "box_forgot_pwd": "I forgot my password"
+        "label_name": "Full name"
       },
       "SECURITY": {
-        "header": "Security"
+        "header": "Security",
+        "box_logout": "Logout",
+        "box_delete": "Delete account",
+        "label_email": "Email",
+        "label_password": "Password",
+        "toast_mail": "Your email has been sucessfully changed.",
+        "toast_pwd": "Your password has been sucessfully changed.",
+        "label_other": "Other actions",
+        "box_forgot_pwd": "I forgot my password"
       },
       "NOTIFICATIONS": {
         "header": "Notifications",

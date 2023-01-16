@@ -35,18 +35,6 @@
     </div>
   </div>
 
-  <!--<p class="label margin-top"></p>
-  <div class="list-container">
-    <div class="select-box select-start" (click)="openModal('logout')" ontouchstart>
-      {{'SENDER.SETTINGS.box_logout' | translate}}
-      <img src="../../assets/icons/leave.svg" alt="logout">
-    </div>
-    <div class="select-box select-end" (click)="openModal('delete-account')" vontouchstart>
-      {{'SENDER.SETTINGS.box_delete' | translate}}
-      <img src="../../assets/icons/trash.svg" alt="delete-account">
-    </div>
-  </div>-->
-
   <p class="label margin-top">{{'SENDER.SETTINGS.HOME_SETTINGS.title_other' | translate}}</p>
   <div class="list-container">
     <div [routerLink]="['/sender/settings/about']" router-direction="forward" class="select-box select-start" ontouchstart>
@@ -58,9 +46,4 @@
         <img src="../../assets/icons/hand.svg" alt="arrow-right">
     </div>
   </div>
-
-  <!--<div class="select-box select-start margin-top" (click)="openModal('logout')" ontouchstart>
-    {{'SENDER.SETTINGS.box_logout' | translate}}
-    <img src="../../assets/icons/leave.svg" alt="logout">
-  </div>-->
 </ion-content>

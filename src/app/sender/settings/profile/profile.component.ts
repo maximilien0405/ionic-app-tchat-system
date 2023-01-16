@@ -21,15 +21,11 @@ export class ProfileComponent implements OnInit {
   public formError: boolean;
   public imageError: boolean;
   public imageSubmitted: boolean;
-  public userId: string;
   public photo: Photo;
-  public displayToast: boolean;
-  public toastMessage: string;
   public name: string;
 
   constructor(private formBuilder: UntypedFormBuilder,
-    private modalController: ModalController,
-    private translateService: TranslateService)
+    private modalController: ModalController)
   { }
 
   public ngOnInit(): void {
@@ -47,26 +43,6 @@ export class ProfileComponent implements OnInit {
       full_name: [],
       email: []
     })
-  }
-
-  // Check if name/mail/pwd modified and display toast
-  public ionViewDidEnter() {
-    const checkNameMailPwd = async () => {
-      const { value } = await Preferences.get({ key: 'change-value' });
-
-      if (value) {
-        this.showToast(value || '');
-
-        const getUser = async () => {
-          const { value } = await Preferences.get({ key: 'user' });
-          if(value) {
-            this.user = JSON.parse(value || '')
-          }
-        }; getUser()
-
-        await Preferences.remove({ key: 'change-value' })
-      }
-    }; checkNameMailPwd()
   }
 
   // Return form controls
@@ -100,26 +76,6 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  // Display a toast with custom message
-  public async showToast(type: string) {
-    this.displayToast = true;
-
-    switch (type) {
-      case 'name':
-        this.toastMessage = this.translateService.instant('SENDER.SETTINGS.PROFILE.toast_name')
-        break;
-      case 'mail':
-        this.toastMessage = this.translateService.instant('SENDER.SETTINGS.PROFILE.toast_mail')
-        break;
-      case 'pwd':
-        this.toastMessage = this.translateService.instant('SENDER.SETTINGS.PROFILE.toast_pwd')
-        break;
-    }
-
-    setTimeout(() => {
-      this.displayToast = false;
-    }, 3000);
-  }
 
   public cancel() {
     return this.modalController.dismiss(null, 'cancel');
