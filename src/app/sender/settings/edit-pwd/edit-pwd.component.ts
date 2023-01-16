@@ -24,14 +24,21 @@ export class EditPwdComponent implements OnInit {
   public submittedForm: boolean;
   public passwordShow1: boolean;
   public passwordShow2: boolean;
+  public passHasLettersAndUppercase: boolean;
+  public passHasNumberOrSpecial: boolean;
+  public passHasMin8Char: boolean;
+  public passInfos: boolean;
+  public passwordValue: string;
+  public passIsDone: boolean;
+  public passSubmited: boolean;
+  public passIsRequired: boolean;
 
   constructor(private formBuilder: FormBuilder) { }
 
   public ngOnInit(): void {
     // Create forms
     this.form1 = this.formBuilder.group({
-      currentPassword: ['', [Validators.minLength(3)]],
-      newPassword: ['', [Validators.minLength(3)]],
+      currentPassword: ['', [Validators.required]],
     })
 
     this.form2 = this.formBuilder.group({
@@ -44,6 +51,43 @@ export class EditPwdComponent implements OnInit {
         this.errorCode = false;
       }
     })
+  }
+
+  // Check password value when updating
+  public onPasswordChange(password: string) {
+    const value = password;
+    this.passIsDone = false;
+
+    if (this.passwordValue !== null) {
+      this.passIsRequired = false;
+    }
+
+    if (value.length >= 8 && value.length <= 128) {
+      this.passHasMin8Char = true;
+    } else {
+      this.passHasMin8Char = false;
+    }
+
+    const hasLetters = /[a-z]+/.test(value);
+    const hasUppercase = /[A-Z]+/.test(value);
+    const hasNumber = /[0-9]+/.test(value);
+    const hasSpecialChara = /[!@#$%^&*(),.?'"_:{}|<>+=]+/.test(value);
+
+    if (hasLetters && hasUppercase) {
+      this.passHasLettersAndUppercase = true;
+    } else {
+      this.passHasLettersAndUppercase = false;
+    }
+
+    if (hasNumber || hasSpecialChara) {
+      this.passHasNumberOrSpecial = true;
+    } else {
+      this.passHasNumberOrSpecial = false;
+    }
+
+    if (this.passHasMin8Char && this.passHasLettersAndUppercase && this.passHasLettersAndUppercase) {
+      this.passIsDone = true;
+    }
   }
 
   // Return form controls
@@ -83,7 +127,16 @@ export class EditPwdComponent implements OnInit {
     this.submittedForm = true;
     Haptics.impact({ style: ImpactStyle.Medium });
     this.spinnerDisplay = true;
+    this.passSubmited = true;
 
+    // If form empty then error
+    if (this.passwordValue == null) {
+      this.passIsRequired = true;
+      return;
+    }
+
+    if (!this.passIsDone) { return; }
+    
     // this.userService.askCodeChangeEmail(this.form1.value.mail)
     // .then((res: any) => {
     //   if ((isPlatform('mobile') && res.status == 200) || !isPlatform('mobile')) {

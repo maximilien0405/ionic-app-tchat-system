@@ -115,7 +115,7 @@
         "label_code": "Code",
         "placeholder_code": "5 digits code",
         "code_invalid": "The code is not valid anymore.",
-        "forgot_pwd": "Password forgotten?"
+        "passchar_validation": "Min 8 characters"
       },
       "FORGOT_PWD": {
         "header": "Reset your password"

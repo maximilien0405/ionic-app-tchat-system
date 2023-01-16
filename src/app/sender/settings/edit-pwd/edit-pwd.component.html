@@ -20,19 +20,32 @@
         <img *ngIf="!passwordShow1" src="../../assets/icons/eye2.svg" alt="eye-closed-icon">
       </div>
     </div>
-    <a class="small-link" [routerLink]="['/sender/settings/forgot-pwd']">{{'SENDER.SETTINGS.EDIT_PWD.forgot_pwd' | translate}}</a>
 
     <p class="label small-margin-top">{{'SENDER.SETTINGS.EDIT_PWD.label_new_password' | translate}}</p>
-    <div class="input-icon">
-      <input type="{{ passwordShow2 ? 'text' : 'password' }}" class="input" [placeholder]="'SENDER.SETTINGS.EDIT_PWD.placeholder_new_password' | translate"
-      formControlName="newPassword" (keydown.space)="$event.preventDefault();" autocomplete>
+    <div class="input-icon" (focusin)="passInfos = true">
+      <input (keydown.space)="$event.preventDefault();" [ngModelOptions]="{standalone: true}" 
+      [(ngModel)]="passwordValue" (ngModelChange)="onPasswordChange($event)" class="input"
+      type="{{ passwordShow2 ? 'text' : 'password' }}" [placeholder]="'SENDER.SETTINGS.EDIT_PWD.placeholder_new_password' | translate"
+      maxlength="48" autocomplete>
+
       <div (click)="togglePasswordShow2()" class="icon-right">
         <img *ngIf="passwordShow2" src="../../assets/icons/eye.svg" alt="eye-open-icon">
         <img *ngIf="!passwordShow2" src="../../assets/icons/eye2.svg" alt="eye-closed-icon">
       </div>
     </div>
+    <div *ngIf="passInfos" class="pass-infos box small-margin-top">
+      <div><img [class.img-sucess]="passHasLettersAndUppercase" src="../../assets/icons/check.svg" alt="check-icon-letter-and-uppercase">
+        <p>AaBbCc</p>
+      </div>
+      <div><img [class.img-sucess]="passHasNumberOrSpecial" src="../../assets/icons/check.svg" alt="check-icon-number-and-special">
+        <p>123&$#</p>
+      </div>
+      <div><img [class.img-sucess]="passHasMin8Char" src="../../assets/icons/check.svg" alt="check-icon-min-8-chara">
+        <p>{{'SENDER.SETTINGS.EDIT_PWD.passchar_validation' | translate}}</p>
+      </div>
+    </div>
 
-    <button class="btn btn-orange btn-icon small-margin-top" (click)="submitForm1()" [disabled]="form1.get('newPassword')?.errors">
+    <button class="btn btn-orange btn-icon small-margin-top" (click)="submitForm1()" [disabled]="(form1.get('currentPassword')?.errors != null) || !passIsDone">
       <span *ngIf="!spinnerDisplay">{{'SENDER.SETTINGS.btn_continue' | translate}}</span>
       <img *ngIf="!spinnerDisplay" src="../../assets/icons/arrow-right.svg" alt="arrow-right">
 

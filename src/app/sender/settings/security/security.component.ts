@@ -85,10 +85,10 @@ export class SecurityComponent implements OnInit {
 
     switch (type) {
       case 'mail':
-        this.toastMessage = this.translateService.instant('SENDER.SETTINGS.PROFILE.toast_mail')
+        this.toastMessage = this.translateService.instant('SENDER.SETTINGS.SECURITY.toast_mail')
         break;
       case 'pwd':
-        this.toastMessage = this.translateService.instant('SENDER.SETTINGS.PROFILE.toast_pwd')
+        this.toastMessage = this.translateService.instant('SENDER.SETTINGS.SECURITY.toast_pwd')
         break;
     }
 

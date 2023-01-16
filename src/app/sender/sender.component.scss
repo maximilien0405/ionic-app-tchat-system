@@ -247,13 +247,11 @@ image-cropper .ngx-ic-source-image {
   transition: all 0.2s ease-in-out;
 }
 
-.box-bounce {
-  &:active {
-    transform: scale(0.96);
-    -webkit-transform: scale(0.96);
-    -moz-transform: scale(0.96);
-    border: 0.0938rem solid var(--border-gray-hover);
-  }
+.boxs-bounce .box:active {
+  transform: scale(0.96);
+  -webkit-transform: scale(0.96);
+  -moz-transform: scale(0.96);
+  border: 0.0938rem solid var(--border-gray-hover);
 }
 
 .all-boxs {
@@ -308,6 +306,46 @@ image-cropper .ngx-ic-source-image {
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
+}
+
+/* ---------------------------------------------------
+  SECURITY PAGE
+----------------------------------------------------- */
+
+.pass-infos {
+  display: flex;
+  text-align: left;
+  margin-top: 0.625rem !important;
+  margin: 0;
+  font-size: 0.8438rem;
+  font-weight: 400;
+  color: var(--gray);
+
+  div {
+    margin-right: 0.8125rem;
+    display: flex;
+    align-items: center;
+  }
+
+  div:last-child {
+    margin-right: 0px !important;
+    width: 100% !important;
+  }
+
+  p {
+    margin: 0px !important;
+  }
+
+  img {
+    margin-right: 0.375rem;
+    height: 1.25rem;
+    transition: all 0.5s;
+    filter: var(--icon-gray);
+  }
+
+  .img-sucess {
+    filter: var(--icon-green) !important;
+  }
 }
 
 /* ---------------------------------------------------
