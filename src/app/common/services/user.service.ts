@@ -90,4 +90,32 @@ export class UserService {
 
     return await CapacitorHttp.post(options);
   }
+
+  // Ask code to change password
+  public async askChangePassword(currentPassword: string) {
+    const options = {
+      url: `${this.API_URL}/user/ask-change-pwd`,
+      headers: {
+        'Authorization': `Bearer ${this.token}`,
+        'Content-Type': 'application/json'
+      },
+      data: { currentPassword }
+    };
+
+    return await CapacitorHttp.post(options);
+  }
+
+  // Change password
+  public async setNewChangePwd(newPassword: string, code: number) {
+    const options = {
+      url: `${this.API_URL}/user/set-new-change-pwd`,
+      headers: {
+        'Authorization': `Bearer ${this.token}`,
+        'Content-Type': 'application/json'
+      },
+      data: { newPassword, code }
+    };
+
+    return await CapacitorHttp.post(options);
+  }
 }

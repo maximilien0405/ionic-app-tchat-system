@@ -13,17 +13,18 @@
 
     <p class="label small-margin-top">{{'SENDER.SETTINGS.EDIT_PWD.label_current_password' | translate}}</p>
     <div class="input-icon very-small-margin-bottom">
-      <input type="{{ passwordShow1 ? 'text' : 'password' }}" class="input" [placeholder]="'SENDER.SETTINGS.EDIT_PWD.placeholder_current_password' | translate"
+      <input type="{{ passwordShow1 ? 'text' : 'password' }}" [class.form-error]="(submittedForm && form1.get('currentPassword')?.errors) || errorPwd" class="input" [placeholder]="'SENDER.SETTINGS.EDIT_PWD.placeholder_current_password' | translate"
       formControlName="currentPassword" (keydown.space)="$event.preventDefault();" appAutoFocusDirective autocomplete>
       <div (click)="togglePasswordShow1()" class="icon-right">
         <img *ngIf="passwordShow1" src="../../assets/icons/eye.svg" alt="eye-open-icon">
         <img *ngIf="!passwordShow1" src="../../assets/icons/eye2.svg" alt="eye-closed-icon">
       </div>
     </div>
+    <p *ngIf="errorPwd" class="text-error">{{'SENDER.SETTINGS.EDIT_PWD.password_incorrect' | translate}}</p>
 
     <p class="label small-margin-top">{{'SENDER.SETTINGS.EDIT_PWD.label_new_password' | translate}}</p>
     <div class="input-icon" (focusin)="passInfos = true">
-      <input (keydown.space)="$event.preventDefault();" [ngModelOptions]="{standalone: true}" 
+      <input (keydown.space)="$event.preventDefault();" [ngModelOptions]="{standalone: true}"
       [(ngModel)]="passwordValue" (ngModelChange)="onPasswordChange($event)" class="input"
       type="{{ passwordShow2 ? 'text' : 'password' }}" [placeholder]="'SENDER.SETTINGS.EDIT_PWD.placeholder_new_password' | translate"
       maxlength="48" autocomplete>

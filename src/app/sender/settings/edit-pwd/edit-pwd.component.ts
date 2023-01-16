@@ -1,9 +1,9 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Haptics, ImpactStyle } from '@capacitor/haptics';
 import { Preferences } from '@capacitor/preferences';
-import { isPlatform, NavController } from '@ionic/angular';
-import { of, Subject } from 'rxjs';
+import { NavController } from '@ionic/angular';
+import { Subject } from 'rxjs';
 import { slideRightAnimation } from 'src/app/common/animations';
 import { GetUserService } from 'src/app/common/services/get-user.service';
 import { UserService } from 'src/app/common/services/user.service';
@@ -20,6 +20,7 @@ export class EditPwdComponent implements OnInit {
   public spinnerDisplay: boolean;
   public step: number = 1;
   public errorCode: boolean;
+  public errorPwd: boolean;
   public term = new Subject<string>();
   public submittedForm: boolean;
   public passwordShow1: boolean;
@@ -33,7 +34,11 @@ export class EditPwdComponent implements OnInit {
   public passSubmited: boolean;
   public passIsRequired: boolean;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder,
+    private userService: UserService,
+    private navCtrl: NavController,
+    private getUserService: GetUserService)
+  { }
 
   public ngOnInit(): void {
     // Create forms
@@ -136,18 +141,22 @@ export class EditPwdComponent implements OnInit {
     }
 
     if (!this.passIsDone) { return; }
-    
-    // this.userService.askCodeChangeEmail(this.form1.value.mail)
-    // .then((res: any) => {
-    //   if ((isPlatform('mobile') && res.status == 200) || !isPlatform('mobile')) {
-    //     setTimeout(() => {
-    //       this.spinnerDisplay = false;
-    //       this.step = 2;
-    //     }, 1400);
-    //   } else {
-    //     this.spinnerDisplay = false;
-    //   }
-    // });
+
+    this.userService.askChangePassword(this.form1.value.currentPassword)
+      .then((res: any) => {
+        if (res.status != 201) {
+          this.errorPwd = true;
+        }
+        else {
+          this.errorPwd = false;
+
+          setTimeout(() => {
+            this.step = 2;
+            this.submittedForm = false;
+          }, 1400);
+        }
+        this.spinnerDisplay = false;
+      });
   }
 
   // Validate the code and change password
@@ -156,17 +165,30 @@ export class EditPwdComponent implements OnInit {
     Haptics.impact({ style: ImpactStyle.Medium });
     this.spinnerDisplay = true;
 
-    // this.userService.changeEmail(this.form1.value.mail, this.form2.value.code)
-    // .then((res: any) => {
-    //   if ((isPlatform('mobile') && res.status == 200) || !isPlatform('mobile')) {
-    //     setTimeout(() => {
-    //       this.spinnerDisplay = false;
-    //       this.navCtrl.back();
-    //     }, 1400);
-    //   } else {
-    //     this.errorCode = true;
-    //     this.spinnerDisplay = false;
-    //   }
-    // });
+    this.userService.setNewChangePwd(this.passwordValue, Number(this.form2.value.code))
+      .then((res: any) => {
+        if (res.status != 201) {
+          this.errorCode = true;
+        }
+        else {
+          this.errorCode = false;
+
+          const changeMail = async () => {
+            await Preferences.set({
+              key: 'change-value',
+              value: 'pwd',
+            });
+          }; changeMail();
+
+          // Get updated user
+          this.getUserService.setUser();
+
+          setTimeout(() => {
+            this.spinnerDisplay = false;
+            this.navCtrl.back();
+          }, 1400);
+        }
+        this.spinnerDisplay = false;
+      });
   }
 }
