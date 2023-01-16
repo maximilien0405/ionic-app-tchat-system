@@ -4,6 +4,7 @@ import { AboutComponent } from './about/about.component';
 import { EditMailComponent } from './edit-mail/edit-mail.component';
 import { EditNameComponent } from './edit-name/edit-name.component';
 import { EditPwdComponent } from './edit-pwd/edit-pwd.component';
+import { ForgotPwdComponent } from './forgot-pwd/forgot-pwd.component';
 import { HelpComponent } from './help/help.component';
 import { HomeSettingsComponent } from './home-settings/home-settings.component';
 import { NotificationsComponent } from './notifications/notifications.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'edit-mail', component: EditMailComponent },
   { path: 'edit-name', component: EditNameComponent },
   { path: 'edit-pwd', component: EditPwdComponent },
+  { path: 'forgot-pwd', component: ForgotPwdComponent },
   { path: 'help', component: HelpComponent },
   { path: 'home', component: HomeSettingsComponent },
   { path: '**', redirectTo: 'home', pathMatch: 'full' },

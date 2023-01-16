@@ -15,6 +15,7 @@ import { AutoFocusDirective } from 'src/app/common/directives/auto-focus.directi
 import { ProfileComponent } from './profile/profile.component';
 import { SecurityComponent } from './security/security.component';
 import { NotificationsComponent } from './notifications/notifications.component';
+import { ForgotPwdComponent } from './forgot-pwd/forgot-pwd.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { NotificationsComponent } from './notifications/notifications.component'
     EditMailComponent,
     EditNameComponent,
     EditPwdComponent,
+    ForgotPwdComponent,
     HelpComponent,
     AutoFocusDirective
   ],
