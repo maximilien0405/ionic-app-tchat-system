@@ -20,20 +20,21 @@
         <img *ngIf="!passwordShow1" src="../../assets/icons/eye2.svg" alt="eye-closed-icon">
       </div>
     </div>
-    <a class="small-link" href="#">Password forgotten?</a>
+    <a class="small-link" [routerLink]="['/sender/settings/forgot-pwd']">{{'SENDER.SETTINGS.EDIT_PWD.forgot_pwd' | translate}}</a>
 
     <p class="label small-margin-top">{{'SENDER.SETTINGS.EDIT_PWD.label_new_password' | translate}}</p>
     <div class="input-icon">
       <input type="{{ passwordShow2 ? 'text' : 'password' }}" class="input" [placeholder]="'SENDER.SETTINGS.EDIT_PWD.placeholder_new_password' | translate"
-      formControlName="currentPassword" (keydown.space)="$event.preventDefault();" autocomplete>
+      formControlName="newPassword" (keydown.space)="$event.preventDefault();" autocomplete>
       <div (click)="togglePasswordShow2()" class="icon-right">
         <img *ngIf="passwordShow2" src="../../assets/icons/eye.svg" alt="eye-open-icon">
         <img *ngIf="!passwordShow2" src="../../assets/icons/eye2.svg" alt="eye-closed-icon">
       </div>
     </div>
 
-    <button class="btn btn-orange small-margin-top" (click)="submitForm1()" [disabled]="form1.get('newPassword')?.errors">
+    <button class="btn btn-orange btn-icon small-margin-top" (click)="submitForm1()" [disabled]="form1.get('newPassword')?.errors">
       <span *ngIf="!spinnerDisplay">{{'SENDER.SETTINGS.btn_continue' | translate}}</span>
+      <img *ngIf="!spinnerDisplay" src="../../assets/icons/arrow-right.svg" alt="arrow-right">
 
       <div *ngIf="spinnerDisplay" class="spinner">
         <div class="bounce1"></div>

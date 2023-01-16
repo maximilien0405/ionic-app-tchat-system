@@ -25,14 +25,12 @@ export class EditPwdComponent implements OnInit {
   public passwordShow1: boolean;
   public passwordShow2: boolean;
 
-  constructor(private formBuilder: FormBuilder,
-    private navCtrl: NavController,
-    private userService: UserService,
-    private getUserService: GetUserService) { }
+  constructor(private formBuilder: FormBuilder) { }
 
   public ngOnInit(): void {
     // Create forms
     this.form1 = this.formBuilder.group({
+      currentPassword: ['', [Validators.minLength(3)]],
       newPassword: ['', [Validators.minLength(3)]],
     })
 

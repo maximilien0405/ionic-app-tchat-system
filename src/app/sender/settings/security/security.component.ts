@@ -3,6 +3,7 @@ import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { Preferences } from '@capacitor/preferences';
 import { ModalController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
+import { slideUpAnimation } from 'src/app/common/animations';
 import { User } from 'src/app/common/models/user.model';
 import { DeleteAccountComponent } from '../../modals/delete-account/delete-account.component';
 import { LogoutComponent } from '../../modals/logout/logout.component';
@@ -11,6 +12,7 @@ import { LogoutComponent } from '../../modals/logout/logout.component';
   selector: 'app-security',
   templateUrl: './security.component.html',
   styleUrls: ['../../sender.component.scss'],
+  animations: [slideUpAnimation]
 })
 export class SecurityComponent implements OnInit {
   public user: User;
