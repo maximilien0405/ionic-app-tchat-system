@@ -1,13 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NetworkService } from '../common/services/network.service';
-import { fadeAnimation } from '../common/animations';
 
 @Component({
   selector: 'app-sender',
   templateUrl: './sender.component.html',
   styleUrls: ['./sender.component.scss'],
-  animations: [fadeAnimation]
 })
 export class SenderComponent implements OnInit {
   public apiError: boolean;

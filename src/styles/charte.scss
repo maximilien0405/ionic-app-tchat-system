@@ -329,7 +329,7 @@ input:-webkit-autofill:focus {
 
   .icon-right-text {
     width: fit-content !important;
-    padding: 0rem 0.625rem;
+    padding: 0px 0.8125rem;
 
     p {
       font-size: 0.7813rem !important;
@@ -698,16 +698,24 @@ textarea {
   box-shadow: var(--shadow-small);
   background-color: var(--white);
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
   gap: 0.9375rem;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 
-  &:active {
-    transform: scale(0.96);
-    -webkit-transform: scale(0.96);
-    -moz-transform: scale(0.96);
-    border: 0.0938rem solid var(--border-gray-hover);
+  // &:active {
+  //   transform: scale(0.96);
+  //   -webkit-transform: scale(0.96);
+  //   -moz-transform: scale(0.96);
+  //   border: 0.0938rem solid var(--border-gray-hover);
+  // }
+
+  .choice-box-left {
+    display: flex;
+    align-items: center;
+    gap: 1.125rem;
   }
 
   .round {
@@ -715,7 +723,7 @@ textarea {
     min-width: 3.125rem;
     background-color: var(--background-orange);
     border-radius: var(--radius-base);
-    border: 1px solid var(--border-orange);
+    //border: 1px solid var(--border-orange);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -733,35 +741,28 @@ textarea {
     border-radius: var(--radius-full);
     float: right;
   }
-
-  .choice-content {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    align-items: center;
-  }
 }
 
-.choice-box-selected {
-  border: 0.0938rem solid var(--border-orange);
+// .choice-box-selected {
+//   border: 0.0938rem solid var(--border-orange);
 
-  .choice-round {
-    border-color: var(--orange);
-    padding: 0.0938rem;
+//   .choice-round {
+//     border-color: var(--orange);
+//     padding: 0.0938rem;
 
-    div {
-      background-color: var(--orange);
-      height: 100%;
-      width: 100%;
-      border-radius: var(--radius-full);
-    }
-  }
+//     div {
+//       background-color: var(--orange);
+//       height: 100%;
+//       width: 100%;
+//       border-radius: var(--radius-full);
+//     }
+//   }
 
-  &:active {
-    background-color: var(--background-orange-hover) !important;
-    border-color: var(--border-orange) !important;
-  }
-}
+//   &:active {
+//     background-color: var(--background-orange-hover) !important;
+//     border-color: var(--border-orange) !important;
+//   }
+// }
 
 
 /* ---------------------------------------------------

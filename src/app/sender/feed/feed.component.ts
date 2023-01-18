@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Preferences } from '@capacitor/preferences';
 import { isPlatform } from '@ionic/angular';
+import { SafeArea } from 'capacitor-plugin-safe-area';
 import { slideUpAnimation } from 'src/app/common/animations';
 import { AuthService } from 'src/app/common/services/auth.service';
 import { GetUserService } from 'src/app/common/services/get-user.service';
@@ -15,7 +16,8 @@ import { NetworkService } from 'src/app/common/services/network.service';
 export class FeedComponent implements OnInit {
   public networkError = false;
   public APIError = false;
-
+  public marginBottom: number;
+  
   constructor(
     private networkService: NetworkService,
     private authService: AuthService,
@@ -28,6 +30,10 @@ export class FeedComponent implements OnInit {
         this.networkError = res.networkError;
       }, 500);
     })
+
+    SafeArea.getSafeAreaInsets().then(({ insets }) => {
+      this.marginBottom = 0.0625 * (insets.bottom + 8);
+    });
   }
 
   ngOnInit(): void {}

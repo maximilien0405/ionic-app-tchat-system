@@ -1,5 +1,4 @@
-
-<ion-content class="ion-padding"> 
+<ion-content *ngIf="user" class="ion-padding"> 
   <div [routerLink]="['/sender/feed']" router-direction="forward" class="select-box select-start" ontouchstart>
     Feed
     <img src="../../assets/icons/inbox-outline.svg">
@@ -8,5 +7,30 @@
   <div [routerLink]="['/sender/settings/home']" router-direction="forward" class="select-box select-start" ontouchstart>
     Settings
     <img src="../../assets/icons/cog-outline.svg">
+  </div>
+
+  <div [routerLink]="['/sender/reminders']" router-direction="forward" class="select-box select-start" ontouchstart>
+    Reminders
+    <img src="../../assets/icons/cog-outline.svg">
+  </div>
+
+  <div [routerLink]="['/sender/subscription']" router-direction="forward" class="select-box select-start" ontouchstart>
+    Subscription
+    <img src="../../assets/icons/cog-outline.svg">
+  </div>
+
+  <div class="absolute-bottom ion-padding">
+    <div class="choice-box">
+      <div class="choice-box-left">
+        <img class="round" [src]="user.profilePictureUrl">
+        <div>
+          <p class="box-title">{{ user.fullName }}</p>
+          <p class="box-subtitle">{{ user.email }}</p>
+        </div>
+      </div>
+      <button class="btn btn-white btn-small" [routerLink]="['/sender/settings/home']" router-direction="forward" ontouchstart>
+        <img src="../../assets/icons/cog-outline.svg" alt="arrow-right">
+      </button>
+    </div>  
   </div>
 </ion-content>
