@@ -20,7 +20,7 @@ export class HomeSettingsComponent implements OnInit {
 
   constructor(private modalController: ModalController) {
     SafeArea.getSafeAreaInsets().then(({ insets }) => {
-      this.marginTop = 0.0625 * ((insets.top || 16) + 16);
+      this.marginTop = 0.0625 * ((insets.top || 16) + 10);
     });
   }
 
@@ -40,10 +40,7 @@ export class HomeSettingsComponent implements OnInit {
         this.currentLang = value;
       }
     }; checkLang()
-  }
 
-  // Get user when page change or init
-  public ionViewDidEnter() {
     const getUser = async () => {
       const { value } = await Preferences.get({ key: 'user' });
       if(value) {

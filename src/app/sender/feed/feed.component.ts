@@ -34,7 +34,7 @@ export class FeedComponent implements OnInit {
 
   public login() {
     // Login the user (temporarely)
-    this.authService.login('maximilien.zimmermann@ik.me', 'Maximilien007')
+    this.authService.login('maximilien.zimmermann@gmail.com', 'Maximilien008')
     .then((res: any) => {
       if(res.status == 201) {
         const setToken = async () => {

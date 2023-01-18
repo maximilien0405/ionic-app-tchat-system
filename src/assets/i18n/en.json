@@ -1,14 +1,5 @@
 {
   "SENDER": {
-    "HOME": {
-      "header": "Home",
-      "choice_message": "Send a message",
-      "choice_picture": "Send a picture",
-      "choice_voice_message": "Send a voice message",
-      "choice_video": "Start a call",
-      "choice_video_call": "Start a video call",
-      "choice_create_reminder": "Create a reminder"
-    },
     "REMINDERS": {
       "header": "Reminders"
     },
@@ -86,12 +77,6 @@
         "answer_3": "Answer 3",
         "question_4": "Question 4",
         "answer_4": "Answer 4"
-      },
-      "EDIT_NAME": {
-        "header": "Change your name",
-        "label_name": "New name",
-        "placeholder_name": "Your new name",
-        "paragraph": "Once changed, your new name will be edited in your elder and subscription members applications."
       },
       "EDIT_MAIL": {
         "header": "Change your email",

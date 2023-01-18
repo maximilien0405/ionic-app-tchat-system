@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { SettingsRoutingModule } from './settings-routing.module';
 import { AboutComponent } from './about/about.component';
 import { EditMailComponent } from './edit-mail/edit-mail.component';
-import { EditNameComponent } from './edit-name/edit-name.component';
 import { EditPwdComponent } from './edit-pwd/edit-pwd.component';
 import { HelpComponent } from './help/help.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -25,7 +24,6 @@ import { ForgotPwdComponent } from './forgot-pwd/forgot-pwd.component';
     SecurityComponent,
     NotificationsComponent,
     EditMailComponent,
-    EditNameComponent,
     EditPwdComponent,
     ForgotPwdComponent,
     HelpComponent,

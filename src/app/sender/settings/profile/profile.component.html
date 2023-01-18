@@ -19,10 +19,5 @@
   <p *ngIf="imageError" class="text-error">{{'SENDER.SETTINGS.PROFILE.error_image' | translate}}<p>
 
   <p class="label margin-top">{{'SENDER.SETTINGS.PROFILE.label_name' | translate}}</p>
-  <div class="input-icon">
-    <input type="text" [value]="user.fullName" class="input" readonly>
-    <div class="icon-right" [routerLink]="['/sender/settings/edit-name']" router-direction="forward" ontouchstart>
-      <img src="../../../../assets/icons/edit.svg" alt="edit">
-    </div>
-  </div>
+  <input type="text" [value]="user.fullName" class="input" readonly>
 </ion-content>

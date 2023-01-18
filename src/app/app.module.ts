@@ -10,7 +10,6 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader'
 import { HttpClient, HttpClientModule } from '@angular/common/http'
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ChoiceHomeComponent } from './sender/modals/choice-home/choice-home.component';
 import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { CreateReminderComponent } from './sender/modals/create-reminder/create-reminder.component';
@@ -25,7 +24,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     StartComponent,
     DesignSystemComponent,
     SenderComponent,
-    ChoiceHomeComponent,
     CreateReminderComponent
   ],
   imports: [

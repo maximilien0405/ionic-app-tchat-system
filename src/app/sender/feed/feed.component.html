@@ -1,81 +1,34 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button [text]="'SENDER.SETTINGS.back_page' | translate"></ion-back-button>
-    </ion-buttons>
-    <ion-title>{{'SENDER.FEED.header' | translate}}</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-menu contentId="main-content" side="end">
+  <ion-content class="ion-padding">
+    <app-home-settings></app-home-settings>
+  </ion-content>
+</ion-menu>
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="end">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    Tap the button in the toolbar to open the menu.
 
-<ion-content class="ion-padding" forceOverscroll="false">
-  <div class="tab-container">
-    <button class="option-box option-selected" ontouchstart>Marcel</button>
-    <button class="option-box" ontouchstart>Paul</button>
-    <button class="option-box" ontouchstart>Jack</button>
+    <button (click)="login()" class="btn btn-white">Login AAAAAA</button>
+  </ion-content>
+</div>
+
+<div @slideUpAnimation *ngIf="networkError" class="absolute-bottom">
+  <div class="toast toast-error">
+    <img src="../../../../assets/icons/network.svg" alt="">
+    <p>{{'SENDER.FEED.toast_network' | translate}}</p>
   </div>
+</div>
 
-  <p class="label margin-top">Reminders</p>
-
-  <div class="box box-reminder" ontouchstart>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
-    <div class="separator"></div>
-    <div class="box-details">
-      <p>Grandma 1</p>
-      <p>Every Monday, at 7:40 PM</p>
-    </div>
+<div @slideUpAnimation *ngIf="APIError" class="absolute-bottom">
+  <div class="toast toast-error">
+    <img src="../../../../assets/icons/warning.svg" alt="">
+    <p>{{'SENDER.FEED.toast_api' | translate}}</p>
   </div>
-
-  <p class="label margin-top">Programmed posts</p>
-
-  <div class="box box-reminder" ontouchstart>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
-    <div class="separator"></div>
-    <div class="box-details">
-      <p>Grandma 1</p>
-      <p>Every Monday, at 7:40 PM</p>
-    </div>
-  </div>
-
-  <p class="label margin-top">Already posted</p>
-
-  <div class="box box-reminder" ontouchstart>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
-    <div class="separator"></div>
-    <div class="box-details">
-      <p>Grandma 1</p>
-      <p>Every Monday, at 7:40 PM</p>
-    </div>
-  </div>
-  <div class="box box-reminder small-margin-top" ontouchstart>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
-    <div class="separator"></div>
-    <div class="box-details">
-      <p>Grandma 1</p>
-      <p>Every Monday, at 7:40 PM</p>
-    </div>
-  </div>
-  <div class="box box-reminder small-margin-top" ontouchstart>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
-    <div class="separator"></div>
-    <div class="box-details">
-      <p>Grandma 1</p>
-      <p>Every Monday, at 7:40 PM</p>
-    </div>
-  </div>
-
-  <div @slideUpAnimation *ngIf="networkError" class="absolute-bottom">
-    <div class="toast toast-error">
-      <img src="../../../../assets/icons/network.svg" alt="">
-      <p>{{'SENDER.FEED.toast_network' | translate}}</p>
-    </div>
-  </div>
-
-  <div @slideUpAnimation *ngIf="APIError" class="absolute-bottom">
-    <div class="toast toast-error">
-      <img src="../../../../assets/icons/warning.svg" alt="">
-      <p>{{'SENDER.FEED.toast_api' | translate}}</p>
-    </div>
-  </div>
-
-  <button class="btn btn-medium btn-orange" (click)="login()">Login</button>
-</ion-content>
+</div>

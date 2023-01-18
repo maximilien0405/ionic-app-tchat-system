@@ -149,10 +149,14 @@ ion-content {
   touch-action: none !important;
 }
 
-ion-tab-button {
-  --ripple-color: transparent;
-}
-
 .ion-page {
   justify-content: unset !important;
+}
+
+ion-menu {
+  --width: 95% !important;
+}
+
+ion-menu::part(container) {
+  border-radius: var(--radius-base) 0 0 var(--radius-base);
 }
