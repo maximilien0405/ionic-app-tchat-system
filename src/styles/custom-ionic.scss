@@ -118,7 +118,9 @@ ion-back-button {
 ion-button {
   font-size: 1rem !important;
   font-family: "Poppins";
-  font-weight: 500;
+  font-weight: 400;
+  text-transform: capitalize !important;
+
   --color: var(--black);
   --ripple-color: transparent;
 }
@@ -158,5 +160,6 @@ ion-menu {
 }
 
 ion-menu::part(container) {
-  border-radius: var(--radius-base) 0 0 var(--radius-base);
+  //border-radius: var(--radius-base) 0 0 var(--radius-base);
+  border-radius: 0 var(--radius-base) var(--radius-base) ;
 }

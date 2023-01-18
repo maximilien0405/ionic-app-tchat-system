@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FeedComponent } from './feed/feed.component';
+import { MenuComponent } from './menu/menu.component';
 import { RemindersComponent } from './reminders/reminders.component';
 import { SenderComponent } from './sender.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
@@ -8,9 +9,10 @@ import { SubscriptionComponent } from './subscription/subscription.component';
 const routes: Routes = [
   {
     path: '', component: SenderComponent, children: [
-      { path: '', redirectTo: 'feed', pathMatch: 'full' },
+      { path: '', redirectTo: 'menu', pathMatch: 'full' },
       { path: 'subscription', component: SubscriptionComponent },
       { path: 'feed', component: FeedComponent },
+      { path: 'menu', component: MenuComponent },
       { path: 'reminders', component: RemindersComponent },
       { path: 'settings', loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule) },
       { path: '**', redirectTo: 'home', pathMatch: 'full' },

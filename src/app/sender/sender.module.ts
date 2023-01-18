@@ -16,6 +16,7 @@ import { ProfilePictureComponent } from './modals/profile-picture/profile-pictur
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { SubscriptionComponent } from './subscription/subscription.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { SubscriptionComponent } from './subscription/subscription.component';
     DeleteAccountComponent,
     ProfilePictureComponent,
     HomeSettingsComponent,
+    MenuComponent
   ],
   imports: [
     FormsModule,
