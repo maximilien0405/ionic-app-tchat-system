@@ -1,4 +1,4 @@
-<ion-content *ngIf="user" class="ion-padding"> 
+<ion-content *ngIf="user" class="ion-padding-top ion-padding-start ion-padding-end" forceOverscroll="false">
   <div [routerLink]="['/sender/feed']" router-direction="forward" class="select-box select-start" ontouchstart>
     Feed
     <img src="../../assets/icons/inbox-outline.svg">
@@ -19,7 +19,7 @@
     <img src="../../assets/icons/cog-outline.svg">
   </div>
 
-  <div class="absolute-bottom ion-padding">
+  <div class="absolute-bottom ion-padding-top ion-padding-start ion-padding-end" [style]="'bottom:' + marginBottom + 'rem !important'">
     <div class="choice-box">
       <div class="choice-box-left">
         <img class="round" [src]="user.profilePictureUrl">
@@ -31,6 +31,6 @@
       <button class="btn btn-white btn-small" [routerLink]="['/sender/settings/home']" router-direction="forward" ontouchstart>
         <img src="../../assets/icons/cog-outline.svg" alt="arrow-right">
       </button>
-    </div>  
+    </div>
   </div>
 </ion-content>

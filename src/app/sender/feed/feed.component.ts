@@ -11,13 +11,13 @@ import { NetworkService } from 'src/app/common/services/network.service';
   selector: 'app-feed',
   templateUrl: './feed.component.html',
   styleUrls: ['../sender.component.scss'],
-  animations: [slideUpAnimation]
+  animations: [slideUpAnimation],
 })
 export class FeedComponent implements OnInit {
   public networkError = false;
   public APIError = false;
   public marginBottom: number;
-  
+
   constructor(
     private networkService: NetworkService,
     private authService: AuthService,
@@ -36,7 +36,8 @@ export class FeedComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   public login() {
     // Login the user (temporarely)
@@ -48,7 +49,7 @@ export class FeedComponent implements OnInit {
             key: 'token',
             value: res.data.token,
           });
-  
+
           this.getUserService.setUser();
         }; setToken();
       }

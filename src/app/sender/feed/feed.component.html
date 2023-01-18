@@ -1,5 +1,5 @@
 <div class="ion-page" id="main-content">
-  <ion-content class="ion-padding">
+  <ion-content class="ion-padding" forceOverscroll="false">
     <div class="box">
       <p>test</p>
     </div>
@@ -33,9 +33,9 @@
 
     <button (click)="login()" class="btn btn-white">Login AAAAAA</button>
   </ion-content>
-  <ion-footer>
+  <ion-footer keyboardFlying>
     <ion-toolbar>
-      <input type="text" class="input" placeholder="Write something here" [style]="'margin-bottom:' + marginBottom + 'rem !important'">
+      <ion-input class="absolute-bottom box"></ion-input>
     </ion-toolbar>
   </ion-footer>
 </div>

@@ -163,3 +163,7 @@ ion-menu::part(container) {
   //border-radius: var(--radius-base) 0 0 var(--radius-base);
   border-radius: 0 var(--radius-base) var(--radius-base) ;
 }
+
+.ion-input {
+  transition: transform 300ms ease-in-out;
+}

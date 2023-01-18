@@ -17,6 +17,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { SubscriptionComponent } from './subscription/subscription.component';
 import { MenuComponent } from './menu/menu.component';
+import { KeyboardFlyingDirective } from '../common/directives/keyboard-height.directive';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { MenuComponent } from './menu/menu.component';
     DeleteAccountComponent,
     ProfilePictureComponent,
     HomeSettingsComponent,
-    MenuComponent
+    MenuComponent,
+    KeyboardFlyingDirective
   ],
   imports: [
     FormsModule,

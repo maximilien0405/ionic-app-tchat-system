@@ -6,7 +6,7 @@
     <ion-title>{{'SENDER.SETTINGS.header' | translate}}</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content class="ion-padding">
+<ion-content class="ion-padding" forceOverscroll="false">
   <div *ngIf="user" class="settings-header">
     <img [src]="user.profilePictureUrl">
     <p class="paragraph">{{ user.fullName }}</p>
