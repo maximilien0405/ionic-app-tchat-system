@@ -1,8 +1,22 @@
-<ion-header>
+<ion-header [translucent]="true" class="feed-header">
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
+    <div class="header-component">
+      <div class="header-start">
+        <div>
+          <ion-buttons slot="start">
+            <ion-back-button class="no-text" text=""></ion-back-button>
+          </ion-buttons>
+          <div class="header-profile">
+            <img src="../../assets/icons/pdp.png">
+          </div>
+        </div>
+        <p>Grandma 1</p>
+      </div>
+      <div class="header-end">
+        <img src="../../../assets/icons/video.svg">
+        <img src="../../../assets/icons/phone.svg">
+      </div>
+    </div>
   </ion-toolbar>
 </ion-header>
 <ion-content class="ion-padding" forceOverscroll="false">
@@ -53,9 +67,9 @@
     </div>
   </div>
 </ion-content>
-<ion-footer keyboardFlying>
+<ion-footer [translucent]="true" keyboardFlying>
   <ion-toolbar>
-    <div class="input-text-component">
+    <div class="footer-component">
       <ion-textarea autoGrow="true" rows="1" maxlength="250" [(ngModel)]="message" (ngModelChange)="onMessageChange($event)"></ion-textarea>
       <img *ngIf="!showIcons" src="../../../assets/icons/camera.svg">
       <img *ngIf="!showIcons" src="../../../assets/icons/microphone.svg">

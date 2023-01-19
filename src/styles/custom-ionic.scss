@@ -66,8 +66,8 @@ ion-header {
 
 ion-toolbar {
   --color: var(--black);
-  --padding-end: 0.9375rem;
-  --padding-start: 0.9375rem;
+  --padding-end: 1rem;
+  --padding-start: 1rem;
 }
 
 .header-ios ion-toolbar:last-of-type {
@@ -96,6 +96,10 @@ ion-toolbar {
   --padding-start: 0rem !important;
   --padding-end: 0rem !important;
   --background-hover: transparent !important;
+
+  &::part(native) {
+    margin-left: -0.1875rem;
+  }
 
   &:active {
     opacity: 0.7;
@@ -160,10 +164,10 @@ ion-content {
 //   --max-width: 28.125rem;
 // }
 
-ion-menu::part(container) {
-  //border-radius: var(--radius-base) 0 0 var(--radius-base);
-  border-radius: 0 var(--radius-base) var(--radius-base) ;
-}
+// ion-menu::part(container) {
+//   //border-radius: var(--radius-base) 0 0 var(--radius-base);
+//   border-radius: 0 var(--radius-base) var(--radius-base) ;
+// }
 
 .ion-input {
   transition: transform 300ms ease-in-out;
