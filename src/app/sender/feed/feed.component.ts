@@ -6,6 +6,7 @@ import { AuthService } from 'src/app/common/services/auth.service';
 import { GetUserService } from 'src/app/common/services/get-user.service';
 import { NetworkService } from 'src/app/common/services/network.service';
 import { Keyboard } from '@capacitor/keyboard';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-feed',
@@ -19,12 +20,17 @@ export class FeedComponent implements OnInit {
   public marginBottom: number;
   public message: string;
   public showIcons: boolean = false;
+  public id: number;
 
   constructor(
     private networkService: NetworkService,
     private authService: AuthService,
-    private getUserService: GetUserService)
+    private getUserService: GetUserService,
+    private activatedRoute: ActivatedRoute)
   {
+    // Get route param
+    this.activatedRoute.params.subscribe(params => this.id = params['id']);
+
     // Check the API status changes
     this.networkService.subjectApiOrNetworkError.subscribe(res => {
       setTimeout(() => {

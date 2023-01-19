@@ -22,6 +22,13 @@
   FEED PAGE
 ----------------------------------------------------- */
 
+.overlay-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 
 .input-text-component {
   width: 100%;
@@ -29,24 +36,26 @@
   display: flex;
   align-items: center;
   padding: 0.4375rem 0.75rem 0.3125rem 0.75rem;
-  gap: 0.875rem;
+  gap: 0.9375rem;
 
   ion-textarea {
     --padding-top: 0.5rem;
     --padding-bottom: 0.5rem;
     --padding-start: 0.8rem;
+    --padding-end: 0.8rem;
     border: 1px solid var(--border-gray);
     background-color: var(--background-white);
     border-radius: var(--radius-base);
     max-height: 6.25rem;
     overflow: scroll;
     transition: width 2s;
+    font-size: 0.875rem;
   }
 
   .send-icon {
     background-color: var(--orange);
-    height: 2.3125rem;
-    width: 2.3125rem;
+    height: 2.25rem;
+    width: 2.25rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -55,7 +64,8 @@
     cursor: pointer;
 
     img {
-      height: 1rem !important;
+      height: 1.3rem !important;
+      margin-left: 0.1875rem;
       filter: var(--icon-white);
 
       &:active {
@@ -297,13 +307,72 @@ image-cropper .ngx-ic-source-image {
 }
 
 /* ---------------------------------------------------
-  OTHER
+  MENU PAGE
 ----------------------------------------------------- */
 
-.overlay-box {
-  position: absolute;
-  top: 0;
-  left: 0;
+.profile-box {
   width: 100%;
-  height: 100%;
+  border: 0.0938rem solid var(--border-gray);
+  outline: none;
+  border-radius: var(--radius-base);
+  padding: 1.125rem;
+  box-shadow: var(--shadow-small);
+  background-color: var(--white);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.9375rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  // &:active {
+  //   transform: scale(0.96);
+  //   -webkit-transform: scale(0.96);
+  //   -moz-transform: scale(0.96);
+  //   border: 0.0938rem solid var(--border-gray-hover);
+  // }
+
+  .profile-box-left {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .round {
+    height: 3.125rem;
+    min-width: 3.125rem;
+    background-color: var(--background-orange);
+    border-radius: var(--radius-base);
+    //border: 1px solid var(--border-orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      height: 1.5625rem;
+      filter: var(--icon-black);
+    }
+  }
+
+  .profile-round {
+    height: 1.25rem;
+    width: 1.25rem;
+    border: 0.0938rem solid var(--border-gray);
+    border-radius: var(--radius-full);
+    float: right;
+  }
+}
+
+.tchat-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.9375rem;
+  
+  img {
+    height: 4.0625rem;
+    border-radius: var(--radius-base);
+  }
 }

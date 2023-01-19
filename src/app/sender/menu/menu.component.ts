@@ -16,6 +16,7 @@ import { fadeAnimation, slideUpAnimation } from 'src/app/common/animations';
 export class MenuComponent implements OnInit {
   public user: User;
   public marginBottom: number;
+  public marginTop: number;
 
   constructor(private modalController: ModalController) { }
 
@@ -29,9 +30,11 @@ export class MenuComponent implements OnInit {
 
     SafeArea.getSafeAreaInsets().then(({ insets }) => {
       this.marginBottom = 0.0625 * insets.bottom;
+      this.marginTop = 0.0625 * insets.top;
     });
   }
 
+ 
   public async openSettings() {
     const modalSettings = await this.modalController.create({
       component: SettingsComponent,

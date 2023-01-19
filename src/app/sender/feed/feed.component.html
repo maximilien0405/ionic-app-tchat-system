@@ -1,74 +1,67 @@
-<ion-menu contentId="main-content">
-  <ion-content class="ion-padding-top ion-padding-start ion-padding-end" forceOverscroll="false">
-    <app-menu></app-menu>
-  </ion-content>
-</ion-menu>
-<div class="ion-page" id="main-content">
-  <ion-header>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
-  <ion-content class="ion-padding" forceOverscroll="false">
-    <div class="box">
-      <p>test</p>
-    </div>
-    <div class="box">
-      <p>test</p>
-    </div>
-    <div class="box">
-      <p>test</p>
-    </div>
-    <div class="box">
-      <p>test</p>
-    </div>
-    <div class="box">
-      <p>test</p>
-    </div>
-    <div class="box">
-      <p>test</p>
-    </div>
-    <div class="box">
-      <p>test</p>
-    </div>
-    <div class="box">
-      <p>test</p>
-    </div>
-    <div class="box">
-      <p>test</p>
-    </div>
-    <div class="box">
-      <p>test</p>
-    </div>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding" forceOverscroll="false">
+  <div class="box">
+    <p>test</p>
+  </div>
+  <div class="box">
+    <p>test</p>
+  </div>
+  <div class="box">
+    <p>test</p>
+  </div>
+  <div class="box">
+    <p>test</p>
+  </div>
+  <div class="box">
+    <p>test</p>
+  </div>
+  <div class="box">
+    <p>test</p>
+  </div>
+  <div class="box">
+    <p>test</p>
+  </div>
+  <div class="box">
+    <p>test</p>
+  </div>
+  <div class="box">
+    <p>test</p>
+  </div>
+  <div class="box">
+    <p>test</p>
+  </div>
 
-    <button (click)="login()" class="btn btn-white">Login AAAAAA</button>
+  <button (click)="login()" class="btn btn-white">Login AAAAAA</button>
 
-    <div @slideUpAnimation *ngIf="networkError" class="absolute-bottom">
-      <div class="toast toast-error">
-        <img src="../../../../assets/icons/network.svg">
-        <p>{{'SENDER.FEED.toast_network' | translate}}</p>
+  <div @slideUpAnimation *ngIf="networkError" class="absolute-bottom">
+    <div class="toast toast-error">
+      <img src="../../../../assets/icons/network.svg">
+      <p>{{'SENDER.FEED.toast_network' | translate}}</p>
+    </div>
+  </div>
+
+  <div @slideUpAnimation *ngIf="APIError" class="absolute-bottom">
+    <div class="toast toast-error">
+      <img src="../../../../assets/icons/warning.svg">
+      <p>{{'SENDER.FEED.toast_api' | translate}}</p>
+    </div>
+  </div>
+</ion-content>
+<ion-footer keyboardFlying>
+  <ion-toolbar>
+    <div class="input-text-component">
+      <ion-textarea autoGrow="true" rows="1" maxlength="250" [(ngModel)]="message" (ngModelChange)="onMessageChange($event)"></ion-textarea>
+      <img *ngIf="!showIcons" src="../../../assets/icons/camera.svg">
+      <img *ngIf="!showIcons" src="../../../assets/icons/microphone.svg">
+      <div *ngIf="showIcons" class="send-icon">
+        <img  src="../../../assets/icons/paper-airplane.svg">
       </div>
     </div>
-  
-    <div @slideUpAnimation *ngIf="APIError" class="absolute-bottom">
-      <div class="toast toast-error">
-        <img src="../../../../assets/icons/warning.svg">
-        <p>{{'SENDER.FEED.toast_api' | translate}}</p>
-      </div>
-    </div>
-  </ion-content>
-  <ion-footer keyboardFlying>
-    <ion-toolbar>
-      <div class="input-text-component">
-        <ion-textarea autoGrow="true" rows="1" maxlength="250" [(ngModel)]="message" (ngModelChange)="onMessageChange($event)"></ion-textarea>
-        <img *ngIf="!showIcons" src="../../../assets/icons/camera.svg">
-        <img *ngIf="!showIcons" src="../../../assets/icons/microphone.svg">
-        <div *ngIf="showIcons" class="send-icon">
-          <img  src="../../../assets/icons/arrow-right.svg">
-        </div>
-      </div>
-    </ion-toolbar>
-  </ion-footer>
-</div>
+  </ion-toolbar>
+</ion-footer>

@@ -11,7 +11,7 @@ const routes: Routes = [
     path: '', component: SenderComponent, children: [
       { path: '', redirectTo: 'menu', pathMatch: 'full' },
       { path: 'subscription', component: SubscriptionComponent },
-      { path: 'feed', component: FeedComponent },
+      { path: 'feed/:id', component: FeedComponent },
       { path: 'menu', component: MenuComponent },
       { path: 'reminders', component: RemindersComponent },
       { path: 'settings', loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule) },

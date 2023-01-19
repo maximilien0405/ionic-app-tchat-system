@@ -155,10 +155,10 @@ ion-content {
   justify-content: unset !important;
 }
 
-ion-menu {
-  --width: 96% !important;
-  --max-width: 28.125rem;
-}
+// ion-menu {
+//   --width: 100% !important;
+//   --max-width: 28.125rem;
+// }
 
 ion-menu::part(container) {
   //border-radius: var(--radius-base) 0 0 var(--radius-base);

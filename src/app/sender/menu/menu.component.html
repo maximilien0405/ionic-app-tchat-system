@@ -1,13 +1,26 @@
-<div *ngIf="user">
-  <p class="subtitle small-subtitle">{{'SENDER.MENU.subtitle' | translate}}</p>
+<ion-content *ngIf="user" class="ion-padding-top ion-padding-start ion-padding-end" forceOverscroll="false">
+  <p class="subtitle small-subtitle" [style]="'margin-top:' + marginTop + 'rem !important'">{{'SENDER.MENU.subtitle' | translate}}</p>
   <h1 class="small-title">{{'SENDER.MENU.title' | translate}}</h1>
-
   <div class="separator"></div>
 
-  <div class="box">
-
+  <div class="all-boxs">
+    <div [routerLink]="['/sender/feed/1']" router-direction="forward" class="box tchat-box">
+      <img class="round" src="../../assets/icons/pdp.png">
+      <div>
+        <p class="box-title">Grandma 1</p>
+        <p class="box-subtitle">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quibu.</p>
+      </div>
+    </div>
+  
+    <div [routerLink]="['/sender/feed/2']" router-direction="forward" class="box tchat-box">
+      <img class="round" src="../../assets/icons/pdp.png">
+      <div>
+        <p class="box-title">Grandma 2</p>
+        <p class="box-subtitle">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quibu.</p>
+      </div>
+    </div>
   </div>
-
+  
   <div class="absolute-bottom ion-padding-top ion-padding-start ion-padding-end" [style]="'bottom:' + marginBottom + 'rem !important'">
     <div class="list-container">
       <div [routerLink]="['/sender/reminders']" router-direction="forward" class="select-box select-start" ontouchstart>
@@ -23,8 +36,8 @@
 
     <div class="separator"></div>
 
-    <div class="choice-box">
-      <div class="choice-box-left">
+    <div class="profile-box">
+      <div class="profile-box-left">
         <!-- <img class="round" [src]="user.profilePictureUrl"> -->
         <div>
           <p class="box-title">{{ user.fullName }}</p>
@@ -36,4 +49,4 @@
       </button>
     </div>
   </div>
-</div>
+</ion-content>
