@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Preferences } from '@capacitor/preferences';
-import { isPlatform } from '@ionic/angular';
 import { SafeArea } from 'capacitor-plugin-safe-area';
 import { fadeAnimation, slideUpAnimation } from 'src/app/common/animations';
 import { AuthService } from 'src/app/common/services/auth.service';
@@ -49,7 +48,6 @@ export class FeedComponent implements OnInit {
 
   // Hide camera and microphone icons
   public onMessageChange(message: string) {
-    console.log(message)
     if (message == '') {
       this.showIcons = false;
     } else {

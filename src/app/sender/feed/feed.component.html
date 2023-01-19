@@ -40,10 +40,12 @@
 <ion-footer keyboardFlying>
   <ion-toolbar>
     <div class="input-text-component">
-      <ion-textarea autoGrow="true" rows="1" [(ngModel)]="message" (ngModelChange)="onMessageChange($event)"></ion-textarea>
+      <ion-textarea autoGrow="true" rows="1" maxlength="250" [(ngModel)]="message" (ngModelChange)="onMessageChange($event)"></ion-textarea>
       <img *ngIf="!showIcons" src="../../../assets/icons/camera.svg">
       <img *ngIf="!showIcons" src="../../../assets/icons/microphone.svg">
-      <img *ngIf="showIcons" src="../../../assets/icons/arrow-right.svg">
+      <div *ngIf="showIcons" class="send-icon">
+        <img  src="../../../assets/icons/arrow-right.svg">
+      </div>
     </div>
   </ion-toolbar>
 </ion-footer>
