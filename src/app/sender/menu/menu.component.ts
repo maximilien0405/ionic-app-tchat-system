@@ -5,11 +5,13 @@ import { SettingsComponent } from '../settings/settings.component';
 import { User } from 'src/app/common/models/user.model';
 import { Preferences } from '@capacitor/preferences';
 import { SafeArea } from 'capacitor-plugin-safe-area';
+import { fadeAnimation, slideUpAnimation } from 'src/app/common/animations';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['../sender.component.scss'],
+  animations: [slideUpAnimation, fadeAnimation]
 })
 export class MenuComponent implements OnInit {
   public user: User;

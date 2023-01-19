@@ -19,6 +19,35 @@
 }
 
 /* ---------------------------------------------------
+  FEED PAGE
+----------------------------------------------------- */
+
+
+.input-text-component {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0px 10px 0px 10px;
+  gap: 0.625rem;
+
+  ion-textarea {
+    --border-radius: 10px;
+    --padding-top: 0.5rem;
+    --padding-bottom: 0.5rem;
+    --padding-start: 1rem;
+    border: 1px solid var(--border-gray);
+    background-color: var(--background-white);
+    border-radius: 8px;
+  }
+
+  img {
+    height: 1.5625rem;
+    filter: var(--icon-black);
+  }
+}
+
+/* ---------------------------------------------------
   PROFILE PAGE
 ----------------------------------------------------- */
 
