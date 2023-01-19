@@ -310,6 +310,25 @@ image-cropper .ngx-ic-source-image {
   MENU PAGE
 ----------------------------------------------------- */
 
+.menu-page-container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 100%;
+
+  .menu-top-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+
+    .all-boxs {
+      height: 100%;
+      overflow: scroll;
+    }
+  }
+}
+
 .profile-box {
   width: 100%;
   border: 0.0938rem solid var(--border-gray);
