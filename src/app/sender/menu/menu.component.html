@@ -1,25 +1,28 @@
-<div *ngIf="user" >
-  <div [routerLink]="['/sender/feed']" router-direction="forward" class="select-box select-start" ontouchstart>
-    Feed
-    <img src="../../assets/icons/inbox-outline.svg">
-  </div>
+<div *ngIf="user">
+  <p class="subtitle small-subtitle">{{'SENDER.MENU.subtitle' | translate}}</p>
+  <h1 class="small-title">{{'SENDER.MENU.title' | translate}}</h1>
 
-  <div [routerLink]="['/sender/settings/home']" router-direction="forward" class="select-box select-start" ontouchstart>
-    Settings
-    <img src="../../assets/icons/cog-outline.svg">
-  </div>
+  <div class="separator"></div>
 
-  <div [routerLink]="['/sender/reminders']" router-direction="forward" class="select-box select-start" ontouchstart>
-    Reminders
-    <img src="../../assets/icons/cog-outline.svg">
-  </div>
+  <div class="box">
 
-  <div [routerLink]="['/sender/subscription']" router-direction="forward" class="select-box select-start" ontouchstart>
-    Subscription
-    <img src="../../assets/icons/cog-outline.svg">
   </div>
 
   <div class="absolute-bottom ion-padding-top ion-padding-start ion-padding-end" [style]="'bottom:' + marginBottom + 'rem !important'">
+    <div class="list-container">
+      <div [routerLink]="['/sender/reminders']" router-direction="forward" class="select-box select-start" ontouchstart>
+        {{'SENDER.MENU.box_reminders' | translate}}
+        <img src="../../assets/icons/clock-outline.svg">
+      </div>
+    
+      <div [routerLink]="['/sender/subscription']" router-direction="forward" class="select-box select-end" ontouchstart>
+        {{'SENDER.MENU.box_subscription' | translate}}
+        <img src="../../assets/icons/map-outline.svg">
+      </div>
+    </div>
+
+    <div class="separator"></div>
+
     <div class="choice-box">
       <div class="choice-box-left">
         <!-- <img class="round" [src]="user.profilePictureUrl"> -->

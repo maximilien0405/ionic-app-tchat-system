@@ -1,12 +1,18 @@
 {
   "SENDER": {
-    "REMINDERS": {
-      "header": "Reminders"
+    "MENU": {
+      "subtitle": "Welcome back!",
+      "title": "Send a message",
+      "box_reminders": "Reminders",
+      "box_subscription": "Subscription"
     },
     "FEED": {
       "header": "Feed",
       "toast_network": "You are not connected to internet. To use the app, connect to a WiFi or mobile network.",
       "toast_api": "Our servers seems to be down. Please wait a moment, our team is working on fixing the problem(s)."
+    },
+    "REMINDERS": {
+      "header": "Reminders"
     },
     "SUBSCRIPTION": {
       "header": "Subscription"

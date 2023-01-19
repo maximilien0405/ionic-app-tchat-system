@@ -123,8 +123,13 @@ body.dark-theme {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 600;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   color: var(--black);
+  margin: 0;
+}
+
+.small-subtitle {
+  font-size: 0.8438rem !important;
 }
 
 .subtitle {
