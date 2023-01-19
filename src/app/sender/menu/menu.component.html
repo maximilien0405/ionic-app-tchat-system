@@ -5,16 +5,23 @@
       <h1 class="small-title">{{'SENDER.MENU.title' | translate}}</h1>
       <div class="separator"></div>
     
-      <div class="all-boxs">
+      <div class="all-boxs boxs-bounce">
         <div [routerLink]="['/sender/feed/1']" router-direction="forward" class="box tchat-box">
           <img class="round" src="../../assets/icons/pdp.png">
           <div>
-            <p class="box-title">Grandma 1</p>
-            <p class="box-subtitle">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quibu.</p>
+            <div class="tchat-box-title">
+              <p class="box-title">Grandma 1</p>
+              <p class="box-subtitle">12:34</p>
+            </div>
+            <p class="box-subtitle box-sub-bottom">
+              <img src="../../assets/icons/double-check.svg">
+              <!-- <img src="../../assets/icons/check.svg"> -->
+              Lorem, ipsum dolor sit amet 
+            </p>
           </div>
         </div>
       
-        <div [routerLink]="['/sender/feed/2']" router-direction="forward" class="box tchat-box">
+        <div [routerLink]="['/sender/feed/2']" router-direction="forward" class="box tchat-box box-bounce">
           <img class="round" src="../../assets/icons/pdp.png">
           <div>
             <p class="box-title">Grandma 2</p>
@@ -33,7 +40,7 @@
       
         <div [routerLink]="['/sender/subscription']" router-direction="forward" class="select-box select-end" ontouchstart>
           {{'SENDER.MENU.box_subscription' | translate}}
-          <img src="../../assets/icons/map-outline.svg">
+          <img src="../../assets/icons/credit-card.svg">
         </div>
       </div>
   
