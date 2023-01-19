@@ -1,4 +1,4 @@
-<ion-content *ngIf="user" class="ion-padding-top ion-padding-start ion-padding-end" forceOverscroll="false">
+<div *ngIf="user" >
   <div [routerLink]="['/sender/feed']" router-direction="forward" class="select-box select-start" ontouchstart>
     Feed
     <img src="../../assets/icons/inbox-outline.svg">
@@ -33,4 +33,4 @@
       </button>
     </div>
   </div>
-</ion-content>
+</div>

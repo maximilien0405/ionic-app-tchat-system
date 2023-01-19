@@ -20,7 +20,7 @@ export class SenderComponent implements OnInit {
     //   this.apiError = res.apiError;
     //   this.networkError = res.networkError;
     // })
-    this.router.navigateByUrl('sender/menu');
+    this.router.navigateByUrl('sender/feed');
   }
 
   public ngOnInit(): void {
