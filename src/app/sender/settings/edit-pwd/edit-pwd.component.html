@@ -16,8 +16,8 @@
       <input type="{{ passwordShow1 ? 'text' : 'password' }}" [class.form-error]="(submittedForm && form1.get('currentPassword')?.errors) || errorPwd" class="input" [placeholder]="'SENDER.SETTINGS.EDIT_PWD.placeholder_current_password' | translate"
       formControlName="currentPassword" (keydown.space)="$event.preventDefault();" appAutoFocusDirective autocomplete>
       <div (click)="togglePasswordShow1()" class="icon-right">
-        <img *ngIf="passwordShow1" src="../../assets/icons/eye.svg" alt="eye-open-icon">
-        <img *ngIf="!passwordShow1" src="../../assets/icons/eye2.svg" alt="eye-closed-icon">
+        <img *ngIf="passwordShow1" src="../../assets/icons/eye.svg">
+        <img *ngIf="!passwordShow1" src="../../assets/icons/eye2.svg">
       </div>
     </div>
     <p *ngIf="errorPwd" class="text-error">{{'SENDER.SETTINGS.EDIT_PWD.password_incorrect' | translate}}</p>
@@ -30,25 +30,25 @@
       maxlength="48" autocomplete>
 
       <div (click)="togglePasswordShow2()" class="icon-right">
-        <img *ngIf="passwordShow2" src="../../assets/icons/eye.svg" alt="eye-open-icon">
-        <img *ngIf="!passwordShow2" src="../../assets/icons/eye2.svg" alt="eye-closed-icon">
+        <img *ngIf="passwordShow2" src="../../assets/icons/eye.svg">
+        <img *ngIf="!passwordShow2" src="../../assets/icons/eye2.svg">
       </div>
     </div>
     <div *ngIf="passInfos" class="pass-infos box small-margin-top">
-      <div><img [class.img-sucess]="passHasLettersAndUppercase" src="../../assets/icons/check.svg" alt="check-icon-letter-and-uppercase">
+      <div><img [class.img-sucess]="passHasLettersAndUppercase" src="../../assets/icons/check.svg">
         <p>AaBbCc</p>
       </div>
-      <div><img [class.img-sucess]="passHasNumberOrSpecial" src="../../assets/icons/check.svg" alt="check-icon-number-and-special">
+      <div><img [class.img-sucess]="passHasNumberOrSpecial" src="../../assets/icons/check.svg">
         <p>123&$#</p>
       </div>
-      <div><img [class.img-sucess]="passHasMin8Char" src="../../assets/icons/check.svg" alt="check-icon-min-8-chara">
+      <div><img [class.img-sucess]="passHasMin8Char" src="../../assets/icons/check.svg">
         <p>{{'SENDER.SETTINGS.EDIT_PWD.passchar_validation' | translate}}</p>
       </div>
     </div>
 
     <button class="btn btn-orange btn-icon small-margin-top" (click)="submitForm1()" [disabled]="(form1.get('currentPassword')?.errors != null) || !passIsDone">
       <span *ngIf="!spinnerDisplay">{{'SENDER.SETTINGS.btn_continue' | translate}}</span>
-      <img *ngIf="!spinnerDisplay" src="../../assets/icons/arrow-right.svg" alt="arrow-right">
+      <img *ngIf="!spinnerDisplay" src="../../assets/icons/arrow-right.svg">
 
       <div *ngIf="spinnerDisplay" class="spinner">
         <div class="bounce1"></div>

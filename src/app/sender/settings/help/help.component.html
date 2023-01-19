@@ -12,28 +12,28 @@
   <div class="list-container faq-container">
     <div class="select-box" ontouchstart (click)="openSelect(1)">
       <p>{{'SENDER.SETTINGS.HELP.question_1' | translate}}</p>
-      <img [class.icon-rotate]="select1" src="../../assets/icons/chevron-down.svg" alt="down">
+      <img [class.icon-rotate]="select1" src="../../assets/icons/chevron-down.svg">
     </div>
     <div *ngIf="select1" @fadeAnimation class="select-box faq-answer">
       <p>{{'SENDER.SETTINGS.HELP.answer_1' | translate}}</p>
     </div>
     <div class="select-box" ontouchstart (click)="openSelect(2)">
       <p>{{'SENDER.SETTINGS.HELP.question_2' | translate}}</p>
-      <img [class.icon-rotate]="select2" src="../../assets/icons/chevron-down.svg" alt="down">
+      <img [class.icon-rotate]="select2" src="../../assets/icons/chevron-down.svg">
     </div>
     <div *ngIf="select2" @fadeAnimation class="select-box faq-answer">
       <p>{{'SENDER.SETTINGS.HELP.answer_2' | translate}}</p>
     </div>
     <div class="select-box" ontouchstart (click)="openSelect(3)">
       <p>{{'SENDER.SETTINGS.HELP.question_3' | translate}}</p>
-      <img [class.icon-rotate]="select3" src="../../assets/icons/chevron-down.svg" alt="down">
+      <img [class.icon-rotate]="select3" src="../../assets/icons/chevron-down.svg">
     </div>
     <div *ngIf="select3" @fadeAnimation class="select-box faq-answer">
       <p>{{'SENDER.SETTINGS.HELP.answer_3' | translate}}</p>
     </div>
     <div class="select-box" ontouchstart (click)="openSelect(4)">
       <p>{{'SENDER.SETTINGS.HELP.question_4' | translate}}</p>
-      <img [class.icon-rotate]="select4" src="../../assets/icons/chevron-down.svg" alt="down">
+      <img [class.icon-rotate]="select4" src="../../assets/icons/chevron-down.svg">
     </div>
     <div *ngIf="select4" @fadeAnimation class="select-box faq-answer">
       <p>{{'SENDER.SETTINGS.HELP.answer_4' | translate}}</p>
@@ -50,13 +50,13 @@
     <a href="mailto:support@seniorcontact.app">
       <div class="select-box select-start" ontouchstart>
         Email
-        <img src="../../assets/icons/mail.svg" alt="email">
+        <img src="../../assets/icons/mail.svg">
       </div>
     </a>
     <a href="https://twitter.com/senior_contact">
       <div class="select-box select-end" ontouchstart>
         Twitter
-        <img src="../../assets/icons/external.svg" alt="twitter">
+        <img src="../../assets/icons/external.svg">
       </div>
     </a>
   </div>
