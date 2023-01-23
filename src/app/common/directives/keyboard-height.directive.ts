@@ -2,7 +2,7 @@ import { DOCUMENT } from '@angular/common'
 import { Directive, ElementRef, Inject, OnDestroy, OnInit } from '@angular/core'
 import { PluginListenerHandle } from '@capacitor/core'
 import { Keyboard, KeyboardResize } from '@capacitor/keyboard'
-import { Animation, AnimationController } from '@ionic/angular'
+import { Animation, AnimationController, isPlatform } from '@ionic/angular'
 
 @Directive({
   selector: '[keyboardFlying]',
@@ -31,47 +31,51 @@ export class KeyboardFlyingDirective implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    const safeAreaTop = Number.parseInt(
-      getComputedStyle(this.document.documentElement).getPropertyValue(
-        '--ion-safe-area-bottom'
-      ),
-      10
-    )
+    if(isPlatform('mobile') && !isPlatform('mobileweb')) {
+      const safeAreaTop = Number.parseInt(
+        getComputedStyle(this.document.documentElement).getPropertyValue(
+          '--ion-safe-area-bottom'
+        ),
+        10
+      )
 
-    void Keyboard.getResizeMode().then(({ mode }) => {
-      this.resizeModeBackup = mode
-      void Keyboard.setResizeMode({ mode: KeyboardResize.None })
-    })
+      void Keyboard.getResizeMode().then(({ mode }) => {
+        this.resizeModeBackup = mode
+        void Keyboard.setResizeMode({ mode: KeyboardResize.None })
+      })
 
-    void Keyboard.addListener('keyboardWillShow', ({ keyboardHeight }) => {
-      const toValue = (keyboardHeight) * -1
-      this.animation.keyframes([
-        { offset: 1, transform: `translate3d(0, ${toValue}px, 0)` },
-      ])
-      void this.animation.play()
-    }).then((listener) => {
-      this.keyboardWillShowListener = listener
-    })
+      void Keyboard.addListener('keyboardWillShow', ({ keyboardHeight }) => {
+        const toValue = (keyboardHeight) * -1
+        this.animation.keyframes([
+          { offset: 1, transform: `translate3d(0, ${toValue}px, 0)` },
+        ])
+        void this.animation.play()
+      }).then((listener) => {
+        this.keyboardWillShowListener = listener
+      })
 
-    void Keyboard.addListener('keyboardWillHide', () => {
-      this.animation.keyframes([{ offset: 1, transform: 'translate3d(0, 0, 0)' }])
-      void this.animation.play()
-    }).then((listener) => {
-      this.keyboardWillHideListener = listener
-    })
+      void Keyboard.addListener('keyboardWillHide', () => {
+        this.animation.keyframes([{ offset: 1, transform: 'translate3d(0, 0, 0)' }])
+        void this.animation.play()
+      }).then((listener) => {
+        this.keyboardWillHideListener = listener
+      })
+    }
   }
 
   ngOnDestroy(): void {
-    if (this.resizeModeBackup) {
-      void Keyboard.setResizeMode({ mode: this.resizeModeBackup })
-    }
+    if(isPlatform('mobile') && !isPlatform('mobileweb')) {
+      if (this.resizeModeBackup) {
+        void Keyboard.setResizeMode({ mode: this.resizeModeBackup })
+      }
 
-    if (this.keyboardWillShowListener) {
-      void this.keyboardWillShowListener.remove()
-    }
+      if (this.keyboardWillShowListener) {
+        void this.keyboardWillShowListener.remove()
+      }
 
-    if (this.keyboardWillHideListener) {
-      void this.keyboardWillHideListener.remove()
+      if (this.keyboardWillHideListener) {
+        void this.keyboardWillHideListener.remove()
+      }
     }
   }
 }
