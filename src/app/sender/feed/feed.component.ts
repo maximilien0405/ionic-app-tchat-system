@@ -7,6 +7,7 @@ import { GetUserService } from 'src/app/common/services/get-user.service';
 import { NetworkService } from 'src/app/common/services/network.service';
 import { Keyboard } from '@capacitor/keyboard';
 import { ActivatedRoute } from '@angular/router';
+import { isPlatform } from '@ionic/angular';
 
 @Component({
   selector: 'app-feed',
@@ -49,7 +50,9 @@ export class FeedComponent implements OnInit {
 
   // Close keyboard
   ionViewWillLeave() {
-    Keyboard.hide()
+    if(isPlatform('mobile') && !isPlatform('mobileweb')) {
+      Keyboard.hide()
+    }
   }
 
   // Hide camera and microphone icons

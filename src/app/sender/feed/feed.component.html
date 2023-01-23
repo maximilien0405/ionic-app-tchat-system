@@ -1,4 +1,4 @@
-<ion-header [translucent]="true" class="feed-header">
+<ion-header class="feed-header">
   <ion-toolbar>
     <div class="header-component">
       <div class="header-start">
@@ -67,7 +67,7 @@
     </div>
   </div>
 </ion-content>
-<ion-footer [translucent]="true" keyboardFlying>
+<ion-footer keyboardFlying>
   <ion-toolbar>
     <div class="footer-component">
       <ion-textarea autoGrow="true" rows="1" maxlength="250" [(ngModel)]="message" (ngModelChange)="onMessageChange($event)"></ion-textarea>
