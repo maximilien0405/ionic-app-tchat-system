@@ -118,4 +118,30 @@ export class UserService {
 
     return await CapacitorHttp.post(options);
   }
+
+  // Ask reset code to change password
+  public async askResetPassword(email: string) {
+    const options = {
+      url: `${this.API_URL}/user/ask-reset-pwd`,
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data: { email }
+    };
+
+    return await CapacitorHttp.post(options);
+  }
+
+  // Change password with reset
+  public async setNewResetPwd(email: string, newPassword: string, code: number) {
+    const options = {
+      url: `${this.API_URL}/user/set-new-reset-pwd`,
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data: { email, newPassword, code }
+    };
+
+    return await CapacitorHttp.post(options);
+  }
 }

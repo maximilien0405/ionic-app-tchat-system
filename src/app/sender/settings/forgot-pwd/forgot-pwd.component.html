@@ -6,5 +6,53 @@
     <ion-title>{{'SENDER.SETTINGS.FORGOT_PWD.header' | translate}}</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content class="ion-padding" forceOverscroll="false">
+
+<ion-content *ngIf="user" class="ion-padding" forceOverscroll="false">
+  <form [formGroup]="form">
+    <p class="paragraph">{{'SENDER.SETTINGS.FORGOT_PWD.paragraph1' | translate}}</p>
+
+    <p class="label small-margin-top">{{'SENDER.SETTINGS.FORGOT_PWD.label_code' | translate}}</p>
+
+    <input (keypress)="numberOnly($event)" (keydown.space)="$event.preventDefault();"
+      [class.form-error]="submittedForm && errorCode" inputmode="numeric"
+      formControlName="code" class="input" type="text"
+      [placeholder]="'SENDER.SETTINGS.FORGOT_PWD.placeholder_code' | translate" maxlength="5">
+    <p *ngIf="errorCode" class="text-error">{{'SENDER.SETTINGS.FORGOT_PWD.code_invalid' | translate}}</p>
+
+    <!-- New password -->
+
+    <p class="label small-margin-top">{{'SENDER.SETTINGS.FORGOT_PWD.label_new_password' | translate}}</p>
+    <div class="input-icon" (focusin)="passInfos = true">
+      <input (keydown.space)="$event.preventDefault();" [ngModelOptions]="{standalone: true}"
+      [(ngModel)]="passwordValue" (ngModelChange)="onPasswordChange($event)" class="input"
+      type="{{ passwordShow ? 'text' : 'password' }}" [placeholder]="'SENDER.SETTINGS.FORGOT_PWD.placeholder_new_password' | translate"
+      maxlength="48" autocomplete>
+
+      <div (click)="togglePasswordShow()" class="icon-right">
+        <img *ngIf="passwordShow" src="../../assets/icons/eye.svg">
+        <img *ngIf="!passwordShow" src="../../assets/icons/eye2.svg">
+      </div>
+    </div>
+    <div *ngIf="passInfos" class="pass-infos box small-margin-top">
+      <div><img [class.img-sucess]="passHasLettersAndUppercase" src="../../assets/icons/check-round.svg">
+        <p>AaBbCc</p>
+      </div>
+      <div><img [class.img-sucess]="passHasNumberOrSpecial" src="../../assets/icons/check-round.svg">
+        <p>123&$#</p>
+      </div>
+      <div><img [class.img-sucess]="passHasMin8Char" src="../../assets/icons/check-round.svg">
+        <p>{{'SENDER.SETTINGS.FORGOT_PWD.passchar_validation' | translate}}</p>
+      </div>
+    </div>
+
+    <button class="btn btn-orange small-margin-top" (click)="submitForm()" [disabled]="codeLengthError || !passIsDone">
+      <span *ngIf="!spinnerDisplay">{{'SENDER.SETTINGS.btn_update' | translate}}</span>
+
+      <div *ngIf="spinnerDisplay" class="spinner">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+      </div>
+    </button>
+  </form>
 </ion-content>

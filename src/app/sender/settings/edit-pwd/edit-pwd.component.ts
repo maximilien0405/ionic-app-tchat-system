@@ -20,6 +20,7 @@ export class EditPwdComponent implements OnInit {
   public spinnerDisplay: boolean;
   public step: number = 1;
   public errorCode: boolean;
+  public codeLengthError: boolean = true;
   public errorPwd: boolean;
   public term = new Subject<string>();
   public submittedForm: boolean;
@@ -51,9 +52,13 @@ export class EditPwdComponent implements OnInit {
     })
 
     // Listen on code value
-    this.form2.get('code')?.valueChanges.subscribe((selectedValue: any) => {
-      if (!selectedValue) {
-        this.errorCode = false;
+    this.form2.get('code')?.valueChanges.subscribe((code: any) => {
+      this.errorCode = false;
+
+      if (code.length == 5) {
+        this.codeLengthError = false;
+      } else {
+        this.codeLengthError = true;
       }
     })
   }
@@ -105,17 +110,6 @@ export class EditPwdComponent implements OnInit {
   }
   public togglePasswordShow2() {
     this.passwordShow2 = !this.passwordShow2;
-  }
-
-  // On code change execute
-  public onCodeChange(code: string): void {
-    if (code == "") {
-      this.errorCode = false;
-      return;
-    }
-    if (code.length == 5) {
-      this.term.next(code);
-    }
   }
 
   // Only number on code field
