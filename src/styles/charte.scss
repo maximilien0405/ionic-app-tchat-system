@@ -79,7 +79,7 @@ body {
   --icon-gray: invert(69%) sepia(0%) saturate(201%) hue-rotate(205deg) brightness(94%) contrast(79%);
   --icon-white: invert(99%) sepia(1%) saturate(2%) hue-rotate(15deg) brightness(106%) contrast(100%);
   --icon-orange: brightness(0) saturate(100%) invert(84%) sepia(34%) saturate(4296%) hue-rotate(319deg) brightness(99%) contrast(85%);;
-  --icon-green: invert(73%) sepia(28%) saturate(500%) hue-rotate(58deg) brightness(86%) contrast(84%);
+  --icon-green: invert(65%) sepia(27%) saturate(677%) hue-rotate(58deg) brightness(88%) contrast(88%);
   --icon-red: invert(34%) sepia(94%) saturate(1575%) hue-rotate(339deg) brightness(111%) contrast(79%);
 }
 
@@ -96,14 +96,12 @@ body.dark-theme {
   --background-orange: #271B15;
   --background-orange-hover: #402213;
   --background-green: #48ff0007;
-
   --border-green: #58774c;
   --border-gray: #222222;
   --border-gray-hover: #696969aa;
 
   --icon-gray: invert(63%) sepia(0%) saturate(0%) hue-rotate(152deg) brightness(93%) contrast(90%);
   --icon-black: invert(98%) sepia(0%) saturate(25%) hue-rotate(188deg) brightness(82%) contrast(84%);
-  --icon-green: invert(42%) sepia(17%) saturate(797%) hue-rotate(59deg) brightness(97%) contrast(90%);;
 }
 
 /* ---------------------------------------------------
@@ -699,7 +697,6 @@ textarea {
   background-color: var(--background-green);
   color: var(--light-black);
   border-radius: var(--radius-base);
-  border: 0.0938rem solid var(--border-green);
   bottom: 0px !important;
   font-size: 0.9375rem;
   display: flex;

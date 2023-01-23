@@ -46,7 +46,7 @@
       </div>
     </div>
 
-    <button class="btn btn-orange btn-icon small-margin-top" (click)="submitForm1()" [disabled]="(form1.get('currentPassword')?.errors != null) || !passIsDone">
+    <button class="btn btn-orange btn-icon small-margin-top" (click)="submitForm1()" [disabled]="(form1.get('currentPassword')?.errors != null) || !passIsDone || !passIsDone">
       <span *ngIf="!spinnerDisplay">{{'SENDER.SETTINGS.btn_continue' | translate}}</span>
       <img *ngIf="!spinnerDisplay" src="../../assets/icons/arrow-right.svg">
 
