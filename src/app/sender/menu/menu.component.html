@@ -1,21 +1,66 @@
-<ion-header>
+<!--<ion-header>
   <ion-toolbar>
     <ion-title>Send a message</ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header>-->
 <ion-content *ngIf="user" class="ion-padding-top ion-padding-start ion-padding-end" forceOverscroll="false">
   <div class="menu-page-container">
-    <div class="menu-top-container">
-      <!-- <p class="subtitle small-subtitle" [style]="'margin-top:' + marginTop + 'rem !important'">{{'SENDER.MENU.subtitle' | translate}}</p>
-      <h1 class="small-title">{{'SENDER.MENU.title' | translate}}</h1>
-      <div class="separator"></div> -->
+    <div class="profile-box" [style]="'margin-top:' + marginTop + 'rem !important'">
+      <div class="profile-box-left">
+        <img class="round" [src]="user.profilePictureUrl">
+        <div>
+          <p class="box-title">{{ user.firstname }} {{ user.lastname }}</p>
+          <p class="box-subtitle">{{ user.email }}</p>
+        </div>
+      </div>
+      <button class="btn btn-white btn-small" [routerLink]="['/sender/settings/home']" router-direction="forward"
+        ontouchstart>
+        <img src="../../assets/icons/cog-outline.svg">
+      </button>
+    </div>
 
-      <div class="all-boxs boxs-bounce">
-        <div [routerLink]="['/sender/feed/1']" router-direction="forward" class="box tchat-box">
+    <div class="separator"></div>
+
+    <div class="list-container">
+      <div [routerLink]="['/sender/feed/1']" router-direction="forward" class="select-box select-start tchat-box" ontouchstart>
+        <img class="round" src="../../assets/icons/pdp.png">
+        <div>
+          <div class="tchat-box-title">
+            <p class="box-title">Grandma 1</p>
+            <p class="box-subtitle">12:34</p>
+          </div>
+          <p class="box-subtitle box-sub-bottom">
+            <img src="../../assets/icons/double-check.svg">
+            <!-- <img src="../../assets/icons/check.svg"> -->
+            Lorem, ipsum dolor sit amet
+          </p>
+        </div>
+      </div>
+      <div [routerLink]="['/sender/feed/2']" router-direction="forward" class="select-box select-end tchat-box" ontouchstart>
+        <img class="round" src="../../assets/icons/pdp.png">
+        <div>
+          <div class="tchat-box-title">
+            <p class="box-title">Grandma 2</p>
+            <p class="box-subtitle">Yesterday</p>
+          </div>
+          <p class="box-subtitle box-sub-bottom">
+            <img src="../../assets/icons/double-check.svg">
+            <!-- <img src="../../assets/icons/check.svg"> -->
+            Lorem ipsum dolor sit amet consectetur adipisicing elit
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="separator"></div>
+
+    <div class="menu-top-container">
+      <div class="list-container">
+        <div [routerLink]="['/sender/feed/1']" router-direction="forward" class="select-box select-start tchat-box" ontouchstart>
           <img class="round" src="../../assets/icons/pdp.png">
           <div>
             <div class="tchat-box-title">
-              <p class="box-title">Grandma 1</p>
+              <p class="box-title">Group chat</p>
               <p class="box-subtitle">12:34</p>
             </div>
             <p class="box-subtitle box-sub-bottom">
@@ -25,11 +70,11 @@
             </p>
           </div>
         </div>
-        <div [routerLink]="['/sender/feed/2']" router-direction="forward" class="box tchat-box">
+        <div [routerLink]="['/sender/feed/2']" router-direction="forward" class="select-box select-end tchat-box" ontouchstart>
           <img class="round" src="../../assets/icons/pdp.png">
           <div>
             <div class="tchat-box-title">
-              <p class="box-title">Grandma 2</p>
+              <p class="box-title">User unknown</p>
               <p class="box-subtitle">Yesterday</p>
             </div>
             <p class="box-subtitle box-sub-bottom">
@@ -42,8 +87,15 @@
       </div>
     </div>
 
+
     <div [style]="'margin-bottom:' + marginBottom + 'rem !important'">
-      <div class="list-container margin-top">
+      <button class="btn btn-white btn-icon">Create Group
+        <img src="../../assets/icons/pencil.svg">
+      </button>
+      <button class="btn btn-white btn-icon">Start conversation
+        <img src="../../assets/icons/message.svg">
+      </button>
+      <!--<div class="list-container margin-top">
         <div [routerLink]="['/sender/reminders']" router-direction="forward" class="select-box select-start"
           ontouchstart>
           {{'SENDER.MENU.box_reminders' | translate}}
@@ -55,23 +107,9 @@
           {{'SENDER.MENU.box_subscription' | translate}}
           <img src="../../assets/icons/credit-card.svg">
         </div>
-      </div>
+      </div>-->
 
-      <div class="separator"></div>
 
-      <div class="profile-box">
-        <div class="profile-box-left">
-          <!-- <img class="round" [src]="user.profilePictureUrl"> -->
-          <div>
-            <p class="box-title">{{ user.firstname }} {{ user.lastname }}</p>
-            <p class="box-subtitle">{{ user.email }}</p>
-          </div>
-        </div>
-        <button class="btn btn-white btn-small" [routerLink]="['/sender/settings/home']" router-direction="forward"
-          ontouchstart>
-          <img src="../../assets/icons/cog-outline.svg">
-        </button>
-      </div>
     </div>
   </div>
 </ion-content>

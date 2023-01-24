@@ -280,6 +280,10 @@ image-cropper .ngx-ic-source-image {
   transition: all 0.2s ease-in-out;
 }
 
+.box-full {
+  height: 100% !important;
+}
+
 .boxs-bounce .box:active {
   transform: scale(0.96);
   -webkit-transform: scale(0.96);
@@ -405,20 +409,11 @@ image-cropper .ngx-ic-source-image {
 }
 
 .profile-box {
-  width: 100%;
-  border: 0.0938rem solid var(--border-gray);
-  outline: none;
-  border-radius: var(--radius-base);
-  padding: 1.125rem;
-  box-shadow: var(--shadow-small);
-  background-color: var(--white);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   gap: 0.9375rem;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
 
   // &:active {
   //   transform: scale(0.96);
@@ -429,9 +424,9 @@ image-cropper .ngx-ic-source-image {
 
   .profile-box-left {
     display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 0.75rem;
+    align-items: center;
+    flex-direction: row;
+    gap: 1rem;
   }
 
   .round {
@@ -464,6 +459,8 @@ image-cropper .ngx-ic-source-image {
   flex-direction: row;
   align-items: start;
   gap: 0.9375rem;
+  padding: 1rem !important;
+  height: fit-content !important;
 
   div {
     width: 100%;
@@ -480,6 +477,7 @@ image-cropper .ngx-ic-source-image {
   img {
     height: 3.8rem;
     border-radius: var(--radius-base);
+    filter: unset !important;
   }
 
   .box-sub-bottom {
