@@ -21,19 +21,20 @@ export class MenuComponent implements OnInit {
   constructor(private modalController: ModalController) { }
 
   ngOnInit() {
-    const getUser = async () => {
-      const { value } = await Preferences.get({ key: 'user' });
-      if(value) {
-        this.user = JSON.parse(value || '')
-      }
-    }; getUser()
-
     SafeArea.getSafeAreaInsets().then(({ insets }) => {
       this.marginBottom = 0.0625 * insets.bottom;
       this.marginTop = 0.0625 * insets.top;
     });
   }
 
+  public ionViewDidEnter() {
+    const getUser = async () => {
+      const { value } = await Preferences.get({ key: 'user' });
+      if(value) {
+        this.user = JSON.parse(value || '')
+      }
+    }; getUser()
+  }
  
   public async openSettings() {
     const modalSettings = await this.modalController.create({
