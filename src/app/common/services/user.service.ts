@@ -49,15 +49,15 @@ export class UserService {
     return await axios.post(url, data, config);
   }
 
-  // Set full name
-  public async setFullname(fullName: string) {
+  // Set profile infos
+  public async setProfile(firstname: string, lastname: string, about: string) {
     const options = {
-      url: `${this.API_URL}/user/set-fullname`,
+      url: `${this.API_URL}/user/set-profile`,
       headers: {
         'Authorization': `Bearer ${this.token}`,
         'Content-Type': 'application/json'
       },
-      data: { fullName }
+      data: { firstname, lastname, about }
     };
 
     return await CapacitorHttp.patch(options);

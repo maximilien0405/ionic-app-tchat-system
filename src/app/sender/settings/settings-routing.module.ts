@@ -13,7 +13,7 @@ import { SecurityComponent } from './security/security.component';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'about', component: AboutComponent },
-  { path: 'profile', component: ProfileComponent },
+  //{ path: 'profile', component: ProfileComponent },
   { path: 'security', component: SecurityComponent },
   { path: 'notifications', component: NotificationsComponent },
   { path: 'edit-mail', component: EditMailComponent },

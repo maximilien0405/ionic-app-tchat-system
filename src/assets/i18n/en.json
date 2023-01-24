@@ -38,9 +38,14 @@
       "PROFILE": {
         "header": "Edit profile",
         "label_profile_picture": "Profile picture",
-        "btn_change": "Change",
+        "btn_change": "Change picture",
         "error_image": "The image size is too big.",
-        "label_name": "Full name"
+        "label_lastname": "Lastname",
+        "label_firstname": "Firstname",
+        "label_about": "About",
+        "btn_cancel": "Cancel",
+        "btn_save": "Save",
+        "field_required": "This field is required."
       },
       "SECURITY": {
         "header": "Security",

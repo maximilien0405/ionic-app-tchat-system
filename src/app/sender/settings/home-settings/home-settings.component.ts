@@ -70,6 +70,8 @@ export class HomeSettingsComponent implements OnInit {
 
     const modalProfile = await this.modalController.create({
       component: ProfileComponent,
+      breakpoints: [0, 1],
+      initialBreakpoint: 1,
     });
 
     modalLang.onDidDismiss().then((data) => {
@@ -83,6 +85,18 @@ export class HomeSettingsComponent implements OnInit {
         this.currentTheme = data['data'];
       }
     });
+
+    modalProfile.onDidDismiss().then((data) => {
+      if (data['data']) {
+        const getUser = async () => {
+          const { value } = await Preferences.get({ key: 'user' });
+          if(value) {
+            this.user = JSON.parse(value || '')
+          }
+        }; getUser()
+      }
+    });
+
 
     if (type == 'theme') {
       modalTheme.present();

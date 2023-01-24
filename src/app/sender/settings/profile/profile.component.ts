@@ -1,4 +1,4 @@
-import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/common/models/user.model';
 import { Preferences } from '@capacitor/preferences';
@@ -7,6 +7,8 @@ import { ModalController } from '@ionic/angular';
 import { ProfilePictureComponent } from '../../modals/profile-picture/profile-picture.component';
 import { TranslateService } from '@ngx-translate/core';
 import { slideUpAnimation } from 'src/app/common/animations';
+import { UserService } from 'src/app/common/services/user.service';
+import { GetUserService } from 'src/app/common/services/get-user.service';
 
 @Component({
   selector: 'app-profile',
@@ -22,10 +24,11 @@ export class ProfileComponent implements OnInit {
   public imageError: boolean;
   public imageSubmitted: boolean;
   public photo: Photo;
-  public name: string;
 
   constructor(private formBuilder: UntypedFormBuilder,
-    private modalController: ModalController)
+    private modalController: ModalController,
+    private userService: UserService,
+    private getUserService: GetUserService)
   { }
 
   public ngOnInit(): void {
@@ -35,18 +38,17 @@ export class ProfileComponent implements OnInit {
       if(value) {
         this.user = JSON.parse(value || '')
       }
+
+      const user = JSON.parse(value || '')
+
+      // Create form
+      this.form = this.formBuilder.group({
+        firstname: [user.firstname, [Validators.required]],
+        lastname: [user.lastname, [Validators.required]],
+        about: [user.about]
+      })
     }; getUser()
-
-    // Create form
-    this.form = this.formBuilder.group({
-      profilePictureUrl: [],
-      full_name: [],
-      email: []
-    })
   }
-
-  // Return form controls
-  get f() { return this.form.controls; }
 
   public openImageSelector(): void {
     const getPhoto = async () => {
@@ -76,11 +78,28 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-
+  // Close the popup
   public cancel() {
     return this.modalController.dismiss(null, 'cancel');
   }
+
+  // Close the popup and update data
   public confirm() {
-    return this.modalController.dismiss(this.name, 'confirm');
+    if(this.form.get('firstname')?.value == this.user.firstname && this.form.get('lastname')?.value == this.user.lastname && this.form.get('about')?.value == this.user.about) {
+      return;
+    } else {
+      // Save value to backend
+      this.userService.setProfile(this.form.get('firstname')?.value, this.form.get('lastname')?.value, this.form.get('about')?.value)
+      .then((res: any) => {
+        if (res.status != 200) {
+          return;
+        }
+        else {
+          // Get updated user
+          this.getUserService.setUser();
+          return this.modalController.dismiss(true, 'confirm');
+        }
+      });
+    }
   }
 }

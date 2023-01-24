@@ -124,9 +124,26 @@ ion-button {
   font-family: "Poppins";
   font-weight: 400;
   text-transform: capitalize !important;
-
+  letter-spacing: normal !important;
+  --background-hover: transparent !important;
+  --background: transparent !important;
   --color: var(--black);
-  --ripple-color: transparent;
+  --ripple-color: transparent !important;
+  --background-hover-opacity: 0 !important;
+
+  span {
+    position: absolute;
+    background: var(--background-gray);
+    padding: 8px;
+    left: 0;
+    width: 100%;
+  }
+}
+
+ion-modal {
+  &::part(content) {
+    border-radius: var(--radius-base) var(--radius-base) 0px 0px;
+  }
 }
 
 ion-modal.auto-height {
@@ -184,3 +201,5 @@ ion-footer ion-toolbar {
 .sc-ion-textarea-md-h {
   margin-top: 0px !important;
 }
+
+

@@ -362,6 +362,8 @@ input:-webkit-autofill:focus {
 textarea {
   line-height: var(--height-base !important);
   resize: none !important;
+  height: auto !important;
+  padding-top: 0.75rem !important;
 }
 
 /* ---------------------------------------------------
