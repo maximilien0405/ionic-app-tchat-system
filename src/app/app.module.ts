@@ -13,10 +13,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { CreateReminderComponent } from './sender/modals/create-reminder/create-reminder.component';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { environment } from 'src/environments/environment';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http)
 }
+
+const config: SocketIoConfig = { url: environment.apiUrl, options: {} };
 
 @NgModule({
   declarations: [
@@ -34,6 +38,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    SocketIoModule.forRoot(config),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
