@@ -20,40 +20,12 @@
   </ion-toolbar>
 </ion-header>
 <ion-content class="ion-padding" forceOverscroll="false">
-  <div class="box">
-    <p>test</p>
-  </div>
-  <div class="box">
-    <p>test</p>
-  </div>
-  <div class="box">
-    <p>test</p>
-  </div>
-  <div class="box">
-    <p>test</p>
-  </div>
-  <div class="box">
-    <p>test</p>
-  </div>
-  <div class="box">
-    <p>test</p>
-  </div>
-  <div class="box">
-    <p>test</p>
-  </div>
-  <div class="box">
-    <p>test</p>
-  </div>
-  <div class="box">
-    <p>test</p>
-  </div>
-  <div class="box">
-    <p>test</p>
-  </div>
 
-  <button (click)="login()" class="btn btn-white">Login AAAAAA</button>
+  <div class="box" *ngFor="let message of messages">{{ message }}</div>
 
-  <div @slideUpAnimation *ngIf="networkError" class="absolute-bottom">
+  <button (click)="login()" class="btn btn-white">Login Max User</button>
+
+ <!--<div @slideUpAnimation *ngIf="networkError" class="absolute-bottom">
     <div class="toast toast-error">
       <img src="../../../../assets/icons/network.svg">
       <p>{{'SENDER.TCHAT.toast_network' | translate}}</p>
@@ -65,15 +37,15 @@
       <img src="../../../../assets/icons/warning.svg">
       <p>{{'SENDER.TCHAT.toast_api' | translate}}</p>
     </div>
-  </div>
+  </div>-->
 </ion-content>
 <ion-footer keyboardFlying class="ion-no-border">
   <ion-toolbar>
     <div class="footer-component">
-      <ion-textarea autoGrow="true" rows="1" maxlength="250" [(ngModel)]="message" (ngModelChange)="onMessageChange($event)"></ion-textarea>
+      <ion-textarea autoGrow="true" rows="1" maxlength="250" [(ngModel)]="inputMessage" (ngModelChange)="onMessageChange($event)"></ion-textarea>
       <img *ngIf="!showIcons" src="../../../assets/icons/camera.svg">
       <img *ngIf="!showIcons" src="../../../assets/icons/microphone.svg">
-      <div *ngIf="showIcons" class="send-icon">
+      <div *ngIf="showIcons" (click)="submitMessage()" class="send-icon">
         <img  src="../../../assets/icons/paper-airplane.svg">
       </div>
     </div>

@@ -8,6 +8,8 @@ import { NetworkService } from 'src/app/common/services/network.service';
 import { Keyboard } from '@capacitor/keyboard';
 import { ActivatedRoute } from '@angular/router';
 import { isPlatform } from '@ionic/angular';
+import { Observable } from 'rxjs';
+import { TchatService } from 'src/app/common/services/tchat.service';
 
 @Component({
   selector: 'app-tchat',
@@ -19,33 +21,41 @@ export class TchatComponent implements OnInit {
   public networkError = false;
   public APIError = false;
   public marginBottom: number;
-  public message: string;
+  public inputMessage: string;
   public showIcons: boolean = false;
   public id: number;
+
+  public newMessage$: Observable<string>;
+  public messages: string[] = [];
 
   constructor(
     private networkService: NetworkService,
     private authService: AuthService,
     private getUserService: GetUserService,
-    private activatedRoute: ActivatedRoute)
+    private activatedRoute: ActivatedRoute,
+    private tchatService: TchatService)
   {
     // Get route param
     this.activatedRoute.params.subscribe(params => this.id = params['id']);
 
     // Check the API status changes
-    this.networkService.subjectApiOrNetworkError.subscribe(res => {
-      setTimeout(() => {
-        this.APIError = res.apiError;
-        this.networkError = res.networkError;
-      }, 500);
-    })
+    // this.networkService.subjectApiOrNetworkError.subscribe(res => {
+    //   setTimeout(() => {
+    //     this.APIError = res.apiError;
+    //     this.networkError = res.networkError;
+    //   }, 500);
+    // })
 
     SafeArea.getSafeAreaInsets().then(({ insets }) => {
       this.marginBottom = 0.0625 * (insets.bottom + 8);
     });
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    // TODO : refactor - unsubscribe
+    return this.tchatService.getNewMessage().subscribe((message: string) => {
+      this.messages.push(message);
+    })
   }
 
   // Close keyboard
@@ -53,6 +63,11 @@ export class TchatComponent implements OnInit {
     if(isPlatform('mobile') && !isPlatform('mobileweb')) {
       Keyboard.hide()
     }
+  }
+
+  public submitMessage() {
+    this.tchatService.sendMessage(this.inputMessage);
+    this.inputMessage = '';
   }
 
   // Hide camera and microphone icons
