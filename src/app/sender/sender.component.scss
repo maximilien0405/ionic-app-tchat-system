@@ -406,6 +406,7 @@ image-cropper .ngx-ic-source-image {
     flex-direction: column;
     height: 100%;
     overflow: scroll;
+    touch-action: pan-y !important;
 
     .all-boxs {
       height: 100%;
@@ -561,7 +562,7 @@ image-cropper .ngx-ic-source-image {
   width: 100%;
   text-align: center;
   padding: 0.4375rem 0rem 0.4375rem 0px;
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   color: var(--gray);
   border-bottom: 0.0938rem solid var(--border-gray);
 }
