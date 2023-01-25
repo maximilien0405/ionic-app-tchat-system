@@ -411,7 +411,7 @@ image-cropper .ngx-ic-source-image {
     display: flex;
     flex-direction: column;
     height: 100%;
-    overflow: hidden;
+    overflow: scroll;
 
     .all-boxs {
       height: 100%;
@@ -469,7 +469,7 @@ image-cropper .ngx-ic-source-image {
 .tchat-box {
   display: flex;
   flex-direction: row;
-  align-items: start;
+  align-items: center;
   gap: 0.9375rem;
   padding: 1.25rem;
   height: fit-content !important;
@@ -497,13 +497,19 @@ image-cropper .ngx-ic-source-image {
   }
 
   img {
-    height: 3.8rem;
-    border-radius: var(--radius-base);
+    height: 3.62rem;
+    border-radius: var(--radius-small);
     filter: unset !important;
   }
 
   .box-sub-bottom {
-    margin-top: 0.1875rem;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    width: 97%;
   }
 
   .box-subtitle img {
@@ -512,4 +518,22 @@ image-cropper .ngx-ic-source-image {
     filter: var(--icon-orange) !important;
     margin-right: 0.1875rem;
   }
+
+  .box-title {
+    font-size: 0.9rem;
+  }
+
+}
+
+.tchat-box-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--background-gray);
+  width: 100%;
+  text-align: center;
+  padding: 0.4375rem 0rem 0.4375rem 0px;
+  font-size: 0.8125rem;
+  color: var(--gray);
+  border-bottom: 0.0938rem solid var(--border-gray);
 }

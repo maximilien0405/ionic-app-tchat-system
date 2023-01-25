@@ -1,15 +1,16 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Send a message</ion-title>
-    <!--<ion-buttons slot="end">
-      <ion-button class="no-text">d</ion-button>
-    </ion-buttons>-->
+    <!--<button class="btn btn-small btn-white">
+      <img src="../../assets/icons/pencil-square.svg">
+    </button>-->
   </ion-toolbar>
 </ion-header>
 <ion-content *ngIf="user" class="ion-padding-top ion-padding-start ion-padding-end" forceOverscroll="false">
   <div class="menu-page-container">
-    <div class="box box-full">
-      <div *ngFor="let number of [0,1,2,3,4]" [routerLink]="['/sender/feed/1']" router-direction="forward" class="tchat-box" ontouchstart>
+    <div class="menu-top-container box box-full">
+      <div class="tchat-box-header">Seniors</div>
+      <div *ngFor="let number of [0,1]" [routerLink]="['/sender/feed/1']" router-direction="forward" class="tchat-box" ontouchstart>
         <img class="round" src="../../assets/icons/pdp.png">
         <div>
           <div class="tchat-box-title">
@@ -19,18 +20,12 @@
           <p class="box-subtitle box-sub-bottom">
             <img src="../../assets/icons/double-check.svg">
             <!-- <img src="../../assets/icons/check.svg"> -->
-            Lorem, ipsum dolor sit amet
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, culpa?
           </p>
         </div>
       </div>
-
-      <button class="btn btn-small btn-white">
-        <img src="../../assets/icons/pencil-square.svg">
-      </button>
-    </div>
-
-    <!--<div class="list-container">
-      <div [routerLink]="['/sender/feed/1']" router-direction="forward" class="select-box select-start tchat-box" ontouchstart>
+      <div class="tchat-box-header">Family X</div>
+      <div *ngFor="let number of [0,1,2]" [routerLink]="['/sender/feed/1']" router-direction="forward" class="tchat-box" ontouchstart>
         <img class="round" src="../../assets/icons/pdp.png">
         <div>
           <div class="tchat-box-title">
@@ -38,63 +33,13 @@
             <p class="box-subtitle">12:34</p>
           </div>
           <p class="box-subtitle box-sub-bottom">
-            <img src="../../assets/icons/double-check.svg">
-            <!-- <img src="../../assets/icons/check.svg"> --
-            Lorem, ipsum dolor sit amet
-          </p>
-        </div>
-      </div>
-      <div [routerLink]="['/sender/feed/2']" router-direction="forward" class="select-box select-end tchat-box" ontouchstart>
-        <img class="round" src="../../assets/icons/pdp.png">
-        <div>
-          <div class="tchat-box-title">
-            <p class="box-title">Grandma 2</p>
-            <p class="box-subtitle">Yesterday</p>
-          </div>
-          <p class="box-subtitle box-sub-bottom">
-            <img src="../../assets/icons/double-check.svg">
-            <!-- <img src="../../assets/icons/check.svg"> --
-            Lorem ipsum dolor sit amet consectetur adipisicing elit
+            <img src="../../assets/icons/check.svg">
+            <!-- <img src="../../assets/icons/check.svg"> -->
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, culpa?
           </p>
         </div>
       </div>
     </div>
-
-    <div class="separator"></div>
-
-    <div class="menu-top-container">
-      <div class="list-container">
-        <div [routerLink]="['/sender/feed/1']" router-direction="forward" class="select-box select-start tchat-box" ontouchstart>
-          <img class="round" src="../../assets/icons/pdp.png">
-          <div>
-            <div class="tchat-box-title">
-              <p class="box-title">Group chat</p>
-              <p class="box-subtitle">12:34</p>
-            </div>
-            <p class="box-subtitle box-sub-bottom">
-              <img src="../../assets/icons/double-check.svg">
-              <!-- <img src="../../assets/icons/check.svg"> --
-              Lorem, ipsum dolor sit amet
-            </p>
-          </div>
-        </div>
-        <div [routerLink]="['/sender/feed/2']" router-direction="forward" class="select-box select-end tchat-box" ontouchstart>
-          <img class="round" src="../../assets/icons/pdp.png">
-          <div>
-            <div class="tchat-box-title">
-              <p class="box-title">User unknown</p>
-              <p class="box-subtitle">Yesterday</p>
-            </div>
-            <p class="box-subtitle box-sub-bottom">
-              <img src="../../assets/icons/double-check.svg">
-              <!-- <img src="../../assets/icons/check.svg"> --
-              Lorem ipsum dolor sit amet consectetur adipisicing elit
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>-->
-
     <div [style]="'margin-bottom:' + marginBottom + 'rem !important'">
       <div class="box profile-box">
         <div class="profile-box-left">
