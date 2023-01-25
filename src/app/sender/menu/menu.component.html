@@ -18,16 +18,21 @@
     </div>
     <div class="menu-top-container box box-full">
       <div class="tchat-box-header">Seniors</div>
-      <div *ngFor="let number of [0,1]" [routerLink]="['/sender/feed/1']" router-direction="forward" class="tchat-box" ontouchstart>
+      <div *ngFor="let number of [0,1,2]" [routerLink]="['/sender/feed/1']" router-direction="forward" class="tchat-box" ontouchstart>
         <img class="round" src="../../assets/icons/pdp.png">
         <div>
           <div class="tchat-box-title">
             <p class="box-title">Grandma 1</p>
-            <p class="box-subtitle">12:34</p>
+            <p class="box-subtitle">12:34</p> <!-- class : box-subtitle-notif-->
+            <!--<div class="box-notification">1</div>-->
           </div>
           <p class="box-subtitle box-sub-bottom">
-            <img src="../../assets/icons/double-check.svg">
-            <!-- <img src="../../assets/icons/check.svg"> -->
+            <!--<img src="../../assets/icons/image-filled.svg">
+            <img src="../../assets/icons/video-filled.svg">
+            <img src="../../assets/icons/micro-filled.svg">
+            <img src="../../assets/icons/phone-filled.svg">
+            <img src="../../assets/icons/check.svg">
+            <img src="../../assets/icons/double-check.svg"> -->
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, culpa?
           </p>
         </div>
@@ -38,11 +43,16 @@
         <div>
           <div class="tchat-box-title">
             <p class="box-title">Grandma 1</p>
-            <p class="box-subtitle">12:34</p>
+            <p class="box-subtitle">12:34</p> <!-- class : box-subtitle-notif-->
+            <!--<div class="box-notification">1</div>-->
           </div>
           <p class="box-subtitle box-sub-bottom">
+            <!--<img src="../../assets/icons/image-filled.svg">
+            <img src="../../assets/icons/video-filled.svg">
+            <img src="../../assets/icons/micro-filled.svg">
+            <img src="../../assets/icons/phone-filled.svg">
             <img src="../../assets/icons/check.svg">
-            <!-- <img src="../../assets/icons/check.svg"> -->
+            <img src="../../assets/icons/double-check.svg"> -->
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, culpa?
           </p>
         </div>
