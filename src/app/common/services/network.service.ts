@@ -35,7 +35,7 @@ export class NetworkService {
       this.networkError = true;
     }
 
-    // Update the value and send to feed component
+    // Update the value and send to tchat component
     this.hasApiOrNetworkError.next({ apiError: this.APIError, networkError: this.networkError });
 
     Network.addListener('networkStatusChange', status => {

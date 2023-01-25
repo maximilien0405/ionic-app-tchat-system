@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { FeedComponent } from './feed/feed.component';
+import { TchatComponent } from './tchat/tchat.component';
 import { MenuComponent } from './menu/menu.component';
 import { RemindersComponent } from './reminders/reminders.component';
 import { SenderComponent } from './sender.component';
@@ -9,7 +9,7 @@ const routes: Routes = [
   {
     path: '', component: SenderComponent, children: [
       { path: '', redirectTo: 'menu', pathMatch: 'full' },
-      { path: 'feed/:id', component: FeedComponent },
+      { path: 'tchat/:id', component: TchatComponent },
       { path: 'menu', component: MenuComponent },
       { path: 'reminders', component: RemindersComponent },
       { path: 'settings', loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule) },

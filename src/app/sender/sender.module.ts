@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SenderRoutingModule } from './sender-routing.module';
 import { HomeSettingsComponent } from './settings/home-settings/home-settings.component';
 import { SettingsComponent } from './settings/settings.component';
-import { FeedComponent } from './feed/feed.component';
+import { TchatComponent } from './tchat/tchat.component';
 import { RemindersComponent } from './reminders/reminders.component';
 import { SelectThemeComponent } from './modals/select-theme/select-theme.component';
 import { SelectLanguageComponent } from './modals/select-language/select-language.component';
@@ -21,7 +21,7 @@ import { KeyboardFlyingDirective } from '../common/directives/keyboard-height.di
 @NgModule({
   declarations: [
     SettingsComponent,
-    FeedComponent,
+    TchatComponent,
     RemindersComponent,
     SelectThemeComponent,
     SelectLanguageComponent,

@@ -10,12 +10,12 @@ import { ActivatedRoute } from '@angular/router';
 import { isPlatform } from '@ionic/angular';
 
 @Component({
-  selector: 'app-feed',
-  templateUrl: './feed.component.html',
+  selector: 'app-tchat',
+  templateUrl: './tchat.component.html',
   styleUrls: ['../sender.component.scss'],
   animations: [slideUpAnimation, fadeAnimation],
 })
-export class FeedComponent implements OnInit {
+export class TchatComponent implements OnInit {
   public networkError = false;
   public APIError = false;
   public marginBottom: number;

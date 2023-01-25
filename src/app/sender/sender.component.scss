@@ -19,7 +19,7 @@
 }
 
 /* ---------------------------------------------------
-  FEED PAGE
+  TCHAT PAGE
 ----------------------------------------------------- */
 
 .overlay-box {
@@ -155,13 +155,13 @@ ion-toolbar.md .header-start div {
   gap: 1.875rem !important;
 }
 
-ion-header.feed-header ion-back-button {
+ion-header.tchat-header ion-back-button {
   &::part(icon) {
     font-size: 1.375rem !important;
   }
 }
 
-ion-header.feed-header ion-toolbar {
+ion-header.tchat-header ion-toolbar {
   --padding-top: 0.4375rem !important;
   --padding-bottom: 0.4375rem !important;
   --min-height: fit-content;
