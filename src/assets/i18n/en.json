@@ -1,9 +1,11 @@
 {
   "SENDER": {
     "MENU": {
+      "header": "Send a message",
       "subtitle": "Welcome back!",
       "title": "Send a message",
-      "box_reminders": "Manage reminders"
+      "box_reminders": "Manage reminders",
+      "input_search": "Search"
     },
     "FEED": {
       "header": "Feed",

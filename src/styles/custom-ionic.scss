@@ -172,6 +172,10 @@ ion-content {
   touch-action: none !important;
 }
 
+ion-content.menu-content {
+  --keyboard-offset: 0 !important;
+}
+
 .ion-page {
   justify-content: unset !important;
 }

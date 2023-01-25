@@ -399,12 +399,6 @@ image-cropper .ngx-ic-source-image {
   .box-full {
     padding: 0px !important;
     position: relative;
-
-    button {
-      position: absolute;
-      right: 1.25rem;
-      bottom: 1.25rem;
-    }
   }
 
   .menu-top-container {
@@ -416,6 +410,16 @@ image-cropper .ngx-ic-source-image {
     .all-boxs {
       height: 100%;
       overflow: scroll;
+    }
+  }
+
+  .menu-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+
+    .input-icon {
+      width: 100%;
     }
   }
 }

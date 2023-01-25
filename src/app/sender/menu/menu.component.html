@@ -1,13 +1,21 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Send a message</ion-title>
-    <!--<button class="btn btn-small btn-white">
-      <img src="../../assets/icons/pencil-square.svg">
-    </button>-->
+    <ion-title>{{'SENDER.MENU.header' | translate}}</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content *ngIf="user" class="ion-padding-top ion-padding-start ion-padding-end" forceOverscroll="false">
+<ion-content *ngIf="user" class="menu-content ion-padding-top ion-padding-start ion-padding-end" forceOverscroll="false">
   <div class="menu-page-container">
+    <div class="menu-header">
+      <div class="input-icon">
+        <input type="text" [placeholder]="'SENDER.MENU.input_search' | translate" class="input">
+        <div class="icon-right" ontouchstart>
+          <img src="../../assets/icons/search.svg">
+        </div>
+      </div>
+      <button class="btn btn-white btn-small">
+        <img src="../../assets/icons/pencil-square.svg">
+      </button>
+    </div>
     <div class="menu-top-container box box-full">
       <div class="tchat-box-header">Seniors</div>
       <div *ngFor="let number of [0,1]" [routerLink]="['/sender/feed/1']" router-direction="forward" class="tchat-box" ontouchstart>
