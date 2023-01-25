@@ -15,6 +15,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { SecurityComponent } from './security/security.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { ForgotPwdComponent } from './forgot-pwd/forgot-pwd.component';
+import { SubscriptionComponent } from './subscription/subscription.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { ForgotPwdComponent } from './forgot-pwd/forgot-pwd.component';
     EditPwdComponent,
     ForgotPwdComponent,
     HelpComponent,
+    SubscriptionComponent,
     AutoFocusDirective
   ],
   imports: [

@@ -4,13 +4,11 @@ import { FeedComponent } from './feed/feed.component';
 import { MenuComponent } from './menu/menu.component';
 import { RemindersComponent } from './reminders/reminders.component';
 import { SenderComponent } from './sender.component';
-import { SubscriptionComponent } from './subscription/subscription.component';
 
 const routes: Routes = [
   {
     path: '', component: SenderComponent, children: [
       { path: '', redirectTo: 'menu', pathMatch: 'full' },
-      { path: 'subscription', component: SubscriptionComponent },
       { path: 'feed/:id', component: FeedComponent },
       { path: 'menu', component: MenuComponent },
       { path: 'reminders', component: RemindersComponent },

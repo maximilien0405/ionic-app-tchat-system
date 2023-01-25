@@ -21,7 +21,12 @@
 
   <p class="label margin-top">{{'SENDER.SETTINGS.HOME_SETTINGS.label_account' | translate}}</p>
   <div class="list-container">
-    <div [routerLink]="['/sender/settings/security']" router-direction="forward" class="select-box select-start" ontouchstart>
+    <div [routerLink]="['/sender/settings/subscription']" router-direction="forward" class="select-box select-start"
+      ontouchstart>
+      {{'SENDER.SETTINGS.HOME_SETTINGS.box_subscription' | translate}}
+      <img src="../../assets/icons/credit-card.svg">
+    </div>
+    <div [routerLink]="['/sender/settings/security']" router-direction="forward" class="select-box" ontouchstart>
       {{'SENDER.SETTINGS.HOME_SETTINGS.box_security' | translate}}
       <img src="../../assets/icons/lock.svg">
     </div>

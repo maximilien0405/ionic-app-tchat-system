@@ -3,8 +3,7 @@
     "MENU": {
       "subtitle": "Welcome back!",
       "title": "Send a message",
-      "box_reminders": "Manage reminders",
-      "box_subscription": "My subscription"
+      "box_reminders": "Manage reminders"
     },
     "FEED": {
       "header": "Feed",
@@ -28,6 +27,7 @@
         "box_profile": "Edit profile",
         "box_security": "Security",
         "box_notifications": "Notifications",
+        "box_subscription": "Subscription",
         "title_appearence": "Appearence",
         "box_theme": "Theme",
         "box_lang": "Language",

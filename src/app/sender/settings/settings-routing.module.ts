@@ -9,6 +9,7 @@ import { HomeSettingsComponent } from './home-settings/home-settings.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SecurityComponent } from './security/security.component';
+import { SubscriptionComponent } from './subscription/subscription.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -16,6 +17,7 @@ const routes: Routes = [
   //{ path: 'profile', component: ProfileComponent },
   { path: 'security', component: SecurityComponent },
   { path: 'notifications', component: NotificationsComponent },
+  { path: 'subscription', component: SubscriptionComponent },
   { path: 'edit-mail', component: EditMailComponent },
   { path: 'edit-pwd', component: EditPwdComponent },
   { path: 'forgot-pwd', component: ForgotPwdComponent },
