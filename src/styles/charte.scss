@@ -330,6 +330,15 @@ input:-webkit-autofill:focus {
     }
   }
 
+  .icon-left {
+    position: absolute;
+    left: 1rem;
+    top: 0;
+    align-items: center;
+    display: flex;
+    height: 100%;
+  }
+
   .icon-right-text {
     width: fit-content !important;
     padding: 0px 0.8125rem;
@@ -337,6 +346,10 @@ input:-webkit-autofill:focus {
     p {
       font-size: 0.8125rem !important;
     }
+  }
+
+  .input-icon-left {
+    padding-left: 2.6875rem !important;
   }
 
   .input {
