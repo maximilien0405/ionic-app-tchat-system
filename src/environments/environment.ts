@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  apiUrl: "http://localhost:3000"
+  apiUrl: "https://3000-seniorcontact-api-q30xsdn7l3r.ws-eu84.gitpod.io"
 };

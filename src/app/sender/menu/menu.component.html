@@ -7,9 +7,12 @@
   <div class="menu-page-container">
     <div class="menu-header">
       <div class="input-icon">
-        <input type="text" [placeholder]="'SENDER.MENU.input_search' | translate" (focus)="displaySearch()" (focusout)="hideSearch()" class="input input-icon-left">
+        <input type="text" [(ngModel)]="searchValue" [placeholder]="'SENDER.MENU.input_search' | translate" (focus)="displaySearch()" (focusout)="hideSearch()" class="input input-icon-left">
         <div class="icon-left">
           <img src="../../assets/icons/search.svg">
+        </div>
+        <div class="icon-right" *ngIf="showSearch && searchValue != ''">
+          <img src="../../assets/icons/close.svg">
         </div>
       </div>
       <button class="btn btn-white btn-small">
@@ -76,6 +79,9 @@
 
     <div *ngIf="showSearch" class="box-full box" [style]="'margin-bottom:' + marginBottom + 'rem !important'">
       <!-- Search elements -->
+      <button (click)="login('max')" class="btn btn-white">Login User Max</button>
+      <button (click)="login('oscar')" class="btn btn-white small-margin-top">Login User Oscar</button>
+      <button (click)="login('alexis')" class="btn btn-white small-margin-top">Login User Alexis</button>
     </div>
   </div>
 </ion-content>

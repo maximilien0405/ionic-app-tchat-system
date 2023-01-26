@@ -30,8 +30,6 @@ export class TchatComponent implements OnInit {
 
   constructor(
     private networkService: NetworkService,
-    private authService: AuthService,
-    private getUserService: GetUserService,
     private activatedRoute: ActivatedRoute,
     private tchatService: TchatService)
   {
@@ -77,22 +75,5 @@ export class TchatComponent implements OnInit {
     } else {
       this.showIcons = true;
     }
-  }
-
-  public login() {
-    // Login the user (temporarely)
-    this.authService.login('maximilien.zimmermann@ik.me', 'Maximilien007')
-    .then((res: any) => {
-      if(res.status == 201) {
-        const setToken = async () => {
-          await Preferences.set({
-            key: 'token',
-            value: res.data.token,
-          });
-
-          this.getUserService.setUser();
-        }; setToken();
-      }
-    });
   }
 }

@@ -6,6 +6,8 @@ import { User } from 'src/app/common/models/user.model';
 import { Preferences } from '@capacitor/preferences';
 import { SafeArea } from 'capacitor-plugin-safe-area';
 import { fadeAnimation, slideUpAnimation } from 'src/app/common/animations';
+import { AuthService } from 'src/app/common/services/auth.service';
+import { GetUserService } from 'src/app/common/services/get-user.service';
 
 @Component({
   selector: 'app-menu',
@@ -18,8 +20,13 @@ export class MenuComponent implements OnInit {
   public marginBottom: number;
   public marginTop: number;
   public showSearch: boolean = false;
+  public searchValue: string = '';
 
-  constructor(private modalController: ModalController) { }
+  constructor(
+    private modalController: ModalController,
+    private authService: AuthService,
+    private getUserService: GetUserService) 
+    { }
 
   ngOnInit() {
     SafeArea.getSafeAreaInsets().then(({ insets }) => {
@@ -49,6 +56,26 @@ export class MenuComponent implements OnInit {
   }
 
   public hideSearch() {
-    this.showSearch = false;
+    //this.showSearch = false;
+    this.searchValue = '';
+  }
+
+
+  public login(user: string) {
+    // Login the user (temporarely)
+    this.authService.login(user + '@gmail.com', user + '123456')
+    .then((res: any) => {
+      if(res.status == 201) {
+        const setToken = async () => {
+          await Preferences.set({
+            key: 'token',
+            value: res.data.token,
+          });
+
+          this.getUserService.setUser();
+        }; setToken();
+        this.showSearch = false;
+      }
+    });
   }
 }
