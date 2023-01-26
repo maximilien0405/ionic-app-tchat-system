@@ -1,4 +1,5 @@
 export interface User {
+  id: string,
   email: string,
   //isLoggedWithGoogle: boolean,
   //isLoggedWithApple: boolean,
@@ -6,5 +7,8 @@ export interface User {
   lastname: string,
   about: string,
   profilePictureUrl: string,
-  emailValidated: boolean
+  emailValidated: boolean,
+  subscriptionIds: [],
+  subscriptionStatusIds: [],
+  type: string
 }

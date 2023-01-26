@@ -8,6 +8,7 @@ import { SafeArea } from 'capacitor-plugin-safe-area';
 import { fadeAnimation, slideUpAnimation } from 'src/app/common/animations';
 import { AuthService } from 'src/app/common/services/auth.service';
 import { GetUserService } from 'src/app/common/services/get-user.service';
+import { SubscriptionService } from 'src/app/common/services/subscription.service';
 
 @Component({
   selector: 'app-menu',
@@ -17,6 +18,7 @@ import { GetUserService } from 'src/app/common/services/get-user.service';
 })
 export class MenuComponent implements OnInit {
   public user: User;
+  public tchatUsers: User[];
   public marginBottom: number;
   public marginTop: number;
   public showSearch: boolean = false;
@@ -25,7 +27,8 @@ export class MenuComponent implements OnInit {
   constructor(
     private modalController: ModalController,
     private authService: AuthService,
-    private getUserService: GetUserService) 
+    private getUserService: GetUserService,
+    private subscriptionService: SubscriptionService)
     { }
 
   ngOnInit() {
@@ -40,10 +43,21 @@ export class MenuComponent implements OnInit {
       const { value } = await Preferences.get({ key: 'user' });
       if(value) {
         this.user = JSON.parse(value || '')
+
+        // Get subscription members
+        for (let index = 0; index < this.user.subscriptionIds.length; index++) {
+          const subscription: any = this.user.subscriptionIds[index]
+          this.subscriptionService.findAllMembers(subscription.id)
+            .then((res: any) => {
+              if (res) {
+                this.tchatUsers = res.data;
+              }
+          });
+        }
       }
     }; getUser()
   }
- 
+
   public async openSettings() {
     const modalSettings = await this.modalController.create({
       component: SettingsComponent,
