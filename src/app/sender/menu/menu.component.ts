@@ -17,6 +17,7 @@ export class MenuComponent implements OnInit {
   public user: User;
   public marginBottom: number;
   public marginTop: number;
+  public showSearch: boolean = false;
 
   constructor(private modalController: ModalController) { }
 
@@ -41,5 +42,13 @@ export class MenuComponent implements OnInit {
       component: SettingsComponent,
     });
     modalSettings.present();
+  }
+
+  public displaySearch() {
+    this.showSearch = true;
+  }
+
+  public hideSearch() {
+    this.showSearch = false;
   }
 }
