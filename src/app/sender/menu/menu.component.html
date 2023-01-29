@@ -22,7 +22,7 @@
     <div *ngIf="!showSearch" class="menu-top-container box box-full">
       <!--<div class="tchat-box-header">Seniors</div>-->
       <div class="tchat-box-header">Family X</div>
-      <div *ngFor="let tchatUser of tchatUsers" [routerLink]="['/sender/tchat/' + user.id]" router-direction="forward" class="tchat-box" ontouchstart>
+      <div *ngFor="let tchatUser of tchatUsers" [routerLink]="['/sender/tchat/' + tchatUser.id]" router-direction="forward" class="tchat-box" ontouchstart>
         <img class="round" [src]="tchatUser.profilePictureUrl">
         <div>
           <div class="tchat-box-title">

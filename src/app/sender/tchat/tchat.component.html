@@ -1,4 +1,4 @@
-<ion-header class="tchat-header">
+<ion-header *ngIf="contact" class="tchat-header">
   <ion-toolbar>
     <div class="header-component">
       <div class="header-start">
@@ -7,10 +7,10 @@
             <ion-back-button class="no-text" text=""></ion-back-button>
           </ion-buttons>
           <div class="header-profile">
-            <img src="../../assets/icons/pdp.png">
+            <img [src]="contact.profilePictureUrl">
           </div>
         </div>
-        <p>Grandma 1</p>
+        <p>{{ contact.firstname }} {{ contact.lastname }}</p>
       </div>
       <div class="header-end">
         <img src="../../../assets/icons/video.svg">
@@ -21,7 +21,10 @@
 </ion-header>
 <ion-content class="ion-padding" forceOverscroll="false">
 
-  <div class="box" *ngFor="let message of messages">{{ message }}</div>
+  <div class="box" *ngFor="let message of messages">
+    <p class="box-title">{{ message }}</p>
+    <p class="box-subtitle">{{ message.userId?.firstname }} | {{ message.createdAt | date: "short" }}</p>
+  </div>
 
  <!--<div @slideUpAnimation *ngIf="networkError" class="absolute-bottom">
     <div class="toast toast-error">

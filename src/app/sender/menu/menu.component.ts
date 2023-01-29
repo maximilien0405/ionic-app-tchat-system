@@ -38,22 +38,30 @@ export class MenuComponent implements OnInit {
     });
   }
 
-  public ionViewDidEnter() {
+  public ionViewWillEnter() {
     const getUser = async () => {
       const { value } = await Preferences.get({ key: 'user' });
       if(value) {
         this.user = JSON.parse(value || '')
 
         // Get subscription members
-        for (let index = 0; index < this.user.subscriptionIds.length; index++) {
-          const subscription: any = this.user.subscriptionIds[index]
-          this.subscriptionService.findAllMembers(subscription.id)
+        this.user.subscriptionIds.forEach((element: any) => {
+          console.log(element)
+
+          this.subscriptionService.findAllMembers(element.id)
             .then((res: any) => {
-              if (res) {
+              if (res.data.length != 0) {
                 this.tchatUsers = res.data;
+
+                const setContacts = async () => {
+                  await Preferences.set({
+                    key: 'contacts',
+                    value: JSON.stringify(res.data),
+                  });
+                }; setContacts();
               }
-          });
-        }
+            });
+        });
       }
     }; getUser()
   }
