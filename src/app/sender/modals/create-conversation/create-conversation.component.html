@@ -18,17 +18,18 @@
     <img src="../../assets/icons/group.svg">
   </div>
 
-  <div class="separator"></div>
+  <div class="small-separator"></div>
   
-  <div class="all-boxs boxs-bounce">
-    <div class="box profile-box" *ngFor="let number of [0,1,2,3,4]">
+  <div class="list-container">
+    <div class="select-box profile-box" *ngFor="let number of [0,1,2,3,4];let first = first; let last = last;" [class.select-start]="first" [class.select-end]="last" ontouchstart>
       <div class="profile-box-left">
-        <img class="round" src="../../assets/icons/pdp.png" >
+        <img class="round" src="../../assets/icons/pdp.png">
         <div>
           <p class="box-title">Grandma 1</p>
           <p class="box-subtitle">grandma@gmail.com</p>
         </div>
       </div>
-    </div>  
+      <img src="../../assets/icons/arrow-right.svg">
+    </div>
   </div>
 </ion-content>

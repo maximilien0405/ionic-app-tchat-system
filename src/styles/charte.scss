@@ -596,6 +596,16 @@ ion-content textarea {
       -moz-transform: unset !important;
     }
   }
+
+  .profile-box {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+    height: fit-content !important;
+
+    .round {
+      filter: unset !important;
+    }
+  }
 }
 
 /* ---------------------------------------------------
