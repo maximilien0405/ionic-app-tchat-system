@@ -158,6 +158,14 @@
         "paragraph_1_2": "",
         "paragraph_2": "Your active subscription will be canceled of your data will be deleted immediatly and you will be redirected to the home page.",
         "button": "Delete"
+      },
+      "CREATE_CONV": {
+        "btn_cancel": "Cancel",
+        "header": "New message"
+      },
+      "CREATE_GROUP": {
+        "btn_cancel": "Cancel",
+        "header": "Create a group"
       }
     }
   }

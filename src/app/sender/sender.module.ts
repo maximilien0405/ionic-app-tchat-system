@@ -17,6 +17,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { MenuComponent } from './menu/menu.component';
 import { KeyboardFlyingDirective } from '../common/directives/keyboard-height.directive';
+import { CreateConversationComponent } from './modals/create-conversation/create-conversation.component';
+import { CreateGroupComponent } from './modals/create-group/create-group.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { KeyboardFlyingDirective } from '../common/directives/keyboard-height.di
     LogoutComponent,
     DeleteAccountComponent,
     ProfilePictureComponent,
+    CreateConversationComponent,
+    CreateGroupComponent,
     HomeSettingsComponent,
     MenuComponent,
     KeyboardFlyingDirective

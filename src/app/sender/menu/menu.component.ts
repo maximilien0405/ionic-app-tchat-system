@@ -9,6 +9,8 @@ import { fadeAnimation, slideUpAnimation } from 'src/app/common/animations';
 import { AuthService } from 'src/app/common/services/auth.service';
 import { GetUserService } from 'src/app/common/services/get-user.service';
 import { SubscriptionService } from 'src/app/common/services/subscription.service';
+import { CreateConversationComponent } from '../modals/create-conversation/create-conversation.component';
+import { CreateGroupComponent } from '../modals/create-group/create-group.component';
 
 @Component({
   selector: 'app-menu',
@@ -66,11 +68,14 @@ export class MenuComponent implements OnInit {
     }; getUser()
   }
 
-  public async openSettings() {
-    const modalSettings = await this.modalController.create({
-      component: SettingsComponent,
+  public async openCreateConv() {
+    const modalConv = await this.modalController.create({
+      component: CreateConversationComponent,
+      breakpoints: [0, 1],
+      initialBreakpoint: 1,
+      id: "modalConv"
     });
-    modalSettings.present();
+    modalConv.present();
   }
 
   public displaySearch() {

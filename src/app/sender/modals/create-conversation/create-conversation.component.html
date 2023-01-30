@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="medium" (click)="cancel()">{{'SENDER.MODALS.CREATE_CONV.btn_cancel' | translate}}</ion-button>
+    </ion-buttons>
+    <ion-title>{{'SENDER.MODALS.CREATE_CONV.header' | translate}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        {{'SENDER.MODALS.CREATE_CONV.btn_cancel' | translate}}
+        <span *ngIf="hideText"></span>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding" forceOverscroll="false">
+  <div class="select-box" (click)="openCreateGroup()" ontouchstart>
+    {{'SENDER.MODALS.CREATE_GROUP.header' | translate}}
+    <img src="../../assets/icons/group.svg">
+  </div>
+
+  <div class="separator"></div>
+  
+  <div class="all-boxs boxs-bounce">
+    <div class="box profile-box" *ngFor="let number of [0,1,2,3,4]">
+      <div class="profile-box-left">
+        <img class="round" src="../../assets/icons/pdp.png" >
+        <div>
+          <p class="box-title">Grandma 1</p>
+          <p class="box-subtitle">grandma@gmail.com</p>
+        </div>
+      </div>
+    </div>  
+  </div>
+</ion-content>
