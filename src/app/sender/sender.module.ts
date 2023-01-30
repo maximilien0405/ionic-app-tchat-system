@@ -19,6 +19,7 @@ import { MenuComponent } from './menu/menu.component';
 import { KeyboardFlyingDirective } from '../common/directives/keyboard-height.directive';
 import { CreateConversationComponent } from './modals/create-conversation/create-conversation.component';
 import { CreateGroupComponent } from './modals/create-group/create-group.component';
+import { ProfileComponent } from './modals/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { CreateGroupComponent } from './modals/create-group/create-group.compone
     ProfilePictureComponent,
     CreateConversationComponent,
     CreateGroupComponent,
+    ProfileComponent,
     HomeSettingsComponent,
     MenuComponent,
     KeyboardFlyingDirective

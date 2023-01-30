@@ -4,8 +4,7 @@ import { ModalController } from '@ionic/angular';
 import { User } from 'src/app/common/models/user.model';
 import { SelectThemeComponent } from '../../modals/select-theme/select-theme.component';
 import { SelectLanguageComponent } from '../../modals/select-language/select-language.component';
-import { SafeArea } from 'capacitor-plugin-safe-area';
-import { ProfileComponent } from '../profile/profile.component';
+import { ProfileComponent } from '../../modals/profile/profile.component';
 
 @Component({
   selector: 'app-home-settings',

@@ -4,7 +4,7 @@ import { User } from 'src/app/common/models/user.model';
 import { Preferences } from '@capacitor/preferences';
 import { Camera, CameraResultType, Photo } from '@capacitor/camera';
 import { ModalController } from '@ionic/angular';
-import { ProfilePictureComponent } from '../../modals/profile-picture/profile-picture.component';
+import { ProfilePictureComponent } from '../profile-picture/profile-picture.component';
 import { TranslateService } from '@ngx-translate/core';
 import { slideUpAnimation } from 'src/app/common/animations';
 import { UserService } from 'src/app/common/services/user.service';

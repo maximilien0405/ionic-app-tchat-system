@@ -7,14 +7,12 @@ import { ForgotPwdComponent } from './forgot-pwd/forgot-pwd.component';
 import { HelpComponent } from './help/help.component';
 import { HomeSettingsComponent } from './home-settings/home-settings.component';
 import { NotificationsComponent } from './notifications/notifications.component';
-import { ProfileComponent } from './profile/profile.component';
 import { SecurityComponent } from './security/security.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'about', component: AboutComponent },
-  //{ path: 'profile', component: ProfileComponent },
   { path: 'security', component: SecurityComponent },
   { path: 'notifications', component: NotificationsComponent },
   { path: 'subscription', component: SubscriptionComponent },

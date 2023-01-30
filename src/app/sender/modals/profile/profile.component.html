@@ -1,12 +1,12 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button color="medium" (click)="cancel()">{{'SENDER.SETTINGS.PROFILE.btn_cancel' | translate}}</ion-button>
+      <ion-button color="medium" (click)="cancel()">{{'SENDER.MODALS.PROFILE.btn_cancel' | translate}}</ion-button>
     </ion-buttons>
-    <ion-title>{{'SENDER.SETTINGS.PROFILE.header' | translate}}</ion-title>
+    <ion-title>{{'SENDER.MODALS.PROFILE.header' | translate}}</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="confirm()">
-        {{'SENDER.SETTINGS.PROFILE.btn_save' | translate}}
+        {{'SENDER.MODALS.PROFILE.btn_save' | translate}}
         <span *ngIf="form && (form.get('firstname')?.value == user.firstname && form.get('lastname')?.value == user.lastname && form.get('about')?.value == user.about)"></span>
         <span *ngIf="form && (form.get('firstname')?.errors || form.get('lastname')?.errors)"></span>
       </ion-button>
@@ -16,20 +16,20 @@
 <ion-content *ngIf="user" class="ion-padding" forceOverscroll="false">
   <div class="profile-picture-container">
     <img (click)="openImageSelector()" [src]="user.profilePictureUrl" [class.form-error]="imageError">
-    <button (click)="openImageSelector()" class="btn btn-medium btn-white">{{'SENDER.SETTINGS.PROFILE.btn_change' | translate}}</button>
+    <button (click)="openImageSelector()" class="btn btn-medium btn-white">{{'SENDER.MODALS.PROFILE.btn_change' | translate}}</button>
   </div>
-  <p *ngIf="imageError" class="text-error">{{'SENDER.SETTINGS.PROFILE.error_image' | translate}}<p>
+  <p *ngIf="imageError" class="text-error">{{'SENDER.MODALS.PROFILE.error_image' | translate}}<p>
 
   <form [formGroup]="form">
-    <p class="label margin-top">{{'SENDER.SETTINGS.PROFILE.label_firstname' | translate}}</p>
+    <p class="label margin-top">{{'SENDER.MODALS.PROFILE.label_firstname' | translate}}</p>
     <input type="text" formControlName="firstname" [class.form-error]="form.get('firstname')?.errors" class="input">
-    <p *ngIf="form.get('firstname')?.errors" class="text-error">{{'SENDER.SETTINGS.PROFILE.field_required' | translate}}</p>
+    <p *ngIf="form.get('firstname')?.errors" class="text-error">{{'SENDER.MODALS.PROFILE.field_required' | translate}}</p>
 
-    <p class="label small-margin-top">{{'SENDER.SETTINGS.PROFILE.label_lastname' | translate}}</p>
+    <p class="label small-margin-top">{{'SENDER.MODALS.PROFILE.label_lastname' | translate}}</p>
     <input type="text" formControlName="lastname" [class.form-error]="form.get('lastname')?.errors" class="input">
-    <p *ngIf="form.get('lastname')?.errors" class="text-error">{{'SENDER.SETTINGS.PROFILE.field_required' | translate}}</p>
+    <p *ngIf="form.get('lastname')?.errors" class="text-error">{{'SENDER.MODALS.PROFILE.field_required' | translate}}</p>
 
-    <p class="label small-margin-top">{{'SENDER.SETTINGS.PROFILE.label_about' | translate}}</p>
+    <p class="label small-margin-top">{{'SENDER.MODALS.PROFILE.label_about' | translate}}</p>
     <textarea class="input" formControlName="about" cols="30" rows="5"></textarea>
   </form>
 </ion-content>
