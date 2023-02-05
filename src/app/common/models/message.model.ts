@@ -3,8 +3,11 @@ import { User } from "./user.model";
 
 export interface Message {
   id?: string,
-  message?: string,
-  userId?: User,
-  conversationId?: Conversation,
+  text?: string,
+  user?: User,
+  type?: string,
+  contentUrl?: string,
+  conversation?: Conversation,
+  updatedAt?: Date,
   createdAt?: Date,
 }

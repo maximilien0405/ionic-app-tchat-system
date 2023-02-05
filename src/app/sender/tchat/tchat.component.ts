@@ -70,55 +70,55 @@ export class TchatComponent implements OnInit {
     }; getUser()
 
     // Get friend from route
-    const getContact = async () => {
-      const { value }: any = await Preferences.get({ key: 'contacts' });
-      if (value) {
-        const contacts: User[] = JSON.parse(value || '');
-        this.contacts = contacts;
+    // const getContact = async () => {
+    //   const { value }: any = await Preferences.get({ key: 'contacts' });
+    //   if (value) {
+    //     const contacts: User[] = JSON.parse(value || '');
+    //     this.contacts = contacts;
 
-        contacts.forEach(contact => {
-          if (contact.id == this.contactId) {
-            this.contact = contact;
-          }
-        });
-      }
-    }; getContact()
+    //     contacts.forEach(contact => {
+    //       if (contact.id == this.contactId) {
+    //         this.contact = contact;
+    //       }
+    //     });
+    //   }
+    // }; getContact()
 
-    this.tchatService.leaveConversation();
-    this.messages = [];
+    // this.tchatService.leaveConversation();
+    // this.messages = [];
   }
 
   ngOnInit(): void {}
 
   ionViewWillEnter() {
-    this.tchatService.getConversations().subscribe((conversations: Conversation[]) => {
-      this.conversations.push(conversations[0]);
-    });
+    // this.tchatService.getConversations().subscribe((conversations: Conversation[]) => {
+    //   this.conversations.push(conversations[0]);
+    // });
 
-    this.tchatService.getConversationMessages().subscribe((messages: Message[]) => {
-      messages.forEach((message: Message) => {
-        const allMessagesId = this.messages.map((message: Message) => message.id)
-        if (!allMessagesId.includes(message.id)) {
-          this.messages.push(message);
-        }
-      })
-      console.log("getting all the messages...", messages)
-    });
+    // this.tchatService.getConversationMessages().subscribe((messages: Message[]) => {
+    //   messages.forEach((message: Message) => {
+    //     const allMessagesId = this.messages.map((message: Message) => message.id)
+    //     if (!allMessagesId.includes(message.id)) {
+    //       this.messages.push(message);
+    //     }
+    //   })
+    //   console.log("getting all the messages...", messages)
+    // });
 
-    this.tchatService.getNewMessage().subscribe((message: Message) => {
-      message.createdAt = new Date();
+    // this.tchatService.getNewMessage().subscribe((message: Message) => {
+    //   message.createdAt = new Date();
 
-      const allMessagesId = this.messages.map((message: Message) => message.id)
-      if (!allMessagesId.includes(message.id)) {
-        this.messages.push(message);
-      }
-    })
+    //   const allMessagesId = this.messages.map((message: Message) => message.id)
+    //   if (!allMessagesId.includes(message.id)) {
+    //     this.messages.push(message);
+    //   }
+    // })
 
-    this.contacts.forEach(contact => {
-      this.tchatService.createConversation(contact);
-    });
+    // this.contacts.forEach(contact => {
+    //   this.tchatService.createConversation(contact);
+    // });
 
-    this.tchatService.joinConversation(this.contact.id)
+    // this.tchatService.joinConversation(this.contact.id)
   }
 
   ionViewDidLeave() {
@@ -133,20 +133,20 @@ export class TchatComponent implements OnInit {
   }
 
   public submitMessage() {
-    let conversationUserIds = [this.userId, this.contactId].sort();
+    // let conversationUserIds = [this.userId, this.contactId].sort();
 
-    this.conversations.forEach((conversation: Conversation) => {
-      let usersIds = conversation.usersIds?.map((user: User) => user.id).sort();
+    // this.conversations.forEach((conversation: Conversation) => {
+    //   let usersIds = conversation.usersIds?.map((user: User) => user.id).sort();
 
-      if (JSON.stringify(conversationUserIds) == JSON.stringify(usersIds)) {
-        this.conversation = conversation;
-      }
-    })
+    //   if (JSON.stringify(conversationUserIds) == JSON.stringify(usersIds)) {
+    //     this.conversation = conversation;
+    //   }
+    // })
 
-    console.log(this.conversations)
+    // console.log(this.conversations)
 
-    this.tchatService.sendMessage(this.inputMessage, this.conversation);
-    this.inputMessage = '';
+    // this.tchatService.sendMessage(this.inputMessage, this.conversation);
+    // this.inputMessage = '';
   }
 
   // Hide camera and microphone icons

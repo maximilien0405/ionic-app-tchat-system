@@ -1,14 +1,16 @@
 export interface User {
-  id: string,
+  id?: string,
   email: string,
   //isLoggedWithGoogle: boolean,
   //isLoggedWithApple: boolean,
   firstname: string,
   lastname: string,
   about: string,
+  type: string,
   profilePictureUrl: string,
   emailValidated: boolean,
-  subscriptionIds: [],
-  subscriptionStatusIds: [],
-  type: string
+  subscriptions: [],
+  subscriptionStatus: [],
+  conversations: [],
+  messages: []
 }

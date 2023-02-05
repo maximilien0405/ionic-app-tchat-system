@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Preferences } from '@capacitor/preferences';
 import { ModalController } from '@ionic/angular';
+import { User } from 'src/app/common/models/user.model';
+import { SubscriptionService } from 'src/app/common/services/subscription.service';
 import { CreateGroupComponent } from '../create-group/create-group.component';
 
 @Component({
@@ -9,11 +12,37 @@ import { CreateGroupComponent } from '../create-group/create-group.component';
 })
 export class CreateConversationComponent implements OnInit {
   public hideText: boolean = true;
-  
-  constructor(private modalController: ModalController) { }
+  public user: User;
+  public subscriptionUsers: User[];
+
+  constructor(
+    private modalController: ModalController,
+    private subscriptionService: SubscriptionService
+  ) {}
 
   ngOnInit() {}
-  
+
+  public ionViewWillEnter() {
+    const getUser = async () => {
+      const { value } = await Preferences.get({ key: 'user' });
+      if (value) {
+        this.user = JSON.parse(value || '');
+
+        // Get subscription members
+        this.user.subscriptions.forEach((element: any) => {
+          this.subscriptionService
+            .findAllMembers(element.id)
+            .then((res: any) => {
+              if (res.data.length != 0) {
+                this.subscriptionUsers = res.data;
+              }
+            });
+        });
+      }
+    };
+    getUser();
+  }
+
   // Close the popup
   public cancel() {
     return this.modalController.dismiss(null, 'cancel');

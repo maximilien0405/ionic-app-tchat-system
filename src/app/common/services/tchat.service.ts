@@ -12,10 +12,10 @@ export class TchatService {
 
   constructor(private socket: TchatSocketService) { }
 
-  sendMessage(message: string, conversationId: Conversation): void {
+  sendMessage(text: string, conversation: Conversation): void {
     const newMessage: Message = {
-      message,
-      conversationId
+      text,
+      conversation
     }
 
     this.socket.emit('sendMessage', newMessage);
