@@ -24,12 +24,15 @@ export class UserService {
   }
 
   // Find a new user
-  public async findOne(userId: string) {
+  public async findOne() {
     const options = {
-      url: `${this.API_URL}/user/${userId}`,
-      headers: { 'Content-Type': 'application/json' },
+      url: `${this.API_URL}/user`,
+      headers: {
+        'Authorization': `Bearer ${this.token}`,
+        'Content-Type': 'application/json'
+      },
     };
-
+    
     return await CapacitorHttp.get(options);
   }
 

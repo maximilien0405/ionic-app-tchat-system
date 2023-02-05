@@ -7,6 +7,8 @@ import { fadeAnimation, slideUpAnimation } from 'src/app/common/animations';
 import { AuthService } from 'src/app/common/services/auth.service';
 import { GetUserService } from 'src/app/common/services/get-user.service';
 import { CreateConversationComponent } from '../modals/create-conversation/create-conversation.component';
+import { ConversationService } from 'src/app/common/services/conversation.service';
+import { Conversation } from 'src/app/common/models/conversation.model';
 
 @Component({
   selector: 'app-menu',
@@ -20,12 +22,13 @@ export class MenuComponent implements OnInit {
   public marginTop: number;
   public showSearch: boolean = false;
   public searchValue: string = '';
-  public tchatUsers: User[];
+  public conversations: Conversation[];
 
   constructor(
     private modalController: ModalController,
     private authService: AuthService,
-    private getUserService: GetUserService
+    private getUserService: GetUserService,
+    private conversationService: ConversationService
   ) {}
 
   ngOnInit() {
@@ -33,11 +36,18 @@ export class MenuComponent implements OnInit {
       this.marginBottom = 0.0625 * insets.bottom;
       this.marginTop = 0.0625 * insets.top;
     });
+  }
 
+  public ionViewDidEnter() {
     const getUser = async () => {
       const { value } = await Preferences.get({ key: 'user' });
       if (value) {
         this.user = JSON.parse(value || '');
+
+        this.conversationService.getConversationsForUser()
+          .then((res: any) => {
+            this.conversations = res.data;
+        })
       }
     };
     getUser();

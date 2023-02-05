@@ -7,20 +7,23 @@ import { JwtHelperService } from '@auth0/angular-jwt';
   providedIn: 'root'
 })
 export class GetUserService {
-  public helper = new JwtHelperService();
+  private token: string;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService) {
+    // Get token from localstorage
+    const getToken = async () => {
+      const { value } = await Preferences.get({ key: 'token' });
+      if (value) {
+        this.token = value;
+      }
+    }; getToken()
+  }
 
   // Get token from localstorage
   public setUser = async () => {
-    const { value } = await Preferences.get({ key: 'token' });
-    if (value) {
-      // Decode the token to get the id
-      const decodedToken = this.helper.decodeToken(value);
-
-      this.userService.findOne(decodedToken.id)
+    this.userService.findOne()
       .then((res: any) => {
-        if(res.status == 200) {
+        if (res.status == 200) {
           const setUser = async () => {
             await Preferences.set({
               key: 'user',
@@ -29,6 +32,5 @@ export class GetUserService {
           }; setUser();
         }
       });
-    }
   };
 }
