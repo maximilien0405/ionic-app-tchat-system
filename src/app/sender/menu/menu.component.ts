@@ -38,7 +38,7 @@ export class MenuComponent implements OnInit {
     });
   }
 
-  public ionViewDidEnter() {
+  public ionViewWillEnter() {
     const getUser = async () => {
       const { value } = await Preferences.get({ key: 'user' });
       if (value) {
