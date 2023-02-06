@@ -23,7 +23,7 @@
       <!--<div class="tchat-box-header">Seniors</div>-->
       <div class="tchat-box-header">Family X</div>
       <div *ngFor="let conversation of conversations" [routerLink]="['/sender/tchat/' + conversation.id]" router-direction="forward" class="tchat-box" ontouchstart>
-        <img class="round" [src]="conversation.groupPictureUrl || conversation.users[0].profilePictureUrl">
+        <img [src]="conversation.groupPictureUrl || conversation.users[0].profilePictureUrl">
         <div>
           <div class="tchat-box-title">
             <p class="box-title">{{ conversation.groupName || (conversation.users[0].firstname + ' ' + conversation.users[0].lastname) }}</p>

@@ -149,7 +149,9 @@
       },
       "CREATE_CONV": {
         "btn_cancel": "Cancel",
-        "header": "New message"
+        "header": "New message",
+        "box_group": "Create a group",
+        "box_archived": "Archived conversations"
       },
       "CREATE_GROUP": {
         "btn_cancel": "Cancel",
