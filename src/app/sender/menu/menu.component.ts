@@ -46,7 +46,17 @@ export class MenuComponent implements OnInit {
 
         this.conversationService.getConversationsForUser()
           .then((res: any) => {
-            this.conversations = res.data;
+            let conversations = res.data;
+
+            conversations.forEach((conversation: any) => {
+              for (let i = 0; i < conversation.users.length; i++) {
+                if (conversation.users[i].id === this.user.id) {
+                  conversation.users.splice(i, 1);
+                }
+              }
+            });
+
+            this.conversations = conversations;
         })
       }
     };

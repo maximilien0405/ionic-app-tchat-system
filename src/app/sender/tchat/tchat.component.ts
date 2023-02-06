@@ -143,8 +143,6 @@ export class TchatComponent implements OnInit {
     //   }
     // })
 
-    // console.log(this.conversations)
-
     // this.tchatService.sendMessage(this.inputMessage, this.conversation);
     // this.inputMessage = '';
   }
