@@ -33,13 +33,14 @@ export class TchatComponent implements OnInit {
   public user: User;
 
   public newMessage$: Observable<string>;
-  public messages: Message[] | undefined = [];
+  public messages: Message[] = [];
 
   constructor(
     private networkService: NetworkService,
     private activatedRoute: ActivatedRoute,
     private tchatService: TchatService)
   {
+    console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
     // Get route param
     this.activatedRoute.params.subscribe(params => this.conversationId = params['id']);
 
@@ -81,7 +82,7 @@ export class TchatComponent implements OnInit {
       }
 
       this.conversation = conversation;
-      this.messages = conversation?.messages;
+      this.messages = conversation.messages || [];
       // messages.forEach((message: Message) => {
       //   const allMessagesId = this.messages.map((message: Message) => message.id)
       //   if (!allMessagesId.includes(message.id)) {
@@ -89,7 +90,6 @@ export class TchatComponent implements OnInit {
       //   }
       // })
     });
-
   }
 
   // Close keyboard
@@ -104,7 +104,7 @@ export class TchatComponent implements OnInit {
       this.tchatService.sendMessage(this.inputMessage, this.conversation, 'normal', ' ');
     
       this.tchatService.getNewMessage().subscribe((message: Message) => {
-        this.messages?.push(message);
+        this.messages.push(message);
       })
     }
 
