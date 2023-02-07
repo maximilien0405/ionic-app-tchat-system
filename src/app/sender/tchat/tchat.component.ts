@@ -28,17 +28,12 @@ export class TchatComponent implements OnInit {
   public inputMessage: string;
   public showIcons: boolean = false;
 
-  public contactId: string;
-  public contact: User;
-  public contacts: User[];
+  public conversationId: string;
+  public conversation: Conversation;
+  public user: User;
 
   public newMessage$: Observable<string>;
-  public messages: Message[] = [];
-
-  public userId: string;
-  public conversations$: Observable<Conversation[]>;
-  public conversations: Conversation[] = [];
-  public conversation: Conversation;
+  public messages: Message[] | undefined = [];
 
   constructor(
     private networkService: NetworkService,
@@ -46,7 +41,7 @@ export class TchatComponent implements OnInit {
     private tchatService: TchatService)
   {
     // Get route param
-    this.activatedRoute.params.subscribe(params => this.contactId = params['id']);
+    this.activatedRoute.params.subscribe(params => this.conversationId = params['id']);
 
     // Check the API status changes
     // this.networkService.subjectApiOrNetworkError.subscribe(res => {
@@ -56,73 +51,45 @@ export class TchatComponent implements OnInit {
     //   }, 500);
     // })
 
+    // Get token from localstorage
+    const getUser = async () => {
+      const { value } = await Preferences.get({ key: 'user' });
+      if(value) {
+        this.user = JSON.parse(value || '')
+      }
+    }; getUser()
+
     SafeArea.getSafeAreaInsets().then(({ insets }) => {
       this.marginBottom = 0.0625 * (insets.bottom + 8);
     });
 
-    // Get token from localstorage
-    const getUser = async () => {
-      const { value } = await Preferences.get({ key: 'user' });
-      if (value) {
-        const user = JSON.parse(value || '')
-        this.userId = user.id;
-      }
-    }; getUser()
-
-    // Get friend from route
-    // const getContact = async () => {
-    //   const { value }: any = await Preferences.get({ key: 'contacts' });
-    //   if (value) {
-    //     const contacts: User[] = JSON.parse(value || '');
-    //     this.contacts = contacts;
-
-    //     contacts.forEach(contact => {
-    //       if (contact.id == this.contactId) {
-    //         this.contact = contact;
-    //       }
-    //     });
-    //   }
-    // }; getContact()
-
-    // this.tchatService.leaveConversation();
-    // this.messages = [];
+    this.messages = [];
   }
 
   ngOnInit(): void {}
 
   ionViewWillEnter() {
-    // this.tchatService.getConversations().subscribe((conversations: Conversation[]) => {
-    //   this.conversations.push(conversations[0]);
-    // });
+    this.tchatService.sendConversationId(this.conversationId);
 
-    // this.tchatService.getConversationMessages().subscribe((messages: Message[]) => {
-    //   messages.forEach((message: Message) => {
-    //     const allMessagesId = this.messages.map((message: Message) => message.id)
-    //     if (!allMessagesId.includes(message.id)) {
-    //       this.messages.push(message);
-    //     }
-    //   })
-    //   console.log("getting all the messages...", messages)
-    // });
+    this.tchatService.getConversationAndMessages().subscribe((conversation) => {
+      if(conversation.type == 'normal') {
+        for (let i = 0; i < conversation.users.length; i++) {
+          if (conversation.users[i].id === this.user.id) {
+            conversation.users.splice(i, 1);
+          }
+        }
+      }
 
-    // this.tchatService.getNewMessage().subscribe((message: Message) => {
-    //   message.createdAt = new Date();
+      this.conversation = conversation;
+      this.messages = conversation?.messages;
+      // messages.forEach((message: Message) => {
+      //   const allMessagesId = this.messages.map((message: Message) => message.id)
+      //   if (!allMessagesId.includes(message.id)) {
+      //     this.messages.push(message);
+      //   }
+      // })
+    });
 
-    //   const allMessagesId = this.messages.map((message: Message) => message.id)
-    //   if (!allMessagesId.includes(message.id)) {
-    //     this.messages.push(message);
-    //   }
-    // })
-
-    // this.contacts.forEach(contact => {
-    //   this.tchatService.createConversation(contact);
-    // });
-
-    // this.tchatService.joinConversation(this.contact.id)
-  }
-
-  ionViewDidLeave() {
-    this.tchatService.leaveConversation();
   }
 
   // Close keyboard
@@ -133,18 +100,15 @@ export class TchatComponent implements OnInit {
   }
 
   public submitMessage() {
-    // let conversationUserIds = [this.userId, this.contactId].sort();
+    if(this.inputMessage) {
+      this.tchatService.sendMessage(this.inputMessage, this.conversation, 'normal', ' ');
+    
+      this.tchatService.getNewMessage().subscribe((message: Message) => {
+        this.messages?.push(message);
+      })
+    }
 
-    // this.conversations.forEach((conversation: Conversation) => {
-    //   let usersIds = conversation.usersIds?.map((user: User) => user.id).sort();
-
-    //   if (JSON.stringify(conversationUserIds) == JSON.stringify(usersIds)) {
-    //     this.conversation = conversation;
-    //   }
-    // })
-
-    // this.tchatService.sendMessage(this.inputMessage, this.conversation);
-    // this.inputMessage = '';
+    this.inputMessage = '';
   }
 
   // Hide camera and microphone icons

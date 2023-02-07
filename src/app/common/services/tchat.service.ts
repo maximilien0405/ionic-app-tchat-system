@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Conversation } from '../models/conversation.model';
 import { Message } from '../models/message.model';
-import { User } from '../models/user.model';
 import { TchatSocketService } from './tchat-socket.service';
 
 @Injectable({
@@ -12,10 +11,12 @@ export class TchatService {
 
   constructor(private socket: TchatSocketService) { }
 
-  sendMessage(text: string, conversation: Conversation): void {
+  sendMessage(text: string, conversation: Conversation, type: string, contentUrl: string): void {
     const newMessage: Message = {
       text,
-      conversation
+      conversation,
+      type,
+      contentUrl,
     }
 
     this.socket.emit('sendMessage', newMessage);
@@ -25,23 +26,11 @@ export class TchatService {
     return this.socket.fromEvent<Message>('newMessage');
   }
 
-  createConversation(contact: User): void {
-    this.socket.emit('createConversation', contact);
+  sendConversationId(conversationId: string) {
+    this.socket.emit('sendConversationId', conversationId);
   }
 
-  joinConversation(contactId: string): void {
-    this.socket.emit('joinConversation', contactId);
-  }
-
-  leaveConversation(): void {
-    this.socket.emit('leaveConversation');
-  }
-
-  getConversationMessages(): Observable<Message[]> {
-    return this.socket.fromEvent<Message[]>('messages');
-  }
-
-  getConversations(): Observable<Conversation[]> {
-    return this.socket.fromEvent<Conversation[]>('conversations');
+  getConversationAndMessages(): Observable<Conversation> {
+    return this.socket.fromEvent<Conversation>('conversationAndMessages');
   }
 }

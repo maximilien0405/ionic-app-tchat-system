@@ -1,4 +1,4 @@
-<ion-header *ngIf="contact" class="tchat-header">
+<ion-header *ngIf="conversation" class="tchat-header">
   <ion-toolbar>
     <div class="header-component">
       <div class="header-start">
@@ -7,10 +7,10 @@
             <ion-back-button class="no-text" text=""></ion-back-button>
           </ion-buttons>
           <div class="header-profile">
-            <img [src]="contact.profilePictureUrl">
+            <img [src]="conversation.groupPictureUrl || conversation.users[0].profilePictureUrl">
           </div>
         </div>
-        <p>{{ contact.firstname }} {{ contact.lastname }}</p>
+        <p>{{ conversation.groupName || (conversation.users[0].firstname + ' ' + conversation.users[0].lastname) }}</p>
       </div>
       <div class="header-end">
         <img src="../../../assets/icons/video.svg">
@@ -22,7 +22,7 @@
 <ion-content class="ion-padding" forceOverscroll="false">
 
   <div class="box" *ngFor="let message of messages">
-    <p class="box-title">{{ message }}</p>
+    <p class="box-title">{{ message.text }}</p>
     <p class="box-subtitle">{{ message.user?.firstname }} | {{ message.createdAt | date: "short" }}</p>
   </div>
 
