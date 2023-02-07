@@ -4,10 +4,34 @@
       <ion-button color="medium" (click)="cancel()">{{'SENDER.MODALS.CREATE_GROUP.btn_cancel' | translate}}</ion-button>
     </ion-buttons>
     <ion-title>{{'SENDER.MODALS.CREATE_GROUP.header' | translate}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="createGroup()">
+        {{'SENDER.MODALS.CREATE_GROUP.btn_create' | translate}}
+        <span *ngIf="form.get('name')?.errors || userIds.length < 2"></span>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 <ion-content class="ion-padding" forceOverscroll="false">
+  <div class="profile-picture-container">
+    <img src="https://d22r54gnmuhwmk.cloudfront.net/rendr-fe/img/default-organization-logo-6aecc771.gif">
+    <button class="btn btn-medium btn-white">{{'SENDER.MODALS.PROFILE.btn_change' | translate}}</button>
+  </div>
+  <form [formGroup]="form">
+    <p class="label margin-top">{{'SENDER.MODALS.CREATE_GROUP.label_name' | translate}}</p>
+    <input type="text" class="input" formControlName="name">
+  </form>
+
+  <p class="label small-margin-top">{{'SENDER.MODALS.CREATE_GROUP.label_members' | translate}}</p>
   
-
-
+  <div class="list-container">
+    <div class="select-box profile-box list-box" *ngFor="let user of subscriptionUsers; let first = first; let last = last;" (click)="addMember(user.id)" [class.select-start]="first" [class.select-end]="last" ontouchstart>
+      {{ user.firstname }} {{ user.lastname }}
+        
+      <label class="checkboxContainer">
+        <input type="checkbox" [checked]="userIds && userIds.includes(user.id)" (change)="addMember(user.id)"/>
+        <span class="checkmark"></span>
+      </label>
+    </div>
+  </div>
 </ion-content>

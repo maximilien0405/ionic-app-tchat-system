@@ -21,14 +21,14 @@ export class ConversationService {
     }
 
     // Create a group conversation
-    public async createGroupConversation(type: 'group', usersIds: Array<string>, groupName: string, groupePictureUrl: string) {
+    public async createGroupConversation(type: 'group', usersIds: Array<string>, groupName: string, groupPictureUrl: string) {
         const options = {
             url: `${this.API_URL}/conversation/`,
             headers: {
                 'Authorization': `Bearer ${this.token}`,
                 'Content-Type': 'application/json'
             },
-            data: { type, usersIds, groupName, groupePictureUrl }
+            data: { type, usersIds, groupName, groupPictureUrl }
         };
 
         return await CapacitorHttp.post(options);

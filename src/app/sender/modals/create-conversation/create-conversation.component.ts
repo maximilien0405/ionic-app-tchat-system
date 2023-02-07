@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Preferences } from '@capacitor/preferences';
 import { ModalController } from '@ionic/angular';
 import { User } from 'src/app/common/models/user.model';
+import { ConversationService } from 'src/app/common/services/conversation.service';
 import { SubscriptionService } from 'src/app/common/services/subscription.service';
 import { CreateGroupComponent } from '../create-group/create-group.component';
 
@@ -17,7 +19,9 @@ export class CreateConversationComponent implements OnInit {
 
   constructor(
     private modalController: ModalController,
-    private subscriptionService: SubscriptionService
+    private subscriptionService: SubscriptionService,
+    private conversationService: ConversationService,
+    private router: Router
   ) {}
 
   ngOnInit() {}
@@ -41,6 +45,18 @@ export class CreateConversationComponent implements OnInit {
       }
     };
     getUser();
+  }
+
+  // Create or join a conversation
+  public createConversation(userId: any) {
+    this.conversationService.createNormalConversation('normal', [userId]).then((res: any) => {
+      console.log(res)
+      if((res.data.error == true && res.data.conversationId) || res.status == 201) {
+        // Redirect
+        this.modalController.dismiss(null, 'cancel');
+        this.router.navigateByUrl('sender/tchat/' + res.data.conversationId);
+      }
+    })
   }
 
   // Close the popup

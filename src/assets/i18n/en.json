@@ -148,14 +148,17 @@
         "button": "Delete"
       },
       "CREATE_CONV": {
-        "btn_cancel": "Cancel",
         "header": "New message",
+        "btn_cancel": "Cancel",
         "box_group": "Create a group",
         "box_archived": "Archived conversations"
       },
       "CREATE_GROUP": {
+        "header": "Create a group",
         "btn_cancel": "Cancel",
-        "header": "Create a group"
+        "btn_create": "Create",
+        "label_name": "Name",
+        "label_members": "Members"
       },
       "PROFILE": {
         "header": "Edit profile",

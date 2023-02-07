@@ -544,6 +544,7 @@ ion-content textarea {
   height: 1.125rem;
 }
 
+
 /* ---------------------------------------------------
   LIST
 ----------------------------------------------------- */
@@ -605,6 +606,20 @@ ion-content textarea {
     .round {
       filter: unset !important;
     }
+  }
+}
+
+.list-box {
+  &:active {
+    transform: unset !important;
+    -webkit-transform: unset !important;
+    -moz-transform: unset !important;
+  }
+
+  .checkmark {
+    width: 1.7rem !important;
+    height: 1.7rem !important;
+    top: -0.9rem !important;
   }
 }
 
@@ -795,8 +810,8 @@ ion-content textarea {
     position: absolute;
     height: 0.25rem;
     width: 0.5625rem;
-    border-left: 0.125rem solid var(--white);
-    border-bottom: 0.125rem solid var(--white);
+    border-left: 0.165rem solid var(--white);
+    border-bottom: 0.165rem solid var(--white);
     top: 45%;
     left: 50%;
     transform: translate(-50%, -50%) rotate(-45deg);

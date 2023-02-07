@@ -27,7 +27,7 @@
   <div class="separator"></div>
   
   <div class="list-container">
-    <div class="select-box profile-box" *ngFor="let user of subscriptionUsers; let first = first; let last = last;" [class.select-start]="first" [class.select-end]="last" ontouchstart>
+    <div class="select-box profile-box" *ngFor="let user of subscriptionUsers; let first = first; let last = last;" (click)="createConversation(user.id)" [class.select-start]="first" [class.select-end]="last" ontouchstart>
       <div class="profile-box-left">
         <img class="round" [src]="user.profilePictureUrl">
         <div>
