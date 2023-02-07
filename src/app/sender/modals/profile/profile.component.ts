@@ -68,9 +68,10 @@ export class ProfileComponent implements OnInit {
   public async openModal(type: string) {
     const modalProfilePicture = await this.modalController.create({
       component: ProfilePictureComponent,
-      breakpoints: [0, 1],
-      initialBreakpoint: 1,
-      cssClass: 'auto-height'
+      cssClass: 'auto-height',
+      componentProps: {
+        image: this.photo,
+      },
     });
 
     if (type == 'edit-pdp') {

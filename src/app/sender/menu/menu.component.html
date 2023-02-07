@@ -1,8 +1,8 @@
-<ion-header>
+<!--<ion-header>
   <ion-toolbar>
     <ion-title>{{'SENDER.MENU.header' | translate}}</ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header>-->
 <ion-content *ngIf="user" class="menu-content ion-padding-top ion-padding-start ion-padding-end" forceOverscroll="false">
   <div class="menu-page-container">
     <div class="menu-header">
@@ -21,7 +21,7 @@
     </div>
     <div *ngIf="!showSearch" class="menu-top-container box box-full">
       <!--<div class="tchat-box-header">Seniors</div>-->
-      <div class="tchat-box-header">Family X</div>
+      <div class="tchat-box-header">Conversations</div>
       <div *ngFor="let conversation of conversations" [routerLink]="['/sender/tchat/' + conversation.id]" router-direction="forward" class="tchat-box" ontouchstart>
         <img [src]="conversation.groupPictureUrl || conversation.users[0].profilePictureUrl">
         <div>

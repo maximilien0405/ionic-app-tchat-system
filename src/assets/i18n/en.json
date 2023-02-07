@@ -51,9 +51,9 @@
       "NOTIFICATIONS": {
         "header": "Notifications",
         "label_push": "Push notifications",
-        "push_1": "Be notified when a senior responds to your message.",
-        "push_2": "Be notified when a senior sends you a voice message.",
-        "push_3": "Be notified when a senior reads/listens to your message.",
+        "push_1": "Be notified when a senior sends you a message.",
+        "push_2": "Be notified when a senior reads/listens to your message.",
+        "push_3": "Be notified when a contact sends you a message.",
         "label_email": "Email notifications",
         "email_1": "Receive an email when major changes are made to the application."
       },

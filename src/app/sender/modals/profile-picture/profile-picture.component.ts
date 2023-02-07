@@ -16,7 +16,7 @@ import { UserService } from 'src/app/common/services/user.service';
 })
 export class ProfilePictureComponent implements OnInit {
   public paddingTop: number;
-  @Input() image: Photo;
+  public image: Photo;
   public imageUrl: any;
   @ViewChild('cropper') cropper: ImageCropperComponent;
   isMobile = Capacitor.getPlatform() !== 'web';
@@ -31,6 +31,7 @@ export class ProfilePictureComponent implements OnInit {
   }
 
   public ngOnInit(): void {
+    console.log(this.image)
     this.imageUrl = `data:image/jpeg;base64,${this.image.base64String}`;
   }
 

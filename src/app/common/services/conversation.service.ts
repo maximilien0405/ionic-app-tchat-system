@@ -20,8 +20,22 @@ export class ConversationService {
         }; getToken()
     }
 
-    // Create a conversation
-    public async createConversation(type: string, usersIds: Array<string>) {
+    // Create a group conversation
+    public async createGroupConversation(type: 'group', usersIds: Array<string>, groupName: string, groupePictureUrl: string) {
+        const options = {
+            url: `${this.API_URL}/conversation/`,
+            headers: {
+                'Authorization': `Bearer ${this.token}`,
+                'Content-Type': 'application/json'
+            },
+            data: { type, usersIds, groupName, groupePictureUrl }
+        };
+
+        return await CapacitorHttp.post(options);
+    }
+
+    // Create a normal conversation
+    public async createNormalConversation(type: 'normal', usersIds: Array<string>) {
         const options = {
             url: `${this.API_URL}/conversation/`,
             headers: {
