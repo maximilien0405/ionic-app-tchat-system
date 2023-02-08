@@ -78,7 +78,6 @@ body {
   --icon-black: invert(35%) sepia(0%) saturate(0%) hue-rotate(258deg) brightness(96%) contrast(96%);
   --icon-gray: invert(69%) sepia(0%) saturate(201%) hue-rotate(205deg) brightness(94%) contrast(79%);
   --icon-white: invert(99%) sepia(1%) saturate(2%) hue-rotate(15deg) brightness(106%) contrast(100%);
-  --icon-orange: brightness(0) saturate(100%) invert(84%) sepia(34%) saturate(4296%) hue-rotate(319deg) brightness(99%) contrast(85%);;
   --icon-green: invert(65%) sepia(27%) saturate(677%) hue-rotate(58deg) brightness(88%) contrast(88%);
   --icon-red: invert(34%) sepia(94%) saturate(1575%) hue-rotate(339deg) brightness(111%) contrast(79%);
 }
@@ -519,7 +518,6 @@ ion-content textarea {
 
   img {
     height: 1.25rem;
-    filter: var(--icon-orange);
     transition: all 0.2s ease-in-out;
   }
 
