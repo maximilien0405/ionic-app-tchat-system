@@ -401,6 +401,7 @@ image-cropper .ngx-ic-source-image {
     height: 100%;
     overflow: scroll;
     touch-action: pan-y !important;
+    overscroll-behavior: none !important;
 
     .all-boxs {
       height: 100%;
@@ -439,7 +440,7 @@ image-cropper .ngx-ic-source-image {
   flex-direction: row;
   align-items: center;
   gap: 0.9375rem;
-  padding: 1.25rem;
+  padding: 1.15rem;
   height: fit-content !important;
   border-bottom: 0.0938rem solid var(--border-gray);
   transition: all 0.2s ease-in-out;

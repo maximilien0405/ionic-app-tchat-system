@@ -1,9 +1,9 @@
-<ion-header>
+<ion-header *ngIf="allLoaded" @fadeAnimation>
   <ion-toolbar>
     <ion-title>{{'SENDER.MENU.header' | translate}}</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content *ngIf="user" class="menu-content ion-padding-top ion-padding-start ion-padding-end" forceOverscroll="false">
+<ion-content *ngIf="allLoaded" @fadeAnimation class="menu-content ion-padding-top ion-padding-start ion-padding-end" forceOverscroll="false">
   <div class="menu-page-container">
     <div class="menu-header">
       <div class="input-icon">
@@ -20,9 +20,31 @@
       </button>
     </div>
     <div *ngIf="!showSearch" class="menu-top-container box box-full">
-      <!--<div class="tchat-box-header">Seniors</div>-->
-      <div class="tchat-box-header">Conversations</div>
-      <div *ngFor="let conversation of conversations" [routerLink]="['/sender/tchat/' + conversation.id]" router-direction="forward" class="tchat-box" ontouchstart>
+      <div class="tchat-box-header">{{'SENDER.MENU.conversation_seniors' | translate}}</div>
+
+      <div *ngFor="let conversation of recieverConversations" [routerLink]="['/sender/tchat/' + conversation.id]" router-direction="forward" class="tchat-box" ontouchstart>
+        <img [src]="conversation.users[0].profilePictureUrl">
+        <div>
+          <div class="tchat-box-title">
+            <p class="box-title">{{ conversation.users[0].firstname + ' ' + conversation.users[0].lastname }}</p>
+            <p class="box-subtitle">12:34</p> <!-- class : box-subtitle-notif-->
+            <!--<div class="box-notification">1</div>-->
+          </div>
+          <p class="box-subtitle box-sub-bottom">
+            <!--<img src="../../assets/icons/image-filled.svg">
+            <img src="../../assets/icons/video-filled.svg">
+            <img src="../../assets/icons/micro-filled.svg">
+            <img src="../../assets/icons/phone-filled.svg">
+            <img src="../../assets/icons/check.svg">
+            <img src="../../assets/icons/double-check.svg"> -->
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, culpa?
+          </p>
+        </div>
+      </div>
+
+      <div class="tchat-box-header">{{'SENDER.MENU.conversation_contacts' | translate}}</div>
+      
+      <div *ngFor="let conversation of contactConversations" [routerLink]="['/sender/tchat/' + conversation.id]" router-direction="forward" class="tchat-box" ontouchstart>
         <img [src]="conversation.groupPictureUrl || conversation.users[0].profilePictureUrl">
         <div>
           <div class="tchat-box-title">
@@ -79,3 +101,5 @@
     </div>
   </div>
 </ion-content>
+
+<div *ngIf="networkError || APIError" class="overlay-box"></div>

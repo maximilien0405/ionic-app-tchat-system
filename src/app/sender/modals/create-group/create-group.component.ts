@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Preferences } from '@capacitor/preferences';
 import { ModalController } from '@ionic/angular';
+import { fadeAnimation } from 'src/app/common/animations';
 import { User } from 'src/app/common/models/user.model';
 import { ConversationService } from 'src/app/common/services/conversation.service';
 import { SubscriptionService } from 'src/app/common/services/subscription.service';
@@ -11,6 +12,7 @@ import { SubscriptionService } from 'src/app/common/services/subscription.servic
   selector: 'app-create-group',
   templateUrl: './create-group.component.html',
   styleUrls: ['../../sender.component.scss'],
+  animations: [fadeAnimation]
 })
 export class CreateGroupComponent implements OnInit {
   public hideText: boolean = true;

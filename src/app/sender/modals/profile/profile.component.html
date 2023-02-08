@@ -7,8 +7,8 @@
     <ion-buttons slot="end">
       <ion-button (click)="confirm()">
         {{'SENDER.MODALS.PROFILE.btn_save' | translate}}
-        <span *ngIf="form && (form.get('firstname')?.value == user.firstname && form.get('lastname')?.value == user.lastname && form.get('about')?.value == user.about)"></span>
-        <span *ngIf="form && (form.get('firstname')?.errors || form.get('lastname')?.errors)"></span>
+        <span @fadeAnimation *ngIf="form && (form.get('firstname')?.value == user.firstname && form.get('lastname')?.value == user.lastname && form.get('about')?.value == user.about)"></span>
+        <span @fadeAnimation *ngIf="form && (form.get('firstname')?.errors || form.get('lastname')?.errors)"></span>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>

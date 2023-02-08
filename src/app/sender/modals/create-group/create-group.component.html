@@ -7,7 +7,7 @@
     <ion-buttons slot="end">
       <ion-button (click)="createGroup()">
         {{'SENDER.MODALS.CREATE_GROUP.btn_create' | translate}}
-        <span *ngIf="form.get('name')?.errors || userIds.length < 2"></span>
+        <span @fadeAnimation *ngIf="form.get('name')?.errors || userIds.length < 2"></span>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>

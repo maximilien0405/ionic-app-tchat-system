@@ -24,7 +24,10 @@ export class MenuComponent implements OnInit {
   public marginTop: number;
   public showSearch: boolean = false;
   public searchValue: string = '';
-  public conversations: Conversation[];
+  public allLoaded: boolean = false;
+
+  public recieverConversations: Conversation[] = [];
+  public contactConversations: Conversation[] = [];
   public subscriptionUsers: User[];
   public networkError = false;
   public APIError = false;
@@ -37,10 +40,13 @@ export class MenuComponent implements OnInit {
     private subscriptionService: SubscriptionService,
     private networkService: NetworkService
   ) {
+    // Check the network status
+    this.networkService.checkAPIAndNetworkStatus();
+
+
     // Check the API status changes
-    this.networkService.subjectApiOrNetworkError.subscribe(res => {
+    this.networkService.subjectNetworkError.subscribe(res => {
       setTimeout(() => {
-        this.APIError = res.apiError;
         this.networkError = res.networkError;
       }, 500);
     })
@@ -61,10 +67,14 @@ export class MenuComponent implements OnInit {
 
         // Get all conversations
         this.conversationService.getConversationsForUser()
+          .catch((res: any) => {
+            this.APIError = true;
+          })
           .then((res: any) => {
-            let conversations = res.data;
+            let recieverConversations = []
+            let contactConversations = res.data;
 
-            conversations.forEach((conversation: any) => {
+            contactConversations.forEach((conversation: any) => {
               for (let i = 0; i < conversation.users.length; i++) {
                 if (conversation.users[i].id === this.user.id) {
                   conversation.users.splice(i, 1);
@@ -72,7 +82,18 @@ export class MenuComponent implements OnInit {
               }
             });
 
-            this.conversations = conversations;
+            for (let i = 0; i < contactConversations.length; i++) {
+              const element = contactConversations[i];
+
+              if(element.users[0].type == 'reciever') {
+                recieverConversations.push(element);
+                contactConversations.splice(i, 1);
+              }
+            }
+
+            this.contactConversations = contactConversations;
+            this.recieverConversations = recieverConversations;
+            this.allLoaded = true;
         })
 
 

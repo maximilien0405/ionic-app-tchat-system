@@ -2,10 +2,9 @@
   "SENDER": {
     "MENU": {
       "header": "Send a message",
-      "subtitle": "Welcome back!",
-      "title": "Send a message",
-      "box_reminders": "Manage reminders",
-      "input_search": "Search"
+      "input_search": "Search",
+      "conversation_seniors": "Seniors",
+      "conversation_contacts": "Contacts"
     },
     "TCHAT": {
       "header": "Tchat",

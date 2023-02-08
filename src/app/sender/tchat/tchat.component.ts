@@ -25,8 +25,6 @@ export class TchatComponent implements OnInit {
   public marginBottom: number;
   public inputMessage: string;
   public showIcons: boolean = false;
-
-  public conversationId: string;
   public conversation: Conversation;
   public user: User;
 
@@ -35,7 +33,9 @@ export class TchatComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute, private tchatService: TchatService) {
     // Get route param
-    this.activatedRoute.params.subscribe(params => this.conversationId = params['id']);
+    this.activatedRoute.params.subscribe(params => {
+      this.tchatService.sendConversationId(params['id']);
+    });
 
     // Get token from localstorage
     const getUser = async () => {
@@ -55,8 +55,6 @@ export class TchatComponent implements OnInit {
   ngOnInit(): void {}
 
   ionViewWillEnter() {
-    this.tchatService.sendConversationId(this.conversationId);
-
     this.tchatService.getConversationAndMessages().subscribe((conversation) => {
       if(conversation.type == 'normal') {
         for (let i = 0; i < conversation.users.length; i++) {

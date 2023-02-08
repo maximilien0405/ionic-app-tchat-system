@@ -6,7 +6,7 @@ import { Camera, CameraResultType, Photo } from '@capacitor/camera';
 import { ModalController } from '@ionic/angular';
 import { ProfilePictureComponent } from '../profile-picture/profile-picture.component';
 import { TranslateService } from '@ngx-translate/core';
-import { slideUpAnimation } from 'src/app/common/animations';
+import { fadeAnimation, slideUpAnimation } from 'src/app/common/animations';
 import { UserService } from 'src/app/common/services/user.service';
 import { GetUserService } from 'src/app/common/services/get-user.service';
 
@@ -14,7 +14,7 @@ import { GetUserService } from 'src/app/common/services/get-user.service';
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['../../sender.component.scss'],
-  animations: [slideUpAnimation]
+  animations: [slideUpAnimation, fadeAnimation]
 })
 export class ProfileComponent implements OnInit {
   public user: User;
