@@ -40,7 +40,6 @@ export class TchatComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private tchatService: TchatService)
   {
-    console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
     // Get route param
     this.activatedRoute.params.subscribe(params => this.conversationId = params['id']);
 

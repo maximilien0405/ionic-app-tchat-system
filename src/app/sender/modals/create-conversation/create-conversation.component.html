@@ -25,16 +25,16 @@
   </div>
 
   <div class="separator"></div>
+
+  <p class="label">All contacts</p>
   
   <div class="list-container">
     <div class="select-box profile-box" *ngFor="let user of subscriptionUsers; let first = first; let last = last;" (click)="createConversation(user.id)" [class.select-start]="first" [class.select-end]="last" ontouchstart>
-      <div class="profile-box-left">
-        <img class="round" [src]="user.profilePictureUrl">
-        <div>
-          <p class="box-title">{{ user.firstname }} {{ user.lastname }}</p>
-        </div>
+      <div class="profile-box-left">  
+        <img class="img-left" [src]="user.profilePictureUrl">
+        {{ user.firstname }} {{ user.lastname }}
       </div>
-      <img src="../../assets/icons/arrow-right.svg">
+      <img src="../../assets/icons/arrow-right-orange.svg">
     </div>
   </div>
 </ion-content>

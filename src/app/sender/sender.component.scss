@@ -86,7 +86,6 @@
 
   img {
     height: 1.5625rem;
-    filter: var(--icon-orange);
     transition: all 0.2s ease-in-out;
     cursor: pointer;
 
@@ -131,10 +130,6 @@ ion-footer ion-toolbar {
   .header-end {
     display: flex;
     gap: 1.5625rem;
-
-    img {
-      filter: var(--icon-orange);
-    }
   }
 
   img {
@@ -332,7 +327,6 @@ image-cropper .ngx-ic-source-image {
 
     img {
       height: 1.2rem;
-      filter: var(--icon-orange);
     }
   }
 }
@@ -432,43 +426,11 @@ image-cropper .ngx-ic-source-image {
   align-items: center;
   gap: 0.9375rem;
 
-  // &:active {
-  //   transform: scale(0.96);
-  //   -webkit-transform: scale(0.96);
-  //   -moz-transform: scale(0.96);
-  //   border: 0.0938rem solid var(--border-gray-hover);
-  // }
-
   .profile-box-left {
     display: flex;
     align-items: center;
     flex-direction: row;
-    gap: 1rem;
-  }
-
-  .round {
-    height: 3rem;
-    width: 3rem;
-    object-fit: cover;
-    background-color: var(--background-orange);
-    border-radius: var(--radius-small);
-    //border: 1px solid var(--border-orange);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    img {
-      height: 1.5625rem;
-      filter: var(--icon-black);
-    }
-  }
-
-  .profile-round {
-    height: 1.25rem;
-    width: 1.25rem;
-    border: 0.0938rem solid var(--border-gray);
-    border-radius: var(--radius-full);
-    float: right;
+    gap: 0.8rem;
   }
 }
 
@@ -525,10 +487,6 @@ image-cropper .ngx-ic-source-image {
       height: 1rem;
       filter: var(--icon-black) !important;
       margin-right: 0.1563rem;
-    }
-
-    .box-icon-orange {
-      filter: var(--icon-orange) !important;
     }
   }
 
