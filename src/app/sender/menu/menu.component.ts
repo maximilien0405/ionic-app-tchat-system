@@ -69,6 +69,7 @@ export class MenuComponent implements OnInit {
         this.conversationService.getConversationsForUser()
           .catch((res: any) => {
             this.APIError = true;
+            this.allLoaded = true
           })
           .then((res: any) => {
             let recieverConversations = []

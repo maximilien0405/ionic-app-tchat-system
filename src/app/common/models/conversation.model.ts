@@ -8,7 +8,7 @@ export interface Conversation {
   creator?: User,
   type?: string,
   groupPictureUrl?: string,
-  messages?: Message[],
+  messages: Message[],
   updatedAt?: Date,
   createdAt?: Date,
 }

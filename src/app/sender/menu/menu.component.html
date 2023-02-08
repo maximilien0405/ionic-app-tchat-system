@@ -20,14 +20,14 @@
       </button>
     </div>
     <div *ngIf="!showSearch" class="menu-top-container box box-full">
-      <div class="tchat-box-header">{{'SENDER.MENU.conversation_seniors' | translate}}</div>
+      <div *ngIf="!APIError" class="tchat-box-header">{{'SENDER.MENU.conversation_seniors' | translate}}</div>
 
       <div *ngFor="let conversation of recieverConversations" [routerLink]="['/sender/tchat/' + conversation.id]" router-direction="forward" class="tchat-box" ontouchstart>
         <img [src]="conversation.users[0].profilePictureUrl">
-        <div>
+        <div class="tchat-text">
           <div class="tchat-box-title">
             <p class="box-title">{{ conversation.users[0].firstname + ' ' + conversation.users[0].lastname }}</p>
-            <p class="box-subtitle">12:34</p> <!-- class : box-subtitle-notif-->
+            <p class="box-subtitle">{{ conversation.messages[0].createdAt | date: 'h:mm' }}</p> <!-- class : box-subtitle-notif-->
             <!--<div class="box-notification">1</div>-->
           </div>
           <p class="box-subtitle box-sub-bottom">
@@ -37,29 +37,30 @@
             <img src="../../assets/icons/phone-filled.svg">
             <img src="../../assets/icons/check.svg">
             <img src="../../assets/icons/double-check.svg"> -->
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, culpa?
+            {{ conversation.messages[0].text }}
           </p>
         </div>
       </div>
 
-      <div class="tchat-box-header">{{'SENDER.MENU.conversation_contacts' | translate}}</div>
+      <div *ngIf="!APIError" class="tchat-box-header">{{'SENDER.MENU.conversation_contacts' | translate}}</div>
       
       <div *ngFor="let conversation of contactConversations" [routerLink]="['/sender/tchat/' + conversation.id]" router-direction="forward" class="tchat-box" ontouchstart>
         <img [src]="conversation.groupPictureUrl || conversation.users[0].profilePictureUrl">
-        <div>
+        <div class="tchat-text">
           <div class="tchat-box-title">
             <p class="box-title">{{ conversation.groupName || (conversation.users[0].firstname + ' ' + conversation.users[0].lastname) }}</p>
-            <p class="box-subtitle">12:34</p> <!-- class : box-subtitle-notif-->
+            <p *ngIf="conversation.messages[0]" class="box-subtitle">{{ conversation.messages[0].createdAt | date: 'h:mm' }}</p> <!-- class : box-subtitle-notif-->
             <!--<div class="box-notification">1</div>-->
           </div>
           <p class="box-subtitle box-sub-bottom">
+            <span>Test</span>
             <!--<img src="../../assets/icons/image-filled.svg">
             <img src="../../assets/icons/video-filled.svg">
             <img src="../../assets/icons/micro-filled.svg">
             <img src="../../assets/icons/phone-filled.svg">
             <img src="../../assets/icons/check.svg">
             <img src="../../assets/icons/double-check.svg"> -->
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, culpa?
+            {{ conversation.messages[0].text }}
           </p>
         </div>
       </div>
