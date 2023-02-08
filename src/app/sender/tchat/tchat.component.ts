@@ -22,8 +22,6 @@ import { User } from 'src/app/common/models/user.model';
   animations: [slideUpAnimation, fadeAnimation],
 })
 export class TchatComponent implements OnInit {
-  public networkError = false;
-  public APIError = false;
   public marginBottom: number;
   public inputMessage: string;
   public showIcons: boolean = false;
@@ -35,21 +33,9 @@ export class TchatComponent implements OnInit {
   public newMessage$: Observable<string>;
   public messages: Message[] = [];
 
-  constructor(
-    private networkService: NetworkService,
-    private activatedRoute: ActivatedRoute,
-    private tchatService: TchatService)
-  {
+  constructor(private activatedRoute: ActivatedRoute, private tchatService: TchatService) {
     // Get route param
     this.activatedRoute.params.subscribe(params => this.conversationId = params['id']);
-
-    // Check the API status changes
-    // this.networkService.subjectApiOrNetworkError.subscribe(res => {
-    //   setTimeout(() => {
-    //     this.APIError = res.apiError;
-    //     this.networkError = res.networkError;
-    //   }, 500);
-    // })
 
     // Get token from localstorage
     const getUser = async () => {

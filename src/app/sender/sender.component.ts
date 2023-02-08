@@ -13,14 +13,13 @@ export class SenderComponent implements OnInit {
 
   constructor(private router: Router, private networkService: NetworkService) {
     // Check the network status
-    //this.networkService.checkAPIAndNetworkStatus();
+    this.networkService.checkAPIAndNetworkStatus();
 
     // Check the API status changes
-    // this.networkService.subjectApiOrNetworkError.subscribe(res => {
-    //   this.apiError = res.apiError;
-    //   this.networkError = res.networkError;
-    // })
-    this.router.navigateByUrl('sender/menu');
+    this.networkService.subjectApiOrNetworkError.subscribe(res => {
+      this.apiError = res.apiError;
+      this.networkError = res.networkError;
+    })
   }
 
   public ngOnInit(): void {

@@ -445,7 +445,8 @@ image-cropper .ngx-ic-source-image {
   transition: all 0.2s ease-in-out;
 
   &:active {
-    opacity: 0.7;
+    opacity: 0.8;
+    background-color: var(--background-gray);
   }
 
   &:first-child:active {

@@ -41,6 +41,20 @@
           </p>
         </div>
       </div>
+
+      <div @slideUpAnimation *ngIf="networkError" class="absolute-bottom">
+        <div class="toast toast-error">
+          <img src="../../../../assets/icons/network.svg">
+          <p>{{'SENDER.TCHAT.toast_network' | translate}}</p>
+        </div>
+      </div>
+
+      <div @slideUpAnimation *ngIf="APIError" class="absolute-bottom">
+        <div class="toast toast-error">
+          <img src="../../../../assets/icons/warning.svg">
+          <p>{{'SENDER.TCHAT.toast_api' | translate}}</p>
+        </div>
+      </div>
     </div>
     <div *ngIf="!showSearch" [style]="'margin-bottom:' + marginBottom + 'rem !important'">
       <div class="box profile-box">

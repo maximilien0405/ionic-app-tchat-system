@@ -768,6 +768,7 @@ ion-content textarea {
 .toast-error {
   border: 0.0938rem solid var(--border-red);
   background-color: var(--background-red);
+  border-radius: var(--radius-base) !important;
 
   img {
     filter: var(--icon-red);

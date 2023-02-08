@@ -10,6 +10,7 @@ import { CreateConversationComponent } from '../modals/create-conversation/creat
 import { ConversationService } from 'src/app/common/services/conversation.service';
 import { Conversation } from 'src/app/common/models/conversation.model';
 import { SubscriptionService } from 'src/app/common/services/subscription.service';
+import { NetworkService } from 'src/app/common/services/network.service';
 
 @Component({
   selector: 'app-menu',
@@ -25,14 +26,25 @@ export class MenuComponent implements OnInit {
   public searchValue: string = '';
   public conversations: Conversation[];
   public subscriptionUsers: User[];
+  public networkError = false;
+  public APIError = false;
 
   constructor(
     private modalController: ModalController,
     private authService: AuthService,
     private getUserService: GetUserService,
     private conversationService: ConversationService,
-    private subscriptionService: SubscriptionService
-  ) {}
+    private subscriptionService: SubscriptionService,
+    private networkService: NetworkService
+  ) {
+    // Check the API status changes
+    this.networkService.subjectApiOrNetworkError.subscribe(res => {
+      setTimeout(() => {
+        this.APIError = res.apiError;
+        this.networkError = res.networkError;
+      }, 500);
+    })
+  }
 
   ngOnInit() {
     SafeArea.getSafeAreaInsets().then(({ insets }) => {
