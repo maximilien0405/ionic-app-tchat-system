@@ -9,6 +9,7 @@ import { GetUserService } from 'src/app/common/services/get-user.service';
 import { CreateConversationComponent } from '../modals/create-conversation/create-conversation.component';
 import { ConversationService } from 'src/app/common/services/conversation.service';
 import { Conversation } from 'src/app/common/models/conversation.model';
+import { SubscriptionService } from 'src/app/common/services/subscription.service';
 
 @Component({
   selector: 'app-menu',
@@ -23,12 +24,14 @@ export class MenuComponent implements OnInit {
   public showSearch: boolean = false;
   public searchValue: string = '';
   public conversations: Conversation[];
+  public subscriptionUsers: User[];
 
   constructor(
     private modalController: ModalController,
     private authService: AuthService,
     private getUserService: GetUserService,
-    private conversationService: ConversationService
+    private conversationService: ConversationService,
+    private subscriptionService: SubscriptionService
   ) {}
 
   ngOnInit() {
@@ -44,6 +47,7 @@ export class MenuComponent implements OnInit {
       if (value) {
         this.user = JSON.parse(value || '');
 
+        // Get all conversations
         this.conversationService.getConversationsForUser()
           .then((res: any) => {
             let conversations = res.data;
@@ -58,6 +62,18 @@ export class MenuComponent implements OnInit {
 
             this.conversations = conversations;
         })
+
+
+        // Get subscription members
+        this.user.subscriptions.forEach((element: any) => {
+          this.subscriptionService
+            .findAllMembers(element.id)
+            .then((res: any) => {
+              if (res.data.length != 0) {
+                this.subscriptionUsers = res.data;
+              }
+            });
+        });
       }
     };
     getUser();
@@ -69,6 +85,9 @@ export class MenuComponent implements OnInit {
       breakpoints: [0, 1],
       initialBreakpoint: 1,
       id: 'modalConv',
+      componentProps: {
+        subscriptionUsers: this.subscriptionUsers
+      }
     });
     modalConv.present();
   }

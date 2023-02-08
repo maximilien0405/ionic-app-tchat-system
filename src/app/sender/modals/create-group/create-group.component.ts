@@ -21,7 +21,6 @@ export class CreateGroupComponent implements OnInit {
 
   constructor(
     private modalController: ModalController,
-    private subscriptionService: SubscriptionService,
     private conversationService: ConversationService,
     private router: Router,
     private formBuilder: FormBuilder
@@ -32,27 +31,6 @@ export class CreateGroupComponent implements OnInit {
     this.form = this.formBuilder.group({
       name: ['', [Validators.required]],
     })
-  }
-
-  public ionViewWillEnter() {
-    const getUser = async () => {
-      const { value } = await Preferences.get({ key: 'user' });
-      if (value) {
-        this.user = JSON.parse(value || '');
-
-        // Get subscription members
-        this.user.subscriptions.forEach((element: any) => {
-          this.subscriptionService
-            .findAllMembers(element.id)
-            .then((res: any) => {
-              if (res.data.length != 0) {
-                this.subscriptionUsers = res.data;
-              }
-            });
-        });
-      }
-    };
-    getUser();
   }
 
   public addMember(userId: string) {
