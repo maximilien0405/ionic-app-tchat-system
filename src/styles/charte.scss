@@ -614,11 +614,13 @@ ion-content textarea {
   }
 }
 
-.list-box {
+body .list-container .list-box {
   &:active {
     transform: unset !important;
     -webkit-transform: unset !important;
     -moz-transform: unset !important;
+    background-color: var(--background-gray);
+    border: 0.0938rem solid var(--border-gray) !important;
   }
 
   .checkmark {
@@ -816,8 +818,8 @@ ion-content textarea {
     position: absolute;
     height: 0.25rem;
     width: 0.5625rem;
-    border-left: 0.165rem solid var(--white);
-    border-bottom: 0.165rem solid var(--white);
+    border-left: 0.145rem solid var(--white);
+    border-bottom: 0.145rem solid var(--white);
     top: 45%;
     left: 50%;
     transform: translate(-50%, -50%) rotate(-45deg);

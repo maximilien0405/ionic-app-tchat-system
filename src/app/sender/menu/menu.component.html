@@ -22,7 +22,7 @@
     <div *ngIf="!showSearch" class="menu-top-container box box-full">
       <div *ngIf="!APIError" class="tchat-box-header">{{'SENDER.MENU.conversation_seniors' | translate}}</div>
 
-      <div *ngFor="let conversation of recieverConversations" [routerLink]="['/sender/tchat/' + conversation.id]" router-direction="forward" class="tchat-box" ontouchstart>
+      <div *ngFor="let conversation of recieverConversations" [routerLink]="['/sender/tchat/' + conversation.id]" [state]="{ conversation: conversation }" router-direction="forward" class="tchat-box" ontouchstart>
         <img [src]="conversation.users[0].profilePictureUrl">
         <div class="tchat-text">
           <div class="tchat-box-title">
@@ -37,14 +37,14 @@
             <img src="../../assets/icons/phone-filled.svg">
             <img src="../../assets/icons/check.svg">
             <img src="../../assets/icons/double-check.svg"> -->
-            {{ conversation.messages[0].text }}
+            <span *ngIf="conversation.messages[0]">{{ conversation.messages[0].text }}</span>
           </p>
         </div>
       </div>
 
       <div *ngIf="!APIError" class="tchat-box-header">{{'SENDER.MENU.conversation_contacts' | translate}}</div>
       
-      <div *ngFor="let conversation of contactConversations" [routerLink]="['/sender/tchat/' + conversation.id]" router-direction="forward" class="tchat-box" ontouchstart>
+      <div *ngFor="let conversation of contactConversations" [routerLink]="['/sender/tchat/' + conversation.id]" [state]="{ conversation: conversation }" router-direction="forward" class="tchat-box" ontouchstart>
         <img [src]="conversation.groupPictureUrl || conversation.users[0].profilePictureUrl">
         <div class="tchat-text">
           <div class="tchat-box-title">
@@ -60,7 +60,7 @@
             <img src="../../assets/icons/phone-filled.svg">
             <img src="../../assets/icons/check.svg">
             <img src="../../assets/icons/double-check.svg"> -->
-            {{ conversation.messages[0].text }}
+            <span *ngIf="conversation.messages[0]">{{ conversation.messages[0].text }}</span>
           </p>
         </div>
       </div>

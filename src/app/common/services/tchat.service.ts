@@ -26,11 +26,11 @@ export class TchatService {
     return this.socket.fromEvent<Message>('newMessage');
   }
 
-  sendConversationId(conversationId: string) {
-    this.socket.emit('sendConversationId', conversationId);
+  sendConversationId(conversationId: string, currentMessages: number, messagesToLoad: number) {
+    this.socket.emit('sendConversationId', [conversationId, currentMessages, messagesToLoad]);
   }
 
-  getConversationAndMessages(): Observable<Conversation> {
-    return this.socket.fromEvent<Conversation>('conversationAndMessages');
+  getMessages(): Observable<Message[]> {
+    return this.socket.fromEvent<Message[]>('messages');
   }
 }

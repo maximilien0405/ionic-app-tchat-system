@@ -43,7 +43,6 @@ export class MenuComponent implements OnInit {
     // Check the network status
     this.networkService.checkAPIAndNetworkStatus();
 
-
     // Check the API status changes
     this.networkService.subjectNetworkError.subscribe(res => {
       setTimeout(() => {

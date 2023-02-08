@@ -5,7 +5,7 @@ export const fadeAnimation = trigger('fadeAnimation', [
     ':enter',
     [
       style({ opacity: 0 }),
-      animate('0.2s ease-out',
+      animate('0.15s ease-out',
         style({ opacity: 1 }))
     ]
   ),
@@ -13,7 +13,7 @@ export const fadeAnimation = trigger('fadeAnimation', [
     ':leave',
     [
       style({ opacity: 1 }),
-      animate('0.2s ease-in',
+      animate('0.15s ease-in',
         style({ opacity: 0 }))
     ]
   )

@@ -14,6 +14,7 @@ import { Conversation } from 'src/app/common/models/conversation.model';
 import { Message } from 'src/app/common/models/message.model';
 import { UserService } from 'src/app/common/services/user.service';
 import { User } from 'src/app/common/models/user.model';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-tchat',
@@ -31,10 +32,14 @@ export class TchatComponent implements OnInit {
   public newMessage$: Observable<string>;
   public messages: Message[] = [];
 
-  constructor(private activatedRoute: ActivatedRoute, private tchatService: TchatService) {
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private tchatService: TchatService,
+    private location: Location
+  ) {
     // Get route param
     this.activatedRoute.params.subscribe(params => {
-      this.tchatService.sendConversationId(params['id']);
+      this.tchatService.sendConversationId(params['id'], 0, 5);
     });
 
     // Get token from localstorage
@@ -50,28 +55,17 @@ export class TchatComponent implements OnInit {
     });
 
     this.messages = [];
+
+    // Get the conversation from routing slate
+    const state: any = this.location.getState()
+    this.conversation = state.conversation;
   }
 
   ngOnInit(): void {}
 
   ionViewWillEnter() {
-    this.tchatService.getConversationAndMessages().subscribe((conversation) => {
-      if(conversation.type == 'normal') {
-        for (let i = 0; i < conversation.users.length; i++) {
-          if (conversation.users[i].id === this.user.id) {
-            conversation.users.splice(i, 1);
-          }
-        }
-      }
-
-      this.conversation = conversation;
-      this.messages = conversation.messages || [];
-      // messages.forEach((message: Message) => {
-      //   const allMessagesId = this.messages.map((message: Message) => message.id)
-      //   if (!allMessagesId.includes(message.id)) {
-      //     this.messages.push(message);
-      //   }
-      // })
+    this.tchatService.getMessages().subscribe((messages: Message[]) => {
+      this.messages = messages.reverse();
     });
   }
 
