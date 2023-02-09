@@ -19,7 +19,7 @@
         <img src="../../assets/icons/pencil-square.svg">
       </button>
     </div>
-    <div *ngIf="!showSearch" class="list-container">
+    <div *ngIf="!showSearch" class="list-container list-height-full">
       <div *ngIf="!APIError" class="list-box-header">{{'SENDER.MENU.conversation_seniors' | translate}}</div>
 
       <div *ngFor="let conversation of recieverConversations" [routerLink]="['/sender/tchat/' + conversation.id]" [state]="{ conversation: conversation }" router-direction="forward" class="tchat-box" ontouchstart>

@@ -632,7 +632,7 @@ body .select-container .list-box {
 .list-container {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: fit-content;
   overflow: scroll;
   touch-action: pan-y !important;
   overscroll-behavior: none !important;
@@ -641,6 +641,10 @@ body .select-container .list-box {
   box-shadow: var(--shadow-small);
   background-color: var(--white);
   position: relative;
+}
+
+.list-height-full {
+  height: 100% !important;
 }
 
 .list-box-header {

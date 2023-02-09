@@ -25,10 +25,10 @@
       </div>
     </div>
 
-    <div class="list-container" [style]="'margin-bottom:' + marginBottom + 'rem !important'">
-      <div class="list-box-header">All contacts</div>
-      <div *ngFor="let user of subscriptionUsers" (click)="createConversation(user.id)" class="tchat-box" ontouchstart>
-        <div class="profile-box-left">  
+    <div class="list-container list-height-full" [style]="'margin-bottom:' + marginBottom + 'rem !important'">
+      <div class="list-box-header">{{'SENDER.MODALS.CREATE_CONV.all_contacts' | translate}}</div>
+      <div *ngFor="let user of subscriptionUsers" (click)="createConversation(user.id)" class="contact-box" ontouchstart>
+        <div>  
           <img class="img-left" [src]="user.profilePictureUrl">
           {{ user.firstname }} {{ user.lastname }}
         </div>

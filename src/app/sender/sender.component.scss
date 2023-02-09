@@ -378,6 +378,7 @@ image-cropper .ngx-ic-source-image {
   height: fit-content !important;
   border-bottom: 0.0938rem solid var(--border-gray);
   transition: all 0.2s ease-in-out;
+  cursor: pointer;
 
   &:active {
     opacity: 0.8;
@@ -453,5 +454,43 @@ image-cropper .ngx-ic-source-image {
 
   .box-subtitle-notif {
     color: var(--orange);
+  }
+}
+
+.contact-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.9375rem;
+  padding: 1.15rem;
+  height: fit-content !important;
+  border-bottom: 0.0938rem solid var(--border-gray);
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+
+  &:active {
+    opacity: 0.8;
+    background-color: var(--background-gray);
+  }
+
+  &:first-child:active {
+    border-radius: var(--radius-base) var(--radius-base) 0px 0px;
+  }
+
+  div {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    img {
+      height: 2.5rem;
+      width: 2.5rem;
+      border-radius: 0.7rem;
+    }
+  }
+
+  img {
+    height: 1.25rem;
   }
 }
