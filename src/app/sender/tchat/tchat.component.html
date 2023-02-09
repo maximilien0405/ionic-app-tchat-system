@@ -19,15 +19,14 @@
     </div>
   </ion-toolbar>
 </ion-header>
-<ion-content class="ion-padding padding-normal" forceOverscroll="false">
-  <div class="tchat-container">
-    <div class="tchat-content">
-      <button class="btn btn-medium" (click)="loadMoreMessages()">Load more !!</button>
-      <div class="box" *ngFor="let message of messages">
-        <p class="box-title">{{ message.text }}</p>
-        <p class="box-subtitle">{{ message.user?.firstname }} | {{ message.createdAt | date: "short" }}</p>
-      </div>
-    </div>
+<ion-content scrollDownOnLoad="true" class="ion-padding padding-normal" forceOverscroll="false">
+  <ion-infinite-scroll *ngIf="messages.length > 50" (ionInfinite)="onIonInfinite($event)" position="top">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+  <div class="box" #messageContainer *ngFor="let message of messages">
+    <p class="box-title">{{ message.text }}</p>
+    <p class="box-subtitle">{{ message.user?.firstname }} | {{ message.createdAt | date: "short" }}</p>
   </div>
 </ion-content>
 <ion-footer keyboardFlying class="ion-no-border">

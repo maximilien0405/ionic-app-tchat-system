@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sender',
@@ -6,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sender.component.scss'],
 })
 export class SenderComponent implements OnInit {
-  constructor() {}
+  constructor(private router: Router) {}
 
-  public ngOnInit(): void {}
+  public ngOnInit(): void {
+    this.router.navigateByUrl('sender/menu')
+  }
 }

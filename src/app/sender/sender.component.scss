@@ -534,23 +534,3 @@ image-cropper .ngx-ic-source-image {
   color: var(--gray);
   border-bottom: 0.0938rem solid var(--border-gray);
 }
-
-
-/* ---------------------------------------------------
-  TCHAT PAGE
------------------------------------------------------ */
-
-.tchat-container {
-    display: flex;
-  flex-direction: column;
-  justify-content: end;
-  overflow: scroll;
-}
-
-.tchat-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: end;
-  overflow: scroll;
-  height: 100%;
-}
