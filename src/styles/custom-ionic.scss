@@ -170,6 +170,11 @@ ion-modal.auto-height {
 
 ion-content {
   touch-action: none !important;
+  --padding-bottom: 2.5rem !important;
+}
+
+ion-content.padding-normal {
+  --padding-bottom: 1rem !important;
 }
 
 ion-content.menu-content {
@@ -204,9 +209,4 @@ ion-footer ion-toolbar {
 
 .sc-ion-textarea-md-h {
   margin-top: 0px !important;
-}
-
-
-ion-content {
-  --padding-bottom: 2.5rem !important;
 }

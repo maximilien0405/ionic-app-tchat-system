@@ -27,10 +27,12 @@ export class TchatComponent implements OnInit {
   public inputMessage: string;
   public showIcons: boolean = false;
   public conversation: Conversation;
+  public conversationId: string;
   public user: User;
 
   public newMessage$: Observable<string>;
   public messages: Message[] = [];
+  public messagesIndex = 0;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -39,7 +41,9 @@ export class TchatComponent implements OnInit {
   ) {
     // Get route param
     this.activatedRoute.params.subscribe(params => {
-      this.tchatService.sendConversationId(params['id'], 0, 5);
+      this.tchatService.sendConversationId(params['id'], this.messagesIndex);
+      this.messagesIndex += 2;
+      this.conversationId = params['id'];
     });
 
     // Get token from localstorage
@@ -65,7 +69,15 @@ export class TchatComponent implements OnInit {
 
   ionViewWillEnter() {
     this.tchatService.getMessages().subscribe((messages: Message[]) => {
-      this.messages = messages.reverse();
+      if (this.messagesIndex != 0) {
+        this.messages = this.messages.reverse();
+      }
+      
+      messages.forEach(message => {
+        this.messages.push(message);
+      });
+
+      this.messages = this.messages.reverse();
     });
   }
 
@@ -76,12 +88,18 @@ export class TchatComponent implements OnInit {
     }
   }
 
+  public loadMoreMessages() {
+    this.tchatService.sendConversationId(this.conversationId, this.messagesIndex);
+    this.messagesIndex += 2;
+  }
+
   public submitMessage() {
     if(this.inputMessage) {
       this.tchatService.sendMessage(this.inputMessage, this.conversation, 'normal', ' ');
     
       this.tchatService.getNewMessage().subscribe((message: Message) => {
         this.messages.push(message);
+        this.messagesIndex += 1;
       })
     }
 

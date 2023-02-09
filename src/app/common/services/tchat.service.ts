@@ -26,8 +26,8 @@ export class TchatService {
     return this.socket.fromEvent<Message>('newMessage');
   }
 
-  sendConversationId(conversationId: string, currentMessages: number, messagesToLoad: number) {
-    this.socket.emit('sendConversationId', [conversationId, currentMessages, messagesToLoad]);
+  sendConversationId(conversationId: string, currentMessages: number) {
+    this.socket.emit('sendConversationId', [conversationId, currentMessages]);
   }
 
   getMessages(): Observable<Message[]> {
