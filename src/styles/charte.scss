@@ -492,7 +492,7 @@ ion-content textarea {
 
 .select-box {
   width: 100%;
-  height: var(--height-base);
+  min-height: var(--height-base);
   border: 0.0938rem solid var(--border-gray);
   outline: none;
   border-radius: var(--radius-small);
@@ -549,12 +549,7 @@ ion-content textarea {
   height: 1.125rem;
 }
 
-
-/* ---------------------------------------------------
-  LIST
------------------------------------------------------ */
-
-.list-container {
+.select-container {
   .select-box {
     border-radius: 0rem;
     border-top: 0rem;
@@ -614,7 +609,7 @@ ion-content textarea {
   }
 }
 
-body .list-container .list-box {
+body .select-container .list-box {
   &:active {
     transform: unset !important;
     -webkit-transform: unset !important;
@@ -628,6 +623,37 @@ body .list-container .list-box {
     height: 1.7rem !important;
     top: -0.9rem !important;
   }
+}
+
+/* ---------------------------------------------------
+  LIST
+----------------------------------------------------- */
+
+.list-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: scroll;
+  touch-action: pan-y !important;
+  overscroll-behavior: none !important;
+  border: 0.0938rem solid var(--border-gray);
+  border-radius: var(--radius-small);
+  box-shadow: var(--shadow-small);
+  background-color: var(--white);
+  position: relative;
+}
+
+.list-box-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--background-gray);
+  width: 100%;
+  text-align: center;
+  padding: 0.4375rem 0rem 0.4375rem 0px;
+  font-size: 0.875rem;
+  color: var(--gray);
+  border-bottom: 0.0938rem solid var(--border-gray);
 }
 
 /* ---------------------------------------------------

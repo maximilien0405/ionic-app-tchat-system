@@ -20,7 +20,7 @@
   </div>
 
   <p class="label margin-top">{{'SENDER.SETTINGS.HOME_SETTINGS.label_account' | translate}}</p>
-  <div class="list-container">
+  <div class="select-container">
     <div [routerLink]="['/sender/settings/subscription']" router-direction="forward" class="select-box select-start"
       ontouchstart>
       {{'SENDER.SETTINGS.HOME_SETTINGS.box_subscription' | translate}}
@@ -37,7 +37,7 @@
   </div>
 
   <p class="label margin-top">{{'SENDER.SETTINGS.HOME_SETTINGS.title_appearence' | translate}}</p>
-  <div class="list-container">
+  <div class="select-container">
     <div class="select-box select-start" (click)="openModal('theme')" ontouchstart>
       {{'SENDER.SETTINGS.HOME_SETTINGS.box_theme' | translate}}
       <p>{{'SENDER.MODALS.SELECT_THEME.theme_' + currentTheme | translate}}</p>
@@ -49,7 +49,7 @@
   </div>
 
   <p class="label margin-top">{{'SENDER.SETTINGS.HOME_SETTINGS.title_other' | translate}}</p>
-  <div class="list-container">
+  <div class="select-container">
     <div [routerLink]="['/sender/settings/about']" router-direction="forward" class="select-box select-start" ontouchstart>
       {{'SENDER.SETTINGS.HOME_SETTINGS.box_about' | translate}}
         <img src="../../assets/icons/home.svg">

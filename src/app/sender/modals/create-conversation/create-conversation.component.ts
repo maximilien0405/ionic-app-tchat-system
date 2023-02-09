@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
+import { SafeArea } from 'capacitor-plugin-safe-area';
 import { User } from 'src/app/common/models/user.model';
 import { ConversationService } from 'src/app/common/services/conversation.service';
 import { CreateGroupComponent } from '../create-group/create-group.component';
@@ -15,14 +16,19 @@ export class CreateConversationComponent implements OnInit {
   public user: User;
   public subscriptionUsers: User[];
   public test: string;
-
+  public marginBottom: number;
+  
   constructor(
     private modalController: ModalController,
     private conversationService: ConversationService,
     private router: Router
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    SafeArea.getSafeAreaInsets().then(({ insets }) => {
+      this.marginBottom = 0.0625 * insets.bottom;
+    });
+  }
 
   // Create or join a conversation
   public createConversation(userId: any) {

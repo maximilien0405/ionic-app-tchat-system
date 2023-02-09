@@ -2,20 +2,11 @@
   RESUABLE CONTAINERS
 ----------------------------------------------------- */
 
-.margin-top {
-  margin-top: 1.875rem;
-}
-
-.small-margin-top {
-  margin-top: 1.125rem;
-}
-
-.very-small-margin-bottom {
-  margin-bottom: 0.6rem;
-}
-
-.margin-bottom {
-  margin-bottom: 1.875rem;
+.full-page-container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 100%;
 }
 
 /* ---------------------------------------------------
@@ -98,10 +89,6 @@
   }
 }
 
-ion-footer ion-toolbar {
-  border-top: 1px solid var(--border-gray);
-}
-
 .header-component {
   width: 100%;
   height: 100%;
@@ -143,28 +130,6 @@ ion-footer ion-toolbar {
       -webkit-transform: scale(0.96);
       -moz-transform: scale(0.96);
     }
-  }
-}
-
-ion-toolbar.md .header-start div {
-  gap: 1.875rem !important;
-}
-
-ion-header.tchat-header ion-back-button {
-  &::part(icon) {
-    font-size: 1.375rem !important;
-  }
-}
-
-ion-header.tchat-header ion-toolbar {
-  --padding-top: 0.4375rem !important;
-  --padding-bottom: 0.4375rem !important;
-  --min-height: fit-content;
-}
-
-.md ion-back-button.no-text {
-  &::part(native) {
-    margin-left: -1.125rem !important;
   }
 }
 
@@ -275,10 +240,6 @@ image-cropper .ngx-ic-source-image {
   transition: all 0.2s ease-in-out;
 }
 
-.box-full {
-  height: 100% !important;
-}
-
 .boxs-bounce .box:active {
   transform: scale(0.96);
   -webkit-transform: scale(0.96);
@@ -383,40 +344,13 @@ image-cropper .ngx-ic-source-image {
   MENU PAGE
 ----------------------------------------------------- */
 
-.menu-page-container {
+.menu-header {
   display: flex;
   justify-content: space-between;
-  flex-direction: column;
-  height: 100%;
   gap: 1rem;
 
-  .box-full {
-    padding: 0px !important;
-    position: relative;
-  }
-
-  .menu-top-container {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    overflow: scroll;
-    touch-action: pan-y !important;
-    overscroll-behavior: none !important;
-
-    .all-boxs {
-      height: 100%;
-      overflow: scroll;
-    }
-  }
-
-  .menu-header {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-
-    .input-icon {
-      width: 100%;
-    }
+  .input-icon {
+    width: 100%;
   }
 }
 
@@ -520,17 +454,4 @@ image-cropper .ngx-ic-source-image {
   .box-subtitle-notif {
     color: var(--orange);
   }
-}
-
-.tchat-box-header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background-color: var(--background-gray);
-  width: 100%;
-  text-align: center;
-  padding: 0.4375rem 0rem 0.4375rem 0px;
-  font-size: 0.875rem;
-  color: var(--gray);
-  border-bottom: 0.0938rem solid var(--border-gray);
 }

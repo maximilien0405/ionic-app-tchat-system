@@ -4,7 +4,7 @@
   </ion-toolbar>
 </ion-header>
 <ion-content *ngIf="allLoaded" @fadeAnimation class="menu-content ion-padding-top ion-padding-start ion-padding-end" forceOverscroll="false">
-  <div class="menu-page-container">
+  <div class="full-page-container gap-normal">
     <div class="menu-header">
       <div class="input-icon">
         <input type="text" [(ngModel)]="searchValue" [placeholder]="'SENDER.MENU.input_search' | translate" (focus)="displaySearch()" (focusout)="hideSearch()" class="input input-icon-left">
@@ -19,8 +19,8 @@
         <img src="../../assets/icons/pencil-square.svg">
       </button>
     </div>
-    <div *ngIf="!showSearch" class="menu-top-container box box-full">
-      <div *ngIf="!APIError" class="tchat-box-header">{{'SENDER.MENU.conversation_seniors' | translate}}</div>
+    <div *ngIf="!showSearch" class="list-container">
+      <div *ngIf="!APIError" class="list-box-header">{{'SENDER.MENU.conversation_seniors' | translate}}</div>
 
       <div *ngFor="let conversation of recieverConversations" [routerLink]="['/sender/tchat/' + conversation.id]" [state]="{ conversation: conversation }" router-direction="forward" class="tchat-box" ontouchstart>
         <img [src]="conversation.users[0].profilePictureUrl">
@@ -42,7 +42,7 @@
         </div>
       </div>
 
-      <div *ngIf="!APIError" class="tchat-box-header">{{'SENDER.MENU.conversation_contacts' | translate}}</div>
+      <div *ngIf="!APIError" class="list-box-header">{{'SENDER.MENU.conversation_contacts' | translate}}</div>
       
       <div *ngFor="let conversation of contactConversations" [routerLink]="['/sender/tchat/' + conversation.id]" [state]="{ conversation: conversation }" router-direction="forward" class="tchat-box" ontouchstart>
         <img [src]="conversation.groupPictureUrl || conversation.users[0].profilePictureUrl">
@@ -94,7 +94,7 @@
       </div>
     </div>
 
-    <div *ngIf="showSearch" class="box-full box" [style]="'margin-bottom:' + marginBottom + 'rem !important'">
+    <div *ngIf="showSearch" class="list-container" [style]="'margin-bottom:' + marginBottom + 'rem !important'">
       <!-- Search elements -->
       <button (click)="login('max')" class="btn btn-white">Login User Max</button>
       <button (click)="login('oscar')" class="btn btn-white small-margin-top">Login User Oscar</button>

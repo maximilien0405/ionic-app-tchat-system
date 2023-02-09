@@ -12,29 +12,28 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-content class="ion-padding" forceOverscroll="false">
-  <div class="list-container">
-    <div class="select-box select-start" (click)="openCreateGroup()" ontouchstart>
-      {{'SENDER.MODALS.CREATE_CONV.box_group' | translate}}
-      <img src="../../assets/icons/group.svg">
-    </div>
-    <div class="select-box select-end" (click)="openCreateGroup()" ontouchstart>
-      {{'SENDER.MODALS.CREATE_CONV.box_archived' | translate}}
-      <img src="../../assets/icons/archive.svg">
-    </div>
-  </div>
-
-  <div class="separator"></div>
-
-  <p class="label">All contacts</p>
-  
-  <div class="list-container">
-    <div class="select-box profile-box" *ngFor="let user of subscriptionUsers; let first = first; let last = last;" (click)="createConversation(user.id)" [class.select-start]="first" [class.select-end]="last" ontouchstart>
-      <div class="profile-box-left">  
-        <img class="img-left" [src]="user.profilePictureUrl">
-        {{ user.firstname }} {{ user.lastname }}
+<ion-content class="ion-padding padding-bottom-0" forceOverscroll="false">
+  <div class="full-page-container gap-big">
+    <div class="select-container">
+      <div class="select-box select-start" (click)="openCreateGroup()" ontouchstart>
+        {{'SENDER.MODALS.CREATE_CONV.box_group' | translate}}
+        <img src="../../assets/icons/group.svg">
       </div>
-      <img src="../../assets/icons/arrow-right-orange.svg">
+      <div class="select-box select-end"  (click)="openCreateGroup()" ontouchstart>
+        {{'SENDER.MODALS.CREATE_CONV.box_archived' | translate}}
+        <img src="../../assets/icons/archive.svg">
+      </div>
+    </div>
+
+    <div class="list-container" [style]="'margin-bottom:' + marginBottom + 'rem !important'">
+      <div class="list-box-header">All contacts</div>
+      <div *ngFor="let user of subscriptionUsers" (click)="createConversation(user.id)" class="tchat-box" ontouchstart>
+        <div class="profile-box-left">  
+          <img class="img-left" [src]="user.profilePictureUrl">
+          {{ user.firstname }} {{ user.lastname }}
+        </div>
+        <img src="../../assets/icons/arrow-right-orange.svg">
+      </div>
     </div>
   </div>
 </ion-content>

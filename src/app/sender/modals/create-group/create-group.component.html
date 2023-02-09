@@ -24,7 +24,7 @@
 
   <p class="label small-margin-top">{{'SENDER.MODALS.CREATE_GROUP.label_members' | translate}}</p>
   
-  <div class="list-container">
+  <div class="select-container">
     <div class="select-box profile-box list-box" *ngFor="let user of subscriptionUsers; let first = first; let last = last;" (click)="addMember(user.id)" [class.select-start]="first" [class.select-end]="last" ontouchstart>
       {{ user.firstname }} {{ user.lastname }}
         

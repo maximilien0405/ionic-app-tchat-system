@@ -56,6 +56,67 @@ body.dark-theme {
   }
 }
 
+
+/* ---------------------------------------------------
+  HEADER
+----------------------------------------------------- */
+
+ion-toolbar.md .header-start div {
+  gap: 1.875rem !important;
+}
+
+ion-header.tchat-header ion-back-button {
+  &::part(icon) {
+    font-size: 1.375rem !important;
+  }
+}
+
+ion-header.tchat-header ion-toolbar {
+  --padding-top: 0.4375rem !important;
+  --padding-bottom: 0.4375rem !important;
+  --min-height: fit-content;
+}
+
+.md ion-back-button.no-text {
+  &::part(native) {
+    margin-left: -1.125rem !important;
+  }
+}
+
+ion-back-button {
+  --color: var(--black);
+  --icon-font-size: 1.125rem;
+  --icon-margin-end: 0.125rem;
+  --ripple-color: transparent;
+  --color-hover: var(--black);
+  --color-focused: var(--black);
+
+  font-weight: 400;
+  font-size: 1rem;
+  text-transform: capitalize !important;
+}
+
+ion-button {
+  font-size: 1rem !important;
+  font-family: "Poppins";
+  font-weight: 400;
+  text-transform: capitalize !important;
+  letter-spacing: normal !important;
+  --background-hover: transparent !important;
+  --background: transparent !important;
+  --color: var(--black);
+  --ripple-color: transparent !important;
+  --background-hover-opacity: 0 !important;
+
+  span {
+    position: absolute;
+    background: var(--background-gray);
+    padding: 8px;
+    left: 0;
+    width: 100%;
+  }
+}
+
 ion-header {
   box-shadow: none !important;
 }
@@ -106,39 +167,59 @@ ion-toolbar {
   }
 }
 
-ion-back-button {
-  --color: var(--black);
-  --icon-font-size: 1.125rem;
-  --icon-margin-end: 0.125rem;
-  --ripple-color: transparent;
-  --color-hover: var(--black);
-  --color-focused: var(--black);
+/* ---------------------------------------------------
+  CONTENT
+----------------------------------------------------- */
 
-  font-weight: 400;
-  font-size: 1rem;
-  text-transform: capitalize !important;
+ion-content {
+  touch-action: none !important;
+  --padding-bottom: 2.5rem !important;
 }
 
-ion-button {
-  font-size: 1rem !important;
-  font-family: "Poppins";
-  font-weight: 400;
-  text-transform: capitalize !important;
-  letter-spacing: normal !important;
-  --background-hover: transparent !important;
-  --background: transparent !important;
-  --color: var(--black);
-  --ripple-color: transparent !important;
-  --background-hover-opacity: 0 !important;
-
-  span {
-    position: absolute;
-    background: var(--background-gray);
-    padding: 8px;
-    left: 0;
-    width: 100%;
-  }
+ion-content.padding-normal {
+  --padding-bottom: 1rem !important;
 }
+
+ion-content.padding-bottom-0 {
+  --padding-bottom: 0rem !important;
+}
+
+ion-content.menu-content {
+  --keyboard-offset: 0 !important;
+}
+
+.ion-page {
+  justify-content: unset !important;
+}
+
+
+.ion-input {
+  transition: transform 300ms ease-in-out;
+}
+
+.sc-ion-textarea-md-h {
+  margin-top: 0px !important;
+}
+
+/* ---------------------------------------------------
+  FOOTER
+----------------------------------------------------- */
+
+ion-footer ion-toolbar {
+  border-top: 1px solid var(--border-gray);
+}
+
+ion-footer ion-toolbar {
+  --padding-top: 0px !important;
+  --padding-bottom: 0px !important;
+  --padding-start: 0px !important;
+  --padding-end: 0px !important;
+  --min-height: fit-content;
+}
+
+/* ---------------------------------------------------
+  MODAL
+----------------------------------------------------- */
 
 ion-modal {
   &::part(content) {
@@ -166,47 +247,4 @@ ion-modal.auto-height {
   &::part(content) {
     border-radius: var(--radius-base) var(--radius-base) 0px 0px;
   }
-}
-
-ion-content {
-  touch-action: none !important;
-  --padding-bottom: 2.5rem !important;
-}
-
-ion-content.padding-normal {
-  --padding-bottom: 1rem !important;
-}
-
-ion-content.menu-content {
-  --keyboard-offset: 0 !important;
-}
-
-.ion-page {
-  justify-content: unset !important;
-}
-
-// ion-menu {
-//   --width: 100% !important;
-//   --max-width: 28.125rem;
-// }
-
-// ion-menu::part(container) {
-//   //border-radius: var(--radius-base) 0 0 var(--radius-base);
-//   border-radius: 0 var(--radius-base) var(--radius-base) ;
-// }
-
-.ion-input {
-  transition: transform 300ms ease-in-out;
-}
-
-ion-footer ion-toolbar {
-  --padding-top: 0px !important;
-  --padding-bottom: 0px !important;
-  --padding-start: 0px !important;
-  --padding-end: 0px !important;
-  --min-height: fit-content;
-}
-
-.sc-ion-textarea-md-h {
-  margin-top: 0px !important;
 }

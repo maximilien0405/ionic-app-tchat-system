@@ -71,29 +71,34 @@ export class MenuComponent implements OnInit {
             this.allLoaded = true
           })
           .then((res: any) => {
-            let recieverConversations = []
-            let contactConversations = res.data;
+            if(res.status == 200) {
+              let recieverConversations = []
+              let contactConversations = res.data;
 
-            contactConversations.forEach((conversation: any) => {
-              for (let i = 0; i < conversation.users.length; i++) {
-                if (conversation.users[i].id === this.user.id) {
-                  conversation.users.splice(i, 1);
+              contactConversations.forEach((conversation: any) => {
+                for (let i = 0; i < conversation.users.length; i++) {
+                  if (conversation.users[i].id === this.user.id) {
+                    conversation.users.splice(i, 1);
+                  }
+                }
+              });
+
+              for (let i = 0; i < contactConversations.length; i++) {
+                const element = contactConversations[i];
+
+                if(element.users[0].type == 'reciever') {
+                  recieverConversations.push(element);
+                  contactConversations.splice(i, 1);
                 }
               }
-            });
 
-            for (let i = 0; i < contactConversations.length; i++) {
-              const element = contactConversations[i];
-
-              if(element.users[0].type == 'reciever') {
-                recieverConversations.push(element);
-                contactConversations.splice(i, 1);
-              }
-            }
-
-            this.contactConversations = contactConversations;
-            this.recieverConversations = recieverConversations;
-            this.allLoaded = true;
+              this.contactConversations = contactConversations;
+              this.recieverConversations = recieverConversations;
+              this.allLoaded = true;
+          } else {
+            this.APIError = true;
+            this.allLoaded = true
+          }
         })
 
 
