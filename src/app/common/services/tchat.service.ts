@@ -18,8 +18,7 @@ export class TchatService {
       type,
       contentUrl,
     }
-
-    this.socket.emit('sendMessage', newMessage);
+    this.socket.emit('sendMessage', [newMessage, conversation.id]);
   }
 
   getNewMessage(): Observable<Message> {

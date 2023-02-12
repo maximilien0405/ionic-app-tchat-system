@@ -138,24 +138,4 @@ export class MenuComponent implements OnInit {
     //this.showSearch = false;
     this.searchValue = '';
   }
-
-  public login(user: string) {
-    // Login the user (temporarely)
-    this.authService
-      .login(user + '@gmail.com', user + '123456')
-      .then((res: any) => {
-        if (res.status == 201) {
-          const setToken = async () => {
-            await Preferences.set({
-              key: 'token',
-              value: res.data.token,
-            });
-
-            this.getUserService.setUser();
-          };
-          setToken();
-          this.showSearch = false;
-        }
-      });
-  }
 }

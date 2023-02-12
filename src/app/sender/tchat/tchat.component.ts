@@ -61,9 +61,9 @@ export class TchatComponent {
     this.conversation = state.conversation;
   }
 
-  // Get all the messages
   ionViewWillEnter() {
-    this.tchatService.getMessages().subscribe((messages: Message[]) => {
+    // Get all messages
+    this.tchatService.getMessages().subscribe((messages: Message[]) => {      
       if (this.messagesIndex != 0) {
         this.messages = this.messages.reverse();
       }
@@ -75,6 +75,14 @@ export class TchatComponent {
       this.messages = this.messages.reverse();
       this.scrollToBottom();
     });
+
+    // Get a  new message
+    this.tchatService.getNewMessage().subscribe((message: Message) => {
+      console.log(message)
+      this.messages.push(message);
+      this.messagesIndex += 1;
+      this.scrollToBottom();
+    })
   }
 
   // Scroll to the bottom
@@ -103,11 +111,6 @@ export class TchatComponent {
     if (this.inputMessage) {
       this.tchatService.sendMessage(this.inputMessage, this.conversation, 'normal', ' ');
 
-      this.tchatService.getNewMessage().subscribe((message: Message) => {
-        this.messages.push(message);
-        this.messagesIndex += 1;
-        this.scrollToBottom();
-      })
     }
 
     this.inputMessage = '';

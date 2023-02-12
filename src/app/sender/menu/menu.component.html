@@ -53,7 +53,6 @@
             <!--<div class="box-notification">1</div>-->
           </div>
           <p class="box-subtitle box-sub-bottom">
-            <span>Test</span>
             <!--<img src="../../assets/icons/image-filled.svg">
             <img src="../../assets/icons/video-filled.svg">
             <img src="../../assets/icons/micro-filled.svg">
@@ -94,11 +93,8 @@
       </div>
     </div>
 
-    <div *ngIf="showSearch" class="list-container" [style]="'margin-bottom:' + marginBottom + 'rem !important'">
-      <!-- Search elements -->
-      <button (click)="login('max')" class="btn btn-white">Login User Max</button>
-      <button (click)="login('oscar')" class="btn btn-white small-margin-top">Login User Oscar</button>
-      <button (click)="login('alexis')" class="btn btn-white small-margin-top">Login User Alexis</button>
+    <div *ngIf="showSearch" class="list-container list-height-full" [style]="'margin-bottom:' + marginBottom + 'rem !important'">
+      
     </div>
   </div>
 </ion-content>
