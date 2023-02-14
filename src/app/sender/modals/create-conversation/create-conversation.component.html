@@ -14,15 +14,9 @@
 </ion-header>
 <ion-content class="ion-padding padding-bottom-0" forceOverscroll="false">
   <div class="full-page-container gap-big">
-    <div class="select-container">
-      <div class="select-box select-start" (click)="openCreateGroup()" ontouchstart>
-        {{'SENDER.MODALS.CREATE_CONV.box_group' | translate}}
-        <img src="../../assets/icons/group.svg">
-      </div>
-      <div class="select-box select-end"  (click)="openCreateGroup()" ontouchstart>
-        {{'SENDER.MODALS.CREATE_CONV.box_archived' | translate}}
-        <img src="../../assets/icons/archive.svg">
-      </div>
+    <div class="select-box select-start" (click)="openCreateGroup()" ontouchstart>
+      {{'SENDER.MODALS.CREATE_CONV.box_group' | translate}}
+      <img src="../../assets/icons/group.svg">
     </div>
 
     <div class="list-container list-height-full" [style]="'margin-bottom:' + marginBottom + 'rem !important'">

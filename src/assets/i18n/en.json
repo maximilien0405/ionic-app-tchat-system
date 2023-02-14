@@ -150,7 +150,6 @@
         "header": "New message",
         "btn_cancel": "Cancel",
         "box_group": "Create a group",
-        "box_archived": "Archived conversations",
         "all_contacts": "All contacts" 
       },
       "CREATE_GROUP": {

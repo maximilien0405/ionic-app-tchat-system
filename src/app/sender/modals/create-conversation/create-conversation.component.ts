@@ -37,7 +37,7 @@ export class CreateConversationComponent implements OnInit {
       if((res.data.error == true && res.data.conversationId) || res.status == 201) {
         // Redirect
         this.modalController.dismiss(null, 'cancel');
-        this.router.navigateByUrl('sender/tchat/' + res.data.conversationId);
+        this.router.navigateByUrl('sender/tchat/' + res.data.conversationId, { state: { conversation:res.data.conversation } });
       }
     })
   }
