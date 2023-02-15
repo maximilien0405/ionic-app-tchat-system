@@ -33,9 +33,9 @@
   <ion-toolbar>
     <div class="footer-component">
       <ion-textarea autoGrow="true" rows="1" maxlength="250" [(ngModel)]="inputMessage" (ngModelChange)="onMessageChange($event)"></ion-textarea>
-      <img *ngIf="!showIcons" src="../../../assets/icons/camera.svg">
-      <img *ngIf="!showIcons" src="../../../assets/icons/microphone.svg">
-      <div *ngIf="showIcons" (click)="submitMessage()" class="send-icon">
+      <img *ngIf="showIcons" src="../../../assets/icons/camera.svg">
+      <img *ngIf="showIcons" src="../../../assets/icons/microphone.svg">
+      <div *ngIf="!showIcons" (click)="submitMessage()" class="send-icon">
         <img  src="../../../assets/icons/paper-airplane.svg">
       </div>
     </div>

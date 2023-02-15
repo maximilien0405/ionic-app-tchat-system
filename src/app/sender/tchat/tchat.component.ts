@@ -22,7 +22,7 @@ import { ConversationDetailsComponent } from '../modals/conversation-details/con
 export class TchatComponent {
   public marginBottom: number;
   public inputMessage: string;
-  public showIcons: boolean = false;
+  public showIcons: boolean = true;
   public conversation: Conversation;
   public conversationId: string;
   public user: User;
@@ -125,7 +125,7 @@ export class TchatComponent {
   public submitMessage() {
     if (this.inputMessage) {
       this.tchatService.sendMessage(this.inputMessage, this.conversation, 'normal', ' ');
-
+      this.showIcons = true;
     }
 
     this.inputMessage = '';
@@ -133,7 +133,7 @@ export class TchatComponent {
 
   // Hide camera and microphone icons
   public onMessageChange(message: string) {
-    if (message == '') {
+    if (message != '' && message.trim().length != 0) {
       this.showIcons = false;
     } else {
       this.showIcons = true;
