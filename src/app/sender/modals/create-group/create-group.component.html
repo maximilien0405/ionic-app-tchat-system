@@ -19,7 +19,7 @@
   </div>
   <form [formGroup]="form">
     <p class="label margin-top">{{'SENDER.MODALS.CREATE_GROUP.label_name' | translate}}</p>
-    <input type="text" class="input" formControlName="name">
+    <input type="text" class="input" formControlName="name" maxlength="48">
   </form>
 
   <p class="label small-margin-top">{{'SENDER.MODALS.CREATE_GROUP.label_members' | translate}}</p>

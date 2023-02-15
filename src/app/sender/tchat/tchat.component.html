@@ -6,13 +6,13 @@
           <ion-buttons slot="start">
             <ion-back-button class="no-text" text=""></ion-back-button>
           </ion-buttons>
-          <div class="header-profile">
-            <img [src]="conversation.groupPictureUrl || conversation.users[0].profilePictureUrl">
-          </div>
         </div>
-        <p>{{ conversation.groupName || (conversation.users[0].firstname + ' ' + conversation.users[0].lastname) }}</p>
+        <div class="header-profile" (click)="openConversationDetails()">
+          <img [src]="conversation.groupPictureUrl || conversation.users[0].profilePictureUrl">
+          <p>{{ conversation.groupName || (conversation.users[0].firstname + ' ' + conversation.users[0].lastname) }}</p>
+        </div>
       </div>
-      <div class="header-end">
+      <div class="header-end" *ngIf="conversation.type != 'group'">
         <img src="../../../assets/icons/video.svg">
         <img src="../../../assets/icons/phone.svg">
       </div>

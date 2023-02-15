@@ -4,13 +4,14 @@ import { SafeArea } from 'capacitor-plugin-safe-area';
 import { fadeAnimation, slideUpAnimation } from 'src/app/common/animations';
 import { Keyboard } from '@capacitor/keyboard';
 import { ActivatedRoute } from '@angular/router';
-import { InfiniteScrollCustomEvent, IonContent, isPlatform } from '@ionic/angular';
+import { InfiniteScrollCustomEvent, IonContent, isPlatform, ModalController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { TchatService } from 'src/app/common/services/tchat.service';
 import { Conversation } from 'src/app/common/models/conversation.model';
 import { Message } from 'src/app/common/models/message.model';
 import { User } from 'src/app/common/models/user.model';
 import { Location } from '@angular/common';
+import { ConversationDetailsComponent } from '../modals/conversation-details/conversation-details.component';
 
 @Component({
   selector: 'app-tchat',
@@ -35,6 +36,7 @@ export class TchatComponent {
   constructor(
     private activatedRoute: ActivatedRoute,
     private tchatService: TchatService,
+    private modalController: ModalController,
     private location: Location) 
   {
     // Get route param
@@ -95,6 +97,19 @@ export class TchatComponent {
     if (isPlatform('mobile') && !isPlatform('mobileweb')) {
       Keyboard.hide()
     }
+  }
+
+  // Open details
+  public async openConversationDetails() {
+    const modalDetails = await this.modalController.create({
+      component: ConversationDetailsComponent,
+      breakpoints: [0, 0.75],
+      initialBreakpoint: 0.75,
+      componentProps: {
+        conversation: this.conversation
+      }
+    });
+    modalDetails.present();
   }
 
   onIonInfinite(ev: any) {

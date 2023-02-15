@@ -97,21 +97,16 @@
   align-items: center;
   gap: 0.9375rem;
 
-  .header-start div {
+  .header-start {
     display: flex;
     gap: 0.625rem;
     align-items: center;
+    width: 100%;
 
     img {
-      height: 2.6875rem;
-      border-radius: 2.6875rem;
+      height: 2.5rem;
+      border-radius: 2.5rem;
     }
-  }
-
-  .header-start {
-    display: flex;
-    gap: 0.9375rem;
-    align-items: center;
   }
 
   .header-end {
@@ -122,14 +117,38 @@
   img {
     height: 1.5625rem;
     transition: all 0.2s ease-in-out;
-    cursor: pointer;
 
     &:active {
-      opacity: 0.7;
       transform: scale(0.96);
       -webkit-transform: scale(0.96);
       -moz-transform: scale(0.96);
     }
+  }
+}
+
+.header-profile {
+  display: flex;
+  gap: 0.9375rem !important;
+  align-items: center;
+  width: 100%;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+
+  &:active {
+    opacity: 0.7;
+    transform: scale(0.98);
+    -webkit-transform: scale(0.98);
+    -moz-transform: scale(0.98);
+  }
+
+  p {
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    word-break: break-all;
   }
 }
 
@@ -468,7 +487,8 @@ image-cropper .ngx-ic-source-image {
   border-bottom: 0.0938rem solid var(--border-gray);
   transition: all 0.2s ease-in-out;
   cursor: pointer;
-
+  color: var(--black);
+  
   &:active {
     opacity: 0.8;
     background-color: var(--background-gray);
