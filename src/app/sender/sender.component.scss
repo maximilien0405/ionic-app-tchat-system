@@ -514,3 +514,20 @@ image-cropper .ngx-ic-source-image {
     height: 1.25rem;
   }
 }
+
+/* ---------------------------------------------------
+  CONVERSATION DETAIL PAGE
+----------------------------------------------------- */
+
+.buttons-box {
+  display: flex; 
+  gap: 1.5rem;
+  max-width: 330px;
+  margin-left: auto;
+  margin-right: auto;
+
+  .btn-medium {
+    width: 100% !important;
+    height: var(--height-base) !important;
+  }
+}
