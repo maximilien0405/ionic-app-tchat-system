@@ -3,7 +3,6 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { DesignSystemComponent } from './design-system/design-system.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/sender/menu', pathMatch: 'full' },
   { path: 'start', loadChildren: () => import('./start/start.module').then(m => m.StartModule) },
   { path: 'sender', loadChildren: () => import('./sender/sender.module').then(m => m.SenderModule) },
   { path: 'charte', component: DesignSystemComponent },

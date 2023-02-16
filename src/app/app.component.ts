@@ -4,6 +4,7 @@ import { Device } from '@capacitor/device';
 import { TranslateService } from "@ngx-translate/core";
 import { StatusBar, Style } from '@capacitor/status-bar';
 import { isPlatform } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -12,9 +13,19 @@ import { isPlatform } from '@ionic/angular';
 export class AppComponent {
   public theme: string | any;
 
-  constructor(private translate: TranslateService) {}
+  constructor(private translate: TranslateService, private router: Router) {}
 
   public ngOnInit(): void {
+    // Redirect or not
+    const checkToken = async () => {
+      const { value } = await Preferences.get({ key: 'token' });
+      if (value) {
+        this.router.navigateByUrl('sender/menu');
+      } else {
+        this.router.navigateByUrl('start')
+      }
+    }; checkToken();
+
     // Check if phone is in dark theme
     const checkTheme = async () => {
       const { value } = await Preferences.get({ key: 'theme' });
