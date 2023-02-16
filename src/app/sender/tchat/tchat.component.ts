@@ -11,7 +11,7 @@ import { Conversation } from 'src/app/common/models/conversation.model';
 import { Message } from 'src/app/common/models/message.model';
 import { User } from 'src/app/common/models/user.model';
 import { Location } from '@angular/common';
-import { ConversationDetailsComponent } from '../modals/conversation-details/conversation-details.component';
+import { ConversationDetailsComponent } from '../conversation-details/conversation-details.component';
 
 @Component({
   selector: 'app-tchat',

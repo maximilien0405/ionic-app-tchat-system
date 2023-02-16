@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [text]="'SENDER.SETTINGS.back_page' | translate"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content *ngIf="user" class="ion-padding padding-bottom-0" forceOverscroll="false">
+  <div class="settings-header">
+    <img [src]="conversation.groupPictureUrl || conversation.users[0].profilePictureUrl">
+    <p class="paragraph">{{ conversation.groupName || (conversation.users[0].firstname + ' ' + conversation.users[0].lastname) }}</p>
+  </div>
+
+  <div class="buttons-box margin-top">
+    <button *ngIf="conversation.type == 'normal'" class="btn btn-white btn-icon btn-medium" ontouchstart>
+      Call
+      <img src="../../../../assets/icons/phone-filled.svg">
+    </button>
+  
+    <button *ngIf="conversation.type == 'normal'" class="btn btn-white btn-icon btn-medium" ontouchstart>
+      Video Call
+      <img src="../../../../assets/icons/video-filled.svg">
+    </button>
+
+    <button *ngIf="conversation.type == 'group'" class="btn btn-white btn-icon btn-medium" ontouchstart>
+      Leave group
+      <img src="../../../../assets/icons/leave.svg">
+    </button>
+
+    <button *ngIf="conversation.type == 'group' && conversation.creator?.id == user.id" class="btn btn-light btn-icon btn-medium" ontouchstart>
+      Manage
+      <img src="../../../../assets/icons/cog.svg">
+    </button>
+  </div>
+
+  <div class="separator"></div>
+
+  <p *ngIf="conversation.type == 'group'" class="label">Members</p>
+  <div *ngIf="conversation.type == 'group'" class="select-container">
+    <div class="select-box profile-box list-box" *ngFor="let user of conversation.users; let first = first; let last = last;" [class.select-start]="first" [class.select-end]="last" ontouchstart>
+      {{ user.firstname }} {{ user.lastname }}
+    </div>
+  </div>
+
+  <div class="select-box margin-top" ontouchstart>
+    Close conversation
+    <img src="../../assets/icons/moon.svg">
+  </div>
+
+</ion-content>
