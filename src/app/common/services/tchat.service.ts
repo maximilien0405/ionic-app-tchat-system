@@ -18,11 +18,15 @@ export class TchatService {
       type,
       contentUrl,
     }
-    this.socket.emit('sendMessage', [newMessage, conversation.id]);
+    this.socket.emit('sendMessage', [newMessage, conversation.id, conversation.users]);
   }
 
-  getNewMessage(): Observable<Message> {
-    return this.socket.fromEvent<Message>('newMessage');
+  getNewRoomMessage(): Observable<Message> {
+    return this.socket.fromEvent<Message>('newRoomMessage');
+  }
+
+  getNewGlobalMessages(): Observable<Message[]> {
+    return this.socket.fromEvent<Message[]>('newGlobalMessages');
   }
 
   sendConversationId(conversationId: string, currentMessages: number) {

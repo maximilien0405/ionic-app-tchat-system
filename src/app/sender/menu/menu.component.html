@@ -49,8 +49,8 @@
         <div class="tchat-text">
           <div class="tchat-box-title">
             <p class="box-title">{{ conversation.groupName || (conversation.users[0].firstname + ' ' + conversation.users[0].lastname) }}</p>
-            <p *ngIf="conversation.messages[0]" class="box-subtitle">{{ conversation.messages[0].createdAt | date: 'h:mm' }}</p> <!-- class : box-subtitle-notif-->
-            <!--<div class="box-notification">1</div>-->
+            <p *ngIf="conversation.messages[0]" class="box-subtitle" [class.box-subtitle-notif]="conversation.newMessage">{{ conversation.messages[0].createdAt | date: 'h:mm' }}</p>
+            <div *ngIf="conversation.newMessage" class="box-notification">{{ conversation.newMessageCount }}</div>
           </div>
           <p class="box-subtitle box-sub-bottom">
             <!--<img src="../../assets/icons/image-filled.svg">

@@ -11,6 +11,8 @@ import { ConversationService } from 'src/app/common/services/conversation.servic
 import { Conversation } from 'src/app/common/models/conversation.model';
 import { SubscriptionService } from 'src/app/common/services/subscription.service';
 import { NetworkService } from 'src/app/common/services/network.service';
+import { TchatService } from 'src/app/common/services/tchat.service';
+import { Message } from 'src/app/common/models/message.model';
 
 @Component({
   selector: 'app-menu',
@@ -39,6 +41,7 @@ export class MenuComponent implements OnInit {
     private conversationService: ConversationService,
     private subscriptionService: SubscriptionService,
     private networkService: NetworkService,
+    private tchatService: TchatService
   ) {
     // Check the network status
     this.networkService.checkAPIAndNetworkStatus();
@@ -55,6 +58,32 @@ export class MenuComponent implements OnInit {
     SafeArea.getSafeAreaInsets().then(({ insets }) => {
       this.marginBottom = 0.0625 * insets.bottom;
       this.marginTop = 0.0625 * insets.top;
+    });
+
+    // Get new messages from other conversations
+    this.tchatService.getNewGlobalMessages().subscribe((messages: Message[]) => {
+
+      // this.contactConversations.forEach(conversation => {
+      //   if (conversation.id == message.conversation?.id) {
+      //     conversation.messages.pop();
+      //     conversation.newMessage = true;
+      //     conversation.newMessageCount = 1;
+
+      //     if (conversation.newMessageCount == 1) {
+      //       conversation.newMessageCount += 1;
+      //     }
+      //     conversation.messages.push(message);
+      //   }
+      // });
+
+      // this.recieverConversations.forEach(conversation => {
+      //   if (conversation.id == message.conversation?.id) {
+      //     conversation.messages.pop();
+      //     conversation.newMessage = true;
+      //     conversation.newMessageCount = 1;
+      //     conversation.messages.push(message);
+      //   }
+      // });  
     });
   }
 
