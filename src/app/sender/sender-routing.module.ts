@@ -10,7 +10,7 @@ const routes: Routes = [
   {
     path: '', component: SenderComponent, children: [
       { path: '', redirectTo: 'menu', pathMatch: 'full' },
-      { path: 'tchat/:id', component: TchatComponent },
+      { path: 'tchat', component: TchatComponent },
       { path: 'tchat-details', component: ConversationDetailsComponent },
       { path: 'menu', component: MenuComponent },
       { path: 'reminders', component: RemindersComponent },

@@ -13,18 +13,20 @@ export class UserService {
   private readonly API_URL = environment.apiUrl;
   private token: string;
 
-  constructor() {
-    // Get token from localstorage
-    const getToken = async () => {
-      const { value } = await Preferences.get({ key: 'token' });
-      if (value) {
-        this.token = value;
-      }
-    }; getToken()
-  }
+  constructor() { }
+  
+  // Get token from localstorage
+  public getToken = async () => {
+    const { value } = await Preferences.get({ key: 'token' });
+    if (value) {
+      this.token = value;
+    }
+  };
 
   // Find a new user
   public async findOne() {
+    this.getToken();
+
     const options = {
       url: `${this.API_URL}/user`,
       headers: {
@@ -38,6 +40,8 @@ export class UserService {
 
   // Set new profile picture
   public async setNewProfilePicture(image: Blob) {
+    this.getToken();
+
     const data = new FormData();
     data.append("file", image);
 
@@ -54,6 +58,8 @@ export class UserService {
 
   // Set profile infos
   public async setProfile(firstname: string, lastname: string, about: string) {
+    this.getToken();
+
     const options = {
       url: `${this.API_URL}/user/set-profile`,
       headers: {
@@ -68,6 +74,8 @@ export class UserService {
 
   // Ask code change email
   public async askCodeChangeEmail(newEmail: string) {
+    this.getToken();
+
     const options = {
       url: `${this.API_URL}/user/ask-code-change-email`,
       headers: {
@@ -82,6 +90,8 @@ export class UserService {
 
   // Change email
   public async changeEmail(newEmail: string, code: number) {
+    this.getToken();
+
     const options = {
       url: `${this.API_URL}/user/change-email`,
       headers: {
@@ -96,6 +106,8 @@ export class UserService {
 
   // Ask code to change password
   public async askChangePassword(currentPassword: string) {
+    this.getToken();
+
     const options = {
       url: `${this.API_URL}/user/ask-change-pwd`,
       headers: {
@@ -110,6 +122,7 @@ export class UserService {
 
   // Change password
   public async setNewChangePwd(newPassword: string, code: number) {
+ 
     const options = {
       url: `${this.API_URL}/user/set-new-change-pwd`,
       headers: {

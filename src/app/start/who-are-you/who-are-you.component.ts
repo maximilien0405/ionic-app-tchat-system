@@ -20,18 +20,20 @@ export class WhoAreYouComponent implements OnInit {
     // Login the user (temporarely)
     this.authService
       .login(user + '@gmail.com', user + '123456')
-      .then((res: any) => {
+      .then(async (res: any) => {
         if (res.status == 201) {
           const setToken = async () => {
             await Preferences.set({
               key: 'token',
               value: res.data.token,
             });
+          }; await setToken();
 
+          setTimeout(() => {
             this.getUserService.setUser();
-          };
-          setToken();
-          this.router.navigateByUrl('sender/menu')
+          }, 200) 
+          
+          //this.router.navigateByUrl('sender/menu')
         }
       });
   }

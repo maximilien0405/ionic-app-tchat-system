@@ -22,14 +22,14 @@ export class GetUserService {
   // Get token from localstorage
   public setUser = async () => {
     this.userService.findOne()
-      .then((res: any) => {
+      .then(async (res: any) => {
         if (res.status == 200) {
           const setUser = async () => {
             await Preferences.set({
               key: 'user',
               value: JSON.stringify(res.data),
             });
-          }; setUser();
+          }; await setUser();
         }
       });
   };

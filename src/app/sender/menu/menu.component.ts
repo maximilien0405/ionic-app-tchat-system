@@ -38,7 +38,7 @@ export class MenuComponent implements OnInit {
     private getUserService: GetUserService,
     private conversationService: ConversationService,
     private subscriptionService: SubscriptionService,
-    private networkService: NetworkService
+    private networkService: NetworkService,
   ) {
     // Check the network status
     this.networkService.checkAPIAndNetworkStatus();
@@ -100,7 +100,6 @@ export class MenuComponent implements OnInit {
             this.allLoaded = true
           }
         })
-
 
         // Get subscription members
         this.user.subscriptions.forEach((element: any) => {
