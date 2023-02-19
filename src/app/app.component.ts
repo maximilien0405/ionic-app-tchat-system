@@ -15,7 +15,7 @@ export class AppComponent {
 
   constructor(private translate: TranslateService, private router: Router) {}
 
-  public ngOnInit(): void {
+  public async ngOnInit() {
     // Redirect or not
     const checkToken = async () => {
       const { value } = await Preferences.get({ key: 'token' });
@@ -24,7 +24,7 @@ export class AppComponent {
       } else {
         this.router.navigateByUrl('start')
       }
-    }; checkToken();
+    }; await checkToken();
 
     // Check if phone is in dark theme
     const checkTheme = async () => {

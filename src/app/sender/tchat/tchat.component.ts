@@ -3,7 +3,6 @@ import { Preferences } from '@capacitor/preferences';
 import { SafeArea } from 'capacitor-plugin-safe-area';
 import { fadeAnimation, slideUpAnimation } from 'src/app/common/animations';
 import { Keyboard } from '@capacitor/keyboard';
-import { ActivatedRoute } from '@angular/router';
 import { InfiniteScrollCustomEvent, IonContent, isPlatform, ModalController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { TchatService } from 'src/app/common/services/tchat.service';
@@ -24,7 +23,6 @@ export class TchatComponent {
   public inputMessage: string;
   public showIcons: boolean = true;
   public conversation: Conversation;
-  public conversationId: string;
   public user: User;
 
   @ViewChild(IonContent, { static: false }) content: IonContent;
@@ -34,18 +32,10 @@ export class TchatComponent {
   public messagesIndex = 0;
 
   constructor(
-    private activatedRoute: ActivatedRoute,
     private tchatService: TchatService,
     private modalController: ModalController,
     private location: Location) 
   {
-    // Get route param
-    this.activatedRoute.params.subscribe(params => {
-      this.tchatService.sendConversationId(params['id'], this.messagesIndex);
-      this.messagesIndex += 50;
-      this.conversationId = params['id'];
-    });
-
     // Get token from localstorage
     const getUser = async () => {
       const { value } = await Preferences.get({ key: 'user' });
@@ -61,6 +51,10 @@ export class TchatComponent {
     // Get the conversation from routing slate
     const state: any = this.location.getState()
     this.conversation = state.conversation;
+
+    // Join room
+    this.tchatService.sendConversationId(this.conversation.id || '', this.messagesIndex);
+    this.messagesIndex += 50;
   }
 
   ionViewWillEnter() {
@@ -69,18 +63,13 @@ export class TchatComponent {
       if (this.messagesIndex != 0) {
         this.messages = this.messages.reverse();
       }
-
-      messages.forEach(message => {
-        this.messages.push(message);
-      });
-
+      messages.forEach(message => { this.messages.push(message); });
       this.messages = this.messages.reverse();
       this.scrollToBottom();
     });
 
     // Get a  new message
     this.tchatService.getNewMessage().subscribe((message: Message) => {
-      console.log(message)
       this.messages.push(message);
       this.messagesIndex += 1;
       this.scrollToBottom();
@@ -115,7 +104,7 @@ export class TchatComponent {
   onIonInfinite(ev: any) {
     console.log("END !!!")
     setTimeout(() => {
-      this.tchatService.sendConversationId(this.conversationId, this.messagesIndex);
+      this.tchatService.sendConversationId(this.conversation.id || '', this.messagesIndex);
       this.messagesIndex += 50;
       (ev as InfiniteScrollCustomEvent).target.complete();
     }, 500);

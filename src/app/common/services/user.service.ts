@@ -25,7 +25,7 @@ export class UserService {
 
   // Find a new user
   public async findOne() {
-    this.getToken();
+    await this.getToken();
 
     const options = {
       url: `${this.API_URL}/user`,
@@ -40,7 +40,7 @@ export class UserService {
 
   // Set new profile picture
   public async setNewProfilePicture(image: Blob) {
-    this.getToken();
+    await this.getToken();
 
     const data = new FormData();
     data.append("file", image);
@@ -58,7 +58,7 @@ export class UserService {
 
   // Set profile infos
   public async setProfile(firstname: string, lastname: string, about: string) {
-    this.getToken();
+    await this.getToken();
 
     const options = {
       url: `${this.API_URL}/user/set-profile`,
@@ -74,7 +74,7 @@ export class UserService {
 
   // Ask code change email
   public async askCodeChangeEmail(newEmail: string) {
-    this.getToken();
+    await this.getToken();
 
     const options = {
       url: `${this.API_URL}/user/ask-code-change-email`,
@@ -90,7 +90,7 @@ export class UserService {
 
   // Change email
   public async changeEmail(newEmail: string, code: number) {
-    this.getToken();
+    await this.getToken();
 
     const options = {
       url: `${this.API_URL}/user/change-email`,
@@ -106,7 +106,7 @@ export class UserService {
 
   // Ask code to change password
   public async askChangePassword(currentPassword: string) {
-    this.getToken();
+    await this.getToken();
 
     const options = {
       url: `${this.API_URL}/user/ask-change-pwd`,

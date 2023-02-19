@@ -13,8 +13,7 @@ export class WhoAreYouComponent implements OnInit {
 
   constructor(private authService: AuthService, private getUserService: GetUserService, private router: Router) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   public login(user: string) {
     // Login the user (temporarely)
@@ -29,13 +28,12 @@ export class WhoAreYouComponent implements OnInit {
             });
           }; await setToken();
 
+          this.getUserService.setUser();
+
           setTimeout(() => {
-            this.getUserService.setUser();
-          }, 200) 
-          
-          //this.router.navigateByUrl('sender/menu')
+            this.router.navigateByUrl('sender/menu')
+          }, 2000) 
         }
       });
   }
-
 }
