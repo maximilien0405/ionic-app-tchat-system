@@ -56,7 +56,7 @@ export class CreateGroupComponent implements OnInit {
       if(res.status == 201) {
         // Redirect
         this.modalController.dismiss(null, 'cancel');
-        this.router.navigateByUrl('sender/tchat/' + res.data.conversationId, { state: { conversation:res.data.conversation } });
+        this.router.navigateByUrl('sender/tchat', { state: { conversation: res.data.conversation } });
       }
     })
   }

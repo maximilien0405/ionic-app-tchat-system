@@ -33,11 +33,10 @@ export class CreateConversationComponent implements OnInit {
   // Create or join a conversation
   public createConversation(userId: any) {
     this.conversationService.createNormalConversation('normal', [userId]).then((res: any) => {
-      console.log(res)
-      if((res.data.error == true && res.data.conversationId) || res.status == 201) {
+      if((res.data.error == true && res.data.conversation) || res.status == 201) {
         // Redirect
         this.modalController.dismiss(null, 'cancel');
-        this.router.navigateByUrl('sender/tchat/' + res.data.conversationId, { state: { conversation:res.data.conversation } });
+        this.router.navigateByUrl('sender/tchat', { state: { conversation: res.data.conversation } });
       }
     })
   }

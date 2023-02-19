@@ -75,14 +75,6 @@ export class MenuComponent implements OnInit {
               let recieverConversations = []
               let contactConversations = res.data;
 
-              contactConversations.forEach((conversation: any) => {
-                for (let i = 0; i < conversation.users.length; i++) {
-                  if (conversation.users[i].id === this.user.id) {
-                    conversation.users.splice(i, 1);
-                  }
-                }
-              });
-
               for (let i = 0; i < contactConversations.length; i++) {
                 const element = contactConversations[i];
 
