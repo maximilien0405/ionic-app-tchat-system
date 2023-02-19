@@ -69,7 +69,7 @@ export class TchatComponent {
     });
 
     // Get a  new message
-    this.tchatService.getNewMessage().subscribe((message: Message) => {
+    this.tchatService.getNewRoomMessage().subscribe((message: Message) => {
       this.messages.push(message);
       this.messagesIndex += 1;
       this.scrollToBottom();

@@ -9,6 +9,8 @@ export interface Conversation {
   type?: string,
   groupPictureUrl?: string,
   messages: Message[],
+  newMessage: boolean;
+  newMessageCount: number,
   updatedAt?: Date,
   createdAt?: Date,
 }
