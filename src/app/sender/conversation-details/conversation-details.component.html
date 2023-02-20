@@ -3,7 +3,8 @@
     <ion-buttons slot="start">
       <ion-back-button [text]="'SENDER.SETTINGS.back_page' | translate"></ion-back-button>
     </ion-buttons>
-    <ion-title>Details</ion-title>
+    <ion-title *ngIf="conversation.type == 'normal'">{{'SENDER.MODALS.CONV_DETAILS.header_contact' | translate}}</ion-title>
+    <ion-title *ngIf="conversation.type == 'group'">{{'SENDER.MODALS.CONV_DETAILS.header_group' | translate}}</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content *ngIf="user" class="ion-padding padding-bottom-0" forceOverscroll="false">
@@ -14,29 +15,37 @@
 
   <div class="buttons-box margin-top">
     <button *ngIf="conversation.type == 'normal'" class="btn btn-white btn-icon btn-medium" ontouchstart>
-      Call
+      {{'SENDER.MODALS.CONV_DETAILS.btn_call' | translate}}
       <img src="../../../../assets/icons/phone-filled.svg">
     </button>
   
     <button *ngIf="conversation.type == 'normal'" class="btn btn-white btn-icon btn-medium" ontouchstart>
-      Video Call
+      {{'SENDER.MODALS.CONV_DETAILS.btn_video' | translate}}
       <img src="../../../../assets/icons/video-filled.svg">
     </button>
 
-    <button *ngIf="conversation.type == 'group'" class="btn btn-white btn-icon btn-medium" ontouchstart>
-      Leave group
+    <button *ngIf="conversation.type == 'group' && conversation.creatorId != user.id" class="btn btn-white btn-icon btn-medium" ontouchstart>
+      {{'SENDER.MODALS.CONV_DETAILS.btn_leave_group' | translate}}
       <img src="../../../../assets/icons/leave.svg">
-    </button>
-
-    <button *ngIf="conversation.type == 'group' && conversation.creator?.id == user.id" class="btn btn-light btn-icon btn-medium" ontouchstart>
-      Manage
-      <img src="../../../../assets/icons/cog.svg">
     </button>
   </div>
 
-  <div class="separator"></div>
+  <div *ngIf="conversation.type == 'normal'">
+    <div class="box margin-top">
+      <b>{{'SENDER.MODALS.CONV_DETAILS.about' | translate}}</b><br>
+      {{ conversation.users[0].about }}
+    </div>
+    
+    <div class="separator"></div>
+  
+    <p class="label">{{'SENDER.MODALS.CONV_DETAILS.common_groups' | translate}}</p>
 
-  <p *ngIf="conversation.type == 'group'" class="label">Members</p>
+    <div></div>
+  </div>
+
+  <div class="separator"></div>
+  
+  <p *ngIf="conversation.type == 'group'" class="label">{{'SENDER.MODALS.CONV_DETAILS.list_members' | translate}}</p>
   <div *ngIf="conversation.type == 'group'" class="select-container">
     <div class="select-box profile-box list-box" *ngFor="let user of conversation.users; let first = first; let last = last;" [class.select-start]="first" [class.select-end]="last" ontouchstart>
       {{ user.firstname }} {{ user.lastname }}

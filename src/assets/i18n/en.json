@@ -159,6 +159,16 @@
         "label_name": "Name",
         "label_members": "Members"
       },
+      "CONV_DETAILS": {
+        "header_contact": "Contact details",
+        "header_group": "Group details",
+        "btn_call": "Call",
+        "btn_video": "Video Call",
+        "btn_leave_group": "Leave group",
+        "about": "About",
+        "list_members": "Members",
+        "common_groups": "Groups in common"
+      },
       "PROFILE": {
         "header": "Edit profile",
         "label_profile_picture": "Profile picture",

@@ -44,23 +44,25 @@
 
       <div *ngIf="!APIError" class="list-box-header">{{'SENDER.MENU.conversation_contacts' | translate}}</div>
       
-      <div *ngFor="let conversation of contactConversations" routerLink="/sender/tchat" [state]="{ conversation: conversation }" router-direction="forward" class="tchat-box" ontouchstart>
-        <img [src]="conversation.groupPictureUrl || conversation.users[0].profilePictureUrl">
-        <div class="tchat-text">
-          <div class="tchat-box-title">
-            <p class="box-title">{{ conversation.groupName || (conversation.users[0].firstname + ' ' + conversation.users[0].lastname) }}</p>
-            <p *ngIf="conversation.messages[0]" class="box-subtitle" [class.box-subtitle-notif]="conversation.newMessage">{{ conversation.messages[0].createdAt | date: 'h:mm' }}</p>
-            <div *ngIf="conversation.newMessage" class="box-notification">{{ conversation.newMessageCount }}</div>
+      <div *ngFor="let conversation of contactConversations" routerLink="/sender/tchat" [state]="{ conversation: conversation }" router-direction="forward" ontouchstart>
+        <div *ngIf="(conversation.type == 'normal' && conversation.messages[0]) || conversation.type == 'group'" class="tchat-box">
+          <img [src]="conversation.groupPictureUrl || conversation.users[0].profilePictureUrl">
+          <div class="tchat-text">
+            <div class="tchat-box-title">
+              <p class="box-title">{{ conversation.groupName || (conversation.users[0].firstname + ' ' + conversation.users[0].lastname) }}</p>
+              <p *ngIf="conversation.messages[0]" class="box-subtitle" [class.box-subtitle-notif]="conversation.newMessage">{{ conversation.messages[0].createdAt | date: 'h:mm' }}</p>
+              <div *ngIf="conversation.newMessage" class="box-notification">{{ conversation.newMessageCount }}</div>
+            </div>
+            <p class="box-subtitle box-sub-bottom">
+              <!--<img src="../../assets/icons/image-filled.svg">
+              <img src="../../assets/icons/video-filled.svg">
+              <img src="../../assets/icons/micro-filled.svg">
+              <img src="../../assets/icons/phone-filled.svg">
+              <img src="../../assets/icons/check.svg">
+              <img src="../../assets/icons/double-check.svg"> -->
+              <span *ngIf="conversation.messages[0]">{{ conversation.messages[0].text }}</span>
+            </p>
           </div>
-          <p class="box-subtitle box-sub-bottom">
-            <!--<img src="../../assets/icons/image-filled.svg">
-            <img src="../../assets/icons/video-filled.svg">
-            <img src="../../assets/icons/micro-filled.svg">
-            <img src="../../assets/icons/phone-filled.svg">
-            <img src="../../assets/icons/check.svg">
-            <img src="../../assets/icons/double-check.svg"> -->
-            <span *ngIf="conversation.messages[0]">{{ conversation.messages[0].text }}</span>
-          </p>
         </div>
       </div>
 
