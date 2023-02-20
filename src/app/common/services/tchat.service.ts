@@ -25,8 +25,12 @@ export class TchatService {
     return this.socket.fromEvent<Message>('newRoomMessage');
   }
 
-  getNewGlobalMessages(): Observable<Message[]> {
-    return this.socket.fromEvent<Message[]>('newGlobalMessages');
+  requestUnreadMessages(): void {
+    this.socket.emit('requestUnreadMessages');
+  }
+
+  getUnreadMessages(): Observable<Message[]> {
+    return this.socket.fromEvent<Message[]>('newUnreadMessages');
   }
 
   sendConversationId(conversationId: string, currentMessages: number) {

@@ -101,6 +101,7 @@ export class TchatComponent {
     modalDetails.present();
   }
 
+  // Execute when reach end of conversation
   onIonInfinite(ev: any) {
     console.log("END !!!")
     setTimeout(() => {

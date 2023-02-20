@@ -15,7 +15,6 @@ export class TchatSocketService extends Socket {
     const getToken = async () => {
       const { value } = await Preferences.get({ key: 'token' });
       if (value) {
-        console.log(value)
         this.ioSocket['auth'] = { token: value };
       }
     }; getToken()
