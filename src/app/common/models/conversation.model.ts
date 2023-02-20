@@ -5,7 +5,7 @@ export interface Conversation {
   id?: string,
   groupName?: string,
   users: User[],
-  creator?: User,
+  creatorId?: string,
   type?: string,
   groupPictureUrl?: string,
   messages: Message[],

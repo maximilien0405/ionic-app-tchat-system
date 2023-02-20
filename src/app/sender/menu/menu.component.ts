@@ -59,9 +59,61 @@ export class MenuComponent implements OnInit {
       this.marginBottom = 0.0625 * insets.bottom;
       this.marginTop = 0.0625 * insets.top;
     });
+  }
 
-    // Get new messages from other conversations
-    this.tchatService.getNewGlobalMessages().subscribe((messages: Message[]) => {
+  public async ionViewWillEnter() {
+    const getUser = async () => {
+      const { value } = await Preferences.get({ key: 'user' });
+      if (value) {
+        this.user = JSON.parse(value || '');
+      }
+    }; await getUser();
+
+
+    // Get all conversations
+    this.conversationService.getConversationsForUser()
+      .catch((res: any) => {
+        this.APIError = true;
+        this.allLoaded = true
+      })
+      .then((res: any) => {
+        if (res.status == 200) {
+          let recieverConversations = []
+          let contactConversations = res.data;
+
+          for (let i = 0; i < contactConversations.length; i++) {
+            const element = contactConversations[i];
+
+            if (element.users[0].type == 'reciever') {
+              recieverConversations.push(element);
+              contactConversations.splice(i, 1);
+            }
+          }
+
+          this.contactConversations = contactConversations;
+          this.recieverConversations = recieverConversations;
+          this.allLoaded = true;
+        } else {
+          this.APIError = true;
+          this.allLoaded = true
+        }
+      })
+
+    // Get subscription members
+    this.user.subscriptions.forEach((element: any) => {
+      this.subscriptionService
+        .findAllMembers(element.id)
+        .then((res: any) => {
+          if (res.data.length != 0) {
+            this.subscriptionUsers = res.data;
+          }
+        });
+    });
+
+    // Get unread messages from other conversations
+    //this.tchatService.requestUnreadMessages();
+    
+    this.tchatService.getUnreadMessages().subscribe((messages: Message[]) => {
 
       // this.contactConversations.forEach(conversation => {
       //   if (conversation.id == message.conversation?.id) {
@@ -85,56 +137,6 @@ export class MenuComponent implements OnInit {
       //   }
       // });  
     });
-  }
-
-  public ionViewWillEnter() {
-    const getUser = async () => {
-      const { value } = await Preferences.get({ key: 'user' });
-      if (value) {
-        this.user = JSON.parse(value || '');
-
-        // Get all conversations
-        this.conversationService.getConversationsForUser()
-          .catch((res: any) => {
-            this.APIError = true;
-            this.allLoaded = true
-          })
-          .then((res: any) => {
-            if(res.status == 200) {
-              let recieverConversations = []
-              let contactConversations = res.data;
-
-              for (let i = 0; i < contactConversations.length; i++) {
-                const element = contactConversations[i];
-
-                if(element.users[0].type == 'reciever') {
-                  recieverConversations.push(element);
-                  contactConversations.splice(i, 1);
-                }
-              }
-
-              this.contactConversations = contactConversations;
-              this.recieverConversations = recieverConversations;
-              this.allLoaded = true;
-          } else {
-            this.APIError = true;
-            this.allLoaded = true
-          }
-        })
-
-        // Get subscription members
-        this.user.subscriptions.forEach((element: any) => {
-          this.subscriptionService
-            .findAllMembers(element.id)
-            .then((res: any) => {
-              if (res.data.length != 0) {
-                this.subscriptionUsers = res.data;
-              }
-            });
-        });
-      }
-    };
-    getUser();
   }
 
   public async openCreateConv() {
