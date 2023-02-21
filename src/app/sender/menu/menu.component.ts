@@ -95,7 +95,7 @@ export class MenuComponent implements OnInit {
           this.allLoaded = true;
         } else {
           this.APIError = true;
-          this.allLoaded = true
+          this.allLoaded = true;
         }
       })
 

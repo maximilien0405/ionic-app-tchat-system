@@ -27,7 +27,7 @@
         <div class="tchat-text">
           <div class="tchat-box-title">
             <p class="box-title">{{ conversation.users[0].firstname + ' ' + conversation.users[0].lastname }}</p>
-            <p class="box-subtitle">{{ conversation.messages[0].createdAt | date: 'h:mm' }}</p> <!-- class : box-subtitle-notif-->
+            <p *ngIf="conversation.messages[0]" class="box-subtitle">{{ conversation.messages[0].createdAt | date: 'h:mm' }}</p> <!-- class : box-subtitle-notif-->
             <!--<div class="box-notification">1</div>-->
           </div>
           <p class="box-subtitle box-sub-bottom">
