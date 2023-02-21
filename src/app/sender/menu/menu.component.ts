@@ -52,6 +52,11 @@ export class MenuComponent implements OnInit {
         this.networkError = res.networkError;
       }, 500);
     })
+
+    // Get conversation when new msg
+    this.tchatService.getConversations().subscribe(res => {
+      this.getConversations();
+    })
   }
 
   ngOnInit() {
@@ -71,14 +76,32 @@ export class MenuComponent implements OnInit {
 
 
     // Get all conversations
+    this.getConversations();
+
+    // Get subscription members
+    this.user.subscriptions.forEach((element: any) => {
+      this.subscriptionService
+        .findAllMembers(element.id)
+        .then((res: any) => {
+          if (res.data.length != 0) {
+            this.subscriptionUsers = res.data;
+          }
+        });
+    });
+  }
+
+  // Get conversations
+  public async getConversations() {
     this.conversationService.getConversationsForUser()
       .catch((res: any) => {
         this.APIError = true;
         this.allLoaded = true
       })
       .then((res: any) => {
+        console.log(res.data)
+        
         if (res.status == 200) {
-          let recieverConversations = []
+          let recieverConversations = [];
           let contactConversations = res.data;
 
           for (let i = 0; i < contactConversations.length; i++) {
@@ -98,45 +121,6 @@ export class MenuComponent implements OnInit {
           this.allLoaded = true;
         }
       })
-
-    // Get subscription members
-    this.user.subscriptions.forEach((element: any) => {
-      this.subscriptionService
-        .findAllMembers(element.id)
-        .then((res: any) => {
-          if (res.data.length != 0) {
-            this.subscriptionUsers = res.data;
-          }
-        });
-    });
-
-    // Get unread messages from other conversations
-    this.tchatService.requestUnreadMessages();
-    
-    this.tchatService.getUnreadMessages().subscribe((messages: Message[]) => {
-      console.log(messages)
-      // this.contactConversations.forEach(conversation => {
-      //   if (conversation.id == message.conversation?.id) {
-      //     conversation.messages.pop();
-      //     conversation.newMessage = true;
-      //     conversation.newMessageCount = 1;
-
-      //     if (conversation.newMessageCount == 1) {
-      //       conversation.newMessageCount += 1;
-      //     }
-      //     conversation.messages.push(message);
-      //   }
-      // });
-
-      // this.recieverConversations.forEach(conversation => {
-      //   if (conversation.id == message.conversation?.id) {
-      //     conversation.messages.pop();
-      //     conversation.newMessage = true;
-      //     conversation.newMessageCount = 1;
-      //     conversation.messages.push(message);
-      //   }
-      // });  
-    });
   }
 
   public async openCreateConv() {

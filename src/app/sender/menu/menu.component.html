@@ -44,14 +44,14 @@
 
       <div *ngIf="!APIError" class="list-box-header">{{'SENDER.MENU.conversation_contacts' | translate}}</div>
       
-      <div *ngFor="let conversation of contactConversations" routerLink="/sender/tchat" [state]="{ conversation: conversation, allConversations: contactConversations }" router-direction="forward" ontouchstart>
+      <div *ngFor="let conversation of contactConversations" routerLink="/sender/tchat" [state]="{ conversation: conversation, allConversations: contactConversations, messagesToRead: conversation.messagesToRead }" router-direction="forward" ontouchstart>
         <div *ngIf="(conversation.type == 'normal' && conversation.messages[0]) || conversation.type == 'group'" class="tchat-box">
           <img [src]="conversation.groupPictureUrl || conversation.users[0].profilePictureUrl">
           <div class="tchat-text">
             <div class="tchat-box-title">
               <p class="box-title">{{ conversation.groupName || (conversation.users[0].firstname + ' ' + conversation.users[0].lastname) }}</p>
-              <p *ngIf="conversation.messages[0]" class="box-subtitle" [class.box-subtitle-notif]="conversation.newMessage">{{ conversation.messages[0].createdAt | date: 'h:mm' }}</p>
-              <div *ngIf="conversation.newMessage" class="box-notification">{{ conversation.newMessageCount }}</div>
+              <p *ngIf="conversation.messages[0]" class="box-subtitle" [class.box-subtitle-notif]="conversation.newMessageCount > 0">{{ conversation.messages[0].createdAt | date: 'h:mm' }}</p>
+              <div *ngIf="conversation.newMessageCount > 0" class="box-notification">{{ conversation.newMessageCount }}</div>
             </div>
             <p class="box-subtitle box-sub-bottom">
               <!--<img src="../../assets/icons/image-filled.svg">

@@ -25,12 +25,8 @@ export class TchatService {
     return this.socket.fromEvent<Message>('newRoomMessage');
   }
 
-  requestUnreadMessages(): void {
-    this.socket.emit('requestUnreadMessages');
-  }
-
-  getUnreadMessages(): Observable<Message[]> {
-    return this.socket.fromEvent<Message[]>('newUnreadMessages');
+  getConversations(): Observable<any> {
+    return this.socket.fromEvent<any>('getConversations');
   }
 
   sendConversationId(conversationId: string, currentMessages: number) {
@@ -39,5 +35,9 @@ export class TchatService {
 
   getMessages(): Observable<Message[]> {
     return this.socket.fromEvent<Message[]>('messages');
+  }
+
+  readLastMessages(messages: Message[]): void {
+    this.socket.emit('readLastMessages', messages);
   }
 }
