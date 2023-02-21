@@ -111,10 +111,10 @@ export class MenuComponent implements OnInit {
     });
 
     // Get unread messages from other conversations
-    //this.tchatService.requestUnreadMessages();
+    this.tchatService.requestUnreadMessages();
     
     this.tchatService.getUnreadMessages().subscribe((messages: Message[]) => {
-
+      console.log(messages)
       // this.contactConversations.forEach(conversation => {
       //   if (conversation.id == message.conversation?.id) {
       //     conversation.messages.pop();

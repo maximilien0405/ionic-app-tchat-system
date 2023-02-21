@@ -56,8 +56,6 @@ export class TchatComponent {
       this.allConversations = state.allConversations;
     }
 
-    console.log(this.conversation.groupName || this.conversation.users[0].firstname)
-
     // Join room
     this.tchatService.sendConversationId(this.conversation.id || '', this.messagesIndex);
     this.messagesIndex += 50;
