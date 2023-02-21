@@ -257,6 +257,15 @@ image-cropper .ngx-ic-source-image {
   background-color: var(--white);
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+
+  b {
+    font-weight: 500 !important;
+    color: var(--black);
+  }
+  
+  br {
+    margin-bottom: 0.3125rem;
+  }
 }
 
 .boxs-bounce .box:active {

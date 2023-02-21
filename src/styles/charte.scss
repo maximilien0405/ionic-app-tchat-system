@@ -531,6 +531,14 @@ ion-content textarea {
   p {
     color: var(--gray);
   }
+
+  b {
+    font-weight: 500 !important;
+  }
+  
+  br {
+    margin-bottom: 0.125rem;
+  }
 }
 
 .select-box-selected {
@@ -561,11 +569,13 @@ ion-content textarea {
 
   .select-start:first-child {
     border-top: 0.0938rem solid var(--border-gray);
-    border-radius: var(--radius-base) var(--radius-base) 0rem 0rem;
+    border-top-right-radius: var(--radius-base);
+    border-top-left-radius: var(--radius-base);
   }
 
   .select-end:last-child {
-    border-radius: 0rem 0rem var(--radius-base) var(--radius-base);
+    border-bottom-left-radius: var(--radius-base);
+    border-bottom-right-radius: var(--radius-base);
   }
 
   .icon-box {

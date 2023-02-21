@@ -7,7 +7,7 @@
     <ion-title *ngIf="conversation.type == 'group'">{{'SENDER.MODALS.CONV_DETAILS.header_group' | translate}}</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content *ngIf="user" class="ion-padding padding-bottom-0" forceOverscroll="false">
+<ion-content *ngIf="user" class="ion-padding" forceOverscroll="false">
   <div class="settings-header">
     <img [src]="conversation.groupPictureUrl || conversation.users[0].profilePictureUrl">
     <p class="paragraph">{{ conversation.groupName || (conversation.users[0].firstname + ' ' + conversation.users[0].lastname) }}</p>
@@ -31,30 +31,45 @@
   </div>
 
   <div *ngIf="conversation.type == 'normal'">
-    <div class="box margin-top">
+    <div *ngIf="conversation.users[0].about" class="box margin-top">
       <b>{{'SENDER.MODALS.CONV_DETAILS.about' | translate}}</b><br>
       {{ conversation.users[0].about }}
     </div>
     
-    <div class="separator"></div>
+    <div *ngIf="groupConversations">
+      <div class="separator"></div>
   
-    <p class="label">{{'SENDER.MODALS.CONV_DETAILS.common_groups' | translate}}</p>
-
-    <div></div>
+      <p class="label">{{'SENDER.MODALS.CONV_DETAILS.common_groups' | translate}}</p>
+      <div class="select-container">
+        <div class="select-box profile-box" *ngFor="let groupConv of groupConversations; let first = first; let last = last;" routerLink="/sender/tchat" router-direction="forward" [state]="{ conversation: groupConv, allConversations: allConversations, fromDetails: true }" [class.select-start]="first" [class.select-end]="last" ontouchstart>
+          <div>
+            <b>{{ groupConv.groupName }}</b> <br>
+            <p>You<span *ngFor="let user of groupConv.users; let last = last"><span *ngIf="!last">, </span><span *ngIf="last"> and </span>{{ user.firstname }}</span></p>
+          </div>
+          <img src="../../assets/icons/arrow-right-orange.svg">
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="separator"></div>
   
   <p *ngIf="conversation.type == 'group'" class="label">{{'SENDER.MODALS.CONV_DETAILS.list_members' | translate}}</p>
   <div *ngIf="conversation.type == 'group'" class="select-container">
-    <div class="select-box profile-box list-box" *ngFor="let user of conversation.users; let first = first; let last = last;" [class.select-start]="first" [class.select-end]="last" ontouchstart>
+    <div class="select-box list-box" *ngFor="let user of conversation.users; let first = first; let last = last;" [class.select-start]="first" [class.select-end]="last" ontouchstart>
       {{ user.firstname }} {{ user.lastname }}
     </div>
   </div>
 
-  <div class="select-box margin-top" ontouchstart>
-    Close conversation
-    <img src="../../assets/icons/moon.svg">
+  <div class="select-container">
+    <div class="select-box select-start">
+      {{'SENDER.MODALS.CONV_DETAILS.action_clear' | translate}}
+      <img src="../../../assets/icons/clear.svg" alt="">
+    </div>
+    <div class="select-box select-end">
+      {{'SENDER.MODALS.CONV_DETAILS.action_archice' | translate}}
+      <img src="../../../assets/icons/archive.svg" alt="">
+    </div>
   </div>
 
 </ion-content>

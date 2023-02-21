@@ -167,7 +167,9 @@
         "btn_leave_group": "Leave group",
         "about": "About",
         "list_members": "Members",
-        "common_groups": "Groups in common"
+        "common_groups": "Groups in common",
+        "action_clear": "Clear conversation",
+        "action_archice": "Archive conversation"
       },
       "PROFILE": {
         "header": "Edit profile",

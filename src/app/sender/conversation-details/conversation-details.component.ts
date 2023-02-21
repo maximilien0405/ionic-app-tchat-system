@@ -11,13 +11,15 @@ import { User } from 'src/app/common/models/user.model';
 })
 export class ConversationDetailsComponent implements OnInit {
   public conversation: Conversation;
+  public groupConversations: Conversation[] = [];
+  public allConversations: Conversation[];
   public user: User;
   
   constructor(private location: Location) {
-
     // Get the conversation from routing slate
     const state: any = this.location.getState()
     this.conversation = state.conversation;
+    this.allConversations = state.allConversations;
   }
 
   ngOnInit() {
@@ -28,5 +30,15 @@ export class ConversationDetailsComponent implements OnInit {
         this.user = JSON.parse(value || '')
       }
     }; getUser()
+
+    this.allConversations.forEach((conversation: any) => {
+      if(conversation.type == 'group') {
+        conversation.users.forEach((user: any) => {
+          if(user.id == conversation.users[0].id) {
+            this.groupConversations.push(conversation)
+          }
+        });
+      }
+    });
   }
 }

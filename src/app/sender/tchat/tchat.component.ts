@@ -1,16 +1,14 @@
-import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Preferences } from '@capacitor/preferences';
-import { SafeArea } from 'capacitor-plugin-safe-area';
 import { fadeAnimation, slideUpAnimation } from 'src/app/common/animations';
 import { Keyboard } from '@capacitor/keyboard';
-import { InfiniteScrollCustomEvent, IonContent, isPlatform, ModalController } from '@ionic/angular';
+import { InfiniteScrollCustomEvent, IonContent, isPlatform } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { TchatService } from 'src/app/common/services/tchat.service';
 import { Conversation } from 'src/app/common/models/conversation.model';
 import { Message } from 'src/app/common/models/message.model';
 import { User } from 'src/app/common/models/user.model';
 import { Location } from '@angular/common';
-import { ConversationDetailsComponent } from '../conversation-details/conversation-details.component';
 
 @Component({
   selector: 'app-tchat',
@@ -23,6 +21,7 @@ export class TchatComponent {
   public inputMessage: string;
   public showIcons: boolean = true;
   public conversation: Conversation;
+  public allConversations: Conversation[];
   public user: User;
 
   @ViewChild(IonContent, { static: false }) content: IonContent;
@@ -33,7 +32,6 @@ export class TchatComponent {
 
   constructor(
     private tchatService: TchatService,
-    private modalController: ModalController,
     private location: Location) 
   {
     // Get token from localstorage
@@ -44,20 +42,26 @@ export class TchatComponent {
       }
     }; getUser()
 
-    SafeArea.getSafeAreaInsets().then(({ insets }) => {
-      this.marginBottom = 0.0625 * (insets.bottom + 8);
-    });
-
     // Get the conversation from routing slate
     const state: any = this.location.getState()
     this.conversation = state.conversation;
+    this.allConversations = state.allConversations;
+  }
+
+  ionViewWillEnter() {
+    const state: any = this.location.getState()
+
+    if(state.fromDetails) {
+      this.conversation = state.conversation;
+      this.allConversations = state.allConversations;
+    }
+
+    console.log(this.conversation.groupName || this.conversation.users[0].firstname)
 
     // Join room
     this.tchatService.sendConversationId(this.conversation.id || '', this.messagesIndex);
     this.messagesIndex += 50;
-  }
-
-  ionViewWillEnter() {
+    
     // Get all messages
     this.tchatService.getMessages().subscribe((messages: Message[]) => {      
       if (this.messagesIndex != 0) {
@@ -86,19 +90,6 @@ export class TchatComponent {
     if (isPlatform('mobile') && !isPlatform('mobileweb')) {
       Keyboard.hide()
     }
-  }
-
-  // Open details
-  public async openConversationDetails() {
-    const modalDetails = await this.modalController.create({
-      component: ConversationDetailsComponent,
-      breakpoints: [0, 0.75],
-      initialBreakpoint: 0.75,
-      componentProps: {
-        conversation: this.conversation
-      }
-    });
-    modalDetails.present();
   }
 
   // Execute when reach end of conversation
