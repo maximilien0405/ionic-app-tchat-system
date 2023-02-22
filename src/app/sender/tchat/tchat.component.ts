@@ -89,6 +89,9 @@ export class TchatComponent {
 
   // Close keyboard
   ionViewWillLeave() {
+    // Leave room
+    this.tchatService.leaveRoom(this.conversation.id || '');
+
     if (isPlatform('mobile') && !isPlatform('mobileweb')) {
       Keyboard.hide()
     }

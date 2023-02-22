@@ -25,6 +25,10 @@ export class TchatService {
     return this.socket.fromEvent<Message>('newRoomMessage');
   }
 
+  leaveRoom(conversationId: string): void {
+    this.socket.emit('leaveRoom', [conversationId])
+  }
+
   getConversations(): Observable<any> {
     return this.socket.fromEvent<any>('getConversations');
   }

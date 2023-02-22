@@ -54,8 +54,23 @@ export class MenuComponent implements OnInit {
     })
 
     // Get conversation when new msg
-    this.tchatService.getConversations().subscribe(res => {
-      this.getConversations();
+    this.tchatService.getConversations().subscribe(conversations => {
+      console.log(conversations)
+      let recieverConversations = [];
+      let contactConversations = conversations;
+
+      for (let i = 0; i < contactConversations.length; i++) {
+        const element = contactConversations[i];
+
+        if (element.users[0].type == 'reciever') {
+          recieverConversations.push(element);
+          contactConversations.splice(i, 1);
+        }
+      }
+
+      this.contactConversations = contactConversations;
+      this.recieverConversations = recieverConversations;
+      this.allLoaded = true;
     })
   }
 
@@ -74,10 +89,6 @@ export class MenuComponent implements OnInit {
       }
     }; await getUser();
 
-
-    // Get all conversations
-    this.getConversations();
-
     // Get subscription members
     this.user.subscriptions.forEach((element: any) => {
       this.subscriptionService
@@ -88,39 +99,6 @@ export class MenuComponent implements OnInit {
           }
         });
     });
-  }
-
-  // Get conversations
-  public async getConversations() {
-    this.conversationService.getConversationsForUser()
-      .catch((res: any) => {
-        this.APIError = true;
-        this.allLoaded = true
-      })
-      .then((res: any) => {
-        console.log(res.data)
-        
-        if (res.status == 200) {
-          let recieverConversations = [];
-          let contactConversations = res.data;
-
-          for (let i = 0; i < contactConversations.length; i++) {
-            const element = contactConversations[i];
-
-            if (element.users[0].type == 'reciever') {
-              recieverConversations.push(element);
-              contactConversations.splice(i, 1);
-            }
-          }
-
-          this.contactConversations = contactConversations;
-          this.recieverConversations = recieverConversations;
-          this.allLoaded = true;
-        } else {
-          this.APIError = true;
-          this.allLoaded = true;
-        }
-      })
   }
 
   public async openCreateConv() {
