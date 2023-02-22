@@ -30,7 +30,6 @@ export class MenuComponent implements OnInit {
 
   public recieverConversations: Conversation[] = [];
   public contactConversations: Conversation[] = [];
-  public subscriptionUsers: User[];
   public networkError = false;
   public APIError = false;
 
@@ -54,23 +53,8 @@ export class MenuComponent implements OnInit {
     })
 
     // Get conversation when new msg
-    this.tchatService.getConversations().subscribe(conversations => {
-      console.log(conversations)
-      let recieverConversations = [];
-      let contactConversations = conversations;
-
-      for (let i = 0; i < contactConversations.length; i++) {
-        const element = contactConversations[i];
-
-        if (element.users[0].type == 'reciever') {
-          recieverConversations.push(element);
-          contactConversations.splice(i, 1);
-        }
-      }
-
-      this.contactConversations = contactConversations;
-      this.recieverConversations = recieverConversations;
-      this.allLoaded = true;
+    this.tchatService.getConversations().subscribe(res => {
+      this.getConversations();
     })
   }
 
@@ -89,16 +73,40 @@ export class MenuComponent implements OnInit {
       }
     }; await getUser();
 
-    // Get subscription members
-    this.user.subscriptions.forEach((element: any) => {
-      this.subscriptionService
-        .findAllMembers(element.id)
-        .then((res: any) => {
-          if (res.data.length != 0) {
-            this.subscriptionUsers = res.data;
+
+    // Get all conversations
+    this.getConversations();
+  }
+
+  // Get conversations
+  public async getConversations() {
+    this.conversationService.getConversationsForUser()
+      .catch((res: any) => {
+        this.APIError = true;
+        this.allLoaded = true
+      })
+      .then((res: any) => {
+        if (res.status == 200) {
+          let recieverConversations = [];
+          let contactConversations = res.data;
+
+          for (let i = 0; i < contactConversations.length; i++) {
+            const element = contactConversations[i];
+
+            if (element.users[0].type == 'reciever') {
+              recieverConversations.push(element);
+              contactConversations.splice(i, 1);
+            }
           }
-        });
-    });
+
+          this.contactConversations = contactConversations;
+          this.recieverConversations = recieverConversations;
+          this.allLoaded = true;
+        } else {
+          this.APIError = true;
+          this.allLoaded = true;
+        }
+      })
   }
 
   public async openCreateConv() {
@@ -106,10 +114,7 @@ export class MenuComponent implements OnInit {
       component: CreateConversationComponent,
       breakpoints: [0, 1],
       initialBreakpoint: 1,
-      id: 'modalConv',
-      componentProps: {
-        subscriptionUsers: this.subscriptionUsers
-      }
+      id: 'modalConv'
     });
     modalConv.present();
   }
