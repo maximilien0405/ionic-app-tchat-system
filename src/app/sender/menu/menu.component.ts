@@ -99,6 +99,8 @@ export class MenuComponent implements OnInit {
             }
           }
 
+          console.log(contactConversations)
+
           this.contactConversations = contactConversations;
           this.recieverConversations = recieverConversations;
           this.allLoaded = true;

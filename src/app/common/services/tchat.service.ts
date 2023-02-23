@@ -41,7 +41,7 @@ export class TchatService {
     return this.socket.fromEvent<Message[]>('messages');
   }
 
-  readLastMessages(messages: Message[]): void {
-    this.socket.emit('readLastMessages', messages);
+  readLastMessages(conversationId: string): void {
+    this.socket.emit('readLastMessages', conversationId);
   }
 }

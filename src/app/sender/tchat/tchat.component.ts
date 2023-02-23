@@ -28,7 +28,6 @@ export class TchatComponent {
 
   public newMessage$: Observable<string>;
   public messages: Message[] = [];
-  public messagesToRead: Message[] = [];
   public messagesIndex = 0;
 
   constructor(
@@ -47,7 +46,6 @@ export class TchatComponent {
     const state: any = this.location.getState()
     this.conversation = state.conversation;
     this.allConversations = state.allConversations;
-    this.messagesToRead = state.messagesToRead;
   }
 
   ionViewWillEnter() {
@@ -59,7 +57,7 @@ export class TchatComponent {
     }
 
     // Join room
-    this.tchatService.sendConversationId(this.conversation.id || '', this.messagesIndex);
+    this.tchatService.sendConversationId(this.conversation.id, this.messagesIndex);
     this.messagesIndex += 50;
     
     // Get all messages
@@ -71,7 +69,7 @@ export class TchatComponent {
       this.messages = this.messages.reverse();
       this.scrollToBottom();
 
-      if(messages.length != 0) this.tchatService.readLastMessages(this.messagesToRead);
+      if(messages.length != 0) this.tchatService.readLastMessages(this.conversation.id);
     });
 
     // Get a  new message
