@@ -44,7 +44,7 @@
         <div class="select-box profile-box" *ngFor="let groupConv of groupConversations; let first = first; let last = last;" routerLink="/sender/tchat" router-direction="forward" [state]="{ conversation: groupConv, allConversations: allConversations, fromDetails: true }" [class.select-start]="first" [class.select-end]="last" ontouchstart>
           <div>
             <b>{{ groupConv.groupName }}</b> <br>
-            <p>You<span *ngFor="let user of groupConv.users; let last = last"><span *ngIf="!last">, </span><span *ngIf="last"> and </span>{{ user.firstname }}</span></p>
+            <p>{{'SENDER.MODALS.CONV_DETAILS.text_you' | translate}}<span *ngFor="let user of groupConv.users; let last = last"><span *ngIf="!last">, </span><span *ngIf="last"> {{'SENDER.MODALS.CONV_DETAILS.text_and' | translate}} </span>{{ user.firstname }}</span></p>
           </div>
           <img src="../../assets/icons/arrow-right-orange.svg">
         </div>
