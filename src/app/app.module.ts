@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
@@ -13,10 +13,26 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { CreateReminderComponent } from './sender/modals/create-reminder/create-reminder.component';
+import { registerLocaleData } from '@angular/common';
+
+import localeDe from '@angular/common/locales/de';
+import localeEn from '@angular/common/locales/en';
+import localeEs from '@angular/common/locales/es';
+import localeFr from '@angular/common/locales/fr';
+import localeIt from '@angular/common/locales/it';
+import localePt from '@angular/common/locales/pt';
+
+registerLocaleData(localeDe);
+registerLocaleData(localeEn);
+registerLocaleData(localeEs);
+registerLocaleData(localeFr);
+registerLocaleData(localeIt);
+registerLocaleData(localePt);
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http)
 }
+
 
 @NgModule({
   declarations: [
@@ -24,7 +40,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     StartComponent,
     DesignSystemComponent,
     SenderComponent,
-    CreateReminderComponent
+    CreateReminderComponent,
   ],
   imports: [
     IonicModule.forRoot(),
@@ -43,7 +59,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     }),
   ],
   providers: [
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    //{ provide: LOCALE_ID, useValue: getLocale() },
   ],
   bootstrap: [AppComponent]
 })

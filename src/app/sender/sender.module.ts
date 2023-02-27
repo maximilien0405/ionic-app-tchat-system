@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { SenderRoutingModule } from './sender-routing.module';
 import { HomeSettingsComponent } from './settings/home-settings/home-settings.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -38,7 +38,7 @@ import { ConversationDetailsComponent } from './conversation-details/conversatio
     ProfileComponent,
     HomeSettingsComponent,
     MenuComponent,
-    KeyboardFlyingDirective
+    KeyboardFlyingDirective,
   ],
   imports: [
     FormsModule,
@@ -49,6 +49,7 @@ import { ConversationDetailsComponent } from './conversation-details/conversatio
     HttpClientModule,
     ImageCropperModule,
     IonicModule.forRoot({})
-  ]
+  ],
+  providers: [DatePipe]
 })
 export class SenderModule { }
