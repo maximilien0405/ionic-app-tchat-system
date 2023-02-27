@@ -69,7 +69,7 @@
                   {{ conversation.messages[0].createdAt | date:'dd.LL.yy':undefined:lang }}
                 </span>
               </p>
-              <div *ngIf="conversation.newMessageCount > 0" class="box-notification">{{ conversation.newMessageCount }}</div>
+              <div *ngIf="conversation.newMessageCount > 0" class="box-notification" [class.box-notif-big]="conversation.newMessageCount > 9">{{ conversation.newMessageCount }}</div>
             </div>
             <p class="box-subtitle box-sub-bottom">
               <!--<img src="../../assets/icons/image-filled.svg">
