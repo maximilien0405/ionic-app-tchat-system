@@ -476,6 +476,11 @@ image-cropper .ngx-ic-source-image {
     color: var(--white);
   }
 
+  .box-notif-big {
+    width: fit-content !important;
+    padding: 0rem 0.25rem !important;
+  }
+
   .box-title {
     font-size: 0.9rem;
   }

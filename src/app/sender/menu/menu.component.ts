@@ -13,6 +13,7 @@ import { SubscriptionService } from 'src/app/common/services/subscription.servic
 import { NetworkService } from 'src/app/common/services/network.service';
 import { TchatService } from 'src/app/common/services/tchat.service';
 import { Message } from 'src/app/common/models/message.model';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-menu',
@@ -28,6 +29,10 @@ export class MenuComponent implements OnInit {
   public searchValue: string = '';
   public allLoaded: boolean = false;
 
+  public lang: any;
+  public today: any;
+  public currentWeek: any;
+
   public recieverConversations: Conversation[] = [];
   public contactConversations: Conversation[] = [];
   public networkError = false;
@@ -35,12 +40,10 @@ export class MenuComponent implements OnInit {
 
   constructor(
     private modalController: ModalController,
-    private authService: AuthService,
-    private getUserService: GetUserService,
     private conversationService: ConversationService,
-    private subscriptionService: SubscriptionService,
     private networkService: NetworkService,
-    private tchatService: TchatService
+    private tchatService: TchatService,
+    private datePipe: DatePipe,
   ) {
     // Check the network status
     this.networkService.checkAPIAndNetworkStatus();
@@ -56,6 +59,16 @@ export class MenuComponent implements OnInit {
     this.tchatService.getConversations().subscribe(res => {
       this.getConversations();
     })
+
+    // Get lang
+    const getLang = async () => {
+      const { value } = await Preferences.get({ key: 'lang' });
+      this.lang = value || '';
+    }; getLang()
+
+    // Get current dates
+    this.today = datePipe.transform(Date.now(),'dd');
+    this.currentWeek = datePipe.transform(Date.now(),'w');
   }
 
   ngOnInit() {
@@ -72,7 +85,6 @@ export class MenuComponent implements OnInit {
         this.user = JSON.parse(value || '');
       }
     }; await getUser();
-
 
     // Get all conversations
     this.getConversations();

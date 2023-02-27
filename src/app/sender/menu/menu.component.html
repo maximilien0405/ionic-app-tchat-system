@@ -50,8 +50,26 @@
           <div class="tchat-text">
             <div class="tchat-box-title">
               <p class="box-title">{{ conversation.groupName || (conversation.users[0].firstname + ' ' + conversation.users[0].lastname) }}</p>
-              <p *ngIf="conversation.messages[0]" class="box-subtitle" [class.box-subtitle-notif]="conversation.newMessageCount > 0">{{ conversation.messages[0].createdAt | date: 'h:mm' }}</p>
-              <div *ngIf="conversation.newMessageCount > 0" class="box-notification">{{ conversation.newMessageCount }}</div>
+              <p *ngIf="conversation.messages[0]" class="box-subtitle" [class.box-subtitle-notif]="conversation.newMessageCount > 0">
+                <!-- If today -->
+                <span *ngIf="(conversation.messages[0].createdAt | date: 'dd') == today">
+                  <span *ngIf="lang == 'en'">
+                    {{ conversation.messages[0].createdAt | date:'shortTime':undefined:lang }}
+                  </span>
+                  <span *ngIf="lang != 'en'">
+                    {{ conversation.messages[0].createdAt | date:'H:mm':undefined:lang | titlecase }}
+                  </span>
+                </span>
+                <!-- If this week but not today -->
+                <span *ngIf="((conversation.messages[0].createdAt | date: 'w') == currentWeek) && (conversation.messages[0].createdAt | date: 'dd') != today">
+                    {{ conversation.messages[0].createdAt | date:'EEEE':undefined:lang | titlecase }}
+                </span>
+                <!-- Else -->
+                <span *ngIf="((conversation.messages[0].createdAt | date: 'w') != currentWeek) && (conversation.messages[0].createdAt | date: 'dd') != today">
+                  {{ conversation.messages[0].createdAt | date:'dd.LL.yy':undefined:lang }}
+                </span>
+              </p>
+              <div *ngIf="conversation.newMessageCount > 0" class="box-notification" [class.box-notif-big]="conversation.newMessageCount > 9">{{ conversation.newMessageCount }}</div>
             </div>
             <p class="box-subtitle box-sub-bottom">
               <!--<img src="../../assets/icons/image-filled.svg">
