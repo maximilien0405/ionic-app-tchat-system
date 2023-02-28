@@ -4,7 +4,8 @@
       "header": "Send a message",
       "input_search": "Search",
       "conversation_seniors": "Seniors",
-      "conversation_contacts": "Contacts"
+      "conversation_contacts": "Contacts",
+      "yesterday_date": "Yesterday"
     },
     "TCHAT": {
       "header": "Tchat",

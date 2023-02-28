@@ -60,12 +60,16 @@
                     {{ conversation.messages[0].createdAt | date:'H:mm':undefined:lang | titlecase }}
                   </span>
                 </span>
+                <!-- If yesterday -->
+                <span *ngIf="(conversation.messages[0].createdAt | date: 'dd') == yesterday">
+                  {{ 'SENDER.MENU.yesterday_date' | translate }}
+                </span>
                 <!-- If this week but not today -->
-                <span *ngIf="((conversation.messages[0].createdAt | date: 'w') == currentWeek) && (conversation.messages[0].createdAt | date: 'dd') != today">
+                <span *ngIf="((conversation.messages[0].createdAt | date: 'w') == currentWeek) && (conversation.messages[0].createdAt | date: 'dd') != today && (conversation.messages[0].createdAt | date: 'dd') != yesterday">
                     {{ conversation.messages[0].createdAt | date:'EEEE':undefined:lang | titlecase }}
                 </span>
                 <!-- Else -->
-                <span *ngIf="((conversation.messages[0].createdAt | date: 'w') != currentWeek) && (conversation.messages[0].createdAt | date: 'dd') != today">
+                <span *ngIf="((conversation.messages[0].createdAt | date: 'w') != currentWeek) && (conversation.messages[0].createdAt | date: 'dd') != today && (conversation.messages[0].createdAt | date: 'dd') != yesterday">
                   {{ conversation.messages[0].createdAt | date:'dd.LL.yy':undefined:lang }}
                 </span>
               </p>

@@ -31,6 +31,7 @@ export class MenuComponent implements OnInit {
 
   public lang: any;
   public today: any;
+  public yesterday: any;
   public currentWeek: any;
 
   public recieverConversations: Conversation[] = [];
@@ -68,6 +69,7 @@ export class MenuComponent implements OnInit {
 
     // Get current dates
     this.today = datePipe.transform(Date.now(),'dd');
+    this.yesterday = datePipe.transform(this.getPreviousDay(), 'dd');
     this.currentWeek = datePipe.transform(Date.now(),'w');
   }
 
@@ -140,5 +142,12 @@ export class MenuComponent implements OnInit {
   public hideSearch() {
     //this.showSearch = false;
     this.searchValue = '';
+  }
+
+  // Get previous day
+  public getPreviousDay(date = new Date()) {
+    const previous = new Date(date.getTime());
+    previous.setDate(date.getDate() - 1);
+    return previous;
   }
 }
