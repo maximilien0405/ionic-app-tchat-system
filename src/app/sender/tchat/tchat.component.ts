@@ -48,7 +48,7 @@ export class TchatComponent {
     this.allConversations = state.allConversations;
   }
 
-  ionViewWillEnter() {
+  async ionViewWillEnter() {
     const state: any = this.location.getState()
 
     if(state.fromDetails) {
@@ -61,16 +61,16 @@ export class TchatComponent {
     this.messagesIndex += 50;
     
     // Get all messages
-    this.tchatService.getMessages().subscribe((messages: Message[]) => {      
+    await this.tchatService.getMessages().subscribe((messages: Message[]) => {      
       if (this.messagesIndex != 0) {
         this.messages = this.messages.reverse();
       }
       messages.forEach(message => { this.messages.push(message); });
       this.messages = this.messages.reverse();
       this.scrollToBottom();
-
-      if(messages.length != 0) this.tchatService.readLastMessages(this.conversation.id);
     });
+
+    if(this.conversation.messages.length != 0) this.tchatService.readLastMessages(this.conversation.id);
 
     // Get a  new message
     this.tchatService.getNewRoomMessage().subscribe((message: Message) => {
