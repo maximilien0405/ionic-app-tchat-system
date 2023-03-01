@@ -70,7 +70,7 @@ export class TchatComponent {
       this.scrollToBottom();
     });
 
-    if(this.conversation.messages.length != 0) this.tchatService.readLastMessages(this.conversation.id);
+    if(this.conversation.messages.length != 0) this.tchatService.readLastMessages(this.conversation);
 
     // Get a  new message
     this.tchatService.getNewRoomMessage().subscribe((message: Message) => {

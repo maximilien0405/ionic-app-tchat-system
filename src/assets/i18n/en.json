@@ -5,7 +5,8 @@
       "input_search": "Search",
       "conversation_seniors": "Seniors",
       "conversation_contacts": "Contacts",
-      "yesterday_date": "Yesterday"
+      "yesterday_date": "Yesterday",
+      "no_messages": "No messages for now. Send one now!"
     },
     "TCHAT": {
       "header": "Tchat",

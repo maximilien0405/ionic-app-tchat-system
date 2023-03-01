@@ -17,6 +17,7 @@ export class TchatService {
       conversation,
       type,
       contentUrl,
+      readBys: []
     }
     this.socket.emit('sendMessage', [newMessage, conversation.id, conversation.users]);
   }
@@ -26,7 +27,7 @@ export class TchatService {
   }
 
   leaveRoom(conversationId: string): void {
-    this.socket.emit('leaveRoom', [conversationId])
+    this.socket.emit('leaveRoom', conversationId)
   }
 
   getConversations(): Observable<any> {
@@ -41,7 +42,7 @@ export class TchatService {
     return this.socket.fromEvent<Message[]>('messages');
   }
 
-  readLastMessages(conversationId: string): void {
-    this.socket.emit('readLastMessages', conversationId);
+  readLastMessages(conversation: Conversation): void {
+    this.socket.emit('readLastMessages', [conversation.id, conversation.users]);
   }
 }

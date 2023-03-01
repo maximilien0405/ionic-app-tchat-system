@@ -14,6 +14,7 @@ import { NetworkService } from 'src/app/common/services/network.service';
 import { TchatService } from 'src/app/common/services/tchat.service';
 import { Message } from 'src/app/common/models/message.model';
 import { DatePipe } from '@angular/common';
+import { ReadBy } from 'src/app/common/models/readby.model';
 
 @Component({
   selector: 'app-menu',
@@ -101,6 +102,24 @@ export class MenuComponent implements OnInit {
       })
       .then((res: any) => {
         if (res.status == 200) {
+          const conversations = res.data;
+
+          // Set read complete or not
+          conversations.forEach((conversation: Conversation) => {
+            let allRead = true;
+
+            if(conversation.messages[0]) {
+              for (let i = 0; i < conversation.messages[0].readBys.length; i++) {
+                const readBy: ReadBy = conversation.messages[0].readBys[i];
+                if(!readBy.read) {
+                  allRead = false;
+                }
+              }
+  
+              conversation.messages[0].allRead = allRead;
+            }
+          });
+
           let recieverConversations = [];
           let contactConversations = res.data;
 

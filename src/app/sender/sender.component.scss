@@ -421,6 +421,10 @@ image-cropper .ngx-ic-source-image {
     width: 100%;
   }
 
+  b {
+    font-weight: 500;
+  }
+
   .tchat-box-title {
     width: 100%;
     height: 100%;
@@ -434,7 +438,7 @@ image-cropper .ngx-ic-source-image {
     margin-top: -0.1875rem;
   }
 
-  img {
+  .tchat-profile-picture {
     height: 3.52rem;
     width: 3.52rem;
     border-radius: var(--radius-small);
@@ -450,13 +454,17 @@ image-cropper .ngx-ic-source-image {
     text-overflow: ellipsis;
     white-space: normal;
     padding-right: 1.25rem;
-    word-break: break-all;
+    word-break: break-word;
 
     img {
       margin-bottom: -0.1875rem;
       height: 1rem;
-      filter: var(--icon-black) !important;
-      margin-right: 0.1563rem;
+      filter: var(--icon-gray) !important;
+      margin-right: 0.3rem;
+    }
+
+    .check-read {
+      filter: unset !important;
     }
   }
 

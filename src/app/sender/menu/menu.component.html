@@ -46,7 +46,7 @@
       
       <div *ngFor="let conversation of contactConversations" routerLink="/sender/tchat" [state]="{ conversation: conversation, allConversations: contactConversations }" router-direction="forward" ontouchstart>
         <div *ngIf="(conversation.type == 'normal' && conversation.messages[0]) || conversation.type == 'group'" class="tchat-box">
-          <img [src]="conversation.groupPictureUrl || conversation.users[0].profilePictureUrl">
+          <img class="tchat-profile-picture" [src]="conversation.groupPictureUrl || conversation.users[0].profilePictureUrl">
           <div class="tchat-text">
             <div class="tchat-box-title">
               <p class="box-title">{{ conversation.groupName || (conversation.users[0].firstname + ' ' + conversation.users[0].lastname) }}</p>
@@ -76,13 +76,25 @@
               <div *ngIf="conversation.newMessageCount > 0" class="box-notification" [class.box-notif-big]="conversation.newMessageCount > 9">{{ conversation.newMessageCount }}</div>
             </div>
             <p class="box-subtitle box-sub-bottom">
-              <!--<img src="../../assets/icons/image-filled.svg">
-              <img src="../../assets/icons/video-filled.svg">
-              <img src="../../assets/icons/micro-filled.svg">
-              <img src="../../assets/icons/phone-filled.svg">
-              <img src="../../assets/icons/check.svg">
-              <img src="../../assets/icons/double-check.svg"> -->
-              <span *ngIf="conversation.messages[0]">{{ conversation.messages[0].text }}</span>
+              <span *ngIf="conversation.messages[0]">
+                <!-- If all read or not -->
+                <span *ngIf="conversation.messages[0].user?.id == user.id">
+                  <img *ngIf="!conversation.messages[0].allRead" src="../../assets/icons/check.svg">
+                  <img *ngIf="conversation.messages[0].allRead" class="check-read" src="../../assets/icons/double-check.svg">
+                </span>
+
+                <b *ngIf="conversation.type == 'group' && conversation.messages[0].user?.id != user.id">{{ conversation.messages[0].user?.firstname }} : </b>
+
+                <!--<img src="../../assets/icons/image-filled.svg">
+                <img src="../../assets/icons/video-filled.svg">
+                <img src="../../assets/icons/micro-filled.svg">
+                <img src="../../assets/icons/phone-filled.svg">-->
+  
+                <span *ngIf="conversation.messages[0]">{{ conversation.messages[0].text }}</span>  
+              </span>
+
+              <img *ngIf="!conversation.messages[0]" src="../../assets/icons/info.svg">
+              <span *ngIf="!conversation.messages[0]">{{ 'SENDER.MENU.no_messages' | translate }}</span>
             </p>
           </div>
         </div>

@@ -1,3 +1,7 @@
+import { Conversation } from "./conversation.model"
+import { Message } from "./message.model"
+import { ReadBy } from "./readby.model"
+
 export interface User {
   id: string,
   email: string,
@@ -9,8 +13,9 @@ export interface User {
   type: string,
   profilePictureUrl: string,
   emailValidated: boolean,
+  readBys?: ReadBy[],
   subscriptions: [],
   subscriptionStatus: [],
-  conversations: [],
-  messages: []
+  conversations: Conversation[],
+  messages: Message[]
 }
