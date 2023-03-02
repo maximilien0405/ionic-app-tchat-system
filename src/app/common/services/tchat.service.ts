@@ -45,4 +45,10 @@ export class TchatService {
   readLastMessages(conversation: Conversation): void {
     this.socket.emit('readLastMessages', [conversation.id, conversation.users]);
   }
+
+  reloadConversations(conversation: Conversation): void {
+    console.log(conversation)
+
+    this.socket.emit('reloadConversations', [conversation.id, conversation.users]);
+  }
 }

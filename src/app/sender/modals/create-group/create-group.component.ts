@@ -7,6 +7,7 @@ import { fadeAnimation } from 'src/app/common/animations';
 import { User } from 'src/app/common/models/user.model';
 import { ConversationService } from 'src/app/common/services/conversation.service';
 import { SubscriptionService } from 'src/app/common/services/subscription.service';
+import { TchatService } from 'src/app/common/services/tchat.service';
 
 @Component({
   selector: 'app-create-group',
@@ -25,7 +26,8 @@ export class CreateGroupComponent implements OnInit {
     private modalController: ModalController,
     private conversationService: ConversationService,
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private tchatService: TchatService,
   ) {}
 
   ngOnInit() {
@@ -56,6 +58,7 @@ export class CreateGroupComponent implements OnInit {
       if(res.status == 201) {
         // Redirect
         this.modalController.dismiss(null, 'cancel');
+        this.tchatService.reloadConversations(res.data.conversation);
         this.router.navigateByUrl('sender/tchat', { state: { conversation: res.data.conversation } });
       }
     })
